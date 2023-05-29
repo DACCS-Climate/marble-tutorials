@@ -47,6 +47,7 @@ The "_toc.yml" file specifies the structure of the book and the table of content
 Edit the "_toc.yml" file to include the Jupyter Notebook files needed.  Under "chapters" add your files
 
 > \- file: filename1
+> 
 > \- file: folder/filename2
 
 
