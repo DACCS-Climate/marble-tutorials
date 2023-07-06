@@ -5,6 +5,20 @@ format: jb-book
 root: intro
 chapters:
 - file: workflow/hummingbird
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: pavics-sdi/climex
+- file: pavics-sdi/eccc-geoapi-climate-stations
+- file: pavics-sdi/eccc-geoapi-xclim
+- file: pavics-sdi/esgf-dap
+- file: pavics-sdi/forecasts
+- file: pavics-sdi/jupyter_extensions
+- file: pavics-sdi/opendap
+- file: pavics-sdi/pavics_thredds
+- file: pavics-sdi/regridding
+- file: pavics-sdi/rendering
+- file: pavics-sdi/subset-user-input
+- file: pavics-sdi/subsetting
+- file: pavics-sdi/weaver_example
+- file: pavics-sdi/WCS_example
+- file: pavics-sdi/WFS_example
+- file: pavics-sdi/WMS_example
+- file: pavics-sdi/WPS_example

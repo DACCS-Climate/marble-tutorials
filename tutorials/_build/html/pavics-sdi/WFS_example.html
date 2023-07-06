@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Web Feature Service - Accessing region countours saved on a GeoServer &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pavics-sdi/WFS_example';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with owslib’s WMS interface" href="WMS_example.html" />
+    <link rel="prev" title="Web Coverage Service - Accessing GeoMet data using owslib" href="WCS_example.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../workflow/hummingbird.html">Hummingbird</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climex.html">Analyzing the ClimEx Large Ensemble</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="eccc-geoapi-climate-stations.html">Working with the ECCC GeoAPI to access weather station data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eccc-geoapi-xclim.html">Compute climate indicators on weather station data from ECCC’s API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esgf-dap.html">Earth System Grid Federation Data Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasts.html">Computing indices on weather forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter_extensions.html">JupyterLab Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opendap.html">Data Access Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pavics_thredds.html">Accessing PAVICS THREDDS Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regridding.html">Regridding climate data with xESMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rendering.html">Gridded Data Renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subset-user-input.html">General workflow demonstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subsetting.html">Spatial and temporal subsetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weaver_example.html">PAVICS Web Processing Services using OGC-API integration with Weaver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WCS_example.html">Web Coverage Service - Accessing GeoMet data using owslib</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Web Feature Service - Accessing region countours saved on a GeoServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_example.html">Working with owslib’s WMS interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WPS_example.html">PAVICS Web Processing Services</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpavics-sdi/WFS_example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pavics-sdi/WFS_example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Web Feature Service - Accessing region countours saved on a GeoServer</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="web-feature-service-accessing-region-countours-saved-on-a-geoserver">
+<h1>Web Feature Service - Accessing region countours saved on a GeoServer<a class="headerlink" href="#web-feature-service-accessing-region-countours-saved-on-a-geoserver" title="Permalink to this heading">#</a></h1>
+<p>In this example, we’re going to look at some layers that are currently accessible on our instance of GeoServer. With WFS, we can see what is available, collect the layers we want by using a query, download the results in geoJSON, and visualize them using <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>.</p>
+<p>We begin by loading the libraries needed for parsing and downloading from WFS and for opening and visualizing the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USE_PYGEOS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>  <span class="c1"># force use Shapely with GeoPandas</span>
+
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="c1"># Import WFS from owslib</span>
+<span class="kn">from</span> <span class="nn">owslib.wfs</span> <span class="kn">import</span> <span class="n">WebFeatureService</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">os</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USE_PYGEOS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>  <span class="c1"># force use Shapely with GeoPandas</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># Import WFS from owslib</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">from</span> <span class="nn">owslib.wfs</span> <span class="kn">import</span> <span class="n">WebFeatureService</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;geopandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We start by making a connection to the PAVICS instance we have locally on our server. Using WFS, we can very quickly see the contents, which are the layers and the workspaces they’re located with (ie: TravisTest, scratchTJS). These layer names act as dictionaries for</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">wfs_url</span> <span class="o">=</span> <span class="s2">&quot;https://pavics.ouranos.ca/geoserver/wfs&quot;</span>  <span class="c1"># TEST_USE_PROD_DATA</span>
+
+<span class="c1"># Connect to GeoServer WFS service.</span>
+<span class="n">wfs</span> <span class="o">=</span> <span class="n">WebFeatureService</span><span class="p">(</span><span class="n">wfs_url</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;2.0.0&quot;</span><span class="p">)</span>
+
+<span class="c1"># Print the list of available layers</span>
+<span class="nb">sorted</span><span class="p">(</span><span class="n">wfs</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;TravisTest:NE_Admin_Level0&#39;,
+ &#39;TravisTest:mrc_poly&#39;,
+ &#39;TravisTest:region_admin_poly&#39;,
+ &#39;public:CANOPEX_5797_basinBoundaries&#39;,
+ &#39;public:CANVEC_hydro_waterbodies&#39;,
+ &#39;public:CanVec_Rivers&#39;,
+ &#39;public:CanVec_WaterBodies&#39;,
+ &#39;public:HydroLAKES_points&#39;,
+ &#39;public:HydroLAKES_poly&#39;,
+ &#39;public:USGS_HydroBASINS_lake_ar_lev12&#39;,
+ &#39;public:USGS_HydroBASINS_lake_na_lev12&#39;,
+ &#39;public:canada_admin_boundaries&#39;,
+ &#39;public:decamillenial_flood_CC&#39;,
+ &#39;public:gaspesie_mrc&#39;,
+ &#39;public:global_admin_boundaries&#39;,
+ &#39;public:ne_10m_populated_places&#39;,
+ &#39;public:quebec_admin_boundaries&#39;,
+ &#39;public:quebec_health_regions&#39;,
+ &#39;public:quebec_mrc_boundaries&#39;,
+ &#39;public:quebec_muni_boundaries&#39;,
+ &#39;public:routing_1kmLakes_07&#39;,
+ &#39;public:routing_1kmLakes_08&#39;,
+ &#39;public:routing_1kmLakes_09&#39;,
+ &#39;public:routing_1kmLakes_10&#39;,
+ &#39;public:routing_1kmLakes_11&#39;,
+ &#39;public:routing_1kmLakes_12&#39;,
+ &#39;public:routing_allLakes_07&#39;,
+ &#39;public:routing_allLakes_08&#39;,
+ &#39;public:routing_allLakes_09&#39;,
+ &#39;public:routing_allLakes_10&#39;,
+ &#39;public:routing_allLakes_11&#39;,
+ &#39;public:routing_allLakes_12&#39;,
+ &#39;public:test_regions&#39;,
+ &#39;public:test_regions_lambert&#39;,
+ &#39;public:usa_admin_boundaries&#39;,
+ &#39;public:wshed_bound_n1&#39;,
+ &#39;public:wshed_bound_n2&#39;,
+ &#39;public:wshed_bound_n3&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>More information about each layer is stored in the <code class="docutils literal notranslate"><span class="pre">contents</span></code> dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">sorted_layer_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">wfs</span><span class="o">.</span><span class="n">contents</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
+<span class="n">canada_admin_boundaries_index</span> <span class="o">=</span> <span class="n">sorted_layer_ids</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">&quot;public:canada_admin_boundaries&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">layerID</span> <span class="ow">in</span> <span class="n">sorted_layer_ids</span><span class="p">[</span>
+    <span class="n">canada_admin_boundaries_index</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">canada_admin_boundaries_index</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="p">]:</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">wfs</span><span class="p">[</span><span class="n">layerID</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer ID:&quot;</span><span class="p">,</span> <span class="n">layerID</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Title:&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Boundaries:&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">boundingBoxWGS84</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Layer ID: public:USGS_HydroBASINS_lake_na_lev12
+Title: USGS_HydroBASINS_lake_na_lev12
+Boundaries: (-180.0, -90.0, 180.0, 90.0) 
+
+Layer ID: public:canada_admin_boundaries
+Title: Canada Administrative Boundaries
+Boundaries: (-141.01807315799994, 41.681435425000075, -52.61940850399992, 83.13550252400006) 
+
+Layer ID: public:decamillenial_flood_CC
+Title: decamillenial_flood_CC
+Boundaries: (-180.0, -90.0, 180.0, 90.0) 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then perform a <code class="docutils literal notranslate"><span class="pre">GetFeatures</span></code> call using the layer name as a target. This returns an IOstream that can be written as a geoJSON file, a common file format for vector data served throughout the web. To reduce the download size, we’ll only fetch the features (here polygons), intersecting a small region defined by a bounding box.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layer_id</span> <span class="o">=</span> <span class="s2">&quot;public:canada_admin_boundaries&quot;</span>
+<span class="n">meta</span> <span class="o">=</span> <span class="n">wfs</span><span class="o">.</span><span class="n">contents</span><span class="p">[</span><span class="n">layer_id</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meta</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+
+<span class="c1"># Get the actual data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">wfs</span><span class="o">.</span><span class="n">getfeature</span><span class="p">(</span>
+    <span class="n">typename</span><span class="o">=</span><span class="s2">&quot;public:canada_admin_boundaries&quot;</span><span class="p">,</span>
+    <span class="n">bbox</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">74.5</span><span class="p">,</span> <span class="mf">45.2</span><span class="p">,</span> <span class="o">-</span><span class="mi">73</span><span class="p">,</span> <span class="mi">46</span><span class="p">),</span>
+    <span class="n">outputFormat</span><span class="o">=</span><span class="s2">&quot;JSON&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Write to file</span>
+<span class="n">fn</span> <span class="o">=</span> <span class="s2">&quot;output.geojson&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+    <span class="n">fh</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Canada Administrative Boundaries
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the geoJSON file is downloaded, we can either open it with a GIS application or we can read the features using geopandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+<span class="n">layers</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/01125302c7c377dad6ff667ecbc8a30112b41f3230af5745698b22c16e264e94.png" src="../_images/01125302c7c377dad6ff667ecbc8a30112b41f3230af5745698b22c16e264e94.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pavics-sdi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="WCS_example.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Web Coverage Service - Accessing GeoMet data using owslib</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="WMS_example.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Working with owslib’s WMS interface</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

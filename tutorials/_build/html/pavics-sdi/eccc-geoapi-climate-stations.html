@@ -1,0 +1,2825 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Working with the ECCC GeoAPI to access weather station data &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pavics-sdi/eccc-geoapi-climate-stations';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compute climate indicators on weather station data from ECCC’s API" href="eccc-geoapi-xclim.html" />
+    <link rel="prev" title="Analyzing the ClimEx Large Ensemble" href="climex.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../workflow/hummingbird.html">Hummingbird</a></li>
+<li class="toctree-l1"><a class="reference internal" href="climex.html">Analyzing the ClimEx Large Ensemble</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Working with the ECCC GeoAPI to access weather station data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eccc-geoapi-xclim.html">Compute climate indicators on weather station data from ECCC’s API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="esgf-dap.html">Earth System Grid Federation Data Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="forecasts.html">Computing indices on weather forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jupyter_extensions.html">JupyterLab Extensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opendap.html">Data Access Protocol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pavics_thredds.html">Accessing PAVICS THREDDS Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regridding.html">Regridding climate data with xESMF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rendering.html">Gridded Data Renderer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subset-user-input.html">General workflow demonstration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subsetting.html">Spatial and temporal subsetting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="weaver_example.html">PAVICS Web Processing Services using OGC-API integration with Weaver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WCS_example.html">Web Coverage Service - Accessing GeoMet data using owslib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WFS_example.html">Web Feature Service - Accessing region countours saved on a GeoServer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WMS_example.html">Working with owslib’s WMS interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="WPS_example.html">PAVICS Web Processing Services</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fpavics-sdi/eccc-geoapi-climate-stations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pavics-sdi/eccc-geoapi-climate-stations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with the ECCC GeoAPI to access weather station data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-stations">Climate stations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-request-to-the-server-for-data">Creating a request to the server for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-stations">Filter stations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-the-data">Map the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-stations-using-bounding-box">Filter stations using bounding box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-meteorological-data">Request meteorological data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-and-homogenized-canadian-climate-data-ahccd">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-the-eccc-geoapi-to-access-weather-station-data">
+<h1>Working with the ECCC GeoAPI to access weather station data<a class="headerlink" href="#working-with-the-eccc-geoapi-to-access-weather-station-data" title="Permalink to this heading">#</a></h1>
+<p>Environment and Climate Change Canada (ECCC) hosts a data server compatible with the <a class="reference external" href="https://www.geoapi.org/">GeoAPI</a> standard. This notebook shows how to send requests for daily climate station data and display the results.</p>
+<section id="climate-stations">
+<h2>Climate stations<a class="headerlink" href="#climate-stations" title="Permalink to this heading">#</a></h2>
+<p>The server holds different <a class="reference external" href="https://api.weather.gc.ca/collections?f=html"><em>collections</em></a>, and requests are made to a particular collection. Here we’ll start with the <code class="docutils literal notranslate"><span class="pre">climate-station</span></code> collection, which holds metadata about available stations, but no actual meteorological data. Useful <a class="reference external" href="https://api.weather.gc.ca/collections/climate-stations/queryables">queryables fields</a> in this collection include <code class="docutils literal notranslate"><span class="pre">DLY_FIRST_DATE</span></code> and <code class="docutils literal notranslate"><span class="pre">DLY_LAST_DATE</span></code>, <code class="docutils literal notranslate"><span class="pre">ENG_PROV_NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">LATITUDE</span></code>, <code class="docutils literal notranslate"><span class="pre">LONGITUDE</span></code> and <code class="docutils literal notranslate"><span class="pre">ELEVATION</span></code> and <code class="docutils literal notranslate"><span class="pre">STATION_NAME</span></code>, among many others.</p>
+<section id="creating-a-request-to-the-server-for-data">
+<h3>Creating a request to the server for data<a class="headerlink" href="#creating-a-request-to-the-server-for-data" title="Permalink to this heading">#</a></h3>
+<p>Let’s start by showing a map of all available stations locations in New-Brunswick. To do so, we first need to compose a URL request. The request includes the address of the server, the collection, then a query to filter results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USE_PYGEOS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>  <span class="c1"># force use Shapely with GeoPandas</span>
+
+<span class="kn">import</span> <span class="nn">urllib</span>
+
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="kn">from</span> <span class="nn">urlpath</span> <span class="kn">import</span> <span class="n">URL</span>
+
+<span class="c1"># Compose the request</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">URL</span><span class="p">(</span><span class="s2">&quot;https://api.weather.gc.ca&quot;</span><span class="p">)</span>
+<span class="n">climate_stations</span> <span class="o">=</span> <span class="n">host</span> <span class="o">/</span> <span class="s2">&quot;collections&quot;</span> <span class="o">/</span> <span class="s2">&quot;climate-stations&quot;</span> <span class="o">/</span> <span class="s2">&quot;items&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">climate_stations</span><span class="o">.</span><span class="n">with_query</span><span class="p">({</span><span class="s2">&quot;ENG_PROV_NAME&quot;</span><span class="p">:</span> <span class="s2">&quot;NOVA-SCOTIA&quot;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+<span class="c1"># Send the request to the server</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="n">resp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;USE_PYGEOS&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>  <span class="c1"># force use Shapely with GeoPandas</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">urllib</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">urlpath</span> <span class="kn">import</span> <span class="n">URL</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Compose the request</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;geopandas&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The response from the server is a <code class="docutils literal notranslate"><span class="pre">Response</span></code> class instance. What we’re interested in is the content of this response, which in this case is a geoJSON file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">resp</span><span class="o">.</span><span class="n">content</span><span class="p">[:</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b&#39;{&quot;type&quot;: &quot;FeatureCollection&quot;, &quot;features&quot;: [{&quot;type&quot;: &quot;Feature&quot;, &quot;properties&quot;: {&quot;STN_ID&quot;: 6390, &quot;STATI&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ll open the geoJSON using geopandas. We have a few options to do this:</p>
+<ul class="simple">
+<li><p>Load the response’ content using <code class="docutils literal notranslate"><span class="pre">json.load</span></code>, then create GeoDataFrame using the <code class="docutils literal notranslate"><span class="pre">from_features</span></code> class method;</p></li>
+<li><p>Save the response content to a file on disk, then open using <code class="docutils literal notranslate"><span class="pre">geopandas.read_file</span></code>;</p></li>
+<li><p>Save the response in an in-memory file using <code class="docutils literal notranslate"><span class="pre">StringIO</span></code>;</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">geopandas.read_file(url)</span></code> to let geopandas handle the data download.</p></li>
+</ul>
+<p>Here we’ll use the last option, as it’s the simplest. Note that the first method ignores the feature <code class="docutils literal notranslate"><span class="pre">id</span></code>, which seems to create problems with visualization with folium below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="c1"># The first approach would look like this:</span>
+<span class="c1"># import json</span>
+<span class="c1"># stations = gpd.GeoDataFrame.from_features(json.loads(resp.content))</span>
+
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">stations</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+<span class="n">stations</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR 1: PROJ: proj_create_from_database: Open of /opt/conda/envs/birdy/share/proj failed
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>STN_ID</th>
+      <th>STATION_NAME</th>
+      <th>PROV_STATE_TERR_CODE</th>
+      <th>ENG_PROV_NAME</th>
+      <th>FRE_PROV_NAME</th>
+      <th>COUNTRY</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>TIMEZONE</th>
+      <th>...</th>
+      <th>HLY_FIRST_DATE</th>
+      <th>HLY_LAST_DATE</th>
+      <th>DLY_FIRST_DATE</th>
+      <th>DLY_LAST_DATE</th>
+      <th>MLY_FIRST_DATE</th>
+      <th>MLY_LAST_DATE</th>
+      <th>HAS_MONTHLY_SUMMARY</th>
+      <th>HAS_NORMALS_DATA</th>
+      <th>HAS_HOURLY_DATA</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8203165</td>
+      <td>6390</td>
+      <td>LOWER MEAGHERS GRANT</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>445500000</td>
+      <td>-631400000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>1967-07-01</td>
+      <td>1993-06-30</td>
+      <td>1967-01-01</td>
+      <td>1993-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-63.23333 44.91667)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8203396</td>
+      <td>6398</td>
+      <td>MALAGASH POINT</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>454700000</td>
+      <td>-631700000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>1989-07-01</td>
+      <td>2000-04-30</td>
+      <td>1989-01-01</td>
+      <td>2000-04-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-63.28333 45.78333)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8203400</td>
+      <td>6399</td>
+      <td>MALAY FALLS</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>445900000</td>
+      <td>-622900000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>1999-01-19 15:00:00</td>
+      <td>2000-08-31 23:00:00</td>
+      <td>1950-02-01</td>
+      <td>2000-08-31</td>
+      <td>1950-01-01</td>
+      <td>2000-08-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-62.48333 44.98333)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8203422</td>
+      <td>6400</td>
+      <td>MARGAREE FORKS</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>462200000</td>
+      <td>-610500000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>1960-10-01</td>
+      <td>1975-11-30</td>
+      <td>1960-01-01</td>
+      <td>1975-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-61.08333 46.36667)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8203423</td>
+      <td>6401</td>
+      <td>MARGAREE FORKS</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>462000000</td>
+      <td>-610600000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>NaT</td>
+      <td>1976-05-01</td>
+      <td>2004-03-31</td>
+      <td>1976-01-01</td>
+      <td>2004-03-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-61.10000 46.33333)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 34 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="filter-stations">
+<h3>Filter stations<a class="headerlink" href="#filter-stations" title="Permalink to this heading">#</a></h3>
+<p>Now let’s say we want to filter the stations that were in operations for at least 50 years. What we’ll do is create a new column <code class="docutils literal notranslate"><span class="pre">n_days</span></code> and filter on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Create a datetime.Timedelta object from the subtraction of two dates.</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="s2">&quot;DLY_LAST_DATE&quot;</span><span class="p">])</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span>
+    <span class="n">stations</span><span class="p">[</span><span class="s2">&quot;DLY_FIRST_DATE&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Get the number of days in the time delta</span>
+<span class="n">stations</span><span class="p">[</span><span class="s2">&quot;n_days&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">days</span><span class="p">)</span>
+
+<span class="c1"># Compute condition</span>
+<span class="n">over_50</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[</span><span class="s2">&quot;n_days&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="o">*</span> <span class="mf">365.25</span>
+
+<span class="c1"># Index the data frame using the condition</span>
+<span class="n">select</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[</span><span class="n">over_50</span><span class="p">]</span>
+<span class="n">select</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>STN_ID</th>
+      <th>STATION_NAME</th>
+      <th>PROV_STATE_TERR_CODE</th>
+      <th>ENG_PROV_NAME</th>
+      <th>FRE_PROV_NAME</th>
+      <th>COUNTRY</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>TIMEZONE</th>
+      <th>...</th>
+      <th>HLY_LAST_DATE</th>
+      <th>DLY_FIRST_DATE</th>
+      <th>DLY_LAST_DATE</th>
+      <th>MLY_FIRST_DATE</th>
+      <th>MLY_LAST_DATE</th>
+      <th>HAS_MONTHLY_SUMMARY</th>
+      <th>HAS_NORMALS_DATA</th>
+      <th>HAS_HOURLY_DATA</th>
+      <th>geometry</th>
+      <th>n_days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>8203400</td>
+      <td>6399</td>
+      <td>MALAY FALLS</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>445900000</td>
+      <td>-622900000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>2000-08-31 23:00:00</td>
+      <td>1950-02-01</td>
+      <td>2000-08-31</td>
+      <td>1950-01-01</td>
+      <td>2000-08-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-62.48333 44.98333)</td>
+      <td>18474</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>8205090</td>
+      <td>6465</td>
+      <td>SHEARWATER A</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>443800000</td>
+      <td>-633000000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>2023-01-20 08:00:00</td>
+      <td>1944-02-01</td>
+      <td>2007-12-12</td>
+      <td>1944-01-01</td>
+      <td>2007-03-01</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>POINT (-63.50000 44.63333)</td>
+      <td>23325</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>8205698</td>
+      <td>6485</td>
+      <td>SYDNEY</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>460900000</td>
+      <td>-601200000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1870-01-01</td>
+      <td>1941-03-31</td>
+      <td>1870-01-01</td>
+      <td>1941-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-60.20000 46.15000)</td>
+      <td>26021</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8206300</td>
+      <td>6506</td>
+      <td>WHITEHEAD</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>451300000</td>
+      <td>-611100000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1883-12-01</td>
+      <td>1960-06-30</td>
+      <td>1883-01-01</td>
+      <td>1960-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-61.18333 45.21667)</td>
+      <td>27970</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>8206440</td>
+      <td>6513</td>
+      <td>WOLFVILLE</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>450600000</td>
+      <td>-642200000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1870-09-01</td>
+      <td>1949-09-30</td>
+      <td>1870-01-01</td>
+      <td>1949-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-64.36667 45.10000)</td>
+      <td>28883</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="map-the-data">
+<h3>Map the data<a class="headerlink" href="#map-the-data" title="Permalink to this heading">#</a></h3>
+<p>We can then simply map the locations of station with at least 50 years of data using the <code class="docutils literal notranslate"><span class="pre">explore</span></code> method. This will display an interactive base map and overlay the station locations, where on a station marker will display this station’s information.</p>
+<p>On top of this map, we’ll add controls to draw a rectangle. To use the drawing tool, click on the square on the left hand side menu, and the click and drag to draw a rectangle over the area of interest. Once that’s done, click on the Export button on the right of the map. This will download a file called <code class="docutils literal notranslate"><span class="pre">data.geojson</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">folium.plugins</span> <span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="c1"># Add control to draw a rectangle, and an export button.</span>
+<span class="n">draw_control</span> <span class="o">=</span> <span class="n">Draw</span><span class="p">(</span>
+    <span class="n">draw_options</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;polyline&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;poly&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;circle&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;polygon&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;marker&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;circlemarker&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;rectangle&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">export</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># The map library Folium chokes on columns including time stamps, so we first select the data to plot.</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">select</span><span class="p">[[</span><span class="s2">&quot;geometry&quot;</span><span class="p">,</span> <span class="s2">&quot;n_days&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">explore</span><span class="p">(</span><span class="s2">&quot;n_days&quot;</span><span class="p">)</span>
+<span class="n">draw_control</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">m</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    
+        &lt;script&gt;
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        &lt;/script&gt;
+    
+    &lt;style&gt;html, body {width: 100%;height: 100%;margin: 0;padding: 0;}&lt;/style&gt;
+    &lt;style&gt;#map {position:absolute;top:0;bottom:0;right:0;left:0;}&lt;/style&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_5cbccffe1c62609f3fd44553ccdfd275 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            &lt;/style&gt;
+        
+    
+                    &lt;style&gt;
+                        .foliumtooltip {
+                            
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    &lt;/style&gt;
+            
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css&quot;/&gt;
+    
+            &lt;style&gt;
+                #export {
+                    position: absolute;
+                    top: 5px;
+                    right: 10px;
+                    z-index: 999;
+                    background: white;
+                    color: black;
+                    padding: 6px;
+                    border-radius: 4px;
+                    font-family: &#x27;Helvetica Neue&#x27;;
+                    cursor: pointer;
+                    font-size: 12px;
+                    text-decoration: none;
+                    top: 90px;
+                }
+            &lt;/style&gt;
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_5cbccffe1c62609f3fd44553ccdfd275&quot; &gt;&lt;/div&gt;
+        
+    &lt;a href=&#x27;#&#x27; id=&#x27;export&#x27;&gt;Export&lt;/a&gt;
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_5cbccffe1c62609f3fd44553ccdfd275 = L.map(
+                &quot;map_5cbccffe1c62609f3fd44553ccdfd275&quot;,
+                {
+                    center: [44.99875, -63.04902777777778],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+            L.control.scale().addTo(map_5cbccffe1c62609f3fd44553ccdfd275);
+
+            
+
+        
+    
+            var tile_layer_393ce277ddab5947ead86091176252ad = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_5cbccffe1c62609f3fd44553ccdfd275);
+        
+    
+            map_5cbccffe1c62609f3fd44553ccdfd275.fitBounds(
+                [[43.83083333333333, -66.0886111111111], [46.166666666666664, -60.00944444444445]],
+                {}
+            );
+        
+    
+        function geo_json_a88dac14bbd9ffc26d3a8b03228e3680_styler(feature) {
+            switch(feature.id) {
+                case &quot;2&quot;: 
+                    return {&quot;color&quot;: &quot;#440154&quot;, &quot;fillColor&quot;: &quot;#440154&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;19&quot;: 
+                    return {&quot;color&quot;: &quot;#38588c&quot;, &quot;fillColor&quot;: &quot;#38588c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;23&quot;: 
+                    return {&quot;color&quot;: &quot;#306a8e&quot;, &quot;fillColor&quot;: &quot;#306a8e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;24&quot;: 
+                    return {&quot;color&quot;: &quot;#2c718e&quot;, &quot;fillColor&quot;: &quot;#2c718e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;34&quot;: 
+                    return {&quot;color&quot;: &quot;#1f9f88&quot;, &quot;fillColor&quot;: &quot;#1f9f88&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;45&quot;: 
+                    return {&quot;color&quot;: &quot;#481769&quot;, &quot;fillColor&quot;: &quot;#481769&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;59&quot;: 
+                    return {&quot;color&quot;: &quot;#46327e&quot;, &quot;fillColor&quot;: &quot;#46327e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;62&quot;: 
+                    return {&quot;color&quot;: &quot;#20938c&quot;, &quot;fillColor&quot;: &quot;#20938c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;65&quot;: 
+                    return {&quot;color&quot;: &quot;#2f6b8e&quot;, &quot;fillColor&quot;: &quot;#2f6b8e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;83&quot;: 
+                    return {&quot;color&quot;: &quot;#2b758e&quot;, &quot;fillColor&quot;: &quot;#2b758e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;87&quot;: 
+                    return {&quot;color&quot;: &quot;#21918c&quot;, &quot;fillColor&quot;: &quot;#21918c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;97&quot;: 
+                    return {&quot;color&quot;: &quot;#482071&quot;, &quot;fillColor&quot;: &quot;#482071&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;110&quot;: 
+                    return {&quot;color&quot;: &quot;#450457&quot;, &quot;fillColor&quot;: &quot;#450457&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;111&quot;: 
+                    return {&quot;color&quot;: &quot;#470e61&quot;, &quot;fillColor&quot;: &quot;#470e61&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;146&quot;: 
+                    return {&quot;color&quot;: &quot;#31b57b&quot;, &quot;fillColor&quot;: &quot;#31b57b&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;153&quot;: 
+                    return {&quot;color&quot;: &quot;#277f8e&quot;, &quot;fillColor&quot;: &quot;#277f8e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;156&quot;: 
+                    return {&quot;color&quot;: &quot;#482475&quot;, &quot;fillColor&quot;: &quot;#482475&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;159&quot;: 
+                    return {&quot;color&quot;: &quot;#9bd93c&quot;, &quot;fillColor&quot;: &quot;#9bd93c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;166&quot;: 
+                    return {&quot;color&quot;: &quot;#33638d&quot;, &quot;fillColor&quot;: &quot;#33638d&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;173&quot;: 
+                    return {&quot;color&quot;: &quot;#481f70&quot;, &quot;fillColor&quot;: &quot;#481f70&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;188&quot;: 
+                    return {&quot;color&quot;: &quot;#1fa088&quot;, &quot;fillColor&quot;: &quot;#1fa088&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;190&quot;: 
+                    return {&quot;color&quot;: &quot;#453581&quot;, &quot;fillColor&quot;: &quot;#453581&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;192&quot;: 
+                    return {&quot;color&quot;: &quot;#365d8d&quot;, &quot;fillColor&quot;: &quot;#365d8d&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;195&quot;: case &quot;240&quot;: 
+                    return {&quot;color&quot;: &quot;#26828e&quot;, &quot;fillColor&quot;: &quot;#26828e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;196&quot;: 
+                    return {&quot;color&quot;: &quot;#50c46a&quot;, &quot;fillColor&quot;: &quot;#50c46a&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;201&quot;: 
+                    return {&quot;color&quot;: &quot;#fde725&quot;, &quot;fillColor&quot;: &quot;#fde725&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;202&quot;: 
+                    return {&quot;color&quot;: &quot;#2cb17e&quot;, &quot;fillColor&quot;: &quot;#2cb17e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;205&quot;: 
+                    return {&quot;color&quot;: &quot;#355f8d&quot;, &quot;fillColor&quot;: &quot;#355f8d&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;209&quot;: 
+                    return {&quot;color&quot;: &quot;#375b8d&quot;, &quot;fillColor&quot;: &quot;#375b8d&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;218&quot;: 
+                    return {&quot;color&quot;: &quot;#460b5e&quot;, &quot;fillColor&quot;: &quot;#460b5e&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;242&quot;: 
+                    return {&quot;color&quot;: &quot;#443a83&quot;, &quot;fillColor&quot;: &quot;#443a83&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;247&quot;: 
+                    return {&quot;color&quot;: &quot;#3f4889&quot;, &quot;fillColor&quot;: &quot;#3f4889&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;249&quot;: 
+                    return {&quot;color&quot;: &quot;#efe51c&quot;, &quot;fillColor&quot;: &quot;#efe51c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;250&quot;: 
+                    return {&quot;color&quot;: &quot;#1e9d89&quot;, &quot;fillColor&quot;: &quot;#1e9d89&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;263&quot;: 
+                    return {&quot;color&quot;: &quot;#472a7a&quot;, &quot;fillColor&quot;: &quot;#472a7a&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;271&quot;: 
+                    return {&quot;color&quot;: &quot;#a0da39&quot;, &quot;fillColor&quot;: &quot;#a0da39&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;279&quot;: 
+                    return {&quot;color&quot;: &quot;#3a548c&quot;, &quot;fillColor&quot;: &quot;#3a548c&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                case &quot;302&quot;: 
+                    return {&quot;color&quot;: &quot;#3d4e8a&quot;, &quot;fillColor&quot;: &quot;#3d4e8a&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+                default:
+                    return {&quot;color&quot;: &quot;#443b84&quot;, &quot;fillColor&quot;: &quot;#443b84&quot;, &quot;fillOpacity&quot;: 0.5, &quot;weight&quot;: 2};
+            }
+        }
+        function geo_json_a88dac14bbd9ffc26d3a8b03228e3680_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {&quot;fillOpacity&quot;: 0.75};
+            }
+        }
+        function geo_json_a88dac14bbd9ffc26d3a8b03228e3680_pointToLayer(feature, latlng) {
+            var opts = {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#3388ff&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#3388ff&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 2, &quot;stroke&quot;: true, &quot;weight&quot;: 3};
+            
+            let style = geo_json_a88dac14bbd9ffc26d3a8b03228e3680_styler(feature)
+            Object.assign(opts, style)
+            
+            return new L.CircleMarker(latlng, opts)
+        }
+
+        function geo_json_a88dac14bbd9ffc26d3a8b03228e3680_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === &quot;function&quot;){
+                        geo_json_a88dac14bbd9ffc26d3a8b03228e3680.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === &quot;function&quot;){
+                        const highlightStyle = geo_json_a88dac14bbd9ffc26d3a8b03228e3680_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_a88dac14bbd9ffc26d3a8b03228e3680 = L.geoJson(null, {
+                onEachFeature: geo_json_a88dac14bbd9ffc26d3a8b03228e3680_onEachFeature,
+            
+                style: geo_json_a88dac14bbd9ffc26d3a8b03228e3680_styler,
+                pointToLayer: geo_json_a88dac14bbd9ffc26d3a8b03228e3680_pointToLayer
+        });
+
+        function geo_json_a88dac14bbd9ffc26d3a8b03228e3680_add (data) {
+            geo_json_a88dac14bbd9ffc26d3a8b03228e3680
+                .addData(data)
+                .addTo(map_5cbccffe1c62609f3fd44553ccdfd275);
+        }
+            geo_json_a88dac14bbd9ffc26d3a8b03228e3680_add({&quot;bbox&quot;: [-66.0886111111111, 43.83083333333333, -60.00944444444445, 46.166666666666664], &quot;features&quot;: [{&quot;bbox&quot;: [-62.483333333333334, 44.983333333333334, -62.483333333333334, 44.983333333333334], &quot;geometry&quot;: {&quot;coordinates&quot;: [-62.483333333333334, 44.983333333333334], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;2&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#440154&quot;, &quot;n_days&quot;: 18474}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.5, 44.63333333333333, -63.5, 44.63333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.5, 44.63333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;18&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#443b84&quot;, &quot;n_days&quot;: 23325}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-60.2, 46.15, -60.2, 46.15], &quot;geometry&quot;: {&quot;coordinates&quot;: [-60.2, 46.15], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;19&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#38588c&quot;, &quot;n_days&quot;: 26021}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-61.18333333333333, 45.21666666666667, -61.18333333333333, 45.21666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-61.18333333333333, 45.21666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;23&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#306a8e&quot;, &quot;n_days&quot;: 27970}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.36666666666666, 45.1, -64.36666666666666, 45.1], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.36666666666666, 45.1], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;24&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#2c718e&quot;, &quot;n_days&quot;: 28883}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-65.51666666666667, 44.75, -65.51666666666667, 44.75], &quot;geometry&quot;: {&quot;coordinates&quot;: [-65.51666666666667, 44.75], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;34&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#1f9f88&quot;, &quot;n_days&quot;: 34032}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-61.17780277777778, 45.216390833333335, -61.17780277777778, 45.216390833333335], &quot;geometry&quot;: {&quot;coordinates&quot;: [-61.17780277777778, 45.216390833333335], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;45&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#481769&quot;, &quot;n_days&quot;: 20179}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-62.666666666666664, 45.28333333333333, -62.666666666666664, 45.28333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-62.666666666666664, 45.28333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;59&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#46327e&quot;, &quot;n_days&quot;: 22461}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.0, 45.21666666666667, -63.0, 45.21666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.0, 45.21666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;62&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#20938c&quot;, &quot;n_days&quot;: 32780}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.1, 44.983333333333334, -64.1, 44.983333333333334], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.1, 44.983333333333334], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;65&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#2f6b8e&quot;, &quot;n_days&quot;: 28062}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.91666666666667, 44.983333333333334, -64.91666666666667, 44.983333333333334], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.91666666666667, 44.983333333333334], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;83&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#2b758e&quot;, &quot;n_days&quot;: 29300}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.38333333333334, 44.46666666666667, -64.38333333333334, 44.46666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.38333333333334, 44.46666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;87&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#21918c&quot;, &quot;n_days&quot;: 32475}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-65.98333333333333, 43.88333333333333, -65.98333333333333, 43.88333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-65.98333333333333, 43.88333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;97&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#482071&quot;, &quot;n_days&quot;: 20892}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.21666666666667, 44.88333333333333, -64.21666666666667, 44.88333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.21666666666667, 44.88333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;110&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#450457&quot;, &quot;n_days&quot;: 18719}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-65.63333333333334, 44.56666666666667, -65.63333333333334, 44.56666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-65.63333333333334, 44.56666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;111&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#470e61&quot;, &quot;n_days&quot;: 19477}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-62.0, 45.18333333333333, -62.0, 45.18333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-62.0, 45.18333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;134&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#443b84&quot;, &quot;n_days&quot;: 23345}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-62.016666666666666, 45.483333333333334, -62.016666666666666, 45.483333333333334], &quot;geometry&quot;: {&quot;coordinates&quot;: [-62.016666666666666, 45.483333333333334], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;146&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#31b57b&quot;, &quot;n_days&quot;: 36646}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.48333333333333, 45.06666666666667, -64.48333333333333, 45.06666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.48333333333333, 45.06666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;153&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#277f8e&quot;, &quot;n_days&quot;: 30406}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.1, 45.06666666666667, -63.1, 45.06666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.1, 45.06666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;156&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#482475&quot;, &quot;n_days&quot;: 21213}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.25, 45.766666666666666, -64.25, 45.766666666666666], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.25, 45.766666666666666], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;159&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#9bd93c&quot;, &quot;n_days&quot;: 42094}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.03333333333333, 44.93333333333333, -64.03333333333333, 44.93333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.03333333333333, 44.93333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;166&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#33638d&quot;, &quot;n_days&quot;: 27240}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.3, 45.36666666666667, -63.3, 45.36666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.3, 45.36666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;173&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#481f70&quot;, &quot;n_days&quot;: 20818}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-65.75, 44.61666666666667, -65.75, 44.61666666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-65.75, 44.61666666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;188&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#1fa088&quot;, &quot;n_days&quot;: 34180}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.6, 44.65, -63.6, 44.65], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.6, 44.65], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;190&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#453581&quot;, &quot;n_days&quot;: 22766}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.93333333333334, 44.13333333333333, -64.93333333333334, 44.13333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.93333333333334, 44.13333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;192&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#365d8d&quot;, &quot;n_days&quot;: 26601}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.833333333333336, 44.9, -63.833333333333336, 44.9], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.833333333333336, 44.9], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;195&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#26828e&quot;, &quot;n_days&quot;: 30649}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.33333333333333, 45.4, -64.33333333333333, 45.4], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.33333333333333, 45.4], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;196&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#50c46a&quot;, &quot;n_days&quot;: 38591}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-60.00944444444445, 43.93222222222222, -60.00944444444445, 43.93222222222222], &quot;geometry&quot;: {&quot;coordinates&quot;: [-60.00944444444445, 43.93222222222222], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;201&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#fde725&quot;, &quot;n_days&quot;: 46285}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.9, 44.7, -63.9, 44.7], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.9, 44.7], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;202&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#2cb17e&quot;, &quot;n_days&quot;: 36199}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-60.048138888888886, 46.166666666666664, -60.048138888888886, 46.166666666666664], &quot;geometry&quot;: {&quot;coordinates&quot;: [-60.048138888888886, 46.166666666666664], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;205&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#355f8d&quot;, &quot;n_days&quot;: 26790}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-66.0886111111111, 43.83083333333333, -66.0886111111111, 43.83083333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-66.0886111111111, 43.83083333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;209&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#375b8d&quot;, &quot;n_days&quot;: 26368}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.55, 44.4, -64.55, 44.4], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.55, 44.4], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;218&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#460b5e&quot;, &quot;n_days&quot;: 19295}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.85, 44.666666666666664, -64.85, 44.666666666666664], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.85, 44.666666666666664], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;240&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#26828e&quot;, &quot;n_days&quot;: 30680}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-64.6641688888889, 43.99001944444444, -64.6641688888889, 43.99001944444444], &quot;geometry&quot;: {&quot;coordinates&quot;: [-64.6641688888889, 43.99001944444444], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;242&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#443a83&quot;, &quot;n_days&quot;: 23183}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-61.96666666666667, 45.63333333333333, -61.96666666666667, 45.63333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-61.96666666666667, 45.63333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;247&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#3f4889&quot;, &quot;n_days&quot;: 24500}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-60.75, 46.1, -60.75, 46.1], &quot;geometry&quot;: {&quot;coordinates&quot;: [-60.75, 46.1], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;249&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#efe51c&quot;, &quot;n_days&quot;: 45534}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.71666666666667, 44.9, -63.71666666666667, 44.9], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.71666666666667, 44.9], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;250&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#1e9d89&quot;, &quot;n_days&quot;: 33814}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.50001388888889, 44.88001666666667, -63.50001388888889, 44.88001666666667], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.50001388888889, 44.88001666666667], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;263&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#472a7a&quot;, &quot;n_days&quot;: 21805}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-61.4, 45.63333333333333, -61.4, 45.63333333333333], &quot;geometry&quot;: {&quot;coordinates&quot;: [-61.4, 45.63333333333333], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;271&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#a0da39&quot;, &quot;n_days&quot;: 42275}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-66.03333333333333, 43.833333333333336, -66.03333333333333, 43.833333333333336], &quot;geometry&quot;: {&quot;coordinates&quot;: [-66.03333333333333, 43.833333333333336], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;279&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#3a548c&quot;, &quot;n_days&quot;: 25687}, &quot;type&quot;: &quot;Feature&quot;}, {&quot;bbox&quot;: [-63.583333333333336, 44.65, -63.583333333333336, 44.65], &quot;geometry&quot;: {&quot;coordinates&quot;: [-63.583333333333336, 44.65], &quot;type&quot;: &quot;Point&quot;}, &quot;id&quot;: &quot;302&quot;, &quot;properties&quot;: {&quot;__folium_color&quot;: &quot;#3d4e8a&quot;, &quot;n_days&quot;: 25020}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+
+        
+    
+    geo_json_a88dac14bbd9ffc26d3a8b03228e3680.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create(&#x27;div&#x27;);
+    
+    let handleObject = feature=&gt;typeof(feature)==&#x27;object&#x27; ? JSON.stringify(feature) : feature;
+    let fields = [&quot;n_days&quot;];
+    let aliases = [&quot;n_days&quot;];
+    let table = &#x27;&lt;table&gt;&#x27; +
+        String(
+        fields.map(
+        (v,i)=&gt;
+        `&lt;tr&gt;
+            &lt;th&gt;${aliases[i]}&lt;/th&gt;
+            
+            &lt;td&gt;${handleObject(layer.feature.properties[v])}&lt;/td&gt;
+        &lt;/tr&gt;`).join(&#x27;&#x27;))
+    +&#x27;&lt;/table&gt;&#x27;;
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{&quot;className&quot;: &quot;foliumtooltip&quot;, &quot;sticky&quot;: true});
+                     
+    
+    var color_map_07b5b34aeb9a0659196f00fde80fb970 = {};
+
+    
+    color_map_07b5b34aeb9a0659196f00fde80fb970.color = d3.scale.threshold()
+              .domain([18474.0, 18529.733466933867, 18585.466933867734, 18641.200400801605, 18696.93386773547, 18752.66733466934, 18808.400801603206, 18864.134268537073, 18919.867735470943, 18975.60120240481, 19031.334669338677, 19087.068136272545, 19142.80160320641, 19198.535070140282, 19254.26853707415, 19310.002004008016, 19365.735470941883, 19421.46893787575, 19477.20240480962, 19532.935871743488, 19588.669338677355, 19644.402805611222, 19700.13627254509, 19755.869739478956, 19811.603206412827, 19867.336673346694, 19923.07014028056, 19978.803607214428, 20034.5370741483, 20090.270541082165, 20146.004008016032, 20201.7374749499, 20257.470941883766, 20313.204408817634, 20368.937875751504, 20424.67134268537, 20480.40480961924, 20536.138276553105, 20591.871743486976, 20647.605210420843, 20703.33867735471, 20759.072144288577, 20814.805611222444, 20870.53907815631, 20926.27254509018, 20982.00601202405, 21037.739478957916, 21093.472945891783, 21149.20641282565, 21204.93987975952, 21260.673346693387, 21316.406813627254, 21372.14028056112, 21427.87374749499, 21483.60721442886, 21539.340681362726, 21595.074148296593, 21650.80761523046, 21706.541082164327, 21762.274549098198, 21818.008016032065, 21873.741482965932, 21929.4749498998, 21985.208416833666, 22040.941883767537, 22096.675350701404, 22152.40881763527, 22208.142284569138, 22263.875751503005, 22319.609218436875, 22375.342685370742, 22431.07615230461, 22486.809619238476, 22542.543086172343, 22598.27655310621, 22654.01002004008, 22709.743486973948, 22765.476953907815, 22821.210420841682, 22876.943887775553, 22932.67735470942, 22988.410821643287, 23044.144288577154, 23099.87775551102, 23155.611222444888, 23211.34468937876, 23267.078156312626, 23322.811623246493, 23378.54509018036, 23434.27855711423, 23490.012024048097, 23545.745490981964, 23601.47895791583, 23657.2124248497, 23712.945891783565, 23768.679358717436, 23824.412825651303, 23880.14629258517, 23935.879759519037, 23991.613226452908, 24047.346693386775, 24103.080160320642, 24158.81362725451, 24214.547094188376, 24270.280561122243, 24326.01402805611, 24381.74749498998, 24437.480961923848, 24493.214428857715, 24548.947895791585, 24604.681362725452, 24660.41482965932, 24716.148296593186, 24771.881763527053, 24827.61523046092, 24883.348697394787, 24939.082164328658, 24994.815631262525, 25050.549098196392, 25106.28256513026, 25162.01603206413, 25217.749498997997, 25273.482965931864, 25329.21643286573, 25384.949899799598, 25440.683366733465, 25496.416833667336, 25552.150300601203, 25607.88376753507, 25663.617234468937, 25719.350701402807, 25775.084168336674, 25830.81763527054, 25886.55110220441, 25942.284569138275, 25998.018036072142, 26053.751503006013, 26109.48496993988, 26165.218436873747, 26220.951903807614, 26276.685370741485, 26332.418837675352, 26388.15230460922, 26443.885771543086, 26499.619238476953, 26555.35270541082, 26611.08617234469, 26666.819639278558, 26722.553106212425, 26778.286573146295, 26834.020040080162, 26889.75350701403, 26945.486973947896, 27001.220440881763, 27056.95390781563, 27112.687374749497, 27168.420841683364, 27224.154308617235, 27279.887775551102, 27335.62124248497, 27391.35470941884, 27447.088176352707, 27502.821643286574, 27558.55511022044, 27614.288577154308, 27670.022044088175, 27725.755511022042, 27781.488977955913, 27837.22244488978, 27892.955911823647, 27948.689378757517, 28004.422845691384, 28060.15631262525, 28115.88977955912, 28171.623246492985, 28227.356713426852, 28283.09018036072, 28338.82364729459, 28394.557114228457, 28450.290581162324, 28506.024048096195, 28561.75751503006, 28617.49098196393, 28673.224448897796, 28728.957915831663, 28784.69138276553, 28840.424849699397, 28896.158316633264, 28951.891783567135, 29007.625250501, 29063.358717434872, 29119.09218436874, 29174.825651302606, 29230.559118236473, 29286.29258517034, 29342.026052104207, 29397.759519038074, 29453.49298597194, 29509.226452905812, 29564.95991983968, 29620.69338677355, 29676.426853707417, 29732.160320641284, 29787.89378757515, 29843.627254509018, 29899.360721442885, 29955.094188376752, 30010.82765531062, 30066.56112224449, 30122.294589178357, 30178.028056112224, 30233.761523046094, 30289.49498997996, 30345.22845691383, 30400.961923847695, 30456.695390781562, 30512.42885771543, 30568.162324649296, 30623.895791583167, 30679.629258517034, 30735.3627254509, 30791.09619238477, 30846.82965931864, 30902.563126252506, 30958.296593186373, 31014.03006012024, 31069.763527054107, 31125.496993987974, 31181.230460921844, 31236.96392785571, 31292.69739478958, 31348.43086172345, 31404.164328657316, 31459.897795591183, 31515.63126252505, 31571.364729458917, 31627.098196392784, 31682.83166332665, 31738.56513026052, 31794.29859719439, 31850.032064128256, 31905.765531062127, 31961.498997995994, 32017.23246492986, 32072.965931863728, 32128.699398797595, 32184.43286573146, 32240.16633266533, 32295.899799599196, 32351.633266533066, 32407.366733466934, 32463.100200400804, 32518.83366733467, 32574.56713426854, 32630.300601202405, 32686.034068136272, 32741.76753507014, 32797.501002004006, 32853.23446893787, 32908.96793587174, 32964.701402805615, 33020.43486973948, 33076.16833667335, 33131.901803607216, 33187.63527054108, 33243.36873747495, 33299.10220440882, 33354.835671342684, 33410.56913827655, 33466.302605210425, 33522.036072144285, 33577.76953907816, 33633.503006012026, 33689.23647294589, 33744.96993987976, 33800.70340681363, 33856.436873747494, 33912.17034068136, 33967.90380761523, 34023.637274549095, 34079.37074148297, 34135.10420841683, 34190.837675350704, 34246.57114228457, 34302.30460921844, 34358.038076152305, 34413.77154308617, 34469.50501002004, 34525.238476953906, 34580.97194388778, 34636.70541082164, 34692.438877755514, 34748.17234468938, 34803.90581162325, 34859.639278557115, 34915.37274549098, 34971.10621242485, 35026.839679358716, 35082.57314629259, 35138.30661322645, 35194.040080160325, 35249.773547094184, 35305.50701402806, 35361.240480961926, 35416.97394789579, 35472.70741482966, 35528.44088176353, 35584.174348697394, 35639.90781563126, 35695.641282565135, 35751.374749498995, 35807.10821643287, 35862.84168336673, 35918.5751503006, 35974.30861723447, 36030.04208416834, 36085.775551102204, 36141.50901803607, 36197.24248496994, 36252.975951903805, 36308.70941883768, 36364.44288577154, 36420.17635270541, 36475.90981963927, 36531.64328657315, 36587.376753507015, 36643.11022044088, 36698.84368737475, 36754.577154308616, 36810.31062124249, 36866.04408817635, 36921.777555110224, 36977.511022044084, 37033.24448897796, 37088.977955911825, 37144.71142284569, 37200.44488977956, 37256.178356713426, 37311.91182364729, 37367.64529058116, 37423.378757515035, 37479.112224448894, 37534.84569138277, 37590.57915831663, 37646.3126252505, 37702.04609218437, 37757.77955911824, 37813.513026052104, 37869.24649298597, 37924.979959919845, 37980.713426853705, 38036.44689378758, 38092.18036072144, 38147.91382765531, 38203.64729458918, 38259.38076152305, 38315.114228456914, 38370.84769539078, 38426.58116232465, 38482.314629258515, 38538.04809619239, 38593.78156312625, 38649.51503006012, 38705.24849699398, 38760.98196392786, 38816.715430861725, 38872.44889779559, 38928.18236472946, 38983.915831663326, 39039.64929859719, 39095.38276553106, 39151.116232464934, 39206.849699398794, 39262.58316633267, 39318.31663326653, 39374.0501002004, 39429.78356713427, 39485.517034068136, 39541.250501002, 39596.98396793587, 39652.717434869744, 39708.450901803604, 39764.18436873748, 39819.91783567134, 39875.65130260521, 39931.38476953908, 39987.11823647295, 40042.85170340681, 40098.58517034068, 40154.31863727455, 40210.052104208415, 40265.78557114229, 40321.51903807615, 40377.25250501002, 40432.98597194388, 40488.71943887776, 40544.452905811624, 40600.18637274549, 40655.91983967936, 40711.653306613225, 40767.3867735471, 40823.12024048096, 40878.85370741483, 40934.58717434869, 40990.32064128257, 41046.054108216435, 41101.7875751503, 41157.52104208417, 41213.254509018036, 41268.9879759519, 41324.72144288577, 41380.454909819644, 41436.188376753504, 41491.92184368738, 41547.65531062124, 41603.38877755511, 41659.12224448898, 41714.855711422846, 41770.58917835671, 41826.32264529058, 41882.05611222445, 41937.789579158314, 41993.52304609219, 42049.25651302605, 42104.98997995992, 42160.72344689378, 42216.45691382766, 42272.19038076152, 42327.92384769539, 42383.65731462926, 42439.390781563125, 42495.124248497, 42550.85771543086, 42606.59118236473, 42662.32464929859, 42718.05811623247, 42773.791583166334, 42829.5250501002, 42885.25851703407, 42940.991983967935, 42996.7254509018, 43052.45891783567, 43108.19238476954, 43163.9258517034, 43219.65931863728, 43275.39278557114, 43331.12625250501, 43386.85971943888, 43442.593186372746, 43498.32665330661, 43554.06012024048, 43609.793587174354, 43665.52705410821, 43721.26052104209, 43776.99398797595, 43832.72745490982, 43888.46092184369, 43944.194388777556, 43999.92785571142, 44055.66132264529, 44111.39478957916, 44167.128256513024, 44222.8617234469, 44278.59519038076, 44334.32865731463, 44390.06212424849, 44445.79559118237, 44501.52905811623, 44557.2625250501, 44612.99599198397, 44668.729458917835, 44724.46292585171, 44780.19639278557, 44835.92985971944, 44891.6633266533, 44947.39679358718, 45003.13026052104, 45058.86372745491, 45114.59719438878, 45170.330661322645, 45226.06412825651, 45281.79759519038, 45337.53106212425, 45393.26452905811, 45448.99799599199, 45504.73146292585, 45560.46492985972, 45616.19839679359, 45671.931863727455, 45727.66533066132, 45783.39879759519, 45839.13226452906, 45894.86573146292, 45950.5991983968, 46006.33266533066, 46062.06613226453, 46117.79959919839, 46173.533066132266, 46229.26653306613, 46285.0])
+              .range([&#x27;#440154ff&#x27;, &#x27;#440155ff&#x27;, &#x27;#440256ff&#x27;, &#x27;#440356ff&#x27;, &#x27;#450457ff&#x27;, &#x27;#450458ff&#x27;, &#x27;#450559ff&#x27;, &#x27;#450659ff&#x27;, &#x27;#46075aff&#x27;, &#x27;#46075bff&#x27;, &#x27;#46085cff&#x27;, &#x27;#46095cff&#x27;, &#x27;#460a5dff&#x27;, &#x27;#460a5eff&#x27;, &#x27;#460b5eff&#x27;, &#x27;#460c5fff&#x27;, &#x27;#470d60ff&#x27;, &#x27;#470d61ff&#x27;, &#x27;#470e61ff&#x27;, &#x27;#470f62ff&#x27;, &#x27;#471063ff&#x27;, &#x27;#471064ff&#x27;, &#x27;#471164ff&#x27;, &#x27;#471265ff&#x27;, &#x27;#471365ff&#x27;, &#x27;#481366ff&#x27;, &#x27;#481467ff&#x27;, &#x27;#481568ff&#x27;, &#x27;#481668ff&#x27;, &#x27;#481669ff&#x27;, &#x27;#481769ff&#x27;, &#x27;#48176aff&#x27;, &#x27;#48186bff&#x27;, &#x27;#48196cff&#x27;, &#x27;#481a6cff&#x27;, &#x27;#481a6dff&#x27;, &#x27;#481b6dff&#x27;, &#x27;#481c6eff&#x27;, &#x27;#481c6eff&#x27;, &#x27;#481d6fff&#x27;, &#x27;#481d6fff&#x27;, &#x27;#481f70ff&#x27;, &#x27;#481f70ff&#x27;, &#x27;#482071ff&#x27;, &#x27;#482072ff&#x27;, &#x27;#482173ff&#x27;, &#x27;#482273ff&#x27;, &#x27;#482374ff&#x27;, &#x27;#482374ff&#x27;, &#x27;#482475ff&#x27;, &#x27;#482476ff&#x27;, &#x27;#482576ff&#x27;, &#x27;#482577ff&#x27;, &#x27;#482677ff&#x27;, &#x27;#482778ff&#x27;, &#x27;#482878ff&#x27;, &#x27;#482879ff&#x27;, &#x27;#482979ff&#x27;, &#x27;#47297aff&#x27;, &#x27;#472a7aff&#x27;, &#x27;#472b7aff&#x27;, &#x27;#472c7aff&#x27;, &#x27;#472c7bff&#x27;, &#x27;#472d7bff&#x27;, &#x27;#472d7cff&#x27;, &#x27;#472e7cff&#x27;, &#x27;#472e7dff&#x27;, &#x27;#472f7dff&#x27;, &#x27;#462f7eff&#x27;, &#x27;#46307eff&#x27;, &#x27;#46317eff&#x27;, &#x27;#46327eff&#x27;, &#x27;#46327fff&#x27;, &#x27;#46337fff&#x27;, &#x27;#463480ff&#x27;, &#x27;#453480ff&#x27;, &#x27;#453581ff&#x27;, &#x27;#453581ff&#x27;, &#x27;#453681ff&#x27;, &#x27;#453781ff&#x27;, &#x27;#453882ff&#x27;, &#x27;#443882ff&#x27;, &#x27;#443983ff&#x27;, &#x27;#443983ff&#x27;, &#x27;#443a83ff&#x27;, &#x27;#443a83ff&#x27;, &#x27;#443b84ff&#x27;, &#x27;#433c84ff&#x27;, &#x27;#433d84ff&#x27;, &#x27;#433d85ff&#x27;, &#x27;#433e85ff&#x27;, &#x27;#423e85ff&#x27;, &#x27;#423f85ff&#x27;, &#x27;#423f86ff&#x27;, &#x27;#424086ff&#x27;, &#x27;#424086ff&#x27;, &#x27;#424186ff&#x27;, &#x27;#414187ff&#x27;, &#x27;#414287ff&#x27;, &#x27;#414387ff&#x27;, &#x27;#414487ff&#x27;, &#x27;#404488ff&#x27;, &#x27;#404588ff&#x27;, &#x27;#404588ff&#x27;, &#x27;#404688ff&#x27;, &#x27;#3f4688ff&#x27;, &#x27;#3f4788ff&#x27;, &#x27;#3f4789ff&#x27;, &#x27;#3f4889ff&#x27;, &#x27;#3e4889ff&#x27;, &#x27;#3e4989ff&#x27;, &#x27;#3e4a89ff&#x27;, &#x27;#3e4a89ff&#x27;, &#x27;#3e4b8aff&#x27;, &#x27;#3d4c8aff&#x27;, &#x27;#3d4d8aff&#x27;, &#x27;#3d4d8aff&#x27;, &#x27;#3d4e8aff&#x27;, &#x27;#3c4e8aff&#x27;, &#x27;#3c4f8aff&#x27;, &#x27;#3c4f8aff&#x27;, &#x27;#3c508bff&#x27;, &#x27;#3b508bff&#x27;, &#x27;#3b518bff&#x27;, &#x27;#3b518bff&#x27;, &#x27;#3b528bff&#x27;, &#x27;#3a528bff&#x27;, &#x27;#3a538bff&#x27;, &#x27;#3a538bff&#x27;, &#x27;#3a548cff&#x27;, &#x27;#39548cff&#x27;, &#x27;#39558cff&#x27;, &#x27;#39558cff&#x27;, &#x27;#39568cff&#x27;, &#x27;#38578cff&#x27;, &#x27;#38588cff&#x27;, &#x27;#38588cff&#x27;, &#x27;#38598cff&#x27;, &#x27;#37598cff&#x27;, &#x27;#375a8cff&#x27;, &#x27;#375a8dff&#x27;, &#x27;#375b8dff&#x27;, &#x27;#365b8dff&#x27;, &#x27;#365c8dff&#x27;, &#x27;#365c8dff&#x27;, &#x27;#365d8dff&#x27;, &#x27;#355d8dff&#x27;, &#x27;#355e8dff&#x27;, &#x27;#355f8dff&#x27;, &#x27;#355f8dff&#x27;, &#x27;#34608dff&#x27;, &#x27;#34608dff&#x27;, &#x27;#34618dff&#x27;, &#x27;#34618dff&#x27;, &#x27;#33628dff&#x27;, &#x27;#33628dff&#x27;, &#x27;#33638dff&#x27;, &#x27;#32638dff&#x27;, &#x27;#32648eff&#x27;, &#x27;#32648eff&#x27;, &#x27;#32658eff&#x27;, &#x27;#31658eff&#x27;, &#x27;#31668eff&#x27;, &#x27;#31668eff&#x27;, &#x27;#31678eff&#x27;, &#x27;#31678eff&#x27;, &#x27;#31688eff&#x27;, &#x27;#30688eff&#x27;, &#x27;#30698eff&#x27;, &#x27;#30698eff&#x27;, &#x27;#306a8eff&#x27;, &#x27;#2f6a8eff&#x27;, &#x27;#2f6b8eff&#x27;, &#x27;#2f6b8eff&#x27;, &#x27;#2f6c8eff&#x27;, &#x27;#2e6c8eff&#x27;, &#x27;#2e6d8eff&#x27;, &#x27;#2e6d8eff&#x27;, &#x27;#2e6e8eff&#x27;, &#x27;#2e6e8eff&#x27;, &#x27;#2e6f8eff&#x27;, &#x27;#2d6f8eff&#x27;, &#x27;#2d708eff&#x27;, &#x27;#2d708eff&#x27;, &#x27;#2d718eff&#x27;, &#x27;#2c718eff&#x27;, &#x27;#2c718eff&#x27;, &#x27;#2c728eff&#x27;, &#x27;#2c728eff&#x27;, &#x27;#2c738eff&#x27;, &#x27;#2c738eff&#x27;, &#x27;#2b748eff&#x27;, &#x27;#2b748eff&#x27;, &#x27;#2b758eff&#x27;, &#x27;#2b758eff&#x27;, &#x27;#2a768eff&#x27;, &#x27;#2a768eff&#x27;, &#x27;#2a778eff&#x27;, &#x27;#2a778eff&#x27;, &#x27;#2a788eff&#x27;, &#x27;#29788eff&#x27;, &#x27;#29798eff&#x27;, &#x27;#29798eff&#x27;, &#x27;#297a8eff&#x27;, &#x27;#297a8eff&#x27;, &#x27;#297b8eff&#x27;, &#x27;#287b8eff&#x27;, &#x27;#287c8eff&#x27;, &#x27;#287c8eff&#x27;, &#x27;#287d8eff&#x27;, &#x27;#277d8eff&#x27;, &#x27;#277e8eff&#x27;, &#x27;#277e8eff&#x27;, &#x27;#277f8eff&#x27;, &#x27;#277f8eff&#x27;, &#x27;#27808eff&#x27;, &#x27;#26808eff&#x27;, &#x27;#26818eff&#x27;, &#x27;#26818eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#26828eff&#x27;, &#x27;#25828eff&#x27;, &#x27;#25838eff&#x27;, &#x27;#25838eff&#x27;, &#x27;#25848eff&#x27;, &#x27;#25858eff&#x27;, &#x27;#25858eff&#x27;, &#x27;#24868eff&#x27;, &#x27;#24868eff&#x27;, &#x27;#24878eff&#x27;, &#x27;#24878eff&#x27;, &#x27;#23888eff&#x27;, &#x27;#23888eff&#x27;, &#x27;#23898eff&#x27;, &#x27;#23898eff&#x27;, &#x27;#238a8dff&#x27;, &#x27;#238a8dff&#x27;, &#x27;#228b8dff&#x27;, &#x27;#228b8dff&#x27;, &#x27;#228c8dff&#x27;, &#x27;#228c8dff&#x27;, &#x27;#228d8dff&#x27;, &#x27;#218d8dff&#x27;, &#x27;#218e8dff&#x27;, &#x27;#218e8dff&#x27;, &#x27;#218f8dff&#x27;, &#x27;#218f8dff&#x27;, &#x27;#21908dff&#x27;, &#x27;#21908dff&#x27;, &#x27;#21918cff&#x27;, &#x27;#20918cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20928cff&#x27;, &#x27;#20938cff&#x27;, &#x27;#1f938cff&#x27;, &#x27;#1f948cff&#x27;, &#x27;#1f948cff&#x27;, &#x27;#1f958bff&#x27;, &#x27;#1f958bff&#x27;, &#x27;#1f968bff&#x27;, &#x27;#1f968bff&#x27;, &#x27;#1f978bff&#x27;, &#x27;#1f988bff&#x27;, &#x27;#1f988bff&#x27;, &#x27;#1f998bff&#x27;, &#x27;#1f998aff&#x27;, &#x27;#1f9a8aff&#x27;, &#x27;#1f9a8aff&#x27;, &#x27;#1e9b8aff&#x27;, &#x27;#1e9b8aff&#x27;, &#x27;#1e9c8aff&#x27;, &#x27;#1e9c89ff&#x27;, &#x27;#1e9d89ff&#x27;, &#x27;#1e9d89ff&#x27;, &#x27;#1e9e89ff&#x27;, &#x27;#1f9e89ff&#x27;, &#x27;#1f9f88ff&#x27;, &#x27;#1f9f88ff&#x27;, &#x27;#1fa088ff&#x27;, &#x27;#1fa088ff&#x27;, &#x27;#1fa188ff&#x27;, &#x27;#1fa188ff&#x27;, &#x27;#1fa187ff&#x27;, &#x27;#1fa187ff&#x27;, &#x27;#1fa287ff&#x27;, &#x27;#1fa287ff&#x27;, &#x27;#1fa386ff&#x27;, &#x27;#20a386ff&#x27;, &#x27;#20a486ff&#x27;, &#x27;#20a486ff&#x27;, &#x27;#20a585ff&#x27;, &#x27;#21a585ff&#x27;, &#x27;#21a685ff&#x27;, &#x27;#21a685ff&#x27;, &#x27;#21a785ff&#x27;, &#x27;#22a785ff&#x27;, &#x27;#22a884ff&#x27;, &#x27;#22a884ff&#x27;, &#x27;#22a983ff&#x27;, &#x27;#23a983ff&#x27;, &#x27;#23aa83ff&#x27;, &#x27;#24ab83ff&#x27;, &#x27;#25ab82ff&#x27;, &#x27;#25ac82ff&#x27;, &#x27;#25ac82ff&#x27;, &#x27;#25ad82ff&#x27;, &#x27;#26ad81ff&#x27;, &#x27;#26ad81ff&#x27;, &#x27;#27ad81ff&#x27;, &#x27;#27ae81ff&#x27;, &#x27;#28ae80ff&#x27;, &#x27;#28af80ff&#x27;, &#x27;#29af7fff&#x27;, &#x27;#29b07fff&#x27;, &#x27;#2ab07fff&#x27;, &#x27;#2bb17eff&#x27;, &#x27;#2cb17eff&#x27;, &#x27;#2cb27dff&#x27;, &#x27;#2db27dff&#x27;, &#x27;#2db37cff&#x27;, &#x27;#2eb37cff&#x27;, &#x27;#2eb47cff&#x27;, &#x27;#2fb47cff&#x27;, &#x27;#30b57bff&#x27;, &#x27;#31b57bff&#x27;, &#x27;#31b67aff&#x27;, &#x27;#32b67aff&#x27;, &#x27;#33b679ff&#x27;, &#x27;#34b679ff&#x27;, &#x27;#34b779ff&#x27;, &#x27;#35b779ff&#x27;, &#x27;#36b878ff&#x27;, &#x27;#37b878ff&#x27;, &#x27;#37b977ff&#x27;, &#x27;#38b977ff&#x27;, &#x27;#39ba76ff&#x27;, &#x27;#3aba76ff&#x27;, &#x27;#3abb75ff&#x27;, &#x27;#3bbb75ff&#x27;, &#x27;#3cbc74ff&#x27;, &#x27;#3dbc74ff&#x27;, &#x27;#3ebc73ff&#x27;, &#x27;#3fbd73ff&#x27;, &#x27;#40bd72ff&#x27;, &#x27;#40be72ff&#x27;, &#x27;#41be71ff&#x27;, &#x27;#42bf71ff&#x27;, &#x27;#43bf70ff&#x27;, &#x27;#45c070ff&#x27;, &#x27;#46c06fff&#x27;, &#x27;#47c16fff&#x27;, &#x27;#48c16eff&#x27;, &#x27;#49c16eff&#x27;, &#x27;#4ac16dff&#x27;, &#x27;#4bc26cff&#x27;, &#x27;#4cc26cff&#x27;, &#x27;#4dc36bff&#x27;, &#x27;#4ec36bff&#x27;, &#x27;#4fc46aff&#x27;, &#x27;#50c46aff&#x27;, &#x27;#51c569ff&#x27;, &#x27;#52c569ff&#x27;, &#x27;#53c568ff&#x27;, &#x27;#54c568ff&#x27;, &#x27;#55c667ff&#x27;, &#x27;#56c667ff&#x27;, &#x27;#57c766ff&#x27;, &#x27;#58c765ff&#x27;, &#x27;#59c864ff&#x27;, &#x27;#5ac864ff&#x27;, &#x27;#5bc863ff&#x27;, &#x27;#5cc863ff&#x27;, &#x27;#5dc962ff&#x27;, &#x27;#5ec962ff&#x27;, &#x27;#5fca61ff&#x27;, &#x27;#60ca60ff&#x27;, &#x27;#62cb5fff&#x27;, &#x27;#63cb5fff&#x27;, &#x27;#64cb5eff&#x27;, &#x27;#65cc5dff&#x27;, &#x27;#66cc5cff&#x27;, &#x27;#67cd5cff&#x27;, &#x27;#68cd5bff&#x27;, &#x27;#6acd5bff&#x27;, &#x27;#6bcd5aff&#x27;, &#x27;#6cce59ff&#x27;, &#x27;#6ece58ff&#x27;, &#x27;#6fcf58ff&#x27;, &#x27;#70cf57ff&#x27;, &#x27;#71d057ff&#x27;, &#x27;#72d056ff&#x27;, &#x27;#74d055ff&#x27;, &#x27;#75d054ff&#x27;, &#x27;#76d153ff&#x27;, &#x27;#77d153ff&#x27;, &#x27;#78d152ff&#x27;, &#x27;#7ad151ff&#x27;, &#x27;#7bd250ff&#x27;, &#x27;#7cd250ff&#x27;, &#x27;#7dd34fff&#x27;, &#x27;#7fd34eff&#x27;, &#x27;#80d34dff&#x27;, &#x27;#81d34dff&#x27;, &#x27;#82d44cff&#x27;, &#x27;#84d44bff&#x27;, &#x27;#85d54aff&#x27;, &#x27;#86d549ff&#x27;, &#x27;#88d548ff&#x27;, &#x27;#89d548ff&#x27;, &#x27;#8ad647ff&#x27;, &#x27;#8bd646ff&#x27;, &#x27;#8dd645ff&#x27;, &#x27;#8ed645ff&#x27;, &#x27;#8fd744ff&#x27;, &#x27;#90d743ff&#x27;, &#x27;#92d742ff&#x27;, &#x27;#93d741ff&#x27;, &#x27;#94d840ff&#x27;, &#x27;#96d83fff&#x27;, &#x27;#97d83eff&#x27;, &#x27;#99d93dff&#x27;, &#x27;#9ad93cff&#x27;, &#x27;#9bd93cff&#x27;, &#x27;#9dd93bff&#x27;, &#x27;#9eda3aff&#x27;, &#x27;#9fda39ff&#x27;, &#x27;#a1da38ff&#x27;, &#x27;#a2da37ff&#x27;, &#x27;#a3db36ff&#x27;, &#x27;#a4db36ff&#x27;, &#x27;#a6db35ff&#x27;, &#x27;#a8db34ff&#x27;, &#x27;#a9dc33ff&#x27;, &#x27;#aadc32ff&#x27;, &#x27;#abdc31ff&#x27;, &#x27;#addc30ff&#x27;, &#x27;#aedd2fff&#x27;, &#x27;#b0dd2fff&#x27;, &#x27;#b1dd2eff&#x27;, &#x27;#b2dd2dff&#x27;, &#x27;#b3de2cff&#x27;, &#x27;#b5de2bff&#x27;, &#x27;#b6de2aff&#x27;, &#x27;#b8de29ff&#x27;, &#x27;#b9de28ff&#x27;, &#x27;#bade28ff&#x27;, &#x27;#bcdf27ff&#x27;, &#x27;#bddf26ff&#x27;, &#x27;#bfdf25ff&#x27;, &#x27;#c0df25ff&#x27;, &#x27;#c1df24ff&#x27;, &#x27;#c2df23ff&#x27;, &#x27;#c4e022ff&#x27;, &#x27;#c5e021ff&#x27;, &#x27;#c7e020ff&#x27;, &#x27;#c8e020ff&#x27;, &#x27;#c9e11fff&#x27;, &#x27;#cbe11eff&#x27;, &#x27;#cce11dff&#x27;, &#x27;#cee11dff&#x27;, &#x27;#cfe11cff&#x27;, &#x27;#d1e11bff&#x27;, &#x27;#d2e21bff&#x27;, &#x27;#d3e21aff&#x27;, &#x27;#d4e21aff&#x27;, &#x27;#d6e219ff&#x27;, &#x27;#d7e219ff&#x27;, &#x27;#d9e319ff&#x27;, &#x27;#dae319ff&#x27;, &#x27;#dbe318ff&#x27;, &#x27;#dde318ff&#x27;, &#x27;#dee318ff&#x27;, &#x27;#dfe318ff&#x27;, &#x27;#e0e418ff&#x27;, &#x27;#e2e418ff&#x27;, &#x27;#e3e418ff&#x27;, &#x27;#e5e418ff&#x27;, &#x27;#e6e419ff&#x27;, &#x27;#e7e419ff&#x27;, &#x27;#e8e519ff&#x27;, &#x27;#eae519ff&#x27;, &#x27;#ebe51aff&#x27;, &#x27;#ece51aff&#x27;, &#x27;#ede51bff&#x27;, &#x27;#efe51bff&#x27;, &#x27;#f0e51cff&#x27;, &#x27;#f1e51dff&#x27;, &#x27;#f3e61dff&#x27;, &#x27;#f4e61eff&#x27;, &#x27;#f5e61eff&#x27;, &#x27;#f6e61fff&#x27;, &#x27;#f7e620ff&#x27;, &#x27;#f8e621ff&#x27;, &#x27;#fae722ff&#x27;, &#x27;#fbe723ff&#x27;, &#x27;#fce724ff&#x27;, &#x27;#fde725ff&#x27;]);
+    
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.x = d3.scale.linear()
+              .domain([18474.0, 46285.0])
+              .range([0, 450 - 50]);
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.legend = L.control({position: &#x27;topright&#x27;});
+    color_map_07b5b34aeb9a0659196f00fde80fb970.legend.onAdd = function (map) {var div = L.DomUtil.create(&#x27;div&#x27;, &#x27;legend&#x27;); return div};
+    color_map_07b5b34aeb9a0659196f00fde80fb970.legend.addTo(map_5cbccffe1c62609f3fd44553ccdfd275);
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.xAxis = d3.svg.axis()
+        .scale(color_map_07b5b34aeb9a0659196f00fde80fb970.x)
+        .orient(&quot;top&quot;)
+        .tickSize(1)
+        .tickValues([18474.0, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 21309.631372549018, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 24145.26274509804, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 26980.894117647058, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 29816.52549019608, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 32652.156862745098, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 35487.788235294116, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 38323.41960784314, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 41159.05098039216, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, 43994.68235294118, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;, &#x27;&#x27;]);
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.svg = d3.select(&quot;.legend.leaflet-control&quot;).append(&quot;svg&quot;)
+        .attr(&quot;id&quot;, &#x27;legend&#x27;)
+        .attr(&quot;width&quot;, 450)
+        .attr(&quot;height&quot;, 40);
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.g = color_map_07b5b34aeb9a0659196f00fde80fb970.svg.append(&quot;g&quot;)
+        .attr(&quot;class&quot;, &quot;key&quot;)
+        .attr(&quot;transform&quot;, &quot;translate(25,16)&quot;);
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.g.selectAll(&quot;rect&quot;)
+        .data(color_map_07b5b34aeb9a0659196f00fde80fb970.color.range().map(function(d, i) {
+          return {
+            x0: i ? color_map_07b5b34aeb9a0659196f00fde80fb970.x(color_map_07b5b34aeb9a0659196f00fde80fb970.color.domain()[i - 1]) : color_map_07b5b34aeb9a0659196f00fde80fb970.x.range()[0],
+            x1: i &lt; color_map_07b5b34aeb9a0659196f00fde80fb970.color.domain().length ? color_map_07b5b34aeb9a0659196f00fde80fb970.x(color_map_07b5b34aeb9a0659196f00fde80fb970.color.domain()[i]) : color_map_07b5b34aeb9a0659196f00fde80fb970.x.range()[1],
+            z: d
+          };
+        }))
+      .enter().append(&quot;rect&quot;)
+        .attr(&quot;height&quot;, 40 - 30)
+        .attr(&quot;x&quot;, function(d) { return d.x0; })
+        .attr(&quot;width&quot;, function(d) { return d.x1 - d.x0; })
+        .style(&quot;fill&quot;, function(d) { return d.z; });
+
+    color_map_07b5b34aeb9a0659196f00fde80fb970.g.call(color_map_07b5b34aeb9a0659196f00fde80fb970.xAxis).append(&quot;text&quot;)
+        .attr(&quot;class&quot;, &quot;caption&quot;)
+        .attr(&quot;y&quot;, 21)
+        .text(&quot;n_days&quot;);
+    
+            var options = {
+              position: &quot;topleft&quot;,
+              draw: {&quot;circle&quot;: false, &quot;circlemarker&quot;: false, &quot;marker&quot;: false, &quot;poly&quot;: false, &quot;polygon&quot;: false, &quot;polyline&quot;: false, &quot;rectangle&quot;: true},
+              edit: {},
+            }
+            // FeatureGroup is to store editable layers.
+            var drawnItems = new L.featureGroup().addTo(
+                map_5cbccffe1c62609f3fd44553ccdfd275
+            );
+            options.edit.featureGroup = drawnItems;
+            var draw_control_b2a8cb87c4c04063c811eaaacef8bc8f = new L.Control.Draw(
+                options
+            ).addTo( map_5cbccffe1c62609f3fd44553ccdfd275 );
+            map_5cbccffe1c62609f3fd44553ccdfd275.on(L.Draw.Event.CREATED, function(e) {
+                var layer = e.layer,
+                    type = e.layerType;
+                var coords = JSON.stringify(layer.toGeoJSON());
+                layer.on(&#x27;click&#x27;, function() {
+                    alert(coords);
+                    console.log(coords);
+                });
+                drawnItems.addLayer(layer);
+             });
+            map_5cbccffe1c62609f3fd44553ccdfd275.on(&#x27;draw:created&#x27;, function(e) {
+                drawnItems.addLayer(e.layer);
+            });
+            
+            document.getElementById(&#x27;export&#x27;).onclick = function(e) {
+                var data = drawnItems.toGeoJSON();
+                var convertedData = &#x27;text/json;charset=utf-8,&#x27;
+                    + encodeURIComponent(JSON.stringify(data));
+                document.getElementById(&#x27;export&#x27;).setAttribute(
+                    &#x27;href&#x27;, &#x27;data:&#x27; + convertedData
+                );
+                document.getElementById(&#x27;export&#x27;).setAttribute(
+                    &#x27;download&#x27;, &quot;data.geojson&quot;
+                );
+            }
+            
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+</div>
+</section>
+<section id="filter-stations-using-bounding-box">
+<h3>Filter stations using bounding box<a class="headerlink" href="#filter-stations-using-bounding-box" title="Permalink to this heading">#</a></h3>
+<p>Next, we’ll use the bounding box drawn on the map to select a subset of stations. We first open the <code class="docutils literal notranslate"><span class="pre">data.geojson</span></code> file downloaded to disk, create a shapely object and use it filter stations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="c1"># Adjust directory if running this locally.</span>
+<span class="c1"># rect = gpd.read_file(&quot;~/Downloads/data.geojson&quot;)</span>
+
+<span class="c1"># Here we&#39;re using an existing file so the notebook runs without user interaction.</span>
+<span class="n">rect</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;./data.geojson&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+
+<span class="c1"># Filter stations DataFrame using bbox</span>
+<span class="n">inbox</span> <span class="o">=</span> <span class="n">select</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">rect</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of stations within subregion: &quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">(</span><span class="n">inbox</span><span class="p">))</span>
+<span class="n">sub_select</span> <span class="o">=</span> <span class="n">select</span><span class="p">[</span><span class="n">inbox</span><span class="p">]</span>
+<span class="n">sub_select</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of stations within subregion:  9
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>STN_ID</th>
+      <th>STATION_NAME</th>
+      <th>PROV_STATE_TERR_CODE</th>
+      <th>ENG_PROV_NAME</th>
+      <th>FRE_PROV_NAME</th>
+      <th>COUNTRY</th>
+      <th>LATITUDE</th>
+      <th>LONGITUDE</th>
+      <th>TIMEZONE</th>
+      <th>...</th>
+      <th>HLY_LAST_DATE</th>
+      <th>DLY_FIRST_DATE</th>
+      <th>DLY_LAST_DATE</th>
+      <th>MLY_FIRST_DATE</th>
+      <th>MLY_LAST_DATE</th>
+      <th>HAS_MONTHLY_SUMMARY</th>
+      <th>HAS_NORMALS_DATA</th>
+      <th>HAS_HOURLY_DATA</th>
+      <th>geometry</th>
+      <th>n_days</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19</th>
+      <td>8205698</td>
+      <td>6485</td>
+      <td>SYDNEY</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>460900000</td>
+      <td>-601200000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1870-01-01</td>
+      <td>1941-03-31</td>
+      <td>1870-01-01</td>
+      <td>1941-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-60.20000 46.15000)</td>
+      <td>26021</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>8206300</td>
+      <td>6506</td>
+      <td>WHITEHEAD</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>451300000</td>
+      <td>-611100000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1883-12-01</td>
+      <td>1960-06-30</td>
+      <td>1883-01-01</td>
+      <td>1960-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-61.18333 45.21667)</td>
+      <td>27970</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>8201410</td>
+      <td>6336</td>
+      <td>DEMING</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>451259007</td>
+      <td>-611040090</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1956-10-01</td>
+      <td>2011-12-31</td>
+      <td>1956-01-01</td>
+      <td>2006-02-01</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>POINT (-61.17780 45.21639)</td>
+      <td>20179</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>8205600</td>
+      <td>6481</td>
+      <td>STILLWATER</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>451100000</td>
+      <td>-620000000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1915-12-01</td>
+      <td>1979-10-31</td>
+      <td>1915-01-01</td>
+      <td>1979-12-01</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>N</td>
+      <td>POINT (-62.00000 45.18333)</td>
+      <td>23345</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>8201000</td>
+      <td>6329</td>
+      <td>COLLEGEVILLE</td>
+      <td>NS</td>
+      <td>NOVA SCOTIA</td>
+      <td>NOUVELLE-ÉCOSSE</td>
+      <td>CAN</td>
+      <td>452900000</td>
+      <td>-620100000</td>
+      <td>AST</td>
+      <td>...</td>
+      <td>NaT</td>
+      <td>1916-06-01</td>
+      <td>2016-09-30</td>
+      <td>1916-01-01</td>
+      <td>2006-02-01</td>
+      <td>Y</td>
+      <td>Y</td>
+      <td>N</td>
+      <td>POINT (-62.01667 45.48333)</td>
+      <td>36646</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 35 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="request-meteorological-data">
+<h3>Request meteorological data<a class="headerlink" href="#request-meteorological-data" title="Permalink to this heading">#</a></h3>
+<p>Now we’ll make a request for actual meteorological data from the stations filtered above. For this, we’ll use the
+Daily Climate Observations collection (<code class="docutils literal notranslate"><span class="pre">climate-daily</span></code>). Here, we’re picking just one station but we could easily loop on each station.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">coll</span> <span class="o">=</span> <span class="n">host</span> <span class="o">/</span> <span class="s2">&quot;collections&quot;</span> <span class="o">/</span> <span class="s2">&quot;climate-daily&quot;</span> <span class="o">/</span> <span class="s2">&quot;items&quot;</span>
+<span class="n">station_id</span> <span class="o">=</span> <span class="s2">&quot;8201410&quot;</span>
+
+<span class="c1"># Restricting the number of entries returned to keep things fast.</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">coll</span><span class="o">.</span><span class="n">with_query</span><span class="p">({</span><span class="s2">&quot;CLIMATE_IDENTIFIER&quot;</span><span class="p">:</span> <span class="n">station_id</span><span class="p">,</span> <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">365</span><span class="p">}))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Request: &quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Request:  https://api.weather.gc.ca/collections/climate-daily/items?CLIMATE_IDENTIFIER=8201410&amp;limit=365
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>STATION_NAME</th>
+      <th>CLIMATE_IDENTIFIER</th>
+      <th>ID</th>
+      <th>LOCAL_DATE</th>
+      <th>PROVINCE_CODE</th>
+      <th>LOCAL_YEAR</th>
+      <th>LOCAL_MONTH</th>
+      <th>LOCAL_DAY</th>
+      <th>MEAN_TEMPERATURE</th>
+      <th>...</th>
+      <th>SPEED_MAX_GUST_FLAG</th>
+      <th>COOLING_DEGREE_DAYS</th>
+      <th>COOLING_DEGREE_DAYS_FLAG</th>
+      <th>HEATING_DEGREE_DAYS</th>
+      <th>HEATING_DEGREE_DAYS_FLAG</th>
+      <th>MIN_REL_HUMIDITY</th>
+      <th>MIN_REL_HUMIDITY_FLAG</th>
+      <th>MAX_REL_HUMIDITY</th>
+      <th>MAX_REL_HUMIDITY_FLAG</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8201410.1970.5.12</td>
+      <td>DEMING</td>
+      <td>8201410</td>
+      <td>8201410.1970.5.12</td>
+      <td>1970-05-12</td>
+      <td>NS</td>
+      <td>1970</td>
+      <td>5</td>
+      <td>12</td>
+      <td>5.0</td>
+      <td>...</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>13.0</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POINT (-61.17780 45.21639)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>8201410.1970.5.13</td>
+      <td>DEMING</td>
+      <td>8201410</td>
+      <td>8201410.1970.5.13</td>
+      <td>1970-05-13</td>
+      <td>NS</td>
+      <td>1970</td>
+      <td>5</td>
+      <td>13</td>
+      <td>5.8</td>
+      <td>...</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>12.2</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POINT (-61.17780 45.21639)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>8201410.1970.5.14</td>
+      <td>DEMING</td>
+      <td>8201410</td>
+      <td>8201410.1970.5.14</td>
+      <td>1970-05-14</td>
+      <td>NS</td>
+      <td>1970</td>
+      <td>5</td>
+      <td>14</td>
+      <td>6.1</td>
+      <td>...</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>11.9</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POINT (-61.17780 45.21639)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8201410.1970.5.15</td>
+      <td>DEMING</td>
+      <td>8201410</td>
+      <td>8201410.1970.5.15</td>
+      <td>1970-05-15</td>
+      <td>NS</td>
+      <td>1970</td>
+      <td>5</td>
+      <td>15</td>
+      <td>7.8</td>
+      <td>...</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>10.2</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POINT (-61.17780 45.21639)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8201410.1970.5.16</td>
+      <td>DEMING</td>
+      <td>8201410</td>
+      <td>8201410.1970.5.16</td>
+      <td>1970-05-16</td>
+      <td>NS</td>
+      <td>1970</td>
+      <td>5</td>
+      <td>16</td>
+      <td>3.9</td>
+      <td>...</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>None</td>
+      <td>14.1</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>POINT (-61.17780 45.21639)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 36 columns</p>
+</div></div></div>
+</div>
+<p>We can also send a request for data inside a bounding box at a specific date.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">bounds</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bounding box: &quot;</span><span class="p">,</span> <span class="n">bbox</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">with_query</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;bbox&quot;</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">bbox</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;()&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;LOCAL_DATE&quot;</span><span class="p">:</span> <span class="s2">&quot;2000-01-01 00:00:00&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">snapshot</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bounding box:  (-62.186675, 44.78125, -59.123882, 47.53125)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy</span>
+<span class="kn">from</span> <span class="nn">cartopy</span> <span class="kn">import</span> <span class="n">crs</span> <span class="k">as</span> <span class="n">ccrs</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1"># Create map projection</span>
+<span class="n">proj</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+
+<span class="c1"># If using another projection, remember you&#39;ll need to reproject the snapshot&#39;s coordinates.</span>
+<span class="c1"># snapshot.to_crs(proj, inplace=True)</span>
+
+<span class="c1"># Create figure and axes</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">proj</span><span class="p">)</span>
+
+<span class="c1"># Set the map extent to the bounding box and draw the coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">bbox</span><span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Plot markers color-coded according to the temperature recorded.</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">snapshot</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&quot;MEAN_TEMPERATURE&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">viridis</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Add a label to the colorbar</span>
+<span class="n">cax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">cax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Mean temperature [°C]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(448.07777777777784, 0.5, &#39;Mean temperature [°C]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/75c2bc04d5dd9b3c524fc9468ce834ad0d60a0d43be86e857ff2bf39298dfe0d.png" src="../_images/75c2bc04d5dd9b3c524fc9468ce834ad0d60a0d43be86e857ff2bf39298dfe0d.png" />
+</div>
+</div>
+<p>Another useful filter is on dates and times. Let’s say we only want data in a given period, we simply create a request with the <code class="docutils literal notranslate"><span class="pre">datetime</span></code> argument and a <code class="docutils literal notranslate"><span class="pre">/</span></code> separating the start and end dates. You may leave the start or end date open-ended using <code class="docutils literal notranslate"><span class="pre">..</span></code> instead of a date time string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+    <span class="n">coll</span><span class="o">.</span><span class="n">with_query</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;CLIMATE_IDENTIFIER&quot;</span><span class="p">:</span> <span class="n">station_id</span><span class="p">,</span>
+            <span class="s2">&quot;datetime&quot;</span><span class="p">:</span> <span class="s2">&quot;1990-01-01 00:00:00/1991-01-01 00:00:00&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://api.weather.gc.ca/collections/climate-daily/items?CLIMATE_IDENTIFIER=8201410&amp;datetime=1990-01-01+00%3A00%3A00%2F1991-01-01+00%3A00%3A00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the datetime string to a datetime object</span>
+<span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;LOCAL_DATE&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">gdf</span><span class="p">[</span><span class="s2">&quot;LOCAL_DATE&quot;</span><span class="p">])</span>
+
+<span class="c1"># Create a time series out of the column for mean temperature</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;LOCAL_DATE&quot;</span><span class="p">)[</span><span class="s2">&quot;MEAN_TEMPERATURE&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the time series</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Mean temperature [°C]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;STATION_NAME&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/78fa3ea13794b0e1e5d895f1b4193e58f70df6df2ed5453aa814bdbf7cbf6360.png" src="../_images/78fa3ea13794b0e1e5d895f1b4193e58f70df6df2ed5453aa814bdbf7cbf6360.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="adjusted-and-homogenized-canadian-climate-data-ahccd">
+<h2>Adjusted and Homogenized Canadian Climate Data (AHCCD)<a class="headerlink" href="#adjusted-and-homogenized-canadian-climate-data-ahccd" title="Permalink to this heading">#</a></h2>
+<p>The Adjusted and Homogenized Canadian Climate Data (AHCCD) datasets from ECCC are climate station data adjusted to account for discontinuities in the record, such as instrument relocation. The collections related to these datasets are <code class="docutils literal notranslate"><span class="pre">ahccd-stations</span></code> for station metadata, <code class="docutils literal notranslate"><span class="pre">ahccd-annual</span></code>, <code class="docutils literal notranslate"><span class="pre">ahccd-monthly</span></code> and <code class="docutils literal notranslate"><span class="pre">ahccd-seasonal</span></code> for temporally aggregated time series, and <code class="docutils literal notranslate"><span class="pre">ahccd-trends</span></code> for trends computed on the data.</p>
+<p>Now, unfortunately, the fields for these datasets are different from those of the climate stations… One strategy to find out what keywords are accepted is to make a query with no filter except for <code class="docutils literal notranslate"><span class="pre">limit=1</span></code>. Another is to go to the collection search page (click on the link printed below), and inspect the column names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="c1"># The url to query station metadata - this should behave similarly as `climate-stations`</span>
+<span class="n">ahccd_stations</span> <span class="o">=</span> <span class="n">host</span> <span class="o">/</span> <span class="s2">&quot;collections&quot;</span> <span class="o">/</span> <span class="s2">&quot;ahccd-stations&quot;</span> <span class="o">/</span> <span class="s2">&quot;items&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">ahccd_stations</span><span class="o">.</span><span class="n">with_query</span><span class="p">({</span><span class="s2">&quot;limit&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ahccd_stations</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://api.weather.gc.ca//collections/ahccd-stations/items
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>identifier__identifiant</th>
+      <th>station_id__id_station</th>
+      <th>station_name__nom_station</th>
+      <th>measurement_type__type_mesure</th>
+      <th>period__periode</th>
+      <th>trend_value__valeur_tendance</th>
+      <th>elevation__elevation</th>
+      <th>province__province</th>
+      <th>joined__rejoint</th>
+      <th>year_range__annees</th>
+      <th>start_date__date_debut</th>
+      <th>end_date__date_fin</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2403053</td>
+      <td>2403053</td>
+      <td>2403053</td>
+      <td>PANGNIRTUNG A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>None</td>
+      <td>22.6</td>
+      <td>NU</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-65.70000 66.13000)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>So if we want to see the stations in Yukon, we’d have to query with the <code class="docutils literal notranslate"><span class="pre">province__province</span></code> keyword… Now how do you know what code to use for provinces? One solution is to go again to the <a class="reference external" href="https://api.weather.gc.ca/collections/ahccd-monthly/items">collection search page</a>, zoom on the area of interest and click on the check box to “Only show items by map view”, then inspect the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="n">ahccd_stations</span><span class="o">.</span><span class="n">with_query</span><span class="p">({</span><span class="s2">&quot;province__province&quot;</span><span class="p">:</span> <span class="s2">&quot;YT&quot;</span><span class="p">})</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>identifier__identifiant</th>
+      <th>station_id__id_station</th>
+      <th>station_name__nom_station</th>
+      <th>measurement_type__type_mesure</th>
+      <th>period__periode</th>
+      <th>trend_value__valeur_tendance</th>
+      <th>elevation__elevation</th>
+      <th>province__province</th>
+      <th>joined__rejoint</th>
+      <th>year_range__annees</th>
+      <th>start_date__date_debut</th>
+      <th>end_date__date_fin</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2100300</td>
+      <td>2100300</td>
+      <td>2100300</td>
+      <td>CARMACKS</td>
+      <td>snow</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>525.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2008-02-01</td>
+      <td>2008-02-01</td>
+      <td>POINT (-136.30000 62.10000)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2100460</td>
+      <td>2100460</td>
+      <td>2100460</td>
+      <td>DRURY CREEK</td>
+      <td>snow</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>609.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2009-04-01</td>
+      <td>2009-04-01</td>
+      <td>POINT (-134.39000 62.20190)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2100631</td>
+      <td>2100631</td>
+      <td>2100631</td>
+      <td>HAINES JUNCTION</td>
+      <td>snow</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>596.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2008-09-01</td>
+      <td>2008-09-01</td>
+      <td>POINT (-137.50530 60.74950)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2101081</td>
+      <td>2101081</td>
+      <td>2101081</td>
+      <td>SWIFT RIVER</td>
+      <td>snow</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>891.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2008-02-01</td>
+      <td>2008-02-01</td>
+      <td>POINT (-131.18330 60.00000)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2100184</td>
+      <td>2100184</td>
+      <td>2100184</td>
+      <td>BURWASH</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>80.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-139.00000 61.30000)</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2100301</td>
+      <td>2100301</td>
+      <td>2100301</td>
+      <td>CARMACKS</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>54.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-136.20000 62.10000)</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2100LRP</td>
+      <td>2100LRP</td>
+      <td>2100LRP</td>
+      <td>DAWSON</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>2.34</td>
+      <td>37.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>1901-2019</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2100518</td>
+      <td>2100518</td>
+      <td>2100518</td>
+      <td>FARO_(AUT)</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>71.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-133.30000 62.20000)</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2100630</td>
+      <td>2100630</td>
+      <td>2100630</td>
+      <td>HAINES_JUNCTION</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>59.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-137.50000 60.70000)</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2100660</td>
+      <td>2100660</td>
+      <td>2100660</td>
+      <td>IVVAVIK_NAT_PARK</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>24.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-140.10000 69.10000)</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2100682</td>
+      <td>2100682</td>
+      <td>2100682</td>
+      <td>KOMAKUK_BEACH</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>1.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2018-06-01</td>
+      <td>2018-06-01</td>
+      <td>POINT (-140.20000 69.60000)</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2100693</td>
+      <td>2100693</td>
+      <td>2100693</td>
+      <td>MACMILLAN_PASS</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>137.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-130.00000 63.20000)</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2100701</td>
+      <td>2100701</td>
+      <td>2100701</td>
+      <td>MAYO</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>50.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-135.80000 63.60000)</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2100805</td>
+      <td>2100805</td>
+      <td>2100805</td>
+      <td>OLD_CROW</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>25.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-139.80000 67.50000)</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2100880</td>
+      <td>2100880</td>
+      <td>2100880</td>
+      <td>PELLY_RANCH</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>44.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2017-08-01</td>
+      <td>2017-08-01</td>
+      <td>POINT (-137.30000 62.80000)</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2100941</td>
+      <td>2100941</td>
+      <td>2100941</td>
+      <td>ROSS_RIVER</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>69.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2008-08-01</td>
+      <td>2008-08-01</td>
+      <td>POINT (-132.40000 61.90000)</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2100950</td>
+      <td>2100950</td>
+      <td>2100950</td>
+      <td>SHINGLE_POINT</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>4.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-137.20000 68.90000)</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2101102</td>
+      <td>2101102</td>
+      <td>2101102</td>
+      <td>TESLIN</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>70.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-132.70000 60.10000)</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2101135</td>
+      <td>2101135</td>
+      <td>2101135</td>
+      <td>TUCHITUA</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>72.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2014-09-01</td>
+      <td>2014-09-01</td>
+      <td>POINT (-129.20000 60.90000)</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2101204</td>
+      <td>2101204</td>
+      <td>2101204</td>
+      <td>WATSON_LAKE</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>1.53</td>
+      <td>68.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>1939-2019</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-128.80000 60.10000)</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2101310</td>
+      <td>2101310</td>
+      <td>2101310</td>
+      <td>WHITEHORSE</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>70.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-135.10000 60.70000)</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2101303</td>
+      <td>2101303</td>
+      <td>2101303</td>
+      <td>WHITEHORSE_A</td>
+      <td>temp_mean</td>
+      <td>Ann</td>
+      <td>1.80</td>
+      <td>70.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>1943-2019</td>
+      <td>2019-12-01</td>
+      <td>2019-12-01</td>
+      <td>POINT (-135.00000 60.70000)</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2100100</td>
+      <td>2100100</td>
+      <td>2100100</td>
+      <td>AISHIHIK A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>966.20</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>1966-09-01</td>
+      <td>1966-09-01</td>
+      <td>POINT (-137.48000 61.65000)</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2100160</td>
+      <td>2100160</td>
+      <td>2100160</td>
+      <td>BEAVER CREEK A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>649.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-140.87000 62.41000)</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2100400</td>
+      <td>2100400</td>
+      <td>2100400</td>
+      <td>DAWSON</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>320.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>1976-01-01</td>
+      <td>1976-01-01</td>
+      <td>POINT (-139.43000 64.05000)</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2100402</td>
+      <td>2100402</td>
+      <td>2100402</td>
+      <td>DAWSON A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>370.30</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-139.13000 64.04000)</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2100517</td>
+      <td>2100517</td>
+      <td>2100517</td>
+      <td>FARO A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>716.60</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-133.38000 62.21000)</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2100636</td>
+      <td>2100636</td>
+      <td>2100636</td>
+      <td>HERSCHEL ISLAND</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>1.20</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-138.91000 69.57000)</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2100685</td>
+      <td>2100685</td>
+      <td>2100685</td>
+      <td>KOMAKUK BEACH A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>7.30</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>1993-06-01</td>
+      <td>1993-06-01</td>
+      <td>POINT (-140.18000 69.58000)</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2100800</td>
+      <td>2100800</td>
+      <td>2100800</td>
+      <td>OLD CROW A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>251.20</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-139.84000 67.57000)</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2100935</td>
+      <td>2100935</td>
+      <td>2100935</td>
+      <td>ROCK RIVER</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>731.00</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-136.22000 66.98000)</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2101000</td>
+      <td>2101000</td>
+      <td>2101000</td>
+      <td>SNAG A</td>
+      <td>pressure_sea_level</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>586.70</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>None</td>
+      <td>1966-08-01</td>
+      <td>1966-08-01</td>
+      <td>POINT (-140.40000 62.37000)</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2100182</td>
+      <td>2100182</td>
+      <td>2100182</td>
+      <td>BURWASH A</td>
+      <td>wind_speed</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>806.20</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-139.05000 61.36670)</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2100700</td>
+      <td>2100700</td>
+      <td>2100700</td>
+      <td>MAYO A</td>
+      <td>wind_speed</td>
+      <td>Ann</td>
+      <td>0.00</td>
+      <td>503.80</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>1953-2014</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-135.86670 63.61670)</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2101100</td>
+      <td>2101100</td>
+      <td>2101100</td>
+      <td>TESLIN A</td>
+      <td>wind_speed</td>
+      <td>Ann</td>
+      <td>NaN</td>
+      <td>705.00</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>None</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-132.73590 60.17410)</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2101200</td>
+      <td>2101200</td>
+      <td>2101200</td>
+      <td>WATSON LAKE A</td>
+      <td>wind_speed</td>
+      <td>Ann</td>
+      <td>-0.72</td>
+      <td>687.35</td>
+      <td>YT</td>
+      <td>0</td>
+      <td>1953-2014</td>
+      <td>2014-11-01</td>
+      <td>2014-11-01</td>
+      <td>POINT (-128.82230 60.11650)</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2101300</td>
+      <td>2101300</td>
+      <td>2101300</td>
+      <td>WHITEHORSE A</td>
+      <td>wind_speed</td>
+      <td>Ann</td>
+      <td>-0.25</td>
+      <td>706.20</td>
+      <td>YT</td>
+      <td>1</td>
+      <td>1953-2014</td>
+      <td>2014-12-01</td>
+      <td>2014-12-01</td>
+      <td>POINT (-135.06880 60.70950)</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Let’s pick the Dawson station (<code class="docutils literal notranslate"><span class="pre">2100LRP</span></code>), which seems to have a long record. Again, use the trick above to see which fields are accepted.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NBVAL_IGNORE_OUTPUT</span>
+
+<span class="n">ahccd_mon</span> <span class="o">=</span> <span class="n">host</span> <span class="o">/</span> <span class="s2">&quot;collections&quot;</span> <span class="o">/</span> <span class="s2">&quot;ahccd-monthly&quot;</span> <span class="o">/</span> <span class="s2">&quot;items&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">ahccd_mon</span><span class="o">.</span><span class="n">with_query</span><span class="p">({</span><span class="s2">&quot;station_id__id_station&quot;</span><span class="p">:</span> <span class="s2">&quot;2100LRP&quot;</span><span class="p">})</span>
+<span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+    <span class="n">mts</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">req</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;pyogrio&quot;</span><span class="p">)</span>
+<span class="n">mts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>lat__lat</th>
+      <th>lon__long</th>
+      <th>identifier__identifiant</th>
+      <th>station_id__id_station</th>
+      <th>period_value__valeur_periode</th>
+      <th>period_group__groupe_periode</th>
+      <th>province__province</th>
+      <th>date</th>
+      <th>temp_mean__temp_moyenne</th>
+      <th>...</th>
+      <th>rain_units__pluie_unites</th>
+      <th>snow__neige</th>
+      <th>snow_units__neige_unites</th>
+      <th>pressure_sea_level__pression_niveau_mer</th>
+      <th>pressure_sea_level_units__pression_niveau_mer_unite</th>
+      <th>pressure_station__pression_station</th>
+      <th>pressure_station_units__pression_station_unites</th>
+      <th>wind_speed__vitesse_vent</th>
+      <th>wind_speed_units__vitesse_vent_unites</th>
+      <th>geometry</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2100LRP.1983.03</td>
+      <td>64</td>
+      <td>-139.1</td>
+      <td>2100LRP.1983.03</td>
+      <td>2100LRP</td>
+      <td>Mar</td>
+      <td>Monthly</td>
+      <td>YT</td>
+      <td>1983-03</td>
+      <td>-15.7</td>
+      <td>...</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>kph</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2100LRP.1921.03</td>
+      <td>64</td>
+      <td>-139.1</td>
+      <td>2100LRP.1921.03</td>
+      <td>2100LRP</td>
+      <td>Mar</td>
+      <td>Monthly</td>
+      <td>YT</td>
+      <td>1921-03</td>
+      <td>-16.8</td>
+      <td>...</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>kph</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2100LRP.1992.06</td>
+      <td>64</td>
+      <td>-139.1</td>
+      <td>2100LRP.1992.06</td>
+      <td>2100LRP</td>
+      <td>Jun</td>
+      <td>Monthly</td>
+      <td>YT</td>
+      <td>1992-06</td>
+      <td>14.2</td>
+      <td>...</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>kph</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2100LRP.1938.03</td>
+      <td>64</td>
+      <td>-139.1</td>
+      <td>2100LRP.1938.03</td>
+      <td>2100LRP</td>
+      <td>Mar</td>
+      <td>Monthly</td>
+      <td>YT</td>
+      <td>1938-03</td>
+      <td>-13.7</td>
+      <td>...</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>kph</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2100LRP.1963.09</td>
+      <td>64</td>
+      <td>-139.1</td>
+      <td>2100LRP.1963.09</td>
+      <td>2100LRP</td>
+      <td>Sep</td>
+      <td>Monthly</td>
+      <td>YT</td>
+      <td>1963-09</td>
+      <td>6.5</td>
+      <td>...</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>mm</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>hPa</td>
+      <td>None</td>
+      <td>kph</td>
+      <td>POINT (-139.10000 64.00000)</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 28 columns</p>
+</div></div></div>
+</div>
+<p>Now let’s plot the mean temperature time series. Note that the server does not necessarily return a continuous time series, and when plotting time series with gaps, matplotlib just draws a continuous line between values. To convey the presence of missing values, here we’ll use the <code class="docutils literal notranslate"><span class="pre">asfreq(&quot;MS&quot;)</span></code> method to fill-in gaps in the time series with explicit missing values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the DataFrame index to a datetime object and sort it</span>
+<span class="n">mts</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">mts</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mts</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Convert the temperature to a continuous monthly time series (so missing values are visible in the graphic)</span>
+<span class="n">tas</span> <span class="o">=</span> <span class="n">mts</span><span class="p">[</span><span class="s2">&quot;temp_mean__temp_moyenne&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">&quot;MS&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mask missing values</span>
+<span class="n">tas</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">tas</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">300</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">tas</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean monthly temperature [°C]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Mean monthly temperature [°C]&#39;)
+</pre></div>
+</div>
+<img alt="../_images/d378846b969b61185f49c95312a57c226842f3e86ac29d686e6c4e3425ff016d.png" src="../_images/d378846b969b61185f49c95312a57c226842f3e86ac29d686e6c4e3425ff016d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pavics-sdi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="climex.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzing the ClimEx Large Ensemble</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="eccc-geoapi-xclim.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Compute climate indicators on weather station data from ECCC’s API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#climate-stations">Climate stations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-request-to-the-server-for-data">Creating a request to the server for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-stations">Filter stations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-the-data">Map the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-stations-using-bounding-box">Filter stations using bounding box</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#request-meteorological-data">Request meteorological data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjusted-and-homogenized-canadian-climate-data-ahccd">Adjusted and Homogenized Canadian Climate Data (AHCCD)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
