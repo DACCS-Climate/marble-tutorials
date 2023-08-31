@@ -58,7 +58,3 @@ Run the command:
 > jupyter-book build mybookname/
 
 HTML files will be generated and placed in the "mybookname/_build/html" folder
-
-# Move Jupyter Book files to Tutorials Folder
-
-Move the files in the "mybookname/_build/html" folder to the "daccs-tutorials/tutorials" folder.
