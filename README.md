@@ -44,7 +44,7 @@ Before converting a Jupyter Notebook you need to specify where they are.
 
 The "_toc.yml" file specifies the structure of the book and the table of contents.
 
-Edit the "_toc.yml" file to include the Jupyter Notebook files needed.  Under "chapters" add your files
+Edit the "_toc.yml" file to include the Jupyter Notebook files needed.  Under "chapters" add your files.
 
 > \- file: filename1
 > 
@@ -57,4 +57,9 @@ Run the command:
 
 > jupyter-book build mybookname/
 
-HTML files will be generated and placed in the "mybookname/_build/html" folder
+HTML files will be generated and placed in the "mybookname/_build/html" folder.
+
+
+# Put the Built Files in the Public Facing Web Directory
+
+Move the "_build" folder and its contents into the "daccs-tutorials/tutorials" folder.  This will make them viewable by the public on the project homepage.
