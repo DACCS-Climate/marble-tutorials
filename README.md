@@ -1,28 +1,30 @@
 # daccs-tutorials
 
-
 This repo is for holding the Jupyter Notebook tutorials from Ouranos PAVICS and other partners.  The Notebooks will then be converted into Jupyter Book format before being put online.
+
 
 # Requirements
 
-1. birdy kernal
+1. birdy kernel
 2. Conda or Miniconda: [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+
 
 # Create a Conda environment
 
-Create a conda environment using the "birdy.txt" file in the "conda-files" folder
+Create a conda environment called "birdy"
 
-> conda create --name birdyenv --file conda-files/birdy.txt
+> conda create --name birdy 
 
-If a PackageNotFound error is encountered try adding a channel from which to get the packages and run the create environment command again.
 
-> conda config --append channels conda-forge  
-> conda create --name birdyenv --file conda-files/birdy.txt
+# Activate the environment and install the kernel
 
-# Activate the environment and install the kernal
+Activate the "birdy" environment and install the ipykernel under the name "birdy".  
 
-> conda activate birdyenv
+If needed, download the ipykernel here: [ipykernel for Jupyter](https://pypi.org/project/ipykernel/)
+
+> conda activate birdy
 > python -m ipykernel install --user --name=birdy
+
 
 # Create a Jupyter Book
 
@@ -58,8 +60,3 @@ Run the command:
 > jupyter-book build mybookname/
 
 HTML files will be generated and placed in the "mybookname/_build/html" folder.
-
-
-# Put the Built Files in the Public Facing Web Directory
-
-Move the "_build" folder and its contents into the "daccs-tutorials/tutorials" folder.  This will make them viewable by the public on the project homepage.
