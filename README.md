@@ -1,60 +1,38 @@
-# daccs-tutorials
+# Marble Tutorials
 
+Tutorials for the Marble Software stack organized as a [jupyter book](https://jupyterbook.org).
 
-This repo is for holding the Jupyter Notebook tutorials from Ouranos PAVICS and other partners.  The Notebooks will then be converted into Jupyter Book format before being put online.
+## Build the book
 
-# Requirements
+To convert the files contained in the `tutorials/` directory to HTML:
 
-1. birdy kernal
-2. Conda or Miniconda: [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+1. install the requirements:
 
-# Create a Conda environment
+```shell
+python3 -m pip install -r tutorials/requirements.txt
+```
 
-Create a conda environment using the "birdy.txt" file in the "conda-files" folder
+2. build the HTML files:
 
-> conda create --name birdyenv --file conda-files/birdy.txt
+```shell
+jupyter-book build tutorials/
+```
 
-If a PackageNotFound error is encountered try adding a channel from which to get the packages and run the create environment command again.
+This will create a `tutorials/_build` directory. The tutorials jupyter book can now be viewed by opening the 
+`tutorials/_build/html/index.html` file.
 
-> conda config --append channels conda-forge  
-> conda create --name birdyenv --file conda-files/birdy.txt
+## Contributing
 
-# Activate the environment and install the kernal
+To contribute to this project, please create a new branch off of the `main` branch, make your changes there and then 
+create a pull request to merge your branch back into `main`.
 
-> conda activate birdyenv
-> python -m ipykernel install --user --name=birdy
+If you do not have sufficient permissions to create a new branch in this repository, please fork this repository first.
 
-# Create a Jupyter Book
+### Updating Tutorials
 
-Create a Jupyter Book with the following command:
+When creating or updating jupyter notebook formatted tutorials, please commit a version of the notebook that includes 
+the output cells. The [build procedure](#build-the-book) does not execute the notebooks by default and so only the cells
+that are already visible in the notebooks will be shown.
 
-> jupyter-book create mynewbook/
-
-Substitute the name of your book for "mynewbook".
-
-This will create a "_build" folder, "requirements.txt", "_config.yml" and "_toc.yml" files and sample content files such as "markdown.md", "markdown-notebooks.md" and "notebooks.ipynb".
-
-The sample content files can be deleted.
-
-
-
-# Add files to the Jupyter Book
-
-Before converting a Jupyter Notebook you need to specify where they are.
-
-The "_toc.yml" file specifies the structure of the book and the table of contents.
-
-Edit the "_toc.yml" file to include the Jupyter Notebook files needed.  Under "chapters" add your files
-
-> \- file: filename1
-> 
-> \- file: folder/filename2
-
-
-# Build the Jupyter Book
-
-Run the command:
-
-> jupyter-book build mybookname/
-
-HTML files will be generated and placed in the "mybookname/_build/html" folder
+When creating, deleting, or renaming tutorial files, make sure that you have also updated the relevant entries in the 
+table-of-contents file that can be found at [`tutorials/_toc.yml`](tutorials/_toc.yml).
