@@ -3,23 +3,25 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: jupyter/hummingbird
-- file: jupyter/climex
-- file: jupyter/eccc-geoapi-climate-stations
-- file: jupyter/eccc-geoapi-xclim
-- file: jupyter/esgf-dap
-- file: jupyter/forecasts
-- file: jupyter/jupyter_extensions
-- file: jupyter/opendap
-- file: jupyter/pavics_thredds
-- file: jupyter/regridding
-- file: jupyter/rendering
-- file: jupyter/subset-user-input
-- file: jupyter/subsetting
-- file: jupyter/weaver_example
-- file: jupyter/WCS_example
-- file: jupyter/WFS_example
-- file: jupyter/WMS_example
-- file: jupyter/WPS_example
-- file: jupyter/stress-tests
+parts:
+  - chapters:
+      - file: introduction/getting-started.md
+      - file: pavics/intro.md
+        sections:
+          - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
+          - file: pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
+          - file: pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
