@@ -6,11 +6,43 @@ found on their node.
 Many of these notebooks discuss services and processes that are available on nodes across the Marble network and are 
 intended as examples that can be adapted as needed.
 
-These notebooks are hosted on [GitHub](https://github.com/Ouranosinc/pavics-sdi). If you would like to report an issue
-with any of these notebooks please do so by [creating a new issue](https://github.com/Ouranosinc/pavics-sdi/issues/new)
-there.
+## Notebook Collections:
 
-## Notebooks:
+::::{grid} 1 1 2 3
+:class-container: text-center
+:gutter: 3
 
-```{tableofcontents}
-```
+:::{grid-item-card}
+:link: pavics-intro
+:link-type: doc
+:class-header: bg-dark
+
+PAVICS documentation examples
+^^^
+
+General examples from the PAVICS documentation
+:::
+
+:::{grid-item-card}
+:link: finch-intro
+:link-type: doc
+:class-header: bg-dark
+
+Finch
+^^^
+
+Examples for the Finch Web Processing Service 
+:::
+
+:::{grid-item-card}
+:link: raven-intro
+:link-type: doc
+:class-header: bg-dark
+
+Raven
+^^^
+
+Examples for the Raven Web Processing Service 
+:::
+
+::::

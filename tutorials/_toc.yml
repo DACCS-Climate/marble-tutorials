@@ -6,22 +6,66 @@ root: intro
 parts:
   - chapters:
       - file: introduction/getting-started.md
+  - chapters:
       - file: pavics/intro.md
         sections:
-          - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
-          - file: pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
-          - file: pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
+          - file: pavics/pavics-intro.md
+            sections:
+              - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
+              - file: pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
+              - file: pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/hydrology/Running_hydrological_models_on_a_remote_server.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/hydrology/time_series_analysis.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/hydrology/Hydrological_realtime_forecasting.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/hydrology/Model_calibration.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/hydrology/Extract_geographical_watershed_properties.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-3Climate-Indicators.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-5Visualization.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-1DataAccess.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-2Subsetting.ipynb
+              - file: pavics/PAVICS-landing/content/notebooks/climate_indicators/PAVICStutorial_ClimateDataAnalysis-4Ensembles.ipynb
+          - file: pavics/finch-intro.md
+            sections:
+              - file: pavics/finch/docs/source/notebooks/finch-usage.ipynb
+              - file: pavics/finch/docs/source/notebooks/dap_subset.ipynb
+          - file: pavics/raven-intro.md
+            sections:
+              - file: pavics/raven/docs/source/notebooks/Subset_climate_data_over_watershed.ipynb
+              - file: pavics/raven/docs/source/notebooks/Region_selection.ipynb
+              - file: pavics/RavenPy/docs/notebooks/00_Introduction_to_JupyterLab.ipynb
+              - file: pavics/RavenPy/docs/notebooks/01_Getting_watershed_boundaries.ipynb
+              - file: pavics/RavenPy/docs/notebooks/02_Extract_geographical_watershed_properties.ipynb
+              - file: pavics/RavenPy/docs/notebooks/03_Extracting_forcing_data.ipynb
+              - file: pavics/RavenPy/docs/notebooks/04_Emulating_hydrological_models.ipynb
+              - file: pavics/RavenPy/docs/notebooks/05_Advanced_RavenPy_configuration.ipynb
+              - file: pavics/RavenPy/docs/notebooks/06_Raven_calibration.ipynb
+              - file: pavics/RavenPy/docs/notebooks/07_Making_and_using_hotstart_files.ipynb
+              - file: pavics/RavenPy/docs/notebooks/08_Getting_and_bias_correcting_CMIP6_data.ipynb
+              - file: pavics/RavenPy/docs/notebooks/09_Hydrological_impacts_of_climate_change.ipynb
+              - file: pavics/RavenPy/docs/notebooks/10_Data_assimilation.ipynb
+              - file: pavics/RavenPy/docs/notebooks/11_Climatological_ESP_forecasting.ipynb
+              - file: pavics/RavenPy/docs/notebooks/12_Performing_hindcasting_experiments.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Assess_probabilistic_flood_risk.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Comparing_hindcasts_and_ESP_forecasts.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Distributed_hydrological_modelling.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Hydrological_realtime_forecasting.ipynb
+              - file: pavics/RavenPy/docs/notebooks/HydroShare_integration.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Managing_Jupyter_Environments.ipynb
+              - file: pavics/RavenPy/docs/notebooks/paper/Perform_a_climate_change_impact_study_on_a_watershed.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Perform_Regionalization.ipynb
+              - file: pavics/RavenPy/docs/notebooks/Running_HMETS_with_CANOPEX_dataset.ipynb
+              - file: pavics/RavenPy/docs/notebooks/time_series_analysis.ipynb

@@ -1,3 +1,15 @@
 [submodule "tutorials/pavics/pavics-sdi"]
 	path = tutorials/pavics/pavics-sdi
 	url = https://github.com/Ouranosinc/pavics-sdi.git
+[submodule "tutorials/pavics/finch"]
+	path = tutorials/pavics/finch
+	url = https://github.com/bird-house/finch.git
+[submodule "tutorials/pavics/PAVICS-landing"]
+	path = tutorials/pavics/PAVICS-landing
+	url = https://github.com/Ouranosinc/PAVICS-landing.git
+[submodule "tutorials/pavics/raven"]
+	path = tutorials/pavics/raven
+	url = https://github.com/Ouranosinc/raven.git
+[submodule "tutorials/pavics/RavenPy"]
+	path = tutorials/pavics/RavenPy
+	url = https://github.com/CSHS-CWRA/RavenPy.git

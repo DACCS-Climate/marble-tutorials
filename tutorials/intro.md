@@ -24,7 +24,7 @@ Intro to the Marble Network
 :link-type: doc
 :class-header: bg-dark
 
-PAVICS tutorials
+PAVICS examples
 ^^^
 
 Example notebooks for PAVICS
