@@ -1,6 +1,6 @@
 # Finch Examples
 
-## Example Notebooks:
+## Table of Contents:
 
 ```{tableofcontents}
 ```

@@ -1,6 +1,6 @@
 # PAVICS Documentation Examples
 
-## Example Notebooks:
+## Table of Contents:
 
 ```{tableofcontents}
 ```
