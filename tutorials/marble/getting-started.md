@@ -26,8 +26,9 @@ login.  For example, displayed at the top of the U of T node's login page is the
 
 ![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
 
-## <a id="jupyterlab"></a>JupyterLab
-## <a id="navigating-interface"></a>Navigating the Interface
+## Main Areas of the Platform
+### <a id="jupyterlab"></a>JupyterLab
+### <a id="navigating-interface"></a>Navigating the Interface
 ### Server Selection
 Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
@@ -56,14 +57,59 @@ The left sidebar consists of icon buttons that give quick access to features.
 
 
 #### <a id="setup-git"></a>Setting up a Git Repository 
-##### Setup Git Repository Using the Browser User Interface
+##### Setup Git Repository Using the Graphical User Interface
 
 If there is no Git repository set up you will see the following:
 
 ![No Repository Set Menu](images/getting-started/git-no-repo-menu.png)
 
-> **NOTE:** The JupyterLab Git sidebar interface will create a repository in the folder currently selected.  Check the folder breadcrumb menu to see which folder is selected
+Click **_Initialize Repository_** to create a Git repository in the current folder. 
 
-![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png)
+> **NOTE:** The current folder is the last one shown in the folder breadcrumb.
+> 
+> ![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png)
+> 
+> For example, if **_mypublic_** is the last one in the breadcrumb, then **_mypublic_** is the current folder selected 
 
+Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
+![Repository Created UI](images/getting-started/git-repo-created.png)
+
+##### Setup Git Repository Using the Jupyter Terminal
+
+Click the Terminal button to start a Terminal session.
+
+![Terminal Icon](images/getting-started/terminal-icon.png)
+
+![Terminal Session Screen](images/getting-started/terminal-session-screen.png)
+
+Check to see that you are in the default folder by executing the **_ls_** command.
+
+> ls
+
+If you are in the default folder you will see the following subfolders available to you:
+
+![Terminal Default Subfolders](images/getting-started/terminal-default-folders.png)
+
+Navigate into the **_notebook_dir_** directory.
+
+> cd notebook_dir
+
+You should see the public folders available to you.  These are the same folders seen when clicking the File Browser icon.
+
+![Terminal Notebook Dir](images/getting-started/terminal-notebook-dir.png)
+![File Browser Default Folders](images/getting-started/file-browser-default-folders.png)
+
+Navigate into the **_mypublic_** folder, then create a new folder here and then navigate into it.
+
+> cd mypublic
+> 
+> mkdir < your folder name >
+> 
+> cd < your folder name>
+
+Initialize your Git repository
+
+> git init
+
+![Terminal Git Init](images/getting-started/terminal-git-init.png)
