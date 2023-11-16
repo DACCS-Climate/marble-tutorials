@@ -16,6 +16,7 @@
 ## <a id="login-screen"></a>The Login Screen
 
 After clicking on a link to a node from the Marble website you will be brought to the login screen for that node.  
+Some may use JupyterHub as a login screen, some may have their own custom login screen.  
 
 ![U of T Node Login Screen](images/getting-started/login-screen.png)
 
