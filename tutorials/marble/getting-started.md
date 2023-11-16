@@ -2,10 +2,11 @@
 
 ## Table of Contents
 - [The Login Screen](#login-screen)
-- [Creating An Account](#creating-account)
 - [Logging In](#logging-in)
 - [Account Management](#account-management)
-- Main Areas of the Platform
+  - [Creating An Account](#creating-account)
+  - [Account Details](#account-details)
+- [Main Areas of the Platform](#main-areas)
   - [JupyterLab](#jupyterlab)
 - [Navigating the Interface](#navigating-interface)
 - [Setting up a Git Repository](#setup-git)
@@ -20,13 +21,21 @@ After clicking on a link to a node from the Marble website you will be brought t
 
 Enter your login credentials and click *Sign In*.  
 
-## <a id="creating-account"></a>Creating an Account
+## <a id="account-management"></a>Account Management
+Account management is handled by Magpie, the authorization service of the Marble platform.
+
+The Magpie homepage can be found at this [link](https://daccs.cs.toronto.edu/magpie/)
+
+### <a id="creating-account"></a>Creating an Account
 If you don't have login credentials contact the admin team for that particular node for a 
 login.  For example, displayed at the top of the U of T node's login page is the contact email for information on how to create an account.
 
+### <a id="account-details"></a>Account Details
+Account details can be accessed at the [Magpie homepage](https://daccs.cs.toronto.edu/magpie/)
+
 ![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
 
-## Main Areas of the Platform
+## <a id="main-areas"></a>Main Areas of the Platform
 ### <a id="jupyterlab"></a>JupyterLab
 ### <a id="navigating-interface"></a>Navigating the Interface
 ### Server Selection
@@ -48,12 +57,19 @@ The left sidebar consists of icon buttons that give quick access to features.
 |                                                                                                       |                    |                                                                                               |
 |-------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------------------------|
 | ![Left Sidebar Google Drive Icon](images/getting-started/left-menu-drive-icon.png)                    | Google Drive       |                                                                                               |
-| ![Left Sidebar Terminal Icon](images/getting-started/left-menu-terminal-icon.png)                     | Terminal           | Lists the Kernal and Terminal session currently running                                       |
+| ![Left Sidebar Terminal Icon](images/getting-started/left-menu-terminal-icon.png)                     | Terminal           | Lists the Kernel and Terminal session currently running                                       |
 | ![Left Sidebar Git Icon](images/getting-started/left-menu-git-icon.png)                               | Git                | Lists the repositories currently available<br/>[See: Setting up a Git repository](#setup-git) |
 | ![Left Sidebar Commands Icon](images/getting-started/left-menu-commands-icon.png)                     | Commands           |                                                                                               |
 | ![Left Sidebar Property Inspector Icon](images/getting-started/left-menu-property-inspector-icon.png) | Property Inspector |                                                                                               |
 | ![Left Sidebar Open Tabs Icon](images/getting-started/left-menu-open-tabs-icon.png)                   | Open Tabs          |                                                                                               |
 | ![Left Sidebar Extension Manager Icon](images/getting-started/left-menu-extension-manager-icon.png)   | Extensions         |                                                                                               |
+
+
+#### Terminal and Kernel Sessions
+
+The Terminal button shows the Terminal and Kernel sessions currently running.  You can switch between the current running Terminals and Kernels and also shut them down.
+
+![Terminal UI](images/getting-started/terminal-session-ui.png)
 
 
 #### <a id="setup-git"></a>Setting up a Git Repository 
@@ -65,7 +81,7 @@ If there is no Git repository set up you will see the following:
 
 Click **_Initialize Repository_** to create a Git repository in the current folder. 
 
-> **NOTE:** The current folder is the last one shown in the folder breadcrumb.
+> [!NOTE] The current folder is the last one shown in the folder breadcrumb.
 > 
 > ![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png)
 > 
