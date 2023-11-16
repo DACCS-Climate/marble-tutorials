@@ -9,6 +9,7 @@
 - [Main Areas of the Platform](#main-areas)
   - [JupyterLab](#jupyterlab)
 - [Navigating the Interface](#navigating-interface)
+  - [Home Screen](#home-screen)
 - [Setting up a Git Repository](#setup-git)
 
 
@@ -46,7 +47,7 @@ Once logged in you will see a dropdown list of the images available on the parti
 Select the one you want and click `Start`.
 ![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
 
-### Home Screen - JupyterLab
+### <a id="home-screen"></a> Home Screen - JupyterLab
 When it finishes loading you will be presented with a JupyterLab home screen.
 ![JupyterLab Home Screen](images/getting-started/jupyter-lab-home-screen.png)
 
