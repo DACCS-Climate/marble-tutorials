@@ -81,7 +81,7 @@ If there is no Git repository set up you will see the following:
 
 Click **_Initialize Repository_** to create a Git repository in the current folder. 
 
-> [!NOTE] The current folder is the last one shown in the folder breadcrumb.
+> **NOTE** The current folder is the last one shown in the folder breadcrumb.
 > 
 > ![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png)
 > 
