@@ -115,7 +115,7 @@ Navigate into the `notebook_dir` directory.
 ```
 cd notebook_dir
 ```
-You should see the public folders available to you.  These are the same folders seen when clicking the File Browser icon.
+You should see the public folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
 
 ![Terminal Notebook Dir](images/getting-started/terminal-notebook-dir.png)
 ![File Browser Default Folders](images/getting-started/file-browser-default-folders.png)
