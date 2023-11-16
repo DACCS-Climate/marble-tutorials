@@ -19,7 +19,7 @@ After clicking on a link to a node from the Marble website you will be brought t
 
 ![U of T Node Login Screen](images/getting-started/login-screen.png)
 
-Enter your login credentials and click *Sign In*.  
+Enter your login credentials and click `Sign In`.  
 
 ## <a id="account-management"></a>Account Management
 Account management is handled by Magpie, the authorization service of the Marble platform.
@@ -41,7 +41,7 @@ Account details can be accessed at the [Magpie homepage](https://daccs.cs.toront
 ### Server Selection
 Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
-Select the one you want and click *Start*.
+Select the one you want and click `Start`.
 ![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
 
 ### Home Screen - JupyterLab
@@ -78,7 +78,7 @@ If there is no Git repository set up you will see the following:
 
 ![No Repository Set Menu](images/getting-started/git-no-repo-menu.png)
 
-Click **_Initialize Repository_** to create a Git repository in the current folder. 
+Click `Initialize Repository` to create a Git repository in the current folder. 
 
 > [!NOTE]
 > 
@@ -86,7 +86,7 @@ Click **_Initialize Repository_** to create a Git repository in the current fold
 > 
 > ![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png) 
 > 
-> For example, if **_mypublic_** is the last one in the breadcrumb, then **_mypublic_** is the current folder selected 
+> For example, if `mypublic` is the last one in the breadcrumb, then `mypublic` is the current folder selected 
 
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
@@ -100,7 +100,7 @@ Click the Terminal button to start a Terminal session.
 
 ![Terminal Session Screen](images/getting-started/terminal-session-screen.png)
 
-Check to see that you are in the default folder by executing the **_ls_** command.
+Check to see that you are in the default folder by executing the `ls` command.
 
 ```
 ls
@@ -110,7 +110,7 @@ If you are in the default folder you will see the following subfolders available
 
 ![Terminal Default Subfolders](images/getting-started/terminal-default-folders.png)
 
-Navigate into the **_notebook_dir_** directory.
+Navigate into the `notebook_dir` directory.
 
 ```
 cd notebook_dir
@@ -120,14 +120,16 @@ You should see the public folders available to you.  These are the same folders 
 ![Terminal Notebook Dir](images/getting-started/terminal-notebook-dir.png)
 ![File Browser Default Folders](images/getting-started/file-browser-default-folders.png)
 
-Navigate into the **_mypublic_** folder, then create a new folder here and then navigate into it.
+Navigate into the `mypublic` folder, then create a new folder here and then navigate into it.
+
+Substitute `your-folder-name` with a new folder name. 
 
 ```
 cd mypublic
 
-mkdir < your folder name >
+mkdir your-folder-name
 
-cd < your folder name>
+cd your-folder-name
 ```
 Initialize your Git repository
 
