@@ -11,6 +11,8 @@
 - [Navigating the Interface](#navigating-interface)
   - [Home Screen](#home-screen)
 - [Setting up a Git Repository](#setup-git)
+  - [Setting up using the Graphical User Interface](#setup-git-gui)
+  - [Setting up using the Terminal](#setup-git-terminal)
 
 
 
@@ -75,7 +77,8 @@ The Terminal button shows the Terminal and Kernel sessions currently running.  Y
 
 
 #### <a id="setup-git"></a>Setting up a Git Repository 
-##### Setup Git Repository Using the Graphical User Interface
+
+##### <a id="setup-git-gui "></a>Setup Git Repository Using the Graphical User Interface
 
 If there is no Git repository set up you will see the following:
 
@@ -95,7 +98,7 @@ Once it is done the left sidebar will show the Git interface.  This is where you
 
 ![Repository Created UI](images/getting-started/git-repo-created.png)
 
-##### Setup Git Repository Using the Jupyter Terminal
+##### <a id="setup-git-terminal "></a>Setup Git Repository Using the Jupyter Terminal
 
 Click the Terminal button to start a Terminal session.
 
