@@ -31,10 +31,11 @@ The Magpie homepage can be found at this [link](https://daccs.cs.toronto.edu/mag
 If you don't have login credentials contact the admin team for that particular node for a 
 login.  For example, displayed at the top of the U of T node's login page is the contact email for information on how to create an account.
 
+![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
+
 ### <a id="account-details"></a>Account Details
 Account details can be accessed at the [Magpie homepage](https://daccs.cs.toronto.edu/magpie/)
 
-![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
 
 ## <a id="main-areas"></a>Main Areas of the Platform
 ### <a id="jupyterlab"></a>JupyterLab
