@@ -48,21 +48,20 @@ Select the one you want and click *Start*.
 When it finishes loading you will be presented with a JupyterLab home screen.
 ![JupyterLab Home Screen](images/getting-started/jupyter-lab-home-screen.png)
 
-> **NOTE:** The JupyterLab home screen will be different depending on the image you select.
 
 ### Menus
 #### Left Sidebar
 The left sidebar consists of icon buttons that give quick access to features.
 
-|                                                                                                       |                    |                                                                                               |
-|-------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------------------------|
-| ![Left Sidebar Google Drive Icon](images/getting-started/left-menu-drive-icon.png)                    | Google Drive       |                                                                                               |
-| ![Left Sidebar Terminal Icon](images/getting-started/left-menu-terminal-icon.png)                     | Terminal           | Lists the Kernel and Terminal session currently running                                       |
-| ![Left Sidebar Git Icon](images/getting-started/left-menu-git-icon.png)                               | Git                | Lists the repositories currently available<br/>[See: Setting up a Git repository](#setup-git) |
-| ![Left Sidebar Commands Icon](images/getting-started/left-menu-commands-icon.png)                     | Commands           |                                                                                               |
-| ![Left Sidebar Property Inspector Icon](images/getting-started/left-menu-property-inspector-icon.png) | Property Inspector |                                                                                               |
-| ![Left Sidebar Open Tabs Icon](images/getting-started/left-menu-open-tabs-icon.png)                   | Open Tabs          |                                                                                               |
-| ![Left Sidebar Extension Manager Icon](images/getting-started/left-menu-extension-manager-icon.png)   | Extensions         |                                                                                               |
+|                                                                                                       |                    |                                                                                                |
+|-------------------------------------------------------------------------------------------------------|--------------------|------------------------------------------------------------------------------------------------|
+| ![Left Sidebar Google Drive Icon](images/getting-started/left-menu-drive-icon.png)                    | Google Drive       |                                                                                                |
+| ![Left Sidebar Terminal Icon](images/getting-started/left-menu-terminal-icon.png)                     | Terminal           | Lists the Kernel and Terminal session currently running                                        |
+| ![Left Sidebar Git Icon](images/getting-started/left-menu-git-icon.png)                               | Git                | Lists the repositories currently available<br/> See: [Setting up a Git repository](#setup-git) |
+| ![Left Sidebar Commands Icon](images/getting-started/left-menu-commands-icon.png)                     | Commands           |                                                                                                |
+| ![Left Sidebar Property Inspector Icon](images/getting-started/left-menu-property-inspector-icon.png) | Property Inspector |                                                                                                |
+| ![Left Sidebar Open Tabs Icon](images/getting-started/left-menu-open-tabs-icon.png)                   | Open Tabs          |                                                                                                |
+| ![Left Sidebar Extension Manager Icon](images/getting-started/left-menu-extension-manager-icon.png)   | Extensions         |                                                                                                |
 
 
 #### Terminal and Kernel Sessions
@@ -103,7 +102,9 @@ Click the Terminal button to start a Terminal session.
 
 Check to see that you are in the default folder by executing the **_ls_** command.
 
-> ls
+```
+ls
+```
 
 If you are in the default folder you will see the following subfolders available to you:
 
@@ -111,8 +112,9 @@ If you are in the default folder you will see the following subfolders available
 
 Navigate into the **_notebook_dir_** directory.
 
-> cd notebook_dir
-
+```
+cd notebook_dir
+```
 You should see the public folders available to you.  These are the same folders seen when clicking the File Browser icon.
 
 ![Terminal Notebook Dir](images/getting-started/terminal-notebook-dir.png)
@@ -120,14 +122,17 @@ You should see the public folders available to you.  These are the same folders 
 
 Navigate into the **_mypublic_** folder, then create a new folder here and then navigate into it.
 
-> cd mypublic
-> 
-> mkdir < your folder name >
-> 
-> cd < your folder name>
+```
+cd mypublic
 
+mkdir < your folder name >
+
+cd < your folder name>
+```
 Initialize your Git repository
 
-> git init
+```
+git init
+```
 
 ![Terminal Git Init](images/getting-started/terminal-git-init.png)
