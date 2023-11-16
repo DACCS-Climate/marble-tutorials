@@ -80,10 +80,13 @@ If there is no Git repository set up you will see the following:
 ![No Repository Set Menu](images/getting-started/git-no-repo-menu.png)
 
 Click **_Initialize Repository_** to create a Git repository in the current folder. 
+> [!NOTE]
+> Highlights information that users should take into account, even when skimming.
 
 > [!NOTE] The current folder is the last one shown in the folder breadcrumb.
+> 
 > ![Folder Breadcrumb Menu](images/getting-started/folder-breadcrumb.png) 
-
+> 
 > For example, if **_mypublic_** is the last one in the breadcrumb, then **_mypublic_** is the current folder selected 
 
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
