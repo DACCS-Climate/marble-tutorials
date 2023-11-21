@@ -2,18 +2,67 @@
 
 ## Table of Contents
 - [Introduction to Git](#intro-git)
+- [Git Best Practices](#best-practices)
+
 - [Setting up a Git Repository](#setup-git)
+  - [Creating a GitHub Account](#github-account)
+  - [Creating a Remote Repository](#remote-repository)
+  - [Creating a Personal Access Token](#personal-access-token)
   - [Setting up using the Graphical User Interface](#setup-git-gui)
+    - [Adding a Remote Repository](#add-remote-gui)
+    - [Creating a Local Repository](#local-repository-gui)
   - [Setting up using the Terminal](#setup-git-terminal)
+    - [Adding a Remote Repository](#add-remote-terminal)
+    - [Creating a Local Repository](#local-repository-terminal)
+- [Using Git](#using-git)
+  - [Using Git with the Graphical User Interface](#using-git-gui)
+    - [Making Your First Commit](#first-commit)
+    - [Pushing Your First Commit](#push-commit)
+  - [Using Git with the Terminal](#using-git-terminal)
 - [Main Areas of the Platform](#main-areas)
 
 ## <a id="intro-git"></a>Introduction to Git
 
-Version control is a vital tool
+Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
 
-Git is one of the most popular version control systems in use today.
+Git is one of the most popular version control systems in use today. It has a native commandline interface but also has 
+a desktop GUI client for Windows and MacOS.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
+
+## <a id="best-practices"></a>Git Best Practices
+
+
+
 
 ## <a id="setup-git"></a>Setting up a Git Repository 
+
+[GitHub Desktop Client](https://desktop.github.com/)
+
+### <a id="github-account"></a>Creating a GitHub Account
+To begin using Git you need to create a free account on [GitHub](https://github.com/).  
+Go to the GitHub website and follow the instructions to create an account. 
+
+### <a id="remote-repository"></a>Creating a Remote Repository
+
+After creating account click `Repository` at the top menu and then `New`
+
+![GitHub Top Menu](images/getting-started/github-top-menu.png)
+
+![GitHub New Button](images/getting-started/github-new-button.png)
+
+Fill in the form with the details of the repository and click the `Create Repository` button at the bottom of the page.
+
+### <a id="creating-pat"></a>Creating a Personal Access Token
+
+A Personal Access Token is used to authenticate the user when pushing files to the remote repository
+
+Go to [GitHub](https://github.com/) and log into your account.
+
+Click on: **Your User Profile** &rarr; **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Generate New Token or Tokens(classic)**
+
+Choose an expiration date.  Check all the boxes in the form.  Click **Generate Token**. Copy the generated token.
+
+
+
 
 ### <a id="setup-git-gui"></a>Setup Git Repository Using the Graphical User Interface
 
@@ -21,6 +70,14 @@ If there is no Git repository set up you will see the following:
 
 ![No Repository Set Menu](images/getting-started/git-no-repo-menu.png)
 
+### <a id="add-remote-gui"></a>Adding a Remote Repository
+
+Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
+
+From the menu click `Git` and then select `Add Remote Repository`.  Enter the URL of the repository you created on 
+GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
+
+### <a id="local-repository-gui"></a>Creating a Local Repository
 Click `Initialize Repository` to create a Git repository in the current folder. 
 
 > [!NOTE]
@@ -34,6 +91,8 @@ Click `Initialize Repository` to create a Git repository in the current folder.
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
 ![Repository Created UI](images/getting-started/git-repo-created.png)
+
+
 
 ### <a id="setup-git-terminal"></a>Setup Git Repository Using the Jupyter Terminal
 
@@ -81,3 +140,61 @@ git init
 ```
 
 ![Terminal Git Init](images/getting-started/terminal-git-init.png)
+
+
+### <a id="add-remote-terminal"></a>Adding a Remote Repository
+```
+git remote add origin url-of-your-git-repository
+```
+
+## <a id="using-git"></a>Using Git
+### <a id="using-git-gui"></a>Using Git with the Graphical User Interface
+By default when you create a new repository you will be using the **master** branch.
+This is the main branch where the initial work files will be pushed to and also where the final work version will be.
+
+It is good practice to create work branches from the master branch where all the changes to your work will be done.
+Once the changes are complete they can be pushed and merged with the master branch
+
+### <a id="first-commit"></a>Making Your First Commit
+
+Start by creating a file.  In this example a Jupyter Notebook file is created by clicking one of the Jupyter Notebook buttons in the launcher.
+
+![Jupyter Notebook Launcher Buttons](images/getting-started/jupyter-notebook-buttons.png)
+
+When the file is created or altered it will be seen under the `Untracked` section in the Git sidebar.
+
+![Git Untracked](images/getting-started/git-untracked.png)
+
+To get the file ready to be committed and pushed, hover the mouse over the file and click the plus symbol next to it.  This **Stages** the file
+
+![Git Untracked Staged](images/getting-started/git-untracked-plus.png)
+
+The file will now appear under the `Staged` section.
+
+![Git Staged](images/getting-started/git-staged.png)
+
+Select the file and fill in the Title/Summary for the commit.  It should be short and descriptive.  
+It can be as simple as "Updated Untitled.ipynb" or more specific, such as "Added visualization for rainfall 2022".
+
+A description is recommended but is not required.
+
+![Git Commit Title](images/getting-started/git-commit-title.png)
+
+When done click the `Commit` button below the commit description.  If successful you will see a `Committed changes` status pop up in the lower right corner.
+
+![Git Commit Successful](images/getting-started/git-commit-successful.png)
+
+### <a id="push-commit"></a>Pushing a Commit
+
+Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
+repository where they can be merged with the master/main branch.  Up to now no branches have been made.
+
+Click the `Git` menu and `Push to Remote`
+
+![Git Push Menu](images/getting-started/git-push-menu.png)
+
+Enter in your login credentials.  For the password enter your Personal Access Token.
+
+![Git Push Credentials](images/getting-started/git-push-credentials.png)
+
+### <a id="using-git-terminal"></a>Using Git with the Terminal
