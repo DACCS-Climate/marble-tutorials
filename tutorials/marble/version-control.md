@@ -17,7 +17,9 @@
 - [Using Git](#using-git)
   - [Using Git with the Graphical User Interface](#using-git-gui)
     - [Making Your First Commit](#first-commit)
-    - [Pushing Your First Commit](#push-commit)
+    - [Pushing a Commit](#push-commit)
+    - [Creating a Branch](#create-branch)
+    - [Creating a Pull Request](#create-pr)
   - [Using Git with the Terminal](#using-git-terminal)
 - [Main Areas of the Platform](#main-areas)
 
@@ -193,8 +195,57 @@ Click the `Git` menu and `Push to Remote`
 
 ![Git Push Menu](images/getting-started/git-push-menu.png)
 
-Enter in your login credentials.  For the password enter your Personal Access Token.
+Enter in your login credentials.  For the password enter your Personal Access Token.  Click `OK`.
+
 
 ![Git Push Credentials](images/getting-started/git-push-credentials.png)
+
+If successful you will see a `Successfully pushed` status pop up in the lower right corner.
+
+![Push Successful](images/getting-started/push-successful.png)
+
+### <a id="create-branch"></a>Creating a Branch
+
+Click the down arrow in the `Current Branch` section in the Git sidebar.  It will reveal the `Branches` window and show all the created branches.
+
+Click the `New Branch` button.
+
+![New Branch Button](images/getting-started/new-branch-button.png)
+
+Fill out the form and input a branch name, and click which branch to base the new branch off of.  After that click `Create Branch`.
+
+It is good practice to not use spaces or special characters in the branch name other than dashes.
+
+
+![New Branch Form](images/getting-started/new-branch-dialog.png)
+
+Git will automatically switch you into the new branch.  Your newly created branch will be shown under `Current Branch` and be in the list of branches.  
+
+![Create Branch Successful](images/getting-started/create-branch-successful.png)
+
+### <a id="create-pr"></a>Creating a Pull Request
+A Pull Request is done from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
+
+![GitHub PR Notice](images/getting-started/github-pr-notice.png)
+
+Click the `Compare & pull request` button.  
+
+If you don't see a notification, click the `Pull Request` menu button and then the `New Request` button on the following page.
+
+![GitHub PR Menu](images/getting-started/github-pr-menu.png)  ![GitHub New PR](images/getting-started/github-new-pr.png)
+
+You'll be taken to the `Open a pull request` page.
+
+Here, make sure the `base` is set to **master** and the `compare` is set to the branch you want to compare the **master** branch with.
+
+![GitHub Base Compare](images/getting-started/github-base-compare.png)
+
+Fill out the form and provide a title and description of the changes made.  
+
+If you have someone who can review your pull request click the cog icon in the right side of the screen under the `Reviewers` section and select their name.
+
+![GitHub Reviewers](images/getting-started/github-reviewers.png)
+
+Then click the `Create Pull Request` button.
 
 ### <a id="using-git-terminal"></a>Using Git with the Terminal
