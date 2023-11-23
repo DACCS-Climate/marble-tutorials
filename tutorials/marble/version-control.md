@@ -1,9 +1,11 @@
 # Version Control
 
+Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
+
+
 ## Table of Contents
 - [Introduction to Git](#intro-git)
 - [Git Best Practices](#best-practices)
-
 - [Setting up a Git Repository](#setup-git)
   - [Creating a GitHub Account](#github-account)
   - [Creating a Remote Repository](#remote-repository)
@@ -17,23 +19,43 @@
 - [Using Git](#using-git)
   - [Using Git with the Graphical User Interface](#using-git-gui)
     - [Making Your First Commit](#first-commit)
-    - [Pushing a Commit](#push-commit)
-    - [Creating a Branch](#create-branch)
-    - [Creating a Pull Request](#create-pr)
+    - [Staging a Commit](#stage-gui)
+    - [Making a Commit](#commit-gui)
+    - [Pushing a Commit](#push-gui)
+    - [Creating a Branch](#create-branch-gui)
   - [Using Git with the Terminal](#using-git-terminal)
-- [Main Areas of the Platform](#main-areas)
+    - [Staging a Commit](#stage-terminal)
+    - [View Staged Files](#view-stage-terminal)
+    - [Making a Commit](#commit-terminal)
+    - [Pushing a Commit](#push-terminal)
+    - [Creating a Branch](#create-branch-terminal)
+- [Creating a Pull Request](#create-pr)
+- [Merging Your Branch](#merge-branch)
 
 ## <a id="intro-git"></a>Introduction to Git
-
-Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
 
 Git is one of the most popular version control systems in use today. It has a native commandline interface but also has 
 a desktop GUI client for Windows and MacOS.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
 
 ## <a id="best-practices"></a>Git Best Practices
 
+### Organize with Branches
 
+Create a branch for each issue you're working on.  Have one for data ingestion, one for visualization, and one for bug fixes.
 
+This keeps the workflow clean.  If something went wrong you know which branch the changes came from.
+
+### Write Descriptive Commit Messages
+
+A good commit message documents the changes made in the commit so that when looking through the commits you can see the direction your work is going in.
+
+### Commit finished tasks only
+
+Each commit should be a completed logical chunk of the overall workflow.  If you need to commit often, split up the workflow into smaller tasks.
+
+### Test code before committing
+
+Related to only committing finished tasks, test your code to ensure it does what it is intended to do before committing.
 
 ## <a id="setup-git"></a>Setting up a Git Repository 
 
@@ -167,13 +189,17 @@ When the file is created or altered it will be seen under the `Untracked` sectio
 
 ![Git Untracked](images/getting-started/git-untracked.png)
 
-To get the file ready to be committed and pushed, hover the mouse over the file and click the plus symbol next to it.  This **Stages** the file
+### <a id="stage-gui"></a>Staging a File
+
+To get the file ready to be committed and pushed, hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
 ![Git Untracked Staged](images/getting-started/git-untracked-plus.png)
 
 The file will now appear under the `Staged` section.
 
 ![Git Staged](images/getting-started/git-staged.png)
+
+### <a id="commit-gui"></a>Making a Commit
 
 Select the file and fill in the Title/Summary for the commit.  It should be short and descriptive.  
 It can be as simple as "Updated Untitled.ipynb" or more specific, such as "Added visualization for rainfall 2022".
@@ -186,7 +212,7 @@ When done click the `Commit` button below the commit description.  If successful
 
 ![Git Commit Successful](images/getting-started/git-commit-successful.png)
 
-### <a id="push-commit"></a>Pushing a Commit
+### <a id="push-gui"></a>Pushing a Commit
 
 Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
 repository where they can be merged with the master/main branch.  Up to now no branches have been made.
@@ -204,7 +230,7 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 
 ![Push Successful](images/getting-started/push-successful.png)
 
-### <a id="create-branch"></a>Creating a Branch
+### <a id="create-branch-gui"></a>Creating a Branch
 
 Click the down arrow in the `Current Branch` section in the Git sidebar.  It will reveal the `Branches` window and show all the created branches.
 
@@ -223,14 +249,69 @@ Git will automatically switch you into the new branch.  Your newly created branc
 
 ![Create Branch Successful](images/getting-started/create-branch-successful.png)
 
-### <a id="create-pr"></a>Creating a Pull Request
+
+
+### <a id="using-git-terminal"></a>Using Git with the Terminal
+
+### Set Up Your Git Identifier
+
+If you are working in a team this will show who made a certain commit.
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "email@email.com"
+```
+
+### <a id="stage-terminal"></a>Staging a File
+
+Make sure you are in the same directory as the file you want to stage.
+
+```
+git add <filename>
+```
+
+### <a id="view-stage-terminal"></a>View Staged Files
+
+If you have multiple files staged and ready to commit you can see the list by using `git status`.
+
+```
+git status
+```
+
+
+### <a id="commit-terminal"></a>Making a Commit
+
+Add a brief descriptive message about your commit.
+
+```
+git commit -m "your brief commit message goes here"
+```
+
+### <a id="push-terminal"></a>Pushing a Commit
+
+After your commit is complete, push it to the remote repository
+
+```
+git push
+```
+
+### <a id="create-branch-terminal"></a>Creating a Branch
+
+```
+git branch <new-branch-name>
+```
+
+
+## <a id="create-pr"></a>Creating a Pull Request
+A Pull Request is done when you want to merge your changes into the **master**/**main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
+
 A Pull Request is done from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
 
 ![GitHub PR Notice](images/getting-started/github-pr-notice.png)
 
 Click the `Compare & pull request` button.  
 
-If you don't see a notification, click the `Pull Request` menu button and then the `New Request` button on the following page.
+If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
 
 ![GitHub PR Menu](images/getting-started/github-pr-menu.png)  ![GitHub New PR](images/getting-started/github-new-pr.png)
 
@@ -248,4 +329,9 @@ If you have someone who can review your pull request click the cog icon in the r
 
 Then click the `Create Pull Request` button.
 
-### <a id="using-git-terminal"></a>Using Git with the Terminal
+## <a id="merge-branch"></a>Merging Your Branch
+Merging branches is done on the GitHub site.
+
+After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
+
+![GitHub Merge](images/getting-started/github-merge-button.png)
