@@ -8,7 +8,7 @@
 - [Account Management](#account-management)
   - [Creating An Account](#creating-account)
   - [Account Details](#account-details)
-- [Version Control](https://github.com/DACCS-Climate/marble-tutorials/blob/alex-tutorials/tutorials/marble/version-control.md#version-control)
+
 
 
 
