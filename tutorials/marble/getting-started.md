@@ -4,8 +4,6 @@
 - [Main Areas of the Platform](#main-areas)
   - [Server Selection](#server-selection)
   - [JupyterLab](#jupyterlab)
-    - [Navigating the Interface](#navigating-interface)
-      - [Home Screen](#home-screen)
 - [Logging In](#logging-in)
 - [Account Management](#account-management)
   - [Creating An Account](#creating-account)
@@ -47,33 +45,24 @@ Select the one you want and click `Start`.
 
 
 ### <a id="jupyterlab"></a>JupyterLab
-### <a id="navigating-interface"></a>Navigating the Interface
+[JupyterLab](https://jupyterlab.readthedocs.io) will be our primary method for your 
+interactions with the Marble Platform. JupyterLab contains a complete environment for
+interactive scientific computing which runs in your web browser. Jupyter is an
+open source python project that was started by scientists like yourselves who
+wanted a more effective way to interact with their computers. While Jupyter notebooks cannot 
+be used for productionized products, they allow for more readable and understandable projects.
+Perfect for Exploratory Data Analysis, Modelling and Experimentation. 
 
-### <a id="home-screen"></a> Home Screen - JupyterLab
-When it finishes loading you will be presented with a JupyterLab home screen.
-![JupyterLab Home Screen](images/getting-started/jupyter-lab-home-screen.png)
+JupyterLab has excellent documentation. Rather than repeat that documentation
+here, we point you to their docs. The following pages are particularly relevant:
 
+- [The JupyterLab Interface](https://jupyterlab.readthedocs.io/en/stable/user/interface.html)
+- [Working with Files](https://jupyterlab.readthedocs.io/en/stable/user/files.html)
+- [The Text Editor](https://jupyterlab.readthedocs.io/en/stable/user/file_editor.html)
+- [Notebooks](https://jupyterlab.readthedocs.io/en/stable/user/notebook.html)
+- [Terminals](https://jupyterlab.readthedocs.io/en/stable/user/terminal.html)
+- [Managing Kernels and Terminals](https://jupyterlab.readthedocs.io/en/stable/user/running.html)
 
-### Menus
-#### Left Sidebar
-The left sidebar consists of icon buttons that give quick access to features.
-
-|                                                                                                       |                    |                                                                                                |
-|-------------------------------------------------------------------------------------------------------|--------------------|------------------------------------------------------------------------------------------------|
-| ![Left Sidebar Google Drive Icon](images/getting-started/left-menu-drive-icon.png)                    | Google Drive       |                                                                                                |
-| ![Left Sidebar Terminal Icon](images/getting-started/left-menu-terminal-icon.png)                     | Terminal           | Lists the Kernel and Terminal session currently running                                        |
-| ![Left Sidebar Git Icon](images/getting-started/left-menu-git-icon.png)                               | Git                | Lists the repositories currently available<br/> See: [Setting up a Git repository](#setup-git) |
-| ![Left Sidebar Commands Icon](images/getting-started/left-menu-commands-icon.png)                     | Commands           |                                                                                                |
-| ![Left Sidebar Property Inspector Icon](images/getting-started/left-menu-property-inspector-icon.png) | Property Inspector |                                                                                                |
-| ![Left Sidebar Open Tabs Icon](images/getting-started/left-menu-open-tabs-icon.png)                   | Open Tabs          |                                                                                                |
-| ![Left Sidebar Extension Manager Icon](images/getting-started/left-menu-extension-manager-icon.png)   | Extensions         |                                                                                                |
-
-
-#### Terminal and Kernel Sessions
-
-The Terminal button shows the Terminal and Kernel sessions currently running.  You can switch between the current running Terminals and Kernels and also shut them down.
-
-![Terminal UI](images/getting-started/terminal-session-ui.png)
 
 
 
