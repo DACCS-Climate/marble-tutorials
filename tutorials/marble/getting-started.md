@@ -6,6 +6,8 @@
   - [Finding a Node](#find-node)
   - [Server Selection](#server-selection)
   - [JupyterLab](#jupyterlab)
+  - [The Data Catalog](#data-catalog)
+  - [Tutorials](#tutorials)
 - [Account Management](#account-management)
   - [Creating An Account](#creating-account)
   - [Account Details](#account-details)
@@ -34,9 +36,23 @@ Select the one you want and click `Start`.
 
 ### <a id="jupyterlab"></a>JupyterLab
 JupyterLab will be the main area where you will be doing your work.  Start a notebook by clicking the `Python 3` button or `birdy` button (if available) under the Notebook section. 
-![Jupyter Notebook Buttons](images/getting-started/jupyter-notebook-buttons.png)
 
+![Jupyter Notebook Buttons](images/version-control/jupyter-notebook-buttons.png)
 
+### <a id="data-catalog"></a>The Data Catalog
+The Data Catalog is where the data on each node can be found.  
+
+From the [Marble Climate](https://marbleclimate.com) website. Click the `Data Catalog` link.  On the **Data Catalog** page select the node whose data you wish to browse.  You will then be taken to the STAC Browser for that node.
+
+![STAC Browser Home](images/getting-started/stac-browser-home.png)
+
+### <a id="tutorials"></a>Tutorials
+
+Tutorials are available from the [Marble Climate](https://marbleclimate.com) website from the `Tutorials` menu link.
+
+Here you will find examples of how to use Marble and the services provided on Marble to conduct data analysis.
+
+![Marble Tutorials Page](images/getting-started/marble-tutorials-page.png)
 
 ## <a id="account-management"></a>Account Management
 Account management is handled by Magpie, the authorization service of the Marble platform.
@@ -50,7 +66,13 @@ login.  For example, displayed at the top of the U of T node's login page is the
 ![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
 
 ### <a id="account-details"></a>Account Details
-Account details can be accessed at the [Magpie homepage](https://daccs.cs.toronto.edu/magpie/)
+Account details can be accessed at the [Magpie User Management](https://daccs.cs.toronto.edu/magpie/) page
+
+### <a id="change-password"></a>Changing Your Password
+
+After logging into the Magpie User Management click the `Account` button to display the **Account User** page.  Next to **Password** click the `Edit` button to change the password.
+
+![User Account](images/getting-started/account-button.png)
 
 ## <a id="logging-in"></a>Logging In
 
@@ -60,4 +82,6 @@ Some may use JupyterHub as a login screen, some may have their own custom login 
 ![U of T Node Login Screen](images/getting-started/login-screen.png)
 
 Enter your login credentials and click `Sign In`.  
+
+
 
