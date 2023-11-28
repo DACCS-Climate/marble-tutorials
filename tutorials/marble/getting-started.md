@@ -19,9 +19,11 @@
 ### <a id="find-node"></a>Finding a Node
 From the [Marble Climate homepage](https://marbleclimate.com/index.html) click one of the entries describing a node.
 
+![Node Description Item](images/getting-started/node-description-item.png)
+
 You will be taken to the node information which lists the services available on that node and contains the link to that node. 
 
-![Node Description Item](images/getting-started/node-description-item.png)
+![Node Services](images/getting-started/node-services.png)
 
 Click on the link to go to the landing page of that node.
 
@@ -37,7 +39,7 @@ Select the one you want and click `Start`.
 ### <a id="jupyterlab"></a>JupyterLab
 JupyterLab will be the main area where you will be doing your work.  Start a notebook by clicking the `Python 3` button or `birdy` button (if available) under the Notebook section. 
 
-![Jupyter Notebook Buttons](images/version-control/jupyter-notebook-buttons.png)
+![Jupyter Notebook Buttons](images/getting-started/jupyter-notebook-buttons.png)
 
 ### <a id="data-catalog"></a>The Data Catalog
 The Data Catalog is where the data on each node can be found.  
