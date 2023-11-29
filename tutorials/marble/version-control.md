@@ -85,7 +85,12 @@ Click on: **Your User Profile** &rarr; **Settings** &rarr; **Developer Settings*
 
 Choose an expiration date.  Check all the boxes in the form.  Click **Generate Token**. Copy the generated token.
 
+Whenever you push a commit, use the personal access token in place of a password when ask for your GitHub credentials.
 
+> [!WARNING]
+> 
+> Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
+> 
 
 
 ### <a id="setup-git-gui"></a>Setup Git Repository Using the Graphical User Interface
@@ -102,7 +107,14 @@ From the menu click `Git` and then select `Add Remote Repository`.  Enter the UR
 GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
 
 ### <a id="local-repository-gui"></a>Creating a Local Repository
+
+> [!NOTE]
+> 
+> The repository needs to be in a folder with write permissions enabled.  If you also want the repository to be viewable publically, put it in the `mypublic` folder.  If you want it to be private put it in the `writable-workspace` folder
+
+
 Click `Initialize Repository` to create a Git repository in the current folder. 
+
 
 > [!NOTE]
 > 
@@ -111,6 +123,7 @@ Click `Initialize Repository` to create a Git repository in the current folder.
 > ![Folder Breadcrumb Menu](images/version-control/folder-breadcrumb.png) 
 > 
 > For example, if `mypublic` is the last one in the breadcrumb, then `mypublic` is the current folder selected 
+
 
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
