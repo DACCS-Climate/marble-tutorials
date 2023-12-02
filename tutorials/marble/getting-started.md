@@ -2,39 +2,39 @@
 
 ## Table of Contents
 
+-[The Marble Platform](#marble-platform)
+-[Nodes](#nodes)
 - [Main Areas of the Platform](#main-areas)
-  - [Finding a Node](#find-node)
-  - [Server Selection](#server-selection)
+  - [The Homepage](#homepage)
   - [JupyterLab](#jupyterlab)
   - [The Data Catalog](#data-catalog)
+  - [The Web Processing Services](#webservices)
   - [Tutorials](#tutorials)
-- [Account Management](#account-management)
-  - [Creating An Account](#creating-account)
-  - [Account Details](#account-details)
-- [Logging In](#logging-in)
 
+## <a id="marble-platform"></a>The Marble Platform
+
+The Marble Platform is made up of several servers (nodes) connected to each other. 
+Each node provides data storage, and web services for managing workflows and processing data.  
+
+Marble provides the perfect podium for climate researchers to store and share their work. 
+A climate researcher's findings can be stored on the Marble Platform where it will be accessible by the public.
+
+## <a id="nodes"></a>Nodes
+
+There are currently four nodes in the Marble network, and each are hosted by a different organization. 
+
+Each node has a different focus - the Ouranos PAVICS node focuses on climate analysis, the Computer Research Institute of Montreal (CRIM) node focuses on machine
+learning, the U of T node focuses on climate research, and the Pacific Climate Impacts Consortium (PCIC) node focuses on data management and storage.
+
+When using Marble you are choosing one of these nodes on which to perform data analysis, but you will have access to
+the resources of all of the nodes on the network. 
 
 ## <a id="main-areas"></a>Main Areas of the Platform
 
-### <a id="find-node"></a>Finding a Node
-From the [Marble Climate homepage](https://marbleclimate.com/index.html) click one of the entries describing a node.
+### <a id="homepage"></a>The Homepage
 
-![Node Description Item](images/getting-started/node-description-item.png)
-
-You will be taken to the node information which lists the services available on that node and contains the link to that node. 
-
-![Node Services](images/getting-started/node-services.png)
-
-Click on the link to go to the landing page of that node.
-
-![Node Information](images/getting-started/node-info.png)
-
-
-### <a id="server-selection"></a>Server Selection
-Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
-
-Select the one you want and click `Start`.
-![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
+The [Marble Climate homepage](https://marbleclimate.com/index.html) is the main point of access to the Marble platform 
+and main source of information.
 
 ### <a id="jupyterlab"></a>JupyterLab
 JupyterLab will be the main area where you will be doing your work.  Start a notebook by clicking the `Python 3` button or `birdy` button (if available) under the Notebook section. 
@@ -42,11 +42,20 @@ JupyterLab will be the main area where you will be doing your work.  Start a not
 ![Jupyter Notebook Buttons](images/getting-started/jupyter-notebook-buttons.png)
 
 ### <a id="data-catalog"></a>The Data Catalog
-The Data Catalog is where the data on each node can be found.  
+The STAC Browser is the interface to the vast data catalog stored on each node.  
 
 From the [Marble Climate](https://marbleclimate.com) website. Click the `Data Catalog` link.  On the **Data Catalog** page select the node whose data you wish to browse.  You will then be taken to the STAC Browser for that node.
 
 ![STAC Browser Home](images/getting-started/stac-browser-home.png)
+
+### <a id="webservices"></a>The Web Processing Services
+The [Web Processing Services](https://marbleclimate.com/remote-processing.html) are provided by the 
+[Bird House](https://github.com/bird-house).  Each "bird" in the bird house provides a specific service tailored for climate research.
+
+- [Finch](https://pavics-sdi.readthedocs.io/projects/finch/en/latest/) provides climate indicator processing
+- [Raven](https://pavics-sdi.readthedocs.io/projects/raven/en/latest/) provides hydrological modelling and analytics
+- [Hummingbird](https://birdhouse-hummingbird.readthedocs.io/en/latest/index.html) provides metadata checks
+- [Weaver](https://pavics-weaver.readthedocs.io/en/latest/) allows entire workflows to be executed remotely
 
 ### <a id="tutorials"></a>Tutorials
 
@@ -56,34 +65,6 @@ Here you will find examples of how to use Marble and the services provided on Ma
 
 ![Marble Tutorials Page](images/getting-started/marble-tutorials-page.png)
 
-## <a id="account-management"></a>Account Management
-Account management is handled by Magpie, the authorization service of the Marble platform.
-
-The Magpie homepage can be found at this [link](https://daccs.cs.toronto.edu/magpie/)
-
-### <a id="creating-account"></a>Creating an Account
-If you don't have login credentials contact the admin team for that particular node for a 
-login.  For example, displayed at the top of the U of T node's login page is the contact email for information on how to create an account.
-
-![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
-
-### <a id="account-details"></a>Account Details
-Account details can be accessed at the [Magpie User Management](https://daccs.cs.toronto.edu/magpie/) page
-
-### <a id="change-password"></a>Changing Your Password
-
-After logging into the Magpie User Management click the `Account` button to display the **Account User** page.  Next to **Password** click the `Edit` button to change the password.
-
-![User Account](images/getting-started/account-button.png)
-
-## <a id="logging-in"></a>Logging In
-
-After clicking on a link to a node from the Marble website you will be brought to the login screen for that node.  
-Some may use JupyterHub as a login screen, some may have their own custom login screen.  
-
-![U of T Node Login Screen](images/getting-started/login-screen.png)
-
-Enter your login credentials and click `Sign In`.  
 
 
 
