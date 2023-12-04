@@ -1,7 +1,3 @@
-# Getting Started
-
-## Table of Contents
-
 -[The Marble Platform](#marble-platform)
 -[Nodes](#nodes)
 - [Main Areas of the Platform](#main-areas)
@@ -9,22 +5,24 @@
   - [JupyterLab](#jupyterlab)
   - [The Data Catalog](#data-catalog)
   - [The Web Processing Services](#webservices)
-  - [Tutorials](#tutorials)
+
 
 ## <a id="marble-platform"></a>The Marble Platform
 
 The Marble Platform is made up of several servers (nodes) connected to each other. 
-Each node provides data storage, and web services for managing workflows and processing data.  
+Each node provides data storage, and web services for managing workflows and processing data.  Logging into one node 
+allows access to the resources of all the nodes on the network.   
 
 Marble provides the perfect podium for climate researchers to store and share their work. 
 A climate researcher's findings can be stored on the Marble Platform where it will be accessible by the public.
 
 ## <a id="nodes"></a>Nodes
 
-There are currently four nodes in the Marble network, and each are hosted by a different organization. 
-
-Each node has a different focus - the Ouranos PAVICS node focuses on climate analysis, the Computer Research Institute of Montreal (CRIM) node focuses on machine
-learning, the U of T node focuses on climate research, and the Pacific Climate Impacts Consortium (PCIC) node focuses on data management and storage.
+A node is a server with specialized software installed and is hosted by a partner in the Marble network.
+There are currently four nodes in the Marble network, and each node has a different focus - the Ouranos PAVICS node 
+focuses on climate analysis, the Computer Research Institute of Montreal (CRIM) node focuses on machine learning, 
+the U of T node focuses on climate research, and the Pacific Climate Impacts Consortium (PCIC) node focuses on data 
+management and storage.
 
 When using Marble you are choosing one of these nodes on which to perform data analysis, but you will have access to
 the resources of all of the nodes on the network. 
@@ -56,15 +54,3 @@ The [Web Processing Services](https://marbleclimate.com/remote-processing.html) 
 - [Raven](https://pavics-sdi.readthedocs.io/projects/raven/en/latest/) provides hydrological modelling and analytics
 - [Hummingbird](https://birdhouse-hummingbird.readthedocs.io/en/latest/index.html) provides metadata checks
 - [Weaver](https://pavics-weaver.readthedocs.io/en/latest/) allows entire workflows to be executed remotely
-
-### <a id="tutorials"></a>Tutorials
-
-Tutorials are available from the [Marble Climate](https://marbleclimate.com) website from the `Tutorials` menu link.
-
-Here you will find examples of how to use Marble and the services provided on Marble to conduct data analysis.
-
-![Marble Tutorials Page](images/getting-started/marble-tutorials-page.png)
-
-
-
-
