@@ -1,14 +1,10 @@
 - [Account Management](#account-management)
   - [Creating An Account](#creating-account)
-  - [Account Details](#account-details)
+  - [Changing Your Password](#changing-password)
 - [Logging In](#logging-in)
 
-# <a id="account-management"></a>Account Management
-
-
-Account management is handled by Magpie, the authorization service of the Marble platform.
-
-The Magpie homepage can be found at this [link](https://daccs.cs.toronto.edu/magpie/)
+## <a id="account-management"></a>Account Management
+The landing page of each node will have information about how to register for an account
 
 ### <a id="creating-account"></a>Creating an Account
 If you don't have login credentials contact the admin team for that particular node for a 
@@ -16,12 +12,9 @@ login.  For example, displayed at the top of the U of T node's login page is the
 
 ![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
 
-### <a id="account-details"></a>Account Details
-Account details can be accessed at the [Magpie User Management](https://daccs.cs.toronto.edu/magpie/) page
-
 ### <a id="change-password"></a>Changing Your Password
 
-After logging into the Magpie User Management click the `Account` button to display the **Account User** page.  Next to **Password** click the `Edit` button to change the password.
+After logging into the **Magpie User Management** click the `Account` button to display the **Account User** page.  Next to **Password** click the `Edit` button to change the password.
 
 ![User Account](images/getting-started/account-button.png)
 
