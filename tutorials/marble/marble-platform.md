@@ -1,5 +1,5 @@
-  - [Finding a Node](#find-node)
-  -   - [Server Selection](#server-selection)
+- [Finding a Node](#find-node)
+
 
 ### <a id="find-node"></a>Finding a Node
 Under the "Start Your Project" section in the [Marble Climate homepage](https://marbleclimate.com/index.html) 
@@ -15,8 +15,4 @@ Click on the link to go to the landing page of that node.
 
 ![Node Information](images/getting-started/node-info.png)
 
-### <a id="server-selection"></a>Server Selection
-Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
-Select the one you want and click `Start`.
-![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
