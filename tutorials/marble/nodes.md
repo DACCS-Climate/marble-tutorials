@@ -1,7 +1,7 @@
 - [Finding a Node](#find-node)
 
 
-### <a id="find-node"></a>Finding a Node
+## <a id="find-node"></a>Finding a Node
 Under the "Start Your Project" section in the [Marble Climate homepage](https://marbleclimate.com/index.html) 
 is a list of every node in the Marble network. Click one of the entries in the "Start Your Project" section.
 
