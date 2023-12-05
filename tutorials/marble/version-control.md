@@ -110,7 +110,11 @@ GitHub into the `Add Remote Repository` dialog box.  Click `OK`
 
 > [!NOTE]
 > 
-> The repository needs to be in a folder with write permissions enabled.  If you also want the repository to be viewable publically, put it in the `mypublic` folder.  If you want it to be private put it in the `writable-workspace` folder
+> The repository needs to be in a folder with write permissions enabled.  
+> 
+> If you also want the repository to be viewable publically, put it in the `mypublic` folder.  
+> 
+>If you want it to be private put it in the `writable-workspace` folder.
 
 
 Click `Initialize Repository` to create a Git repository in the current folder. 
