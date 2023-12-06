@@ -25,3 +25,27 @@ parts:
           - file: pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
           - file: pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
           - file: pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
+
+
+  - caption: Exploratory Data Analysis and Machine Learning on Marble
+    chapters:
+    - file: eda_contents/intro.md
+    chapters:
+        sections:
+        - file: eda_contents/Computing_Environment/JupyterLab.md
+        - file: eda_contents/Computing_Environment/Jupyter_Notebook_intro.ipynb
+        - file: eda_contents/Computing_Environment/Unix.md
+        - file: eda_contents/Computing_Environment/Version_Control-and-Git.md
+        sections:
+        - file: eda_contents/numpy/numpy.ipynb
+        - file: eda_contents/numpy/matplotlib.ipynb
+        sections:
+        - file: eda_contents/pandas_xarray/pandas_basics.ipynb
+        - file: eda_contents/pandas_xarray/pandas_groupby.ipynb
+        sections:
+        - file: eda_contents/pandas_xarray/xarray_basics.ipynb
+        - file: eda_contents/pandas_xarray/more_xarray.ipynb
+        - file: eda_contents/pandas_xarray/xarray_tips_and_tricks.ipynb
+        sections:
+        - file: eda_contents/cartopy/cartopy.ipynb
+      
