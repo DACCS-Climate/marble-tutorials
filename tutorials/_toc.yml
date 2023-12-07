@@ -6,6 +6,7 @@ root: intro
 parts:
   - chapters:
       - file: introduction/getting-started.md
+      - file: marble/version-control.md
       - file: pavics/intro.md
         sections:
           - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
