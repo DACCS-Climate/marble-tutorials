@@ -9,12 +9,12 @@
 
 ## <a id="marble-platform"></a>The Marble Platform
 
+Marble provides the perfect podium for climate researchers to store and share their work. 
+A climate researcher's findings can be stored on the Marble Platform where it will be accessible by the public.
+
 The Marble Platform is made up of several servers (nodes) connected to each other. 
 Each node provides data storage, and web services for managing workflows and processing data.  Logging into one node 
 allows access to the resources of all the nodes on the network.   
-
-Marble provides the perfect podium for climate researchers to store and share their work. 
-A climate researcher's findings can be stored on the Marble Platform where it will be accessible by the public.
 
 ## <a id="nodes"></a>Nodes
 
