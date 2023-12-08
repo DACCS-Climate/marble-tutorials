@@ -2,7 +2,6 @@
 
 Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
 
-
 ## Table of Contents
 - [Introduction to Git](#intro-git)
 - [Git Best Practices](#best-practices)
@@ -32,30 +31,12 @@ Version control is a useful tool in any workflow.  It allows you to work on copi
 - [Creating a Pull Request](#create-pr)
 - [Merging Your Branch](#merge-branch)
 
+
+
 ## <a id="intro-git"></a>Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native commandline interface but also has 
 a desktop GUI client for Windows and MacOS.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
-
-## <a id="best-practices"></a>Git Best Practices
-
-### Organize with Branches
-
-Create a branch for each issue you're working on.  Have one for data ingestion, one for visualization, and one for bug fixes.
-
-This keeps the workflow clean.  If something went wrong you know which branch the changes came from.
-
-### Write Descriptive Commit Messages
-
-A good commit message documents the changes made in the commit so that when looking through the commits you can see the direction your work is going in.
-
-### Commit finished tasks only
-
-Each commit should be a completed logical chunk of the overall workflow.  If you need to commit often, split up the workflow into smaller tasks.
-
-### Test code before committing
-
-Related to only committing finished tasks, test your code to ensure it does what it is intended to do before committing.
 
 ## <a id="setup-git"></a>Setting up a Git Repository 
 
@@ -84,6 +65,11 @@ Go to [GitHub](https://github.com/) and log into your account.
 Click on: **Your User Profile** &rarr; **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Generate New Token or Tokens(classic)**
 
 Choose an expiration date.  Check all the boxes in the form.  Click **Generate Token**. Copy the generated token.
+
+> [!NOTE]
+> 
+> The Personal Access Token will be shown *only* when it is created.
+> 
 
 Whenever you push a commit, use the personal access token in place of a password when ask for your GitHub credentials.
 
@@ -266,6 +252,32 @@ Git will automatically switch you into the new branch.  Your newly created branc
 
 ![Create Branch Successful](images/version-control/create-branch-successful.png)
 
+### <a id="stash-gui"></a>Stashing Files
+
+Stashing a file means to temporarily store files you're working on so the changes made to them will not affect other files, 
+and changes to other files will not affect the working file.  Stashing is typically done before switching branches, so 
+the changes from other branches will not overwrite changes in files you are currently working on.
+
+Currently there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.
+
+[Stash Files from Terminal](#stash-terminal)
+
+Once the command is run all files listed under `Changed` will be moved to the `Stash` and will not be seen. 
+
+
+### <a id="switch-branch-gui"></a>Switching Branches
+
+> [!NOTE]
+> 
+> You can only switch branches when you have no files staged or changed.
+> 
+
+To switch branches simply click another branch listed under the `Branches` section.
+
+> [!NOTE]
+> 
+> You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
+> 
 
 
 ### <a id="using-git-terminal"></a>Using Git with the Terminal
@@ -312,12 +324,52 @@ After your commit is complete, push it to the remote repository
 git push
 ```
 
+### <a id="stash-terminal"></a>Stashing Files
+
+Make sure you are in the same directory as the file you want to stash.  
+
+Running the `stash` command will stash all files that have changes made to them.
+
+```
+git stash
+```
+
+To see the files you stashed you can list them: 
+
+```
+git stash list
+```
+
+To resume working on your stashed files you will need to get them out of the stash.  Run the following command and you will see them under the `Changed` section.
+
+```
+git stash pop
+```
+
+
 ### <a id="create-branch-terminal"></a>Creating a Branch
 
 ```
 git branch <new-branch-name>
 ```
 
+### <a id="switch-branch-terminal"></a>Switching Branches
+
+> [!NOTE]
+> 
+> You can only switch branches when you have no files staged or changed.
+> 
+
+Switch branches by checking out the branch.  Replace *<branch-name>* with the branch you want to switch to.
+
+```
+git checkout <branch-name>
+```
+
+> [!NOTE]
+> 
+> You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
+> 
 
 ## <a id="create-pr"></a>Creating a Pull Request
 A Pull Request is done when you want to merge your changes into the **master**/**main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
@@ -352,3 +404,24 @@ Merging branches is done on the GitHub site.
 After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
 
 ![GitHub Merge](images/version-control/github-merge-button.png)
+
+
+## <a id="best-practices"></a>Git Best Practices
+
+### Organize with Branches
+
+Create a branch for each issue you're working on.  Have one for data ingestion, one for visualization, and one for bug fixes.
+
+This keeps the workflow clean.  If something went wrong you know which branch the changes came from.
+
+### Write Descriptive Commit Messages
+
+A good commit message documents the changes made in the commit so that when looking through the commits you can see the direction your work is going in.
+
+### Commit finished tasks only
+
+Each commit should be a completed logical chunk of the overall workflow.  If you need to commit often, split up the workflow into smaller tasks.
+
+### Test code before committing
+
+Related to only committing finished tasks, test your code to ensure it does what it is intended to do before committing.
