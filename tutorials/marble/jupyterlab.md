@@ -1,9 +1,7 @@
+```{contents}
+```
 
-- [Getting Started](#getting-started)
-- [Server Selection](#server-selection)
-- [Workflow]()
-
-## <a id="getting-started"></a>Getting Started
+## Getting Started
 [JupyterLab](https://jupyterlab.readthedocs.io) will be our primary method for your 
 interactions with the Marble Platform. JupyterLab contains a complete environment for
 interactive scientific computing which runs in your web browser. Jupyter is an
@@ -12,7 +10,7 @@ wanted a more effective way to interact with their computers. While Jupyter note
 be used for productionized products, they allow for more readable and understandable projects.
 Perfect for Exploratory Data Analysis, Modelling and Experimentation.
 
-### <a id="jupyterlab"></a>JupyterLab
+### JupyterLab
  JupyterLab has excellent documentation. Rather than repeat that documentation
 here, we point you to their docs. The following pages are particularly relevant:
 
@@ -24,12 +22,12 @@ here, we point you to their docs. The following pages are particularly relevant:
 - [Managing Kernels and Terminals](https://jupyterlab.readthedocs.io/en/stable/user/running.html)
 
 
-### <a id="server-selection"></a>Server Selection
+### Server Selection
 Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
 Select the one you want and click `Start`.
 ![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
 
-> [!NOTE]
-> 
-> Each Jupyter image in this list provides a different configuration of Python packages. 
+```{note}
+Each Jupyter image in this list provides a different configuration of Python packages.
+``` 
