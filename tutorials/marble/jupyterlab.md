@@ -1,3 +1,5 @@
+# Jupyter Lab
+
 ```{contents}
 ```
 
@@ -22,11 +24,20 @@ here, we point you to their docs. The following pages are particularly relevant:
 - [Managing Kernels and Terminals](https://jupyterlab.readthedocs.io/en/stable/user/running.html)
 
 
+### Jupyter Images
+An image is a portable configuration of a computing instance.  It is a snapshot of a computing environment at a point in time.
+
+If the server you are connected to has Jupyter installed you will see a dropdown list of Jupyter images after logging 
+in to the server.  Each image has a different configuration of software for a specific use case.  For example, the 
+"eo-crim" image has Python packages installed for Earth Observation while other images do not. 
+
+
 ### Server Selection
 Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
 Select the one you want and click `Start`.
-![Starting Server List Screen](images/getting-started/starting-server-list-screen.png)
+
+![Starting Server List Screen](images/jupyter/starting-server-list-screen.png)
 
 ```{note}
 Each Jupyter image in this list provides a different configuration of Python packages.
