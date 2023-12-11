@@ -1,28 +1,43 @@
-- [Account Management](#account-management)
-  - [Creating An Account](#creating-account)
-  - [Changing Your Password](#changing-password)
-- [Logging In](#logging-in)
+# Account Management
 
-## <a id="account-management"></a>Account Management
-The landing page of each node will have information about how to register for an account
+```{contents}
+:local:
+```
 
-### <a id="creating-account"></a>Creating an Account
-If you don't have login credentials contact the admin team for that particular node for a 
-login.  For example, displayed at the top of the U of T node's login page is the contact email for information on how to create an account.
+Marble nodes use an account management, authorization, and authentication service called 
+[Magpie](https://pavics-magpie.readthedocs.io). This system is primarily used by node administrators to manage account
+permissions but can also be used by users to manage their personal account information. 
 
-![U of T Node Info Email](images/getting-started/uoft-info-contact.png)
+## Login to the account management portal
 
-### <a id="change-password"></a>Changing Your Password
+The Magpie service is available at the `/magpie` endpoint of each node. For example, if the main URL of a node is
+`https://mynode.example.com` then Magpie service is available at `https://mynode.example.com/magpie`.
 
-After logging into the **Magpie User Management** click the `Account` button to display the **Account User** page.  Next to **Password** click the `Edit` button to change the password.
+Navigate to this URL and click the "Log In" button at the top of the page:
 
-![User Account](images/getting-started/account-button.png)
+![Log In button](images/magpie-login-button.png)
 
-## <a id="logging-in"></a>Logging In
+Log in with your username and password and then click the "Account" button at the top of the page:
 
-After clicking on a link to a node from the Marble website you will be brought to the login screen for that node.  
-Some may use JupyterHub as a login screen, some may have their own custom login screen.  
+![Account button](images/magpie-account-button.png)
 
-![U of T Node Login Screen](images/getting-started/login-screen.png)
+From this page you will be able to do any of the following:
 
-Enter your login credentials and click `Sign In`.  
+### Change your password
+
+Click the "Edit" button beside the "Password" field and enter a new password into the text box and click "Save".
+
+Note that some nodes may have restrictions on passwords. If a password that you have entered is invalid, a warning
+message will be shown indicating how to create a valid password.
+
+### Change your email address
+
+Click the "Edit" button beside the "Email" field and enter a new email address into the text box and click "Save".
+
+### Delete your account
+
+Click the "Delete Account" button. You will be asked to confirm that you would like to delete your account since once
+you delete your account it cannot be recovered.
+
+Please be absolutely sure that you would like to have all of your account information and any data associated with your
+account deleted before continuing with this step!
