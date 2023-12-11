@@ -2,51 +2,25 @@
 
 Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
 
-## Table of Contents
-- [Introduction to Git](#intro-git)
-- [Git Best Practices](#best-practices)
-- [Setting up a Git Repository](#setup-git)
-  - [Creating a GitHub Account](#github-account)
-  - [Creating a Remote Repository](#remote-repository)
-  - [Creating a Personal Access Token](#personal-access-token)
-  - [Setting up using the Graphical User Interface](#setup-git-gui)
-    - [Adding a Remote Repository](#add-remote-gui)
-    - [Creating a Local Repository](#local-repository-gui)
-  - [Setting up using the Terminal](#setup-git-terminal)
-    - [Adding a Remote Repository](#add-remote-terminal)
-    - [Creating a Local Repository](#local-repository-terminal)
-- [Using Git](#using-git)
-  - [Using Git with the Graphical User Interface](#using-git-gui)
-    - [Making Your First Commit](#first-commit)
-    - [Staging a Commit](#stage-gui)
-    - [Making a Commit](#commit-gui)
-    - [Pushing a Commit](#push-gui)
-    - [Creating a Branch](#create-branch-gui)
-  - [Using Git with the Terminal](#using-git-terminal)
-    - [Staging a Commit](#stage-terminal)
-    - [View Staged Files](#view-stage-terminal)
-    - [Making a Commit](#commit-terminal)
-    - [Pushing a Commit](#push-terminal)
-    - [Creating a Branch](#create-branch-terminal)
-- [Creating a Pull Request](#create-pr)
-- [Merging Your Branch](#merge-branch)
+```{contents}
+```
 
 
 
-## <a id="intro-git"></a>Introduction to Git
+## Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native commandline interface but also has 
 a desktop GUI client for Windows and MacOS.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
 
-## <a id="setup-git"></a>Setting up a Git Repository 
+## Setting up a Git Repository 
 
 [GitHub Desktop Client](https://desktop.github.com/)
 
-### <a id="github-account"></a>Creating a GitHub Account
+### Creating a GitHub Account
 To begin using Git you need to create a free account on [GitHub](https://github.com/).  
 Go to the GitHub website and follow the instructions to create an account. 
 
-### <a id="remote-repository"></a>Creating a Remote Repository
+### Creating a Remote Repository
 
 After creating account click `Repository` at the top menu and then `New`
 
@@ -56,7 +30,7 @@ After creating account click `Repository` at the top menu and then `New`
 
 Fill in the form with the details of the repository and click the `Create Repository` button at the bottom of the page.
 
-### <a id="creating-pat"></a>Creating a Personal Access Token
+### Creating a Personal Access Token
 
 A Personal Access Token is used to authenticate the user when pushing files to the remote repository
 
@@ -66,54 +40,50 @@ Click on: **Your User Profile** &rarr; **Settings** &rarr; **Developer Settings*
 
 Choose an expiration date.  Check all the boxes in the form.  Click **Generate Token**. Copy the generated token.
 
-> [!NOTE]
-> 
-> The Personal Access Token will be shown *only* when it is created.
-> 
+```{note}
+The Personal Access Token will be shown *only* when it is created.
+```
 
 Whenever you push a commit, use the personal access token in place of a password when ask for your GitHub credentials.
 
-> [!WARNING]
-> 
-> Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
-> 
+```{warning}
+Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
+``` 
 
 
-### <a id="setup-git-gui"></a>Setup Git Repository Using the Graphical User Interface
+### Setup Git Repository Using the Graphical User Interface
 
 If there is no Git repository set up you will see the following:
 
 ![No Repository Set Menu](images/version-control/git-no-repo-menu.png)
 
-### <a id="add-remote-gui"></a>Adding a Remote Repository
+### Adding a Remote Repository
 
 Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
 
 From the menu click `Git` and then select `Add Remote Repository`.  Enter the URL of the repository you created on 
 GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
 
-### <a id="local-repository-gui"></a>Creating a Local Repository
+### Creating a Local Repository
 
-> [!NOTE]
-> 
-> The repository needs to be in a folder with write permissions enabled.  
-> 
-> If you also want the repository to be viewable publically, put it in the `mypublic` folder.  
-> 
->If you want it to be private put it in the `writable-workspace` folder.
-
+```{note}
+The repository needs to be in a folder with write permissions enabled.  
+ 
+If you also want the repository to be viewable publically, put it in the `mypublic` folder.  
+ 
+If you want it to be private put it in the `writable-workspace` folder.
+```
 
 Click `Initialize Repository` to create a Git repository in the current folder. 
 
 
-> [!NOTE]
-> 
-> The current folder is the last one shown in the folder breadcrumb.
-> 
-> ![Folder Breadcrumb Menu](images/version-control/folder-breadcrumb.png) 
-> 
-> For example, if `mypublic` is the last one in the breadcrumb, then `mypublic` is the current folder selected 
-
+```{note}
+The current folder is the last one shown in the folder breadcrumb.
+ 
+![Folder Breadcrumb Menu](images/version-control/folder-breadcrumb.png) 
+ 
+For example, if `mypublic` is the last one in the breadcrumb, then `mypublic` is the current folder selected 
+```
 
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
@@ -121,7 +91,7 @@ Once it is done the left sidebar will show the Git interface.  This is where you
 
 
 
-### <a id="setup-git-terminal"></a>Setup Git Repository Using the Jupyter Terminal
+### Setup Git Repository Using the Jupyter Terminal
 
 Click the Terminal button to start a Terminal session.
 
@@ -169,20 +139,20 @@ git init
 ![Terminal Git Init](images/version-control/terminal-git-init.png)
 
 
-### <a id="add-remote-terminal"></a>Adding a Remote Repository
+### Adding a Remote Repository
 ```
 git remote add origin url-of-your-git-repository
 ```
 
-## <a id="using-git"></a>Using Git
-### <a id="using-git-gui"></a>Using Git with the Graphical User Interface
+## Using Git
+### Using Git with the Graphical User Interface
 By default when you create a new repository you will be using the **master** branch.
 This is the main branch where the initial work files will be pushed to and also where the final work version will be.
 
 It is good practice to create work branches from the master branch where all the changes to your work will be done.
 Once the changes are complete they can be pushed and merged with the master branch
 
-### <a id="first-commit"></a>Making Your First Commit
+### Making Your First Commit
 
 Start by creating a file.  In this example a Jupyter Notebook file is created by clicking one of the Jupyter Notebook buttons in the launcher.
 
@@ -192,7 +162,7 @@ When the file is created or altered it will be seen under the `Untracked` sectio
 
 ![Git Untracked](images/version-control/git-untracked.png)
 
-### <a id="stage-gui"></a>Staging a File
+### Staging a File
 
 To get the file ready to be committed and pushed, hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
@@ -202,7 +172,7 @@ The file will now appear under the `Staged` section.
 
 ![Git Staged](images/version-control/git-staged.png)
 
-### <a id="commit-gui"></a>Making a Commit
+### Making a Commit
 
 Select the file and fill in the Title/Summary for the commit.  It should be short and descriptive.  
 It can be as simple as "Updated Untitled.ipynb" or more specific, such as "Added visualization for rainfall 2022".
@@ -215,7 +185,7 @@ When done click the `Commit` button below the commit description.  If successful
 
 ![Git Commit Successful](images/version-control/git-commit-successful.png)
 
-### <a id="push-gui"></a>Pushing a Commit
+### Pushing a Commit
 
 Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
 repository where they can be merged with the master/main branch.  Up to now no branches have been made.
@@ -233,7 +203,7 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 
 ![Push Successful](images/version-control/push-successful.png)
 
-### <a id="create-branch-gui"></a>Creating a Branch
+### Creating a Branch
 
 Click the down arrow in the `Current Branch` section in the Git sidebar.  It will reveal the `Branches` window and show all the created branches.
 
@@ -252,7 +222,7 @@ Git will automatically switch you into the new branch.  Your newly created branc
 
 ![Create Branch Successful](images/version-control/create-branch-successful.png)
 
-### <a id="stash-gui"></a>Stashing Files
+### Stashing Files
 
 Stashing a file means to temporarily store files you're working on so the changes made to them will not affect other files, 
 and changes to other files will not affect the working file.  Stashing is typically done before switching branches, so 
@@ -265,22 +235,20 @@ Currently there is no mechanism in the GUI to stash files.  Files can only be st
 Once the command is run all files listed under `Changed` will be moved to the `Stash` and will not be seen. 
 
 
-### <a id="switch-branch-gui"></a>Switching Branches
+### Switching Branches
 
-> [!NOTE]
-> 
-> You can only switch branches when you have no files staged or changed.
-> 
-
+```{note}
+You can only switch branches when you have no files staged or changed.
+ 
 To switch branches simply click another branch listed under the `Branches` section.
+```
 
-> [!NOTE]
-> 
-> You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
-> 
+```{note}
+You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
+``` 
 
 
-### <a id="using-git-terminal"></a>Using Git with the Terminal
+### Using Git with the Terminal
 
 ### Set Up Your Git Identifier
 
@@ -291,7 +259,7 @@ git config --global user.name "Your Name"
 git config --global user.email "email@email.com"
 ```
 
-### <a id="stage-terminal"></a>Staging a File
+### Staging a File
 
 Make sure you are in the same directory as the file you want to stage.
 
@@ -299,7 +267,7 @@ Make sure you are in the same directory as the file you want to stage.
 git add <filename>
 ```
 
-### <a id="view-stage-terminal"></a>View Staged Files
+### View Staged Files
 
 If you have multiple files staged and ready to commit you can see the list by using `git status`.
 
@@ -308,7 +276,7 @@ git status
 ```
 
 
-### <a id="commit-terminal"></a>Making a Commit
+### Making a Commit
 
 Add a brief descriptive message about your commit.
 
@@ -316,7 +284,7 @@ Add a brief descriptive message about your commit.
 git commit -m "your brief commit message goes here"
 ```
 
-### <a id="push-terminal"></a>Pushing a Commit
+### Pushing a Commit
 
 After your commit is complete, push it to the remote repository
 
@@ -324,7 +292,7 @@ After your commit is complete, push it to the remote repository
 git push
 ```
 
-### <a id="stash-terminal"></a>Stashing Files
+### Stashing Files
 
 Make sure you are in the same directory as the file you want to stash.  
 
@@ -347,18 +315,17 @@ git stash pop
 ```
 
 
-### <a id="create-branch-terminal"></a>Creating a Branch
+### Creating a Branch
 
 ```
 git branch <new-branch-name>
 ```
 
-### <a id="switch-branch-terminal"></a>Switching Branches
+### Switching Branches
 
-> [!NOTE]
-> 
-> You can only switch branches when you have no files staged or changed.
-> 
+```{note}
+You can only switch branches when you have no files staged or changed.
+``` 
 
 Switch branches by checking out the branch.  Replace *<branch-name>* with the branch you want to switch to.
 
@@ -366,12 +333,11 @@ Switch branches by checking out the branch.  Replace *<branch-name>* with the br
 git checkout <branch-name>
 ```
 
-> [!NOTE]
-> 
-> You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
-> 
+```{note}
+You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
+``` 
 
-## <a id="create-pr"></a>Creating a Pull Request
+## Creating a Pull Request
 A Pull Request is done when you want to merge your changes into the **master**/**main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
 
 A Pull Request is done from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
@@ -398,7 +364,7 @@ If you have someone who can review your pull request click the cog icon in the r
 
 Then click the `Create Pull Request` button.
 
-## <a id="merge-branch"></a>Merging Your Branch
+## Merging Your Branch
 Merging branches is done on the GitHub site.
 
 After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
@@ -406,7 +372,7 @@ After your Pull Request has been approved (and reviewed, if needed), the `Merge`
 ![GitHub Merge](images/version-control/github-merge-button.png)
 
 
-## <a id="best-practices"></a>Git Best Practices
+## Git Best Practices
 
 ### Organize with Branches
 
