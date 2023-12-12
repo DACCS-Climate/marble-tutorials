@@ -9,7 +9,7 @@ Choose one of the topics to get started.
 :gutter: 3
 
 :::{grid-item-card}
-:link: marble/getting-started
+:link: marble/intro
 :link-type: doc
 :class-header: bg-dark
 

@@ -5,9 +5,11 @@ format: jb-book
 root: intro
 parts:
   - chapters:
-      - file: marble/getting-started.md
-      - file: marble/account-management.md
-      - file: marble/nodes.md
+      - file: marble/intro.md
+        sections:
+          - file: marble/explore-the-network.md
+          - file: marble/get-an-account.md
+          - file: marble/account-management.md
       - file: pavics/intro.md
         sections:
           - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
