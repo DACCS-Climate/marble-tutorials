@@ -1,5 +1,4 @@
 # Account Management
-<<<<<<< HEAD
 
 ```{contents}
 :local:
