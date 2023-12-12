@@ -1,4 +1,5 @@
 # Account Management
+<<<<<<< HEAD
 
 ```{contents}
 :local:
@@ -6,7 +7,7 @@
 
 Marble nodes use an account management, authorization, and authentication service called 
 [Magpie](https://pavics-magpie.readthedocs.io). This system is primarily used by node administrators to manage account
-permissions but can also be used by users to manage their personal account information. 
+permissions but can also be used by users to manage their personal account information.
 
 ## Login to the account management portal
 
