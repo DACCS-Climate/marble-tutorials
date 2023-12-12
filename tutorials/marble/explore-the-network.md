@@ -40,6 +40,7 @@ how to use each specific service.
 
 Clicking the name of the service in the "Service" column will take you to the service's endpoint on the selected node.
 
+```{note}
 Note that not all services are open to the public, so you may have to log in before being able to access the service
 endpoint.
-
+```

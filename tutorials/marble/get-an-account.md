@@ -15,6 +15,13 @@ Once you've selected a node, [navigate to the node's home page](explore-the-netw
 instructions listed there to request a user account. Since each node is managed by different organizations, each may 
 have a different procedure for requesting an account.
 
+<!-- TODO: fill in information below once https://github.com/DACCS-Climate/Marble-node-registry/issues/31 has been
+     resolved and the relevant information has been shown on marbleclimate.com
+
+### Look up a node's registration status
+
+-->
+
 <!-- TODO: fill in information below once https://github.com/Ouranosinc/Magpie/pull/589 is merged 
 
 ## Link your account to other nodes in the network

@@ -27,8 +27,10 @@ From this page you will be able to do any of the following:
 
 Click the "Edit" button beside the "Password" field and enter a new password into the text box and click "Save".
 
-Note that some nodes may have restrictions on passwords. If a password that you have entered is invalid, a warning
-message will be shown indicating how to create a valid password.
+```{note}
+Some nodes may have restrictions on passwords. If a password that you have entered is invalid, a warning message will 
+be shown indicating how to create a valid password.
+```
 
 ### Change your email address
 
@@ -39,5 +41,7 @@ Click the "Edit" button beside the "Email" field and enter a new email address i
 Click the "Delete Account" button. You will be asked to confirm that you would like to delete your account since once
 you delete your account it cannot be recovered.
 
+```{warning}
 Please be absolutely sure that you would like to have all of your account information and any data associated with your
 account deleted before continuing with this step!
+```
