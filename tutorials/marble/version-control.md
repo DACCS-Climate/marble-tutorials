@@ -1,16 +1,22 @@
 # Version Control
 
-Version control is a useful tool in any workflow.  It allows you to work on copies of your work and make changes to them without affecting the original.
+[_Version control_](https://en.wikipedia.org/wiki/Version_control) is a powerful way to organize, back up,
+and share with collaborators your research computing code.
+A Verson control system keeps track of a set of files and saves snapshots (i.e. _versions_, _commits_) of 
+the files at any point in time. Using version control allows you to confidently make changes to your code 
+(any any other files), with the ability to roll back to any previous state.
 
 ```{contents}
+:local:
+:depth: 1
 ```
 
 
 
 ## Introduction to Git
 
-Git is one of the most popular version control systems in use today. It has a native commandline interface but also has 
-a desktop GUI client for Windows and MacOS.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
+Git is one of the most popular version control systems in use today. It has a native command line interface but also has 
+a desktop GUI client to make using Git simpler.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
 
 ## Setting up a Git Repository 
 
@@ -144,8 +150,8 @@ git init
 git remote add origin url-of-your-git-repository
 ```
 
-## Using Git
-### Using Git with the Graphical User Interface
+
+## Using Git with the Graphical User Interface
 By default when you create a new repository you will be using the **master** branch.
 This is the main branch where the initial work files will be pushed to and also where the final work version will be.
 
@@ -203,6 +209,47 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 
 ![Push Successful](images/version-control/push-successful.png)
 
+
+### View the Changes Made Between Versions
+
+There are two ways to view the changes made between versions of a file.
+
+1. Right-click on the file and select `Diff`.  
+
+![Diff Right Click](images/version-control/diff-right-click.png)
+
+2. Enable the double-click shortcut for viewing a `Diff`.  
+
+From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
+Then double click on the file.
+
+![Diff Double Click](images/version-control/git-menu-diff.png)
+
+The `diff` screen of the file will open and show the changes made to the file.  Areas where changes were made are 
+highlighted in red. On the left is the `HEAD` panel and on the right is the `WORKING` panel. 
+
+`HEAD` is the old version of the file.  If additions were made 
+there will be green slashes on top of the red highlight.  If there were deletions they will be highlighted in darker 
+red on top of the red highlight. 
+
+`WORKING` is the new version of the file.  It shows the final version of the file.  Areas where changes were made are 
+highlighted in green.  
+
+![Diff Panel](images/version-control/diff-panel.png)
+
+### Stashing Files
+
+Stashing a file means to temporarily store files you're working on so the changes made to them will not affect other files, 
+and changes to other files will not affect the working file.  Stashing is typically done before switching branches, so 
+the changes from other branches will not overwrite changes in files you are currently working on.
+
+Currently there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.
+
+[Stash Files from Terminal](#stash-terminal)
+
+Once the command is run all files listed under `Changed` will be moved to the `Stash` and will not be seen. 
+
+
 ### Creating a Branch
 
 Click the down arrow in the `Current Branch` section in the Git sidebar.  It will reveal the `Branches` window and show all the created branches.
@@ -222,18 +269,6 @@ Git will automatically switch you into the new branch.  Your newly created branc
 
 ![Create Branch Successful](images/version-control/create-branch-successful.png)
 
-### Stashing Files
-
-Stashing a file means to temporarily store files you're working on so the changes made to them will not affect other files, 
-and changes to other files will not affect the working file.  Stashing is typically done before switching branches, so 
-the changes from other branches will not overwrite changes in files you are currently working on.
-
-Currently there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.
-
-[Stash Files from Terminal](#stash-terminal)
-
-Once the command is run all files listed under `Changed` will be moved to the `Stash` and will not be seen. 
-
 
 ### Switching Branches
 
@@ -248,7 +283,7 @@ You can only switch to another local branch.  Branches with the `origin` prefix 
 ``` 
 
 
-### Using Git with the Terminal
+## Using Git with the Terminal
 
 ### Set Up Your Git Identifier
 
@@ -286,10 +321,26 @@ git commit -m "your brief commit message goes here"
 
 ### Pushing a Commit
 
-After your commit is complete, push it to the remote repository
+After your commit is complete, push it to the remote repository.
 
 ```
 git push
+```
+
+### View a History of Commits
+
+To see all the commits made in a repository use ht `log` command.
+
+```
+git log
+```
+
+### View the Changes Made Between Versions
+
+To view a comparison of the changes between versions of the same file run the `diff` command.
+
+```
+git diff
 ```
 
 ### Stashing Files
