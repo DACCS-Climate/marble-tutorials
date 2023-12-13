@@ -261,7 +261,7 @@ Undoing changes can mean several things:
 1. `Discard` - Undo changes made to the current unstaged file
 
    An unstaged file means this file has never been committed.  It has likely never been pushed to the remote repository and 
-it will not be seen in the History. 
+it will not be seen in the commit history. 
 
    To `Discard` the current changes, right-click on the file while it is in the `Changed` section. Then click `Discard`.
 
@@ -287,6 +287,7 @@ commit you want to reset to. This will expand the commit information, and you wi
 
 ![Hard Reset GUI](images/version-control/git-hard-reset-gui.png)
 
+Click the button that has a clock inside a curved arrow.
 
 ### Stashing Files
 
