@@ -169,10 +169,15 @@ When the file is created or altered it will be seen under the `Untracked` sectio
 ![Git Untracked](images/version-control/git-untracked.png)
 
 ### Staging a File
+Staging a file means getting the file ready to be committed and pushed.  There are two ways to do this.
 
-To get the file ready to be committed and pushed, hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
+1. Hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
 ![Git Untracked Staged](images/version-control/git-untracked-plus.png)
+
+2. Right-click the file and select `Stage`.
+
+![Stage Right Click](images/version-control/right-click-menu.png)
 
 The file will now appear under the `Staged` section.
 
@@ -210,15 +215,27 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 ![Push Successful](images/version-control/push-successful.png)
 
 
+
+### View Commit History
+To see all your past commits click the `History` tab in the `Commits` section under `Current Branch`
+
+
+![Commit History](images/version-control/git-log-gui.png)
+
+
 ### View the Changes Made Between Versions
 
-There are two ways to view the changes made between versions of a file.
+There are several ways to view the changes made between versions of a file.
 
 1. Right-click on the file and select `Diff`.  
 
-![Diff Right Click](images/version-control/diff-right-click.png)
+![Diff Right Click](images/version-control/right-click-menu.png)
 
-2. Enable the double-click shortcut for viewing a `Diff`.  
+2. Click the `Diff` button.
+
+![Diff Button](images/version-control/diff-button.png)
+
+3. Enable the double-click shortcut for viewing a `Diff`.  
 
 From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
 Then double click on the file.
@@ -232,10 +249,44 @@ highlighted in red. On the left is the `HEAD` panel and on the right is the `WOR
 there will be green slashes on top of the red highlight.  If there were deletions they will be highlighted in darker 
 red on top of the red highlight. 
 
-`WORKING` is the new version of the file.  It shows the final version of the file.  Areas where changes were made are 
+`WORKING` is the new version of the file.  Areas where changes were made are 
 highlighted in green.  
 
 ![Diff Panel](images/version-control/diff-panel.png)
+
+
+### Undoing Changes
+Undoing changes can mean several things:
+
+1. `Discard` - Undo changes made to the current unstaged file
+
+   An unstaged file means this file has never been committed.  It has likely never been pushed to the remote repository and 
+it will not be seen in the History. 
+
+   To `Discard` the current changes, right-click on the file while it is in the `Changed` section. Then click `Discard`.
+
+   ![Diff Right Click](images/version-control/right-click-menu.png)
+
+2. `Revert` - Undo past changes made to a file in the commit history
+
+   To `Revert` past changes click the `History` tab.  Then click the title or the down arrow of the 
+commit you want to revert. This will expand the commit information, and you will see additional buttons.
+
+![Revert GUI](images/version-control/git-revert-gui.png)
+
+Then click the curved arrow to revert the changes for that particular commit.
+
+![Revert Button](images/version-control/git-revert-button.png)
+
+
+3. `Hard Reset` - Undo all changes made after a certain point
+
+Undoing changes made after a certain point means resetting the commit history to the chosen commit.
+Click the `History` tab.  Then click the title or the down arrow of the 
+commit you want to reset to. This will expand the commit information, and you will see additional buttons.
+
+![Hard Reset GUI](images/version-control/git-hard-reset-gui.png)
+
 
 ### Stashing Files
 
@@ -243,7 +294,8 @@ Stashing a file means to temporarily store files you're working on so the change
 and changes to other files will not affect the working file.  Stashing is typically done before switching branches, so 
 the changes from other branches will not overwrite changes in files you are currently working on.
 
-Currently there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.
+Currently, there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.  
+Similarly, files can only be retrieved from the Terminal.
 
 [Stash Files from Terminal](#stash-terminal)
 
@@ -327,9 +379,9 @@ After your commit is complete, push it to the remote repository.
 git push
 ```
 
-### View a History of Commits
+### View Commit History
 
-To see all the commits made in a repository use ht `log` command.
+To see all the commits made in a repository use the `log` command.
 
 ```
 git log
