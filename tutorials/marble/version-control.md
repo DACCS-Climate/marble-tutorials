@@ -20,8 +20,6 @@ a desktop GUI client to make using Git simpler.  The online GitHub website allow
 
 ## Setting up a Git Repository 
 
-[GitHub Desktop Client](https://desktop.github.com/)
-
 ### Creating a GitHub Account
 To begin using Git you need to create a free account on [GitHub](https://github.com/).  
 Go to the GitHub website and follow the instructions to create an account. 
