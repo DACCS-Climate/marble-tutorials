@@ -11,21 +11,24 @@ the files at any point in time. Using version control allows you to confidently 
 :depth: 1
 ```
 
-
-
 ## Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native command line interface but there 
 are also many desktop GUI clients to make using Git simpler.  Try one of the many free 
 [Git clients](https://git-scm.com/downloads/guis) available.
 
-The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
+Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), 
+or [BitBucket](https://bitbucket.org/) allow you to store your repository online and access it 
+anywhere with a free account.
 
-## Setting up a Git Repository 
+## <a id="github"></a>GitHub
+
+GitHub is one of the many online providers of free remote repository storage.  This tutorial will go 
+through the steps of creating a GitHub account and getting it ready to be used with Git in Jupyter. 
 
 ### Creating a GitHub Account
 To begin using Git you need to create a free account on [GitHub](https://github.com/).  
-Go to the GitHub website and follow the instructions to create an account. 
+Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
 
 ### Creating a Remote Repository
 
@@ -58,6 +61,17 @@ Storing personal access tokens or SSH keys in a JupyterLab container poses secur
 ``` 
 
 
+## Setting up a Git Repository 
+
+### Creating Remote Repository Account
+
+To use Git with a remote repository you will need to create an account and then create a repository there.
+
+There are many free options such as [GitHub](https://github.com/) or [BitBucket](https://bitbucket.org/).
+
+This tutorial uses GitHub to demonstrate how to set up a remote repository.  
+To see how to set up a GitHub account, see the [GitHub](#github) section.
+
 ### Setup Git Repository Using the Graphical User Interface
 
 If there is no Git repository set up you will see the following:
@@ -75,10 +89,6 @@ GitHub into the `Add Remote Repository` dialog box.  Click `OK`
 
 ```{note}
 The repository needs to be in a folder with write permissions enabled.  
- 
-If you also want the repository to be viewable publically, put it in the `mypublic` folder.  
- 
-If you want it to be private put it in the `writable-workspace` folder.
 ```
 
 Click `Initialize Repository` to create a Git repository in the current folder. 
@@ -87,15 +97,14 @@ Click `Initialize Repository` to create a Git repository in the current folder.
 ```{note}
 The current folder is the last one shown in the folder breadcrumb.
  
-![Folder Breadcrumb Menu](images/version-control/folder-breadcrumb.png) 
+![Folder Breadcrumb Menu](images/version-control/folder-breadcrumb-writeable.png) 
  
-For example, if `mypublic` is the last one in the breadcrumb, then `mypublic` is the current folder selected 
+For example, if `git` is the last one in the breadcrumb, then `git` is the current folder selected 
 ```
 
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
 ![Repository Created UI](images/version-control/git-repo-created.png)
-
 
 
 ### Setup Git Repository Using the Jupyter Terminal
@@ -126,12 +135,12 @@ You should see the public folders available to you.  These are the same folders 
 ![Terminal Notebook Dir](images/version-control/terminal-notebook-dir.png)
 ![File Browser Default Folders](images/version-control/file-browser-default-folders.png)
 
-Navigate into the `mypublic` folder, then create a new folder here and then navigate into it.
+Navigate into the `writable-workspace` folder, then create a new folder here and then navigate into it.
 
 Substitute `your-folder-name` with a new folder name. 
 
 ```
-cd mypublic
+cd writable-workspace
 
 mkdir your-folder-name
 
@@ -338,6 +347,9 @@ You can only switch to another local branch.  Branches with the `origin` prefix 
 
 
 ## Using Git with the Terminal
+
+Here are some useful Git commands.  For more in-depth information take a look at the 
+[official Git documentation](https://git-scm.com/doc).
 
 ### Set Up Your Git Identifier
 
