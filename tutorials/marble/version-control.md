@@ -15,8 +15,11 @@ the files at any point in time. Using version control allows you to confidently 
 
 ## Introduction to Git
 
-Git is one of the most popular version control systems in use today. It has a native command line interface but also has 
-a desktop GUI client to make using Git simpler.  The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
+Git is one of the most popular version control systems in use today. It has a native command line interface but there 
+are also many desktop GUI clients to make using Git simpler.  Try one of the many free 
+[Git clients](https://git-scm.com/downloads/guis) available.
+
+The online GitHub website allows you to store your repository online and access it anywhere with a free account. 
 
 ## Setting up a Git Repository 
 
