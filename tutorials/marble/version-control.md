@@ -396,6 +396,23 @@ To view a comparison of the changes between versions of the same file run the `d
 git diff
 ```
 
+### Undo Changes
+
+1. Undo changes in a single file, but keep it staged:
+   ```
+   git checkout <commit tag> <filenames>
+   ```
+
+2. Revert changes in a single file:
+   ```
+   git revert <commit tag>
+   ```
+   
+3. Reset changes in a single file, but keep it unstaged:
+   ```
+   git reset <commit tag> <filenames>
+   ```
+
 ### Stashing Files
 
 Make sure you are in the same directory as the file you want to stash.  
