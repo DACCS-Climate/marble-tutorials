@@ -10,6 +10,8 @@ An introduction to basic Unix commands and the file system.
 
 In a unix environment, everything is considered a file.
 
+### Getting Started
+
 Getting started, select the **terminal** option from the **JupyterLab Launcher**. When loaded, you should see
 something like this.
 
@@ -21,7 +23,7 @@ jovyan@97d07e419e83:~$
 The **~** tells us we are in the home directory while the **$** tells us the shell is awaiting an input. The **username**
 is `joyvan` and the **hostname** is `97d07e419e83`. Because we are using JupyterHub on the cloud, we all have the same username
 ("jovyan" = resident of the planet Jupyter). However, we each have a different hostname (the name of the computer we are using),
-which corresponds to a "virtual machine" running in the cloud. From now on, we will just use a `$` to indicate the prompt.
+which corresponds to a "virtual machine" running in the cloud. From now on, we will just use a **$** to indicate the prompt.
 
 While the username will always be the same for all Marble users, it is still good to know how to find out your username.
 
@@ -39,41 +41,56 @@ $ hostname
 97d07e419e83
 ~~~
 
-Next, let's find out where we are by running a command called `pwd` (which stands for "print working directory").
-At any moment, our **current working directory** is our current default directory, i.e., the directory 
-that the computer assumes we want to run commands in unless we explicitly specify something else. Here,
-the computer's response is `/notebook_dir/writable-workspace/.home`, which is the **home directory** of the user named `jovyan`.
+### Directories
 
-~~~
-$ pwd
-/notebook_dir/writable-workspace/.home
-~~~
+A directory in its simplest definition is a folder holding other folders and/or individual files. The home directory is the 
+directory or folder commonly given to a user on a network or Unix or Linux variant operating system. With the home directory 
+the user can store all their personal information, files, login scripts, and user information.
 
-A home directory is the directory or folder commonly given to a user on a network or Unix or Linux variant operating 
-system. With the home directory the user can store all their personal information, files, login scripts, and user information.
 Let's take a look at how the filesystem is organised 
 
 On a Unix computer, the filesystem looks like something this:
 
 ![The File System](https://cdn-wordpress-info.futurelearn.com/info/wp-content/uploads/a2794f8f-b0c1-468d-89c6-bcf29d2d6517-1.png)
 
-At the top is the **root directory** that holds everything else. We refer to it using a slash character `/` on its own;
-this is the leading slash in `/notebook_dir/writable-workspace/.home`.
+At the top is the **root directory** that holds everything else. We refer to it using a slash character `/` on its own.
+
 
 Inside that directory are several other directories:
 - `bin` (which is where some built-in programs are stored),
 - `lib` (for the software "libraries" used by different programs),
 - `home` (where users' personal directories are located),
 - `etc` (system-wide configuration files),
-and so on. Remember, everything is a file, so deleting files in a Unix environment, can have detrimental effects.
+and so on. Remember, everything is a file, deleting files in a Unix environment, can have detrimental effects.
+
+### Printing The Working Directory
+
+Let's find out where we are by running a command called `pwd` (which stands for "print working directory").
+At any moment, our **current working directory** is our current default directory, i.e., the directory 
+that the computer assumes we want to run commands in unless we explicitly specify something else. 
+
+~~~
+$ pwd
+/notebook_dir/writable-workspace/.home
+~~~
+
+Here, the terminal's response is `/notebook_dir/writable-workspace`, which indicates where are currently within the
+`writable-workspace` folder which itself is located within `notebook_dir` which is all under the `/` or **home directiory**.
+
+### Listing Directory Contents
 
 Next, you may wish to explore the contents of a folder within the file system. We do this using the `ls`
-command hich stands for "listing":
+command which stands for "listing":
 
-Note - in Marble, the basic `ls` command may yield no results 
+Using `ls` within our current working directory
 ~~~
 $ ls
+notebooks  shapefile_datastore 
+~~~
 
+Sometimes, the basic `ls` command may yield no results, especially if you are located within your home directory 
+~~~
+$ ls
 $
 ~~~
 
@@ -83,7 +100,7 @@ gives us
 ~~~
 $ ls -a
 
-.  ..  .bash_history  .ipython  .jupyter  .local  .npm
+.  ..  .bash_history  .cache  .config  .gitconfig  .ipython  .jupyter  .lesshst  .local  .npm  .python_history
 ~~~
 
 Note all files here start with `.`, this indicates they are hidden.
@@ -107,27 +124,33 @@ Mandatory arguments to long options are mandatory for short options too.
    ...
 ~~~
 
+### Navigating Between Directories
 
-To navigate through the filesystem, there is the `cd` command which stands for 'change directory'. Note, this commmand
+To navigate through the filesystem, there is the `cd` command which stands for "change directory". Note, this commmand
 doesn't actually change the directory just the shell's idea of what directory we are in.
+
+Let's navigate to the home directory
+~~~
+$ cd ~
+~~~
+ 
+Remember the hidden directory `..` from the `ls -a` command? 
+`..` is a special directory name meaning "the directory containing this one", or more succinctly,
+the **parent** of the current directory. In Marble, this command should take you to `/notebook_dir/writable-workspace` 
+if you are currently in the home directory, otherwise you will move one level up in the hierarchy. 
 
 ~~~
 $ cd ..
-jovyan@97d07e419e83:/notebook_dir/writable-workspace$
-~~~
-
-Remember the hidden directory `..` from the `ls -a` command? 
-`..` is a special directory name meaning "the directory containing this one", or more succinctly,
-the **parent** of the current directory. In Marble, this command should take you to `/notebook_dir/writable-workspace`
-
-~~~
 $ pwd
 /notebook_dir/writable-workspace
+$ cd ..
+$ pwd
+/notebook_dir
 ~~~
 
 Indicating the parent directory in Marble is `/notebook_dir/writable-workspace`.
 
-Using the `cd` command without an argument returns you to the home directory.
+Using the `cd` command without an argument also returns you to the home directory.
 
 We can also specify the path to the directory wish, for example:
 
@@ -138,26 +161,10 @@ We can also specify the path to the directory wish, for example:
 ~~~
 ~~~
 ~$ cd /notebook_dir/mypublic
-/notebook_dir/mypublic$ pwd
-/notebook_dir/mypublic
+ $ pwd
+ /notebook_dir/mypublic
 ~~~
 
-#### Key Points:
-- "The file system is responsible for managing information on the disk."
-- "Information is stored in files, which are stored in directories (folders)."
-- "Directories can also store other directories, which forms a directory tree."
-- "`cd path` changes the current working directory."
-- "`ls path` prints a listing of a specific file or directory; `ls` on its own lists the current working directory."
-- `pwd` prints the user's current working directory.
-- `whoami` shows the user's current identity.
-- `/` on its own is the root directory of the whole file system.
-- A relative path specifies a location starting from the current location.
-- An absolute path specifies a location from the root of the file system.
-- Directory names in a path are separated with '/' on Unix, but '\\\\' on Windows.
-- '..' means 'the directory above the current one'; '.' on its own means 'the current directory'.
-- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, 
-but is normally used to indicate the  type of data in the file.
-- Most commands take options (flags) which begin with a '-'.
 
 ## Working with Files and Directories
 
@@ -176,7 +183,7 @@ we see `example_of_directory` was created.
 Be aware that the `mkdir` command makes the new directory within your current working directory. Ensure you create the directory in 
 the correct location.
 
-## Good names for files and directories
+## Best Practices for Files and Directories
 
  Complicated names of files and directories can make your life painful
  when working on the command line. Here we provide a few useful
@@ -202,18 +209,21 @@ the correct location.
 
  Now, let's go to the new directory we have created.
 
+### Autocompleting Inputs
 Assuming you made a directory called `example_of_directory`, then type:
 
 ~~~
 $ cd ex<TAB>
 ~~~
 
-This will auto-input `example_of_directory`.
+Where `<TAB>` refers to the **TAB button** on your keyboard. This will auto-input `example_of_directory`.
 
 ~~~
 $ pwd
 /notebook_dir/mypublic/example_of_directory
 ~~~
+
+### Creating Files
 Let's create a file called `new_file.txt` in this new dictionary using the command `touch`.
 
 ~~~
@@ -221,6 +231,8 @@ Let's create a file called `new_file.txt` in this new dictionary using the comma
 /example_of_directory$ ls
 new_file.txt
 ~~~
+
+### Deleting Files
 
 Now, let's see how we can remove any files using the `rm` command:
 
@@ -258,9 +270,25 @@ and their contents.
  rm: remove regular empty file 'new_file.txt'? y
 ~~~
 
-### Some Unix Commands
+## Takeaways
+
+### Key Points:
+- The file system is responsible for managing information on the disk.
+- Information is stored in files, which are stored in directories (folders).
+- Directories can also store other directories, which forms a directory tree.
+- `/` on its own is the root directory of the whole file system.
+- A relative path specifies a location starting from the current location.
+- An absolute path specifies a location from the root of the file system.
+- Directory names in a path are separated with '/' on Unix, but '\\\\' on Windows.
+- '..' means 'the directory above the current one'; '.' on its own means 'the current directory'.
+- Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, 
+but is normally used to indicate the  type of data in the file.
+- Most commands take options (flags) which begin with a '-'.
+
+### Key Commands
 
 |**User Action**|**Command**|
+|---------------|-----------|
 |List| ls *option*|
 |Change Directory| cd *option*|
 |Print Working Directory| pwd|
@@ -282,82 +310,3 @@ There is a **lot more** to the unix shell and filexsystem than what we have  cov
 To ge deeper with self study, we recommend the excellent
 [Software Carpentry Unix Shell Lesson](https://swcarpentry.github.io/shell-novice/),
 on which the above material was based.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
