@@ -85,7 +85,9 @@ $ ls
 notebooks  shapefile_datastore 
 ```
 
-Sometimes, the basic `ls` command may yield no results, especially if you are located within your home directory 
+```{note}
+Sometimes, the basic `ls` command may yield no results, especially if you are located within your home directory
+```
 ```
 $ ls
 $
