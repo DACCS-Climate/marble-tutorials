@@ -31,11 +31,10 @@ parts:
     chapters:
      - file: eda_contents/intro.md
        sections:
-         - file: eda_contents/Computing_Environment/JupyterLab.md
          - file: eda_contents/Computing_Environment/Jupyter_Notebook_intro.ipynb
          - file: eda_contents/Computing_Environment/Unix.md
          - file: eda_contents/Computing_Environment/Version_Control-and-Git.md
-         - file: eda_contents/numpy/numpy.ipynb
+         - file: eda_contents/numpy/numpy_and_matplotlib.ipynb
          - file: eda_contents/numpy/matplotlib.ipynb
          - file: eda_contents/pandas_xarray/pandas_basics.ipynb
          - file: eda_contents/pandas_xarray/pandas_groupby.ipynb
