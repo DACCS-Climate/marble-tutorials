@@ -125,8 +125,7 @@ Mandatory arguments to long options are mandatory for short options too.
 
 ### Navigating Between Directories
 
-To navigate through the filesystem, there is the `cd` command which stands for "change directory". Note, this commmand
-doesn't actually change the directory just the shell's idea of what directory we are in.
+To navigate through the filesystem, there is the `cd` command which stands for "change directory".
 
 Let's navigate to the home directory
 ```
@@ -135,7 +134,7 @@ $ cd ~
  
 Remember the hidden directory `..` from the `ls -a` command? 
 `..` is a special directory name meaning "the directory containing this one", or more succinctly,
-the **parent** of the current directory. In Marble, this command should take you to `/notebook_dir/writable-workspace` 
+the **parent** of the current directory. For example, if you are currently in your home directory, this command should take you to `/notebook_dir/writable-workspace` 
 if you are currently in the home directory, otherwise you will move one level up in the hierarchy. 
 
 ```
@@ -278,7 +277,7 @@ and their contents.
 - `/` on its own is the root directory of the whole file system.
 - A relative path specifies a location starting from the current location.
 - An absolute path specifies a location from the root of the file system.
-- Directory names in a path are separated with '/' on Unix, but '\\\\' on Windows.
+- Directory names in a path are separated with '/' on Unix.
 - '..' means 'the directory above the current one'; '.' on its own means 'the current directory'.
 - Most files' names are `something.extension`. The extension isn't required, and doesn't guarantee anything, 
 but is normally used to indicate the  type of data in the file.
