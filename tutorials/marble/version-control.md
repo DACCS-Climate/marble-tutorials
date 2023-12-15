@@ -14,7 +14,7 @@ the files at any point in time. Using version control allows you to confidently 
 ## Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native command line interface but there 
-are also many desktop GUI clients to make using Git simpler.  Try one of the many free 
+are also many third party desktop GUI clients to make using Git simpler.  Try one of the many free 
 [Git clients](https://git-scm.com/downloads/guis) available.
 
 Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), 
@@ -23,8 +23,8 @@ anywhere with a free account.
 
 ## <a id="github"></a>GitHub
 
-GitHub is one of the many online providers of free remote repository storage.  This tutorial will go 
-through the steps of creating a GitHub account and getting it ready to be used with Git in Jupyter. 
+GitHub is one of the many online providers of free remote repository storage.  This section will cover how to work with 
+remote repositories in a Github context.
 
 ### Creating a GitHub Account
 To begin using Git you need to create a free account on [GitHub](https://github.com/).  
@@ -60,6 +60,32 @@ Whenever you push a commit, use the personal access token in place of a password
 Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
 ``` 
 
+## Creating a Pull Request
+A Pull Request is created when you want to merge your changes into the **main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
+
+A Pull Request is created from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
+
+![GitHub PR Notice](images/version-control/github-pr-notice.png)
+
+Click the `Compare & pull request` button.  
+
+If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
+
+![GitHub PR Menu](images/version-control/github-pr-menu.png)  ![GitHub New PR](images/version-control/github-new-pr.png)
+
+You'll be taken to the `Open a pull request` page.
+
+Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
+
+![GitHub Base Compare](images/version-control/github-base-compare.png)
+
+Fill out the form and provide a title and description of the changes made.  
+
+If you have someone who can review your pull request, on the right side of the screen click the cog icon under the `Reviewers` section, and select their name.
+
+![GitHub Reviewers](images/version-control/github-reviewers.png)
+
+Then click the `Create Pull Request` button.
 
 ## Setting up a Git Repository 
 
@@ -128,7 +154,7 @@ If you are in the default folder you will see the following subfolders available
 Navigate into the `notebook_dir` directory.
 
 ```
-cd notebook_dir
+cd /notebook_dir
 ```
 You should see the public folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
 
@@ -162,11 +188,11 @@ git remote add origin url-of-your-git-repository
 
 
 ## Using Git with the Graphical User Interface
-By default when you create a new repository you will be using the **master** branch.
+By default when you create a new repository you will be using a default branch, which is usually named **main**.
 This is the main branch where the initial work files will be pushed to and also where the final work version will be.
 
-It is good practice to create work branches from the master branch where all the changes to your work will be done.
-Once the changes are complete they can be pushed and merged with the master branch
+It is good practice to create work branches from the main branch where all the changes to your work will be done.
+Once the changes are complete they can be pushed and merged with the main branch
 
 ### Making Your First Commit
 
@@ -179,7 +205,8 @@ When the file is created or altered it will be seen under the `Untracked` sectio
 ![Git Untracked](images/version-control/git-untracked.png)
 
 ### Staging a File
-Staging a file means getting the file ready to be committed and pushed.  There are two ways to do this.
+Staging a file means getting the file ready to be committed and pushed to the remote repository.  
+There are two ways to do this.
 
 1. Hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
@@ -209,7 +236,7 @@ When done click the `Commit` button below the commit description.  If successful
 ### Pushing a Commit
 
 Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
-repository where they can be merged with the master/main branch.  Up to now no branches have been made.
+repository where they can be merged with the main branch.  Up to now no branches have been made.
 
 Click the `Git` menu and `Push to Remote`
 
@@ -337,9 +364,9 @@ Git will automatically switch you into the new branch.  Your newly created branc
 
 ```{note}
 You can only switch branches when you have no files staged or changed.
- 
-To switch branches simply click another branch listed under the `Branches` section.
 ```
+
+To switch branches simply click another branch listed under the `Branches` section.
 
 ```{note}
 You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
@@ -348,11 +375,12 @@ You can only switch to another local branch.  Branches with the `origin` prefix 
 
 ## Using Git with the Terminal
 
-Here are some useful Git commands.  For more in-depth information take a look at the 
+In this section are some useful Git commands.  For more in-depth information take a look at the 
 [official Git documentation](https://git-scm.com/doc).
 
 ### Set Up Your Git Identifier
 
+When you set up your Git Identifier it will be shown with each commit you make.
 If you are working in a team this will show who made a certain commit.
 
 ```
@@ -362,13 +390,21 @@ git config --global user.email "email@email.com"
 
 ### Staging a File
 
-Make sure you are in the same directory as the file you want to stage.
+A file can be staged whether you are in the same directory as the file or not. 
+
+To stage a file when you are in the same directory as the file, you use the command with only the filename.
 
 ```
 git add <filename>
 ```
 
-### View Staged Files
+To stage a file when you are in a different directory as the file, you use the command with the folder path to the file.
+
+```
+git add /folder/path/to/file/<filename>
+```
+
+### View Status
 
 If you have multiple files staged and ready to commit you can see the list by using `git status`.
 
@@ -391,6 +427,20 @@ After your commit is complete, push it to the remote repository.
 
 ```
 git push
+```
+
+### Pushing a Commit to an Existing Remote Repository
+If you want to push to a specific remote repository specify the name of the repository with the `-u` flag.
+`-u` is the same as using the full command `-set-upstream`.
+
+```
+git push -u remote-repository-name
+```
+
+You can also specify a specific branch to push to.
+
+```
+git push -u remote-repository-name remote-branch-name
 ```
 
 ### View Commit History
@@ -426,23 +476,39 @@ git diff
    git reset <commit tag> <filenames>
    ```
 
-### Stashing Files
+### <a id="stash-terminal"></a>Stashing Files
 
-Make sure you are in the same directory as the file you want to stash.  
-
-Running the `stash` command will stash all files that have changes made to them.
+Running the `stash` command will stash all files that have changes made to them.  These changed files will then not 
+interfere with other git operations such as switching branches.
 
 ```
 git stash
 ```
 
-To see the files you stashed you can list them: 
+You can also run the `stash` command if you are not in the same directory as the files.
+
+```
+git stash -- folder/path/to/file
+```
+
+To see a list of files you stashed you can list them: 
 
 ```
 git stash list
 ```
 
-To resume working on your stashed files you will need to get them out of the stash.  Run the following command and you will see them under the `Changed` section.
+To see the contents of your most recent stash run:
+
+```
+git stash show
+```
+
+To resume working on your stashed files you will need to get them out of the stash.  
+Run the following command and you will see them under the `Changed` section.
+
+```{note}
+This will only get the most recent files out of the stash.
+```
 
 ```
 git stash pop
@@ -458,7 +524,7 @@ git branch <new-branch-name>
 ### Switching Branches
 
 ```{note}
-You can only switch branches when you have no files staged or changed.
+You can only switch branches when you have no files that can cause a conflict between branches.
 ``` 
 
 Switch branches by checking out the branch.  Replace *<branch-name>* with the branch you want to switch to.
@@ -471,32 +537,7 @@ git checkout <branch-name>
 You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
 ``` 
 
-## Creating a Pull Request
-A Pull Request is done when you want to merge your changes into the **master**/**main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
 
-A Pull Request is done from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
-
-![GitHub PR Notice](images/version-control/github-pr-notice.png)
-
-Click the `Compare & pull request` button.  
-
-If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
-
-![GitHub PR Menu](images/version-control/github-pr-menu.png)  ![GitHub New PR](images/version-control/github-new-pr.png)
-
-You'll be taken to the `Open a pull request` page.
-
-Here, make sure the `base` is set to **master** and the `compare` is set to the branch you want to compare the **master** branch with.
-
-![GitHub Base Compare](images/version-control/github-base-compare.png)
-
-Fill out the form and provide a title and description of the changes made.  
-
-If you have someone who can review your pull request click the cog icon in the right side of the screen under the `Reviewers` section and select their name.
-
-![GitHub Reviewers](images/version-control/github-reviewers.png)
-
-Then click the `Create Pull Request` button.
 
 ## Merging Your Branch
 Merging branches is done on the GitHub site.
