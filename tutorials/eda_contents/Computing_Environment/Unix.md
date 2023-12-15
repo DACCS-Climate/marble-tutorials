@@ -20,10 +20,8 @@ jovyan@97d07e419e83:~$
 ~~~
 
 
-The **~** tells us we are in the home directory while the **$** tells us the shell is awaiting an input. The **username**
-is `joyvan` and the **hostname** is `97d07e419e83`. Because we are using JupyterHub on the cloud, we all have the same username
-("jovyan" = resident of the planet Jupyter). However, we each have a different hostname (the name of the computer we are using),
-which corresponds to a "virtual machine" running in the cloud. From now on, we will just use a **$** to indicate the prompt.
+The `~` tells us we are in the home directory while the **\$** tells us the shell is awaiting an input. The **username**
+is `joyvan` and the **hostname** is `97d07e419e83`. From now on, we will just use a **$** to indicate the prompt.
 
 While the username will always be the same for all Marble users, it is still good to know how to find out your username.
 
@@ -71,11 +69,10 @@ that the computer assumes we want to run commands in unless we explicitly specif
 
 ~~~
 $ pwd
-/notebook_dir/writable-workspace/.home
+/home/jovyan
 ~~~
 
-Here, the terminal's response is `/notebook_dir/writable-workspace`, which indicates where are currently within the
-`writable-workspace` folder which itself is located within `notebook_dir` which is all under the `/` or **home directiory**.
+This response gives us the full path to our current working directory. 
 
 ### Listing Directory Contents
 
@@ -152,7 +149,7 @@ Indicating the parent directory in Marble is `/notebook_dir/writable-workspace`.
 
 Using the `cd` command without an argument also returns you to the home directory.
 
-We can also specify the path to the directory wish, for example:
+We can also use `cd` to specify the path to a specific directory, for example:
 
 ~~~
 /notebook_dir/writable-workspace$ cd
@@ -205,7 +202,7 @@ the correct location.
     cause your command to not work as expected and can even result in data loss.
 
  If you need to refer to names of files or directories that have whitespace
- or another non-alphanumeric character, you should surround the name in quotes (`""`).
+ or another non-alphanumeric character, you should surround the name in quotes (`''`).
 
  Now, let's go to the new directory we have created.
 
@@ -244,7 +241,7 @@ $
 
 The `ls` command now returns no output. 
 
-#### Deleting Is Forever
+```{warning} Deleting Is Forever
 
 The Unix shell doesn't have a trash bin that we can recover deleted files from (though 
 most graphical interfaces to Unix do).  Instead, when we delete files, they are 
@@ -253,7 +250,7 @@ Tools for finding and recovering deleted files do exist, but there's no guarante
 they'll work in any particular situation, since the computer may recycle the 
 file's disk space right away.
 
-Note, `rm` can only remove files with only remove files in the current working 
+Note, `rm` can only remove files within the current working 
 directory. `rm`, alone, cannot remove directories. To do this, we can use 
 the option `-r` or `-R` or `--recursive` which recursively deletes all directories 
 and their contents.
@@ -269,7 +266,7 @@ and their contents.
  $ rm -r -i new_file.txt
  rm: remove regular empty file 'new_file.txt'? y
 ~~~
-
+```
 ## Takeaways
 
 ### Key Points:
@@ -297,9 +294,10 @@ but is normally used to indicate the  type of data in the file.
 |Make Directory| mkdir *name*|
 |Make file| touch *name*|
 |Delete| rm *option* *file_path*|
+|Remove Directory| rmdir *option* *directory*|
 |Move file| mv *old_path* *new_path*|
 
-To learn more about the functions of a command, use `command --help` 
+To learn more about the functions of a command, use `[COMMAND NAME] --help` or  `man [COMMAND NAME]` if the help option is not available.  
 Online resources are also available to [describe the function of a command](https://explainshell.com).
 
 ## Learning More
