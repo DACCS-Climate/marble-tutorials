@@ -77,7 +77,7 @@ This response gives us the full path to our current working directory.
 ### Listing Directory Contents
 
 Next, you may wish to explore the contents of a folder within the file system. We do this using the `ls`
-command which stands for "listing":
+command which stands for "list":
 
 Using `ls` within our current working directory
 ```
