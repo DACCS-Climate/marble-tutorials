@@ -21,7 +21,7 @@ Online Git services like [GitHub](https://github.com/), [GitLab](https://about.g
 or [BitBucket](https://bitbucket.org/) allow you to store your repository online and access it 
 anywhere with a free account.
 
-## <a id="github"></a>GitHub
+## GitHub
 
 GitHub is one of the many online providers of free remote repository storage.  This section will cover how to work with 
 remote repositories in a Github context.
@@ -87,6 +87,15 @@ If you have someone who can review your pull request, on the right side of the s
 
 Then click the `Create Pull Request` button.
 
+## Merging Your Branch
+Merging branches is done on the GitHub site.
+
+After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
+
+![GitHub Merge](images/version-control/github-merge-button.png)
+
+
+
 ## Setting up a Git Repository 
 
 ### Creating Remote Repository Account
@@ -96,7 +105,7 @@ To use Git with a remote repository you will need to create an account and then 
 There are many free options such as [GitHub](https://github.com/) or [BitBucket](https://bitbucket.org/).
 
 This tutorial uses GitHub to demonstrate how to set up a remote repository.  
-To see how to set up a GitHub account, see the [GitHub](#github) section.
+To see how to set up a GitHub account, see the GitHub section.
 
 ### Setup Git Repository Using the Graphical User Interface
 
@@ -536,16 +545,6 @@ git checkout <branch-name>
 ```{note}
 You can only switch to another local branch.  Branches with the `origin` prefix are remote branches and cannot be switched into.
 ``` 
-
-
-
-## Merging Your Branch
-Merging branches is done on the GitHub site.
-
-After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
-
-![GitHub Merge](images/version-control/github-merge-button.png)
-
 
 ## Git Best Practices
 
