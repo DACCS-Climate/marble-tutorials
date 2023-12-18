@@ -219,15 +219,15 @@ There are two ways to do this.
 
 1. Hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
-![Git Untracked Staged](images/version-control/git-untracked-plus.png)
+   ![Git Untracked Staged](images/version-control/git-untracked-plus.png)
 
 2. Right-click the file and select `Stage`.
 
-![Stage Right Click](images/version-control/right-click-menu.png)
+   ![Stage Right Click](images/version-control/right-click-menu.png)
 
-The file will now appear under the `Staged` section.
+   The file will now appear under the `Staged` section.
 
-![Git Staged](images/version-control/git-staged.png)
+   ![Git Staged](images/version-control/git-staged.png)
 
 ### Making a Commit
 
@@ -275,18 +275,18 @@ There are several ways to view the changes made between versions of a file.
 
 1. Right-click on the file and select `Diff`.  
 
-![Diff Right Click](images/version-control/right-click-menu.png)
+   ![Diff Right Click](images/version-control/right-click-menu.png)
 
 2. Click the `Diff` button.
 
-![Diff Button](images/version-control/diff-button.png)
+   ![Diff Button](images/version-control/diff-button.png)
 
 3. Enable the double-click shortcut for viewing a `Diff`.  
 
    From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
 Then double-click on the file.
 
-![Diff Double Click](images/version-control/git-menu-diff.png)
+   ![Diff Double Click](images/version-control/git-menu-diff.png)
 
 The `diff` screen of the file will open and show the changes made to the file.  On the left is the `HEAD` panel 
 and on the right is the `WORKING` panel. 
