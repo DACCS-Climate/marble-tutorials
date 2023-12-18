@@ -34,3 +34,57 @@ lon is None measured in degrees_east.
 
 time is None measured in None. 
 
+tas is near-surface (usually, 2 meter) air temperature measured in K. 
+
+psl is not, in general, the same as surface pressure measured in Pa. 
+
+pr is at surface; includes both liquid and solid phases from all types of clouds (both large-scale and convective) measured in kg m-2 s-1. 
+
+huss is Near-surface (usually, 2 meter) specific humidity. measured in 1. 
+
+hurs is This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C. measured in %. 
+
+clt is for the whole atmospheric column, as seen from the surface or the top of the atmosphere. Include both large-scale and convective cloud. measured in %. 
+
+lat is None measured in degrees_north. 
+
+lon is None measured in degrees_east. 
+
+time is None measured in None. 
+
+tas is near-surface (usually, 2 meter) air temperature measured in K. 
+
+psl is not, in general, the same as surface pressure measured in Pa. 
+
+pr is at surface; includes both liquid and solid phases from all types of clouds (both large-scale and convective) measured in kg m-2 s-1. 
+
+huss is Near-surface (usually, 2 meter) specific humidity. measured in 1. 
+
+hurs is This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C. measured in %. 
+
+clt is for the whole atmospheric column, as seen from the surface or the top of the atmosphere. Include both large-scale and convective cloud. measured in %. 
+
+lat is None measured in degrees_north. 
+
+lon is None measured in degrees_east. 
+
+time is None measured in None. 
+
+tas is near-surface (usually, 2 meter) air temperature measured in K. 
+
+psl is not, in general, the same as surface pressure measured in Pa. 
+
+pr is at surface; includes both liquid and solid phases from all types of clouds (both large-scale and convective) measured in kg m-2 s-1. 
+
+huss is Near-surface (usually, 2 meter) specific humidity. measured in 1. 
+
+hurs is This is the relative humidity with respect to liquid water for T> 0 C, and with respect to ice for T<0 C. measured in %. 
+
+clt is for the whole atmospheric column, as seen from the surface or the top of the atmosphere. Include both large-scale and convective cloud. measured in %. 
+
+lat is None measured in degrees_north. 
+
+lon is None measured in degrees_east. 
+
+time is None measured in None. 
+
