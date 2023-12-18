@@ -515,7 +515,7 @@ To resume working on your stashed files you will need to get them out of the sta
 Run the following command and you will see them under the `Changed` section.
 
 ```{note}
-This will only get the most recent files out of the stash.
+This will only get the most stash.
 ```
 
 ```
@@ -531,7 +531,7 @@ git branch <new-branch-name>
 
 ### Creating a Branch That Tracks a Remote Branch
 
-A "Tracking" branch is a local branch that has a direct connection to a remote branch.  This allows you to use
+A "tracking" branch is a local branch that has a direct connection to a remote branch.  This allows you to use
 simple commands such as `git push` without any specifying commands.  Git automatically knows which server and branch
 to push to.
 
