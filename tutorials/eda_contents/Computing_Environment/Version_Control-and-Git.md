@@ -1,3 +1,5 @@
+# DEPRECATED - to be deleted
+
 # Intro to Git for Version Control
 
 ## Overview
