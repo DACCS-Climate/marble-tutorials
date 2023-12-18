@@ -529,6 +529,26 @@ git stash pop
 git branch <new-branch-name>
 ```
 
+### Creating a Branch That Tracks a Remote Branch
+
+A "Tracking" branch is a local branch that has a direct connection to a remote branch.  This allows you to use
+simple commands such as `git push` without any specifying commands.  Git automatically knows which server and branch
+to push to.
+
+To track a remote branch use the `track` command.
+
+If you want the new local branch to have the same name as the remote branch use the following command.
+
+```
+git checkout --track origin/<remote-branch-name>
+```
+
+If you want to specify a different name for the local branch use the following command.
+
+```
+git branch --track <new-local-branch-name> origin/<remote-branch-name>
+```
+
 ### Switching Branches
 
 ```{note}
