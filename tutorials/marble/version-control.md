@@ -60,7 +60,7 @@ Whenever you push a commit, use the personal access token in place of a password
 Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
 ``` 
 
-## Creating a Pull Request
+### Creating a Pull Request
 A Pull Request is created when you want to merge your changes into the **main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
 
 A Pull Request is created from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
@@ -87,7 +87,7 @@ If you have someone who can review your pull request, on the right side of the s
 
 Then click the `Create Pull Request` button.
 
-## Merging Your Branch
+### Merging Your Branch
 Merging branches is done on the GitHub site.
 
 After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
@@ -165,7 +165,7 @@ Navigate into the `notebook_dir` directory.
 ```
 cd /notebook_dir
 ```
-You should see the public folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
+You should see the user folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
 
 ![Terminal Notebook Dir](images/version-control/terminal-notebook-dir.png)
 ![File Browser Default Folders](images/version-control/file-browser-default-folders.png)
@@ -269,7 +269,7 @@ To see all your past commits click the `History` tab in the `Commits` section un
 ![Commit History](images/version-control/git-log-gui.png)
 
 
-### View the Changes Made Between Versions
+### View the Changes Made to a File Between Versions
 
 There are several ways to view the changes made between versions of a file.
 
@@ -283,17 +283,17 @@ There are several ways to view the changes made between versions of a file.
 
 3. Enable the double-click shortcut for viewing a `Diff`.  
 
-From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
-Then double click on the file.
+   From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
+Then double-click on the file.
 
 ![Diff Double Click](images/version-control/git-menu-diff.png)
 
-The `diff` screen of the file will open and show the changes made to the file.  Areas where changes were made are 
-highlighted in red. On the left is the `HEAD` panel and on the right is the `WORKING` panel. 
+The `diff` screen of the file will open and show the changes made to the file.  On the left is the `HEAD` panel 
+and on the right is the `WORKING` panel. 
 
-`HEAD` is the old version of the file.  If additions were made 
-there will be green slashes on top of the red highlight.  If there were deletions they will be highlighted in darker 
-red on top of the red highlight. 
+`HEAD` is the old version of the file.  Areas where changes were made are 
+highlighted in red.  If additions were made there will be green slashes on top of the red highlight.  
+If there were deletions they will be highlighted in darker red on top of the red highlight. 
 
 `WORKING` is the new version of the file.  Areas where changes were made are 
 highlighted in green.  
@@ -318,22 +318,21 @@ it will not be seen in the commit history.
    To `Revert` past changes click the `History` tab.  Then click the title or the down arrow of the 
 commit you want to revert. This will expand the commit information, and you will see additional buttons.
 
-![Revert GUI](images/version-control/git-revert-gui.png)
+   ![Revert GUI](images/version-control/git-revert-gui.png)
 
-Then click the curved arrow to revert the changes for that particular commit.
+   Then click the curved arrow to revert the changes for that particular commit.
 
-![Revert Button](images/version-control/git-revert-button.png)
-
+   ![Revert Button](images/version-control/git-revert-button.png)
 
 3. `Hard Reset` - Undo all changes made after a certain point
 
-Undoing changes made after a certain point means resetting the commit history to the chosen commit.
+    Undoing changes made after a certain point means resetting the commit history to the chosen commit.
 Click the `History` tab.  Then click the title or the down arrow of the 
 commit you want to reset to. This will expand the commit information, and you will see additional buttons.
 
-![Hard Reset GUI](images/version-control/git-hard-reset-gui.png)
+   ![Hard Reset GUI](images/version-control/git-hard-reset-gui.png)
 
-Click the button that has a clock inside a curved arrow.
+   Click the button that has a clock inside a curved arrow.
 
 ### Stashing Files
 
@@ -344,7 +343,7 @@ the changes from other branches will not overwrite changes in files you are curr
 Currently, there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.  
 Similarly, files can only be retrieved from the Terminal.
 
-[Stash Files from Terminal](#stash-terminal)
+[Stash Files From Terminal](content:references:stash-terminal)
 
 Once the command is run all files listed under `Changed` will be moved to the `Stash` and will not be seen. 
 
@@ -372,7 +371,7 @@ Git will automatically switch you into the new branch.  Your newly created branc
 ### Switching Branches
 
 ```{note}
-You can only switch branches when you have no files staged or changed.
+You can only switch branches when you have no conflicts in files between the branches.
 ```
 
 To switch branches simply click another branch listed under the `Branches` section.
@@ -389,7 +388,7 @@ In this section are some useful Git commands.  For more in-depth information tak
 
 ### Set Up Your Git Identifier
 
-When you set up your Git Identifier it will be shown with each commit you make.
+When you set up your Git Identifier your username and email will be shown with each commit you make.
 If you are working in a team this will show who made a certain commit.
 
 ```
@@ -484,8 +483,8 @@ git diff
    ```
    git reset <commit tag> <filenames>
    ```
-
-### <a id="stash-terminal"></a>Stashing Files
+(content:references:stash-terminal)=
+### Stashing Files
 
 Running the `stash` command will stash all files that have changes made to them.  These changed files will then not 
 interfere with other git operations such as switching branches.
