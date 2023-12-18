@@ -15,31 +15,29 @@ In a unix environment, everything is considered a file.
 Getting started, select the **terminal** option from the **JupyterLab Launcher**. When loaded, you should see
 something like this.
 
-~~~
+```
 jovyan@97d07e419e83:~$
-~~~
+```
 
 
-The **~** tells us we are in the home directory while the **$** tells us the shell is awaiting an input. The **username**
-is `joyvan` and the **hostname** is `97d07e419e83`. Because we are using JupyterHub on the cloud, we all have the same username
-("jovyan" = resident of the planet Jupyter). However, we each have a different hostname (the name of the computer we are using),
-which corresponds to a "virtual machine" running in the cloud. From now on, we will just use a **$** to indicate the prompt.
+The `~` tells us we are in the home directory while the **\$** tells us the shell is awaiting an input. The **username**
+is `joyvan` and the **hostname** is `97d07e419e83`. From now on, we will just use a **$** to indicate the prompt.
 
 While the username will always be the same for all Marble users, it is still good to know how to find out your username.
 
 *Try*
 
-~~~
+```
 $ whoami
 jovyan
-~~~
+```
 
 and to find out your hostname
 
-~~~
+```
 $ hostname
 97d07e419e83
-~~~
+```
 
 ### Directories
 
@@ -69,13 +67,12 @@ Let's find out where we are by running a command called `pwd` (which stands for 
 At any moment, our **current working directory** is our current default directory, i.e., the directory 
 that the computer assumes we want to run commands in unless we explicitly specify something else. 
 
-~~~
+```
 $ pwd
-/notebook_dir/writable-workspace/.home
-~~~
+/home/jovyan
+```
 
-Here, the terminal's response is `/notebook_dir/writable-workspace`, which indicates where are currently within the
-`writable-workspace` folder which itself is located within `notebook_dir` which is all under the `/` or **home directiory**.
+This response gives us the full path to our current working directory. 
 
 ### Listing Directory Contents
 
@@ -83,31 +80,31 @@ Next, you may wish to explore the contents of a folder within the file system. W
 command which stands for "listing":
 
 Using `ls` within our current working directory
-~~~
+```
 $ ls
 notebooks  shapefile_datastore 
-~~~
+```
 
 Sometimes, the basic `ls` command may yield no results, especially if you are located within your home directory 
-~~~
+```
 $ ls
 $
-~~~
+```
 
 This is because files may be hidden, to see these hidden files we the option `-a` or `--all` which
 gives us
 
-~~~
+```
 $ ls -a
 
 .  ..  .bash_history  .cache  .config  .gitconfig  .ipython  .jupyter  .lesshst  .local  .npm  .python_history
-~~~
+```
 
 Note all files here start with `.`, this indicates they are hidden.
 
 `ls` has many other options. To learn about these options, we can used the `--help` modifier:
 
-~~~
+```
 $ ls --help
 
 Usage: ls [OPTION]... [FILE]...
@@ -122,7 +119,7 @@ Mandatory arguments to long options are mandatory for short options too.
       --block-size=SIZE      with -l, scale sizes by SIZE when printing them;
                                e.g., '--block-size=M'; see SIZE format below
    ...
-~~~
+```
 
 ### Navigating Between Directories
 
@@ -130,40 +127,40 @@ To navigate through the filesystem, there is the `cd` command which stands for "
 doesn't actually change the directory just the shell's idea of what directory we are in.
 
 Let's navigate to the home directory
-~~~
+```
 $ cd ~
-~~~
+```
  
 Remember the hidden directory `..` from the `ls -a` command? 
 `..` is a special directory name meaning "the directory containing this one", or more succinctly,
 the **parent** of the current directory. In Marble, this command should take you to `/notebook_dir/writable-workspace` 
 if you are currently in the home directory, otherwise you will move one level up in the hierarchy. 
 
-~~~
+```
 $ cd ..
 $ pwd
 /notebook_dir/writable-workspace
 $ cd ..
 $ pwd
 /notebook_dir
-~~~
+```
 
 Indicating the parent directory in Marble is `/notebook_dir/writable-workspace`.
 
 Using the `cd` command without an argument also returns you to the home directory.
 
-We can also specify the path to the directory wish, for example:
+We can also use `cd` to specify the path to a specific directory, for example:
 
-~~~
+```
 /notebook_dir/writable-workspace$ cd
 ~$ pwd
 /notebook_dir/writable-workspace/.home
-~~~
-~~~
+```
+```
 ~$ cd /notebook_dir/mypublic
  $ pwd
  /notebook_dir/mypublic
-~~~
+```
 
 
 ## Working with Files and Directories
@@ -172,11 +169,11 @@ You would have seen basic ways to navigate through files and directories in Unix
 
 To create a directory, we use the command `mkdir` plus the name of the directory you wish to create.
 
-~~~
+```
 /notebook_dir/mypublic$ mkdir example_of_directory
 /notebook_dir/mypublic$ ls
 'Environment'   example_of_directory   Marble.md   Plan.ipynb
-~~~
+```
 
 Note the `mkdir` yielded no output but when we check for the list of files and directories within the current working directory, 
 we see `example_of_directory` was created. 
@@ -205,46 +202,46 @@ the correct location.
     cause your command to not work as expected and can even result in data loss.
 
  If you need to refer to names of files or directories that have whitespace
- or another non-alphanumeric character, you should surround the name in quotes (`""`).
+ or another non-alphanumeric character, you should surround the name in quotes (`''`).
 
  Now, let's go to the new directory we have created.
 
 ### Autocompleting Inputs
 Assuming you made a directory called `example_of_directory`, then type:
 
-~~~
+```
 $ cd ex<TAB>
-~~~
+```
 
 Where `<TAB>` refers to the **TAB button** on your keyboard. This will auto-input `example_of_directory`.
 
-~~~
+```
 $ pwd
 /notebook_dir/mypublic/example_of_directory
-~~~
+```
 
 ### Creating Files
 Let's create a file called `new_file.txt` in this new dictionary using the command `touch`.
 
-~~~
+```
 /example_of_directory$ touch new_file.txt
 /example_of_directory$ ls
 new_file.txt
-~~~
+```
 
 ### Deleting Files
 
 Now, let's see how we can remove any files using the `rm` command:
 
-~~~
+```
 $ rm new_file.txt
 $ ls
 $ 
-~~~
+```
 
 The `ls` command now returns no output. 
 
-#### Deleting Is Forever
+```{warning} Deleting Is Forever
 
 The Unix shell doesn't have a trash bin that we can recover deleted files from (though 
 most graphical interfaces to Unix do).  Instead, when we delete files, they are 
@@ -253,7 +250,7 @@ Tools for finding and recovering deleted files do exist, but there's no guarante
 they'll work in any particular situation, since the computer may recycle the 
 file's disk space right away.
 
-Note, `rm` can only remove files with only remove files in the current working 
+Note, `rm` can only remove files within the current working 
 directory. `rm`, alone, cannot remove directories. To do this, we can use 
 the option `-r` or `-R` or `--recursive` which recursively deletes all directories 
 and their contents.
@@ -265,11 +262,11 @@ and their contents.
  add the "interactive" flag `-i` to `rm` which will ask us for confirmation
  before each step
 
-~~~
+```
  $ rm -r -i new_file.txt
- rm: remove regular empty file 'new_file.txt'? y
-~~~
-
+ rm: remove regular empty file 'new_file.txt'? 
+```
+```
 ## Takeaways
 
 ### Key Points:
@@ -297,9 +294,10 @@ but is normally used to indicate the  type of data in the file.
 |Make Directory| mkdir *name*|
 |Make file| touch *name*|
 |Delete| rm *option* *file_path*|
+|Remove Directory| rmdir *option* *directory*|
 |Move file| mv *old_path* *new_path*|
 
-To learn more about the functions of a command, use `command --help` 
+To learn more about the functions of a command, use `[COMMAND NAME] --help` or  `man [COMMAND NAME]` if the help option is not available.  
 Online resources are also available to [describe the function of a command](https://explainshell.com).
 
 ## Learning More
