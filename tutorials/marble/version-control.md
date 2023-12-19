@@ -499,7 +499,7 @@ You can also run the `stash` command if you are not in the same directory as the
 git stash -- folder/path/to/file
 ```
 
-To see a list of files you stashed you can list them: 
+To see a list of stashes you have made: 
 
 ```
 git stash list
