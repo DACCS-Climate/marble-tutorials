@@ -1,31 +1,14 @@
 # Jupyter Lab
 
 ```{contents}
+:local:
+:depth: 1
 ```
 
-## Getting Started
-[JupyterLab](https://jupyterlab.readthedocs.io) will be our primary method for your 
-interactions with the Marble Platform. JupyterLab contains a complete environment for
-interactive scientific computing which runs in your web browser. Jupyter is an
-open source python project that was started by scientists like yourselves who
-wanted a more effective way to interact with their computers. While Jupyter notebooks cannot 
-be used for productionized products, they allow for more readable and understandable projects.
-Perfect for Exploratory Data Analysis, Modelling and Experimentation.
-
-### JupyterLab
- JupyterLab has excellent documentation. Rather than repeat that documentation
-here, we point you to their docs. The following pages are particularly relevant:
-
-- [The JupyterLab Interface](https://jupyterlab.readthedocs.io/en/stable/user/interface.html)
-- [Working with Files](https://jupyterlab.readthedocs.io/en/stable/user/files.html)
-- [The Text Editor](https://jupyterlab.readthedocs.io/en/stable/user/file_editor.html)
-- [Notebooks](https://jupyterlab.readthedocs.io/en/stable/user/notebook.html)
-- [Terminals](https://jupyterlab.readthedocs.io/en/stable/user/terminal.html)
-- [Managing Kernels and Terminals](https://jupyterlab.readthedocs.io/en/stable/user/running.html)
-
+## How to Use
 
 ### Jupyter Images
-An image is a portable configuration of a computing instance.  It is a snapshot of a computing environment at a point in time.
+An image is a portable configuration of a computing instance; a snapshot of a computing environment at a point in time.
 
 If the server you are connected to has Jupyter installed you will see a dropdown list of Jupyter images after logging 
 in to the server.  Each image has a different configuration of software for a specific use case.  For example, the 
@@ -42,3 +25,59 @@ Select the one you want and click `Start`.
 ```{note}
 Each Jupyter image in this list provides a different configuration of Python packages.
 ``` 
+
+
+
+### The User Interface
+
+The user interface of Jupyter Lab is divided into three general areas: the launcher, the breadcrumb menu, and the left menu.
+
+The launcher displays icons of the different environments that can be run.  These include Jupyter Notebooks and 
+console shells.
+
+![Launcher Screen](images/jupyter/launcher-screen.png)
+
+
+The breadcrumb menu contains some useful shortcut buttons and displays the folder path you are browsing.
+
+![Breadcrumb Menu](images/jupyter/breadcrumb-menu.png)
+
+
+
+The left menu contains shortcuts and displays additional information or actions you can take.
+
+| Left Menu Icon                                                                   | Purpose                                                                                                                                    |
+|----------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| ![Folder Icon](images/jupyter/left-menu-folder-icon.png)                         | Displays the folders accessible to you                                                                                                     |
+| ![Terminal Icon](images/jupyter/left-menu-terminal-icon.png)                     | Displays the kernel (Jupyter Notebook) and terminal sessions currently open. <br> You can shut down kernel and terminal sessions from here. |
+| ![Git Icon](images/jupyter/left-menu-git-icon.png)                               | Displays the Git actions that can be taken. (only available inside a Git repository)                                                       |
+| ![Commands Icon](images/jupyter/left-menu-commands-icon.png)                     | Displays useful commands you can run without needing to go through the top menu                                                            |
+| ![Property Inspector Icon](images/jupyter/left-menu-property-inspector-icon.png) | Lets you look inside the tags of a Jupyter notebook                                                                                        |
+| ![Open Tabs Icon](images/jupyter/left-menu-open-tabs-icon.png)                   | Displays a list of tabs currently running.  Tabs can be shut down from here.                                                               |
+| ![Extension Manager Icon](images/jupyter/left-menu-extension-manager-icon.png)   | Displays any third-party extensions installed                                                                                              |
+
+
+
+
+
+
+### Creating Folders
+
+To create a folder click the `Create Folder` button in the shortcut bar above the breadcrumb.
+
+This will create a new folder in the folder shown in the breadcrumb. 
+
+![Create Folder](images/jupyter/create-folder.png)
+
+### Upload Files
+
+To upload files click the `Upload Files` button in the shortcut bar above the breadcrumb.
+The file will be uploaded to the folder shown in the breadcrumb. 
+
+![Upload Files](images/jupyter/upload-files.png)
+
+### Refresh File List
+
+If the new folder or file is not seen in the list try refreshing it by click the `Refresh File List` button.
+
+![Refresh File List](images/jupyter/refresh-folder-list.png)
