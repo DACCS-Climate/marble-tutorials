@@ -6,13 +6,13 @@ root: intro.md
 parts:
   - caption: Marble for Users
     chapters:
-    - file: users/intro.md
-    - file: users/marble/intro.md
+    - file: users/users-intro.md
+    - file: users/marble/getting-started.md
       sections:
         - file: users/marble/explore-the-network.md
         - file: users/marble/get-an-account.md
         - file: users/marble/account-management.md
-    - file: users/pavics/intro.md
+    - file: users/pavics/pavics-intro.md
       sections:
         - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
         - file: users/pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
@@ -34,4 +34,4 @@ parts:
 
   - caption: Marble for Admins
     chapters:
-    - file: admin/intro.md
+    - file: admin/admin-intro.md

@@ -9,7 +9,7 @@ Choose one of the topics to get started.
 :gutter: 3
 
 :::{grid-item-card}
-:link: users/intro
+:link: users/users-intro
 :link-type: doc
 <!-- :class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold -->
 
@@ -17,7 +17,7 @@ Marble for Users
 :::
 
 :::{grid-item-card}
-:link: admin/intro
+:link: admin/admin-intro
 :link-type: doc
 <!-- :class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold -->
 
