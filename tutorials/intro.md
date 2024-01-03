@@ -20,14 +20,14 @@ Intro to the Marble Network
 :::
 
 :::{grid-item-card}
-:link: pavics/intro
+:link: external/intro
 :link-type: doc
 :class-header: bg-dark
 
-PAVICS tutorials
+Other Tutorials
 ^^^
 
-Example notebooks for PAVICS
+External links to other relevant tutorials
 :::
 
 ::::
