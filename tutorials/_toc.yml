@@ -5,7 +5,8 @@ format: jb-book
 root: intro
 parts:
   - chapters:
-      - file: marble/jupyterlab.md
+      - file: marble/jupyterlab-howto.md
+      - file: marble/version-control.md
       - file: pavics/intro.md
         sections:
           - file: pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
