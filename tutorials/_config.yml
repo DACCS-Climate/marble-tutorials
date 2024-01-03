@@ -30,3 +30,4 @@ html:
   use_issues_button: true
   use_repository_button: true
   favicon: favicon.ico
+  home_page_in_navbar: false
