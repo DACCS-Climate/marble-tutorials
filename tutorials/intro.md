@@ -11,7 +11,7 @@ Choose one of the topics to get started.
 :::{grid-item-card}
 :link: marble/intro
 :link-type: doc
-:class-header: bg-dark
+:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
 Introduction
 ^^^
@@ -22,7 +22,7 @@ Intro to the Marble Network
 :::{grid-item-card}
 :link: pavics/intro
 :link-type: doc
-:class-header: bg-dark
+:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
 PAVICS tutorials
 ^^^
