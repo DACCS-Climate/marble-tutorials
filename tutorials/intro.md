@@ -1,4 +1,4 @@
-# Marble Tutorials
+# Marble
 
 These tutorials cover the features and capabilities of the software in the Marble network.
 
@@ -9,25 +9,17 @@ Choose one of the topics to get started.
 :gutter: 3
 
 :::{grid-item-card}
-:link: introduction/getting-started
+:link: users/users-intro
 :link-type: doc
-:class-header: bg-dark
 
-Introduction
-^^^
-
-Intro to the Marble Network
+Marble for Users
 :::
 
 :::{grid-item-card}
-:link: external/intro
+:link: admin/admin-intro
 :link-type: doc
-:class-header: bg-dark
 
-Other Tutorials
-^^^
-
-External links to other relevant tutorials
+Marble for Admins
 :::
 
 ::::

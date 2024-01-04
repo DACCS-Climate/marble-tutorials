@@ -2,17 +2,27 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: intro.md
 parts:
-  - chapters:
-      - file: introduction/getting-started.md
-      - file: external/intro.md
-        sections:
-          - url: https://earth-env-data-science.github.io/intro.html
-            title: Earth and Environmental Data Science
-          - url: https://ouranosinc.github.io/pavics-sdi/notebooks/index.html
-            title: "PAVICS: basic usage examples"
-          - url: https://ravenpy.readthedocs.io/en/latest/notebooks/index.html
-            title: Hydrological Modeling and Analysis
-          - url: https://pavics-sdi.readthedocs.io/projects/raven/en/latest/notebooks/index.html
-            title: Geo-processing
+  - caption: Marble for Users
+    chapters:
+    - file: users/users-intro.md
+    - file: users/marble/getting-started.md
+      sections:
+        - file: users/marble/explore-the-network.md
+        - file: users/marble/get-an-account.md
+        - file: users/marble/account-management.md
+    - file: users/external/intro.md
+      sections:
+        - url: https://earth-env-data-science.github.io/intro.html
+          title: Earth and Environmental Data Science
+        - url: https://ouranosinc.github.io/pavics-sdi/notebooks/index.html
+          title: "PAVICS: basic usage examples"
+        - url: https://ravenpy.readthedocs.io/en/latest/notebooks/index.html
+          title: Hydrological Modeling and Analysis
+        - url: https://pavics-sdi.readthedocs.io/projects/raven/en/latest/notebooks/index.html
+          title: Geo-processing
+
+  - caption: Marble for Admins
+    chapters:
+    - file: admin/admin-intro.md
