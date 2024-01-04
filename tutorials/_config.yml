@@ -3,7 +3,7 @@
 
 title: Marble Tutorials
 author: Marble Community
-copyright: 2023
+copyright: "2023"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -29,3 +29,4 @@ html:
   use_issues_button: true
   use_repository_button: true
   favicon: favicon.ico
+  home_page_in_navbar: false

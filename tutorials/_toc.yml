@@ -2,27 +2,37 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: intro.md
 parts:
-  - chapters:
-      - file: introduction/getting-started.md
-      - file: users/marble/version-control.md
-      - file: users/pavics/intro.md
-        sections:
-          - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
-          - file: users/pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
+  - caption: Marble for Users
+    chapters:
+    - file: users/users-intro.md
+    - file: users/marble/getting-started.md
+      sections:
+        - file: users/marble/explore-the-network.md
+        - file: users/marble/get-an-account.md
+        - file: users/marble/account-management.md
+    - file: users/marble/version-control.md
+    - file: users/pavics/pavics-intro.md
+      sections:
+        - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
+        - file: users/pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
+
+  - caption: Marble for Admins
+    chapters:
+    - file: admin/admin-intro.md
