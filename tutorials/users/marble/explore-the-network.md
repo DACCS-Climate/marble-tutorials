@@ -1,10 +1,5 @@
 # Explore the Network
 
-```{contents}
-:local:
-```
-
-## Learn about the network
 
 Information about the network can be found at [marbleclimate.com](https://marbleclimate.com) which maintains an up-to-date 
 listing of all the nodes in the network and about the Marble project itself, such as its objective, organization and
@@ -18,7 +13,7 @@ The site also provides information about the main services available on the Marb
 - [Data Catalog](data_catalog.md)
 - [Remote Processing Services](remote_processing.md)
 
-### Explore the nodes
+## Explore the nodes
 
 The Marble network is composed of interconnected nodes, each one running the same Marble node-management software called [Birdhouse](https://github.com/bird-house). This
 software allows the nodes to communicate with each other and share data and services across the network. 

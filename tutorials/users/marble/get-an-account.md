@@ -1,8 +1,5 @@
 # Create an account
 
-```{contents}
-:local:
-```
 
 Marble is open to anyone, anywhere in the world. Anyone can get an account on the platform and start examining a variety
 of climate related questions without worrying about provisioning their own computing and storage environments.
