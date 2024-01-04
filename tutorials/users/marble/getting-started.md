@@ -1,4 +1,4 @@
-# The Marble Platform
+# Getting Started
 
 ```{contents}
 :local:

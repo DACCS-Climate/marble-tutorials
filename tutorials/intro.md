@@ -1,4 +1,4 @@
-# Marble Tutorials
+# Marble
 
 These tutorials cover the features and capabilities of the software in the Marble network.
 
@@ -9,25 +9,17 @@ Choose one of the topics to get started.
 :gutter: 3
 
 :::{grid-item-card}
-:link: marble/intro
+:link: users/users-intro
 :link-type: doc
-:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
-Introduction
-^^^
-
-Intro to the Marble Network
+Marble for Users
 :::
 
 :::{grid-item-card}
-:link: pavics/intro
+:link: admin/admin-intro
 :link-type: doc
-:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
-PAVICS tutorials
-^^^
-
-Example notebooks for PAVICS
+Marble for Admins
 :::
 
 ::::
