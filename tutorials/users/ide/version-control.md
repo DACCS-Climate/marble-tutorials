@@ -6,10 +6,6 @@ A Verson control system keeps track of a set of files and saves snapshots (i.e. 
 the files at any point in time. Using version control allows you to confidently make changes to your code 
 (any any other files), with the ability to roll back to any previous state.
 
-```{contents}
-:local:
-:depth: 1
-```
 
 ## Introduction to Git
 
