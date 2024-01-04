@@ -1,9 +1,5 @@
 # Jupyter Lab
 
-```{contents}
-:local:
-:depth: 1
-```
 
 ## How to Use
 
@@ -23,7 +19,7 @@ Select the one you want and click `Start`.
 ![Starting Server List Screen](images/jupyter/starting-server-list-screen.png)
 
 ```{note}
-Each Jupyter image in this list provides a different configuration of Python packages.
+Each Jupyter image in this list provides a different configuration of Python packages.  Some Python packages may not be installed on all Jupyter images.
 ``` 
 
 
@@ -63,7 +59,7 @@ The left menu contains shortcuts and displays additional information or actions 
 
 ### Creating Folders
 
-To create a folder click the `Create Folder` button in the shortcut bar above the breadcrumb.
+To create a folder click the `New Folder` button in the shortcut bar above the breadcrumb.
 
 This will create a new folder in the folder shown in the breadcrumb. 
 
@@ -78,6 +74,18 @@ The file will be uploaded to the folder shown in the breadcrumb.
 
 ### Refresh File List
 
-If the new folder or file is not seen in the list try refreshing it by click the `Refresh File List` button.
+If a newly created folder or recently uploaded file is not seen in the list try refreshing it by click the `Refresh File List` button.
 
 ![Refresh File List](images/jupyter/refresh-folder-list.png)
+
+
+### Folder Types
+
+When you click the `Folder` icon you will see there are some folders already created.  These are default folders in Marble that allow the user to store files and share files with other users.
+
+| Folder  Name                                                                     | Purpose                                                                                                                                               |
+|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| mypublic                                                                         | This is the user's public folder.  Files in this folder will be viewable by anyone in the node.                                                       |
+| public                                                                           | This shows the public folder of every user on the node.  <br> This folder is viewable by everyone and the files inside it can be accessed by everyone. |
+| public-wps-outputs                                                               | This folder is used to hold the results of web processing services. <br> This folder is viewable by everyone.                                         |
+| writable-workspace                                                               | This is the user's private workspace.                                                                                                                 |
