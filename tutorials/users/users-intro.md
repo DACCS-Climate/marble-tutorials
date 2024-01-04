@@ -14,6 +14,14 @@ Getting Started
 :::
 
 :::{grid-item-card}
+:link: jupyter/jupyter-intro
+:link-type: doc
+
+Interactive Development Environment
+:::
+
+
+:::{grid-item-card}
 :link: pavics/pavics-intro
 :link-type: doc
 
