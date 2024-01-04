@@ -14,7 +14,7 @@ Getting Started
 :::
 
 :::{grid-item-card}
-:link: jupyter/jupyter-intro
+:link: ide/jupyter-intro
 :link-type: doc
 
 Interactive Development Environment

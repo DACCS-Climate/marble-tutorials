@@ -1,4 +1,4 @@
-# Jupyter Lab
+# IDE
 
 ```{tableofcontents}
 ```

@@ -12,9 +12,9 @@ parts:
         - file: users/marble/explore-the-network.md
         - file: users/marble/get-an-account.md
         - file: users/marble/account-management.md
-    - file: users/jupyter/jupyter-intro.md
+    - file: users/ide/jupyter-intro.md
       sections:
-        - file: users/jupyter/version-control.md
+        - file: users/ide/version-control.md
     - file: users/pavics/pavics-intro.md
       sections:
         - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
