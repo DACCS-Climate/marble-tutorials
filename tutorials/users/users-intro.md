@@ -9,7 +9,6 @@ This section covers the user side of things on Marble.
 :::{grid-item-card}
 :link: marble/getting-started
 :link-type: doc
-:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
 Getting Started
 :::
@@ -17,7 +16,6 @@ Getting Started
 :::{grid-item-card}
 :link: pavics/pavics-intro
 :link-type: doc
-:class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold
 
 PAVICS tutorials
 :::

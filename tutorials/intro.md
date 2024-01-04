@@ -11,7 +11,6 @@ Choose one of the topics to get started.
 :::{grid-item-card}
 :link: users/users-intro
 :link-type: doc
-<!-- :class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold -->
 
 Marble for Users
 :::
@@ -19,7 +18,6 @@ Marble for Users
 :::{grid-item-card}
 :link: admin/admin-intro
 :link-type: doc
-<!-- :class-header: sd-bg-dark, sd-text-light, sd-font-weight-bold -->
 
 Marble for Admins
 :::
