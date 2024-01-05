@@ -1,40 +1,41 @@
 # Version Control
 
 [_Version control_](https://en.wikipedia.org/wiki/Version_control) is a powerful way to organize, back up,
-and share with collaborators your research computing code.
-A Verson control system keeps track of a set of files and saves snapshots (i.e. _versions_, _commits_) of 
+and share your research outputs and methodologies (code + data) with collaborators, or the public at large.
+A version control system keeps track of a set of files and saves snapshots (i.e. _versions_, _commits_) of 
 the files at any point in time. Using version control allows you to confidently make changes to your code 
-(any any other files), with the ability to roll back to any previous state.
+(and any other files), with the ability to roll back to any previous state.
 
 
 ## Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native command line interface but there 
-are also many third party desktop GUI clients to make using Git simpler.  Try one of the many free 
-[Git clients](https://git-scm.com/downloads/guis) available.
+are also many third party desktop GUI clients that help make it easier to get started with Git.  A comprehensive list of 
+several freely available Git clients is [available here](https://git-scm.com/downloads/guis).
 
 Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), 
 or [BitBucket](https://bitbucket.org/) allow you to store your repository online and access it 
-anywhere with a free account.
+anywhere with a free account. In this tutorial, you'll learn how to set up a remote Git repository to backup and share 
+your work using GitHub, and how to configure Git locally, within your Marble Jupyter Lab environment to use that account.
 
+(github)=
 ## GitHub
 
 GitHub is one of the many online providers of free remote repository storage.  This section will cover how to work with 
 remote repositories in a Github context.
 
 ### Creating a GitHub Account
-To begin using Git you need to create a free account on [GitHub](https://github.com/).  
-Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
+To begin using Git you need to create a free account on GitHub. Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
 
 ### Creating a Remote Repository
 
-After creating account click `Repository` at the top menu and then `New`
+After creating your account click `Repository` at the top menu and then `New`:
 
 ![GitHub Top Menu](images/github-top-menu.png)
 
 ![GitHub New Button](images/github-new-button.png)
 
-Fill in the form with the details of the repository and click the `Create Repository` button at the bottom of the page.
+Fill the form with details of the repository and then click the `Create Repository` button at the bottom of the page.
 
 ### Creating a Personal Access Token
 
@@ -42,9 +43,7 @@ A Personal Access Token is used to authenticate the user when pushing files to t
 
 Go to [GitHub](https://github.com/) and log into your account.
 
-Click on: **Your User Profile** &rarr; **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Generate New Token or Tokens(classic)**
-
-Choose an expiration date.  Check all the boxes in the form.  Click **Generate Token**. Copy the generated token.
+Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date, check all the boxes, then click **Generate Token**. Copy the generated token.
 
 ```{note}
 The Personal Access Token will be shown *only* when it is created.
@@ -92,7 +91,16 @@ After your Pull Request has been approved (and reviewed, if needed), the `Merge`
 
 
 
-## Setting up a Git Repository 
+## Setting up Git on Marble
+
+Now that you have setup a remote repository which you can use to version control your workflow, backup, and share your
+work with others, it is time to configure Git in your IDE environment on Marble. You need to complete this step because 
+in this step you will configure the local "git" program that will actually do the version control work for you and you will configure 
+it to access your remote repository.
+
+```{note}
+If you have not already done so, go to the [](github) section and create a remote repository first.
+```
 
 ### Creating Remote Repository Account
 
