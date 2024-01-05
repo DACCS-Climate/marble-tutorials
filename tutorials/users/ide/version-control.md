@@ -216,6 +216,10 @@ git init
 
 
 ### Adding a Remote Repository
+You can optionally add a remote repository.
+
+Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
+
 ```
 git remote add origin url-of-your-git-repository
 ```
@@ -538,14 +542,13 @@ git stash show
 To resume working on your stashed files you will need to get them out of the stash.  
 Run the following command and you will see them under the `Changed` section.
 
-```{note}
-This will only get the most stash.
-```
-
 ```
 git stash pop
 ```
 
+```{note}
+This will only get the most recent stash.
+```
 
 ### Creating a Branch
 
