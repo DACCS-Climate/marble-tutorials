@@ -1,9 +1,6 @@
-# Jupyter Lab
+# How to Use
 
-
-## How to Use
-
-### Jupyter Images
+## Jupyter Images
 An image is a portable configuration of a computing instance; a snapshot of a computing environment at a point in time.
 
 If the server you are connected to has Jupyter installed you will see a dropdown list of Jupyter images after logging 
@@ -11,7 +8,7 @@ in to the server.  Each image has a different configuration of software for a sp
 "eo-crim" image has Python packages installed for Earth Observation while other images do not. 
 
 
-### Server Selection
+## Server Selection
 Once logged in you will see a dropdown list of the images available on the particular node. What is available will differ from node to node.
 
 Select the one you want and click `Start`.
@@ -24,7 +21,7 @@ Each Jupyter image in this list provides a different configuration of Python pac
 
 
 
-### The User Interface
+## The User Interface
 
 The user interface of Jupyter Lab is divided into three general areas: the launcher, the breadcrumb menu, and the left menu.
 
@@ -53,11 +50,7 @@ The left menu contains shortcuts and displays additional information or actions 
 | ![Extension Manager Icon](images/jupyter/left-menu-extension-manager-icon.png)   | Displays any third-party extensions installed                                                                                              |
 
 
-
-
-
-
-### Creating Folders
+## Creating Folders
 
 To create a folder click the `New Folder` button in the shortcut bar above the breadcrumb.
 
@@ -65,21 +58,32 @@ This will create a new folder in the folder shown in the breadcrumb.
 
 ![Create Folder](images/jupyter/create-folder.png)
 
-### Upload Files
+## Upload Files
 
 To upload files click the `Upload Files` button in the shortcut bar above the breadcrumb.
 The file will be uploaded to the folder shown in the breadcrumb. 
 
 ![Upload Files](images/jupyter/upload-files.png)
 
-### Refresh File List
+## Refresh File List
 
 If a newly created folder or recently uploaded file is not seen in the list try refreshing it by click the `Refresh File List` button.
 
 ![Refresh File List](images/jupyter/refresh-folder-list.png)
 
 
-### Folder Types
+## Git Clone
+
+![Git Clone](images/jupyter/git-clone.png)
+
+A shortcut for cloning a remote git repository.
+
+```{note}
+This button only becomes active when you are in a folder that does not contain a git repository.
+``` 
+
+
+## Folder Types
 
 When you click the `Folder` icon you will see there are some folders already created.  These are default folders in Marble that allow the user to store files and share files with other users.
 
@@ -89,3 +93,4 @@ When you click the `Folder` icon you will see there are some folders already cre
 | public                                                                           | This shows the public folder of every user on the node.  <br> This folder is viewable by everyone and the files inside it can be accessed by everyone. |
 | public-wps-outputs                                                               | This folder is used to hold the results of web processing services. <br> This folder is viewable by everyone.                                         |
 | writable-workspace                                                               | This is the user's private workspace.                                                                                                                 |
+
