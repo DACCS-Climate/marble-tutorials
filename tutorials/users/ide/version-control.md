@@ -111,18 +111,11 @@ There are many free options such as [GitHub](https://github.com/) or [BitBucket]
 This tutorial uses GitHub to demonstrate how to set up a remote repository.  
 To see how to set up a GitHub account, see the GitHub section.
 
-### Setup Git Repository Using the Graphical User Interface
-
+### Setup a New Git Repository Using the Graphical User Interface
+ 
 If there is no Git repository set up you will see the following:
 
 ![No Repository Set Menu](images/git-no-repo-menu.png)
-
-### Adding a Remote Repository
-
-Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
-
-From the menu click `Git` and then select `Add Remote Repository`.  Enter the URL of the repository you created on 
-GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
 
 ### Creating a Local Repository
 
@@ -144,6 +137,34 @@ For example, if `git` is the last one in the breadcrumb, then `git` is the curre
 Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
 ![Repository Created UI](images/git-repo-created.png)
+
+### Adding a Remote Repository
+
+You can optionally add a remote repository.
+
+Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
+
+From the menu click `Git` and then select `Add Remote Repository`.  Enter the URL of the repository you created on 
+GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
+
+
+### Cloning an Existing Repository
+
+Cloning a repository is another way of adding a remote repository. Cloning creates a copy of an existing remote repository in your local folder.
+
+Find a repository online you want to clone and copy the URL of the repository.
+
+Create a new folder or navigate to the folder you want to keep this repository in.
+
+Click the `Git Clone` button in the breadcrumb menu
+
+![Git Clone](images/jupyter/git-clone.png)
+
+```{note}
+This button only becomes active when you are in a folder that does not contain a git repository.
+``` 
+
+Paste the repository URL into the dialog box. Click `Clone`.  The online repository's files will be copied into the local repository folder.
 
 
 ### Setup Git Repository Using the Jupyter Terminal
@@ -198,7 +219,6 @@ git init
 ```
 git remote add origin url-of-your-git-repository
 ```
-
 
 ## Using Git with the Graphical User Interface
 By default when you create a new repository you will be using a default branch, which is usually named **main**.
