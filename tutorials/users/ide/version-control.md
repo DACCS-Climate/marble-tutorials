@@ -27,6 +27,7 @@ remote repositories in a Github context.
 ### Creating a GitHub Account
 To begin using Git you need to create a free account on GitHub. Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
 
+(github_remote_repo)=
 ### Creating a Remote Repository
 
 After creating your account click `Repository` at the top menu and then `New`:
@@ -43,11 +44,7 @@ A Personal Access Token is used to authenticate the user when pushing files to t
 
 Go to [GitHub](https://github.com/) and log into your account.
 
-Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. 
-On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. 
-In the form that you are then presented with, choose an expiration date.
-
-The checkboxes here outline the scope the token is used to give access to.  Check all the boxes you will need.
+Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date.The checkboxes on the form outline the scope the token is used to give access to. Check all the boxes you will need.
 
 Most people working alone will need to check everything in the "repo" and "delete_repo" boxes.
 
@@ -55,7 +52,7 @@ Most people working with a team will need to check everything in the "repo", "de
 
 The full scope of access the personal access token will allow depends on the role a person will take on in the project.  Choose the scopes to allow as necessary.  
 
-Once you're done checking the boxes,  click **Generate Token**. Copy the generated token.
+Once you're done checking the boxes, click **Generate Token**. Copy the generated token.
 
 ```{note}
 The Personal Access Token will be shown *only* when it is created.
@@ -113,81 +110,43 @@ it to access your remote repository.
 ```{note}
 If you have not already done so, go to the [](github) section and create a remote repository first.
 ```
+(create_local_repo)=
+### Creating a Local Repository
 
-### Creating Remote Repository Account
+Navigate to the directory that will contain your analysis and for which you want to implement version control. For example, if 
+your `writable-workspace` directory contains the folders named `project_A`, `project_B`, `project_C` etc. and you want to 
+initialize your new repo for `project_A` then navigate to that directory. 
 
-To use Git with a remote repository you will need to create an account and then create a repository there.
+```{caution}
+While you can configure a single Git repo for all your data on Marble by initializing your local repository in the `writable-workspace`
+directory, we strongly recommend that you initialize repositories on a per-project basis. This will make it easier for you
+to track of changes that affect that project only, and it will make sharing easier by enabling you to only share the analysis 
+that you want to share, and not expose your other work.
+```
+[](gui_git_setup)  
+[](terminal_git_setup)
 
-There are many free options such as [GitHub](https://github.com/) or [BitBucket](https://bitbucket.org/).
+(gui_git_setup)=
+#### Setup Git Repository Using the Graphical User Interface
 
-This tutorial uses GitHub to demonstrate how to set up a remote repository.  
-To see how to set up a GitHub account, see the GitHub section.
-
-### Setup a New Git Repository Using the Graphical User Interface
- 
-If there is no Git repository set up you will see the following:
+This section shows how to setup a Git repository using the built-in GUI, to see how to setup using a terminal see [here](terminal_git_setup). On the left side-bar click the Git icon. If there is no Git repository already set up you will see the following:
 
 ![No Repository Set Menu](images/git-no-repo-menu.png)
 
-### Creating a Local Repository
-
-```{note}
-The repository needs to be in a folder with write permissions enabled.  
-```
-
-Click `Initialize Repository` to create a Git repository in the current folder. 
-
-
-```{note}
-The current folder is the last one shown in the folder breadcrumb.
- 
-![Folder Breadcrumb Menu](images/folder-breadcrumb-writeable.png) 
- 
-For example, if `git` is the last one in the breadcrumb, then `git` is the current folder selected 
-```
-
-Once it is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
+Click `Initialize a Repository` to create a Git repository in the current folder. Once this is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
 ![Repository Created UI](images/git-repo-created.png)
 
-### Adding a Remote Repository
+(terminal_git_setup)=
+#### Setup Git Repository Using the JupyterLab Terminal
 
-You can optionally add a remote repository.
-
-Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
-
-From the menu click `Git` and then select `Add Remote Repository`.  Enter the URL of the repository you created on 
-GitHub into the `Add Remote Repository` dialog box.  Click `OK` 
-
-
-### Cloning an Existing Repository
-
-Cloning a repository is another way of adding a remote repository. Cloning creates a copy of an existing remote repository in your local folder.
-
-Find a repository online you want to clone and copy the URL of the repository.
-
-Create a new folder or navigate to the folder you want to keep this repository in.
-
-Click the `Git Clone` button in the breadcrumb menu
-
-![Git Clone](images/jupyter/git-clone.png)
-
-```{note}
-This button only becomes active when you are in a folder that does not contain a git repository.
-``` 
-
-Paste the repository URL into the dialog box. Click `Clone`.  The online repository's files will be copied into the local repository folder.
-
-
-### Setup Git Repository Using the Jupyter Terminal
-
-Click the Terminal button to start a Terminal session.
+This section shows how to setup a Git repository using the built-in terminal. If you prefer to use a graphical interface, see [this section](gui_git_setup) instead. Click the Terminal button from the a new "Launcher" page, as shown below, (or go to **File** &rarr; **New** &rarr; Terminal) to start a Terminal session.
 
 ![Terminal Icon](images/terminal-icon.png)
 
 ![Terminal Session Screen](images/terminal-session-screen.png)
 
-Check to see that you are in the default folder by executing the `ls` command.
+Check to see that you are in the default folder (this is the root folder, indicated by `/`) by executing the `ls` command.
 
 ```
 ls
@@ -207,7 +166,8 @@ You should see the user folders available to you.  These are the same folders se
 ![Terminal Notebook Dir](images/terminal-notebook-dir.png)
 ![File Browser Default Folders](images/file-browser-default-folders.png)
 
-Navigate into the `writable-workspace` folder, then create a new folder here and then navigate into it.
+Navigate into the `writable-workspace` folder, then navigate to the project folder of choice (in this example `project_A`), or create a new folder
+if your are starting from scratch, then `cd` into it.
 
 Substitute `your-folder-name` with a new folder name. 
 
@@ -218,7 +178,7 @@ mkdir your-folder-name
 
 cd your-folder-name
 ```
-Initialize your Git repository
+To initialize your Git repository, type the following command:
 
 ```
 git init
@@ -226,15 +186,36 @@ git init
 
 ![Terminal Git Init](images/terminal-git-init.png)
 
+The output shown in the screenshot above confirms that a new empty git repository was initialized.
 
 ### Adding a Remote Repository
-You can optionally add a remote repository.
 
-Adding a remote repository allows you to store your work online at GitHub and access it anywhere.
+You can optionally add a remote repository. Adding a remote repository allows you to store your work online at GitHub and access it anywhere. You can add a remote
+repository for the local repository you created in the [previous step](create_local_repo) by clicking on `Git` in the menu bar and then selecting `Add Remote Repository`. Enter the URL of the [remote repository you created on GitHub](github_remote_repo) into the `Add Remote Repository` dialog box.  Click `OK`. If you 
+prefer to use the terminal, then navigate to your Git repo folder and issue the following command:
 
 ```
 git remote add origin url-of-your-git-repository
 ```
+
+### Cloning an Existing Repository
+
+Cloning a repository is another way of adding a remote repository. Cloning creates a copy of an existing remote repository in your local folder.
+
+Find a repository online you want to clone and copy the URL of the repository.
+
+Create a new folder or navigate to the folder you want to keep this repository in.
+
+Click the `Git Clone` button in the breadcrumb menu
+
+![Git Clone](images/jupyter/git-clone.png)
+
+```{note}
+This button only becomes active when you are in a folder that does not contain a git repository.
+``` 
+
+Paste the repository URL into the dialog box. Click `Clone`.  The online repository's files will be copied into the local repository folder.
+
 
 ## Using Git with the Graphical User Interface
 By default when you create a new repository you will be using a default branch, which is usually named **main**.
