@@ -7,11 +7,11 @@ parts:
   - caption: Marble for Users
     chapters:
     - file: users/users-intro.md
-    - file: users/marble/getting-started.md
+    - file: users/getting-started/getting-started.md
       sections:
-        - file: users/marble/explore-the-network.md
-        - file: users/marble/get-an-account.md
-        - file: users/marble/account-management.md
+        - file: users/getting-started/explore-the-network.md
+        - file: users/getting-started/get-an-account.md
+        - file: users/getting-started/account-management.md
     - file: users/pavics/pavics-intro.md
       sections:
         - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
