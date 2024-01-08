@@ -102,7 +102,7 @@ After your Pull Request has been approved (and reviewed, if needed), the `Merge`
 
 ## Setting up Git on Marble
 
-Now that you have setup a remote repository which you can use to version control your workflow, backup, and share your
+Now that you have set up a remote repository which you can use to version control your work, backup, and share your
 work with others, it is time to configure Git in your IDE environment on Marble. You need to complete this step because 
 in this step you will configure the local "git" program that will actually do the version control work for you and you will configure 
 it to access your remote repository.
@@ -113,15 +113,15 @@ If you have not already done so, go to the [](github) section and create a remot
 (create_local_repo)=
 ### Creating a Local Repository
 
-Navigate to the directory that will contain your analysis and for which you want to implement version control. For example, if 
-your `writable-workspace` directory contains the folders named `project_A`, `project_B`, `project_C` etc. and you want to 
-initialize your new repo for `project_A` then navigate to that directory. 
+Navigate to the directory that contains your analysis or project and for which you want to implement version control. For example, if 
+your `writable-workspace` directory contains three project folders named `project_A`, `project_B`, `project_C` etc. and you want to 
+initialize version control for `project_A` then navigate to that directory. 
 
 ```{caution}
-While you can configure a single Git repo for all your data on Marble by initializing your local repository in the `writable-workspace`
+While you can configure a single local Git repository for all your data on Marble by initializing that repository in the `writable-workspace`
 directory, we strongly recommend that you initialize repositories on a per-project basis. This will make it easier for you
-to track of changes that affect that project only, and it will make sharing easier by enabling you to only share the analysis 
-that you want to share, and not expose your other work.
+to track changes that affect that project only, and it will make sharing easier by allowing you to only share the analysis 
+that you want, without exposing the work you are doing for any other project.
 ```
 [](gui_git_setup)  
 [](terminal_git_setup)
@@ -129,24 +129,24 @@ that you want to share, and not expose your other work.
 (gui_git_setup)=
 #### Setup Git Repository Using the Graphical User Interface
 
-This section shows how to setup a Git repository using the built-in GUI, to see how to setup using a terminal see [here](terminal_git_setup). On the left side-bar click the Git icon. If there is no Git repository already set up you will see the following:
+This section shows how to setup a Git repository using the built-in GUI, to see how to setup using a terminal see [here](terminal_git_setup). On the left sidebar click the Git icon. If there is no Git repository already set up you will see the following:
 
 ![No Repository Set Menu](images/git-no-repo-menu.png)
 
-Click `Initialize a Repository` to create a Git repository in the current folder. Once this is done the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
+Click `Initialize a Repository` to create a Git repository in the current folder. Once this is done, the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
 ![Repository Created UI](images/git-repo-created.png)
 
 (terminal_git_setup)=
 #### Setup Git Repository Using the JupyterLab Terminal
 
-This section shows how to setup a Git repository using the built-in terminal. If you prefer to use a graphical interface, see [this section](gui_git_setup) instead. Click the Terminal button from the a new "Launcher" page, as shown below, (or go to **File** &rarr; **New** &rarr; Terminal) to start a Terminal session.
+This section shows how to setup a Git repository using the built-in terminal. If you prefer to use a graphical interface, see [this section](gui_git_setup) instead. Click the Terminal button from the a new "Launcher" page, as shown below, (or go to **File** &rarr; **New** &rarr; **Terminal**) to start a Terminal session.
 
 ![Terminal Icon](images/terminal-icon.png)
 
 ![Terminal Session Screen](images/terminal-session-screen.png)
 
-Check to see that you are in the default folder (this is the root folder, indicated by `/`) by executing the `ls` command.
+Check to see that you are in the default folder (this will be the root folder, which is indicated by `/`) by executing the `ls` command.
 
 ```
 ls
@@ -186,7 +186,7 @@ git init
 
 ![Terminal Git Init](images/terminal-git-init.png)
 
-The output shown in the screenshot above confirms that a new empty git repository was initialized.
+The output shown in the screenshot above confirms that a new empty Git repository was initialized.
 
 ### Adding a Remote Repository
 
@@ -211,10 +211,11 @@ Click the `Git Clone` button in the breadcrumb menu
 ![Git Clone](images/jupyter/git-clone.png)
 
 ```{note}
-This button only becomes active when you are in a folder that does not contain a git repository.
+This button is only active when you are in a folder that does not contain a git repository.
 ``` 
 
-Paste the repository URL into the dialog box. Click `Clone`.  The online repository's files will be copied into the local repository folder.
+Paste the repository URL into the dialog box. Click `Clone`. The online repository's files will be copied into the local folder which will
+then be initialized as a local Git repository and the remote repository will automatically be configured to be the one from which you cloned.
 
 
 ## Using Git with the Graphical User Interface
