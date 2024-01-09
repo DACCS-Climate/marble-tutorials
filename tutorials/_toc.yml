@@ -7,11 +7,39 @@ parts:
   - caption: Marble for Users
     chapters:
     - file: users/users-intro.md
-    - file: users/marble/getting-started.md
+    - file: users/getting-started/getting-started.md
       sections:
-        - file: users/marble/explore-the-network.md
-        - file: users/marble/get-an-account.md
-        - file: users/marble/account-management.md
+        - file: users/getting-started/explore-the-network.md
+        - file: users/getting-started/get-an-account.md
+        - file: users/getting-started/account-management.md
+    - file: users/ide/ide.md
+      sections:
+        - file: users/ide/jupyterlab.md
+        - file: users/ide/unix.md
+        - file: users/ide/version-control.md
+        - file: users/ide/kernels-and-dependency-management.md
+        - file: users/ide/persistent-storage.md
+        - file: users/ide/climate-analytics/climate-analytics.md
+          sections:
+            - file: users/ide/climate-analytics/numpy.md
+            - file: users/ide/climate-analytics/matplotlib.md
+            - file: users/ide/climate-analytics/pandas.md
+            - file: users/ide/climate-analytics/xarray.md
+            - file: users/ide/climate-analytics/cartopy.md
+            - file: users/ide/climate-analytics/machine-learning.md
+    - file: users/remote-processing/remote-processing.md
+      sections:
+        - file: users/remote-processing/wps.md
+        - file: users/remote-processing/weaver.md
+    - file: users/catalog/catalog.md
+      sections:
+        - file: users/catalog/gui-search.md
+        - file: users/catalog/pystac-client.md
+    - file: users/python-client/python-client.md
+      sections:
+        - file: users/python-client/network.md
+        - file: users/python-client/services.md
+        - file: users/python-client/magpie-session.md
     - file: users/external/intro.md
       sections:
         - url: https://earth-env-data-science.github.io/intro.html
@@ -26,3 +54,25 @@ parts:
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
+    - file: admin/getting-started/getting-started.md
+      sections:
+        - file: admin/getting-started/installation.md
+        - file: admin/getting-started/join-network.md
+    - file: admin/services/services.md
+    - file: admin/data/data.md
+      sections:
+        - file: admin/data/hosting.md
+        - file: admin/data/catalog.md
+        - file: admin/data/user-data.md
+    - file: admin/users/users.md
+      sections:
+        - file: admin/users/management.md
+        - file: admin/users/permissions.md
+    - file: admin/monitoring/monitoring.md
+    - file: admin/network/network.md
+      sections:
+        - file: admin/network/node-information.md
+        - file: admin/network/architecture.md
+    - file: admin/troubleshooting/troubleshooting.md
+      sections:
+        - file: admin/troubleshooting/support.md

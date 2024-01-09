@@ -7,7 +7,7 @@ This section covers the user side of things on Marble.
 :gutter: 3
 
 :::{grid-item-card}
-:link: marble/getting-started
+:link: getting-started/getting-started
 :link-type: doc
 
 Getting Started
