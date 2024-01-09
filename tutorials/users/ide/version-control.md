@@ -127,7 +127,7 @@ that you want, without exposing the work you are doing for any other project.
 [](terminal_git_setup)
 
 (gui_git_setup)=
-#### Setup Git Repository Using the Graphical User Interface
+### Setup Git Repository Using the Graphical User Interface
 
 This section shows how to setup a Git repository using the built-in GUI, to see how to setup using a terminal see [here](terminal_git_setup). On the left sidebar click the Git icon. If there is no Git repository already set up you will see the following:
 
@@ -138,7 +138,7 @@ Click `Initialize a Repository` to create a Git repository in the current folder
 ![Repository Created UI](images/git-repo-created.png)
 
 (terminal_git_setup)=
-#### Setup Git Repository Using the JupyterLab Terminal
+### Setup Git Repository Using the JupyterLab Terminal
 
 This section shows how to setup a Git repository using the built-in terminal. If you prefer to use a graphical interface, see [this section](gui_git_setup) instead. Click the Terminal button from the a new "Launcher" page, as shown below, (or go to **File** &rarr; **New** &rarr; **Terminal**) to start a Terminal session.
 
