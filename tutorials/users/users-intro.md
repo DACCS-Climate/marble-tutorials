@@ -14,7 +14,7 @@ Getting Started
 :::
 
 :::{grid-item-card}
-:link: external/intro
+:link: other/intro
 :link-type: doc
 
 Other Tutorials

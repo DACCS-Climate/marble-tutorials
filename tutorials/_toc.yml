@@ -40,17 +40,7 @@ parts:
         - file: users/python-client/network.md
         - file: users/python-client/services.md
         - file: users/python-client/magpie-session.md
-    - file: users/external/intro.md
-      sections:
-        - url: https://earth-env-data-science.github.io/intro.html
-          title: Earth and Environmental Data Science
-        - url: https://ouranosinc.github.io/pavics-sdi/notebooks/index.html
-          title: "PAVICS: basic usage examples"
-        - url: https://ravenpy.readthedocs.io/en/latest/notebooks/index.html
-          title: Hydrological Modeling and Analysis
-        - url: https://pavics-sdi.readthedocs.io/projects/raven/en/latest/notebooks/index.html
-          title: Geo-processing
-
+    - file: users/other/intro.md
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
