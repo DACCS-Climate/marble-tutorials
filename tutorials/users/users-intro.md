@@ -14,10 +14,10 @@ Getting Started
 :::
 
 :::{grid-item-card}
-:link: pavics/pavics-intro
+:link: other/intro
 :link-type: doc
 
-PAVICS tutorials
+Other Tutorials
 :::
 
 

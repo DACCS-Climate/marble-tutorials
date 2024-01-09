@@ -54,6 +54,7 @@ parts:
         - file: eda_contents/pandas_xarray/xarray_tips_and_tricks.ipynb
         - file: eda_contents/cartopy/cartopy.ipynb
         - file: eda_contents/machine_learning/machine_learning.ipynb
+    - file: users/other/intro.md
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
