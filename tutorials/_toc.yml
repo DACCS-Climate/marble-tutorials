@@ -6,7 +6,6 @@ root: intro
 parts:
   - chapters:
       - file: marble/jupyterlab-howto.md
-      - file: marble/version-control.md
       - file: marble/jupyterlab-troubleshooting.md
       - file: pavics/intro.md
         sections:
