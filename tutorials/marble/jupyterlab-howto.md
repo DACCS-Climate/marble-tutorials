@@ -23,7 +23,7 @@ Each Jupyter image in this list provides a different configuration of Python pac
 
 ## The User Interface
 
-The user interface of Jupyter Lab is divided into three general areas: the launcher, the breadcrumb menu, and the left menu.
+The user interface of JupyterLab is divided into three general areas: the launcher, the breadcrumb menu, and the left menu.
 
 The launcher displays icons of the different environments that can be run.  These include Jupyter Notebooks and 
 console shells.
@@ -87,10 +87,10 @@ This button only becomes active when you are in a folder that does not contain a
 
 When you click the `Folder` icon you will see there are some folders already created.  These are default folders in Marble that allow the user to store files and share files with other users.
 
-| Folder  Name                                                                     | Purpose                                                                                                                                               |
-|----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| mypublic                                                                         | This is the user's public folder.  Files in this folder will be viewable by anyone in the node.                                                       |
-| public                                                                           | This shows the public folder of every user on the node.  <br> This folder is viewable by everyone and the files inside it can be accessed by everyone. |
-| public-wps-outputs                                                               | This folder is used to hold the results of web processing services. <br> This folder is viewable by everyone.                                         |
-| writable-workspace                                                               | This is the user's private workspace.                                                                                                                 |
+| Folder  Name                                                                     | Purpose                                                                                                                                             |
+|----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| mypublic                                                                         | This is the user's public folder.  Files put in the `mypublic` folder will be viewable by anyone in the node from the `public` folder.               |
+| public                                                                           | This shows the public folder of every user on the node.  <br> This folder is viewable by everyone and the files inside it can be viewed by everyone. |
+| public-wps-outputs                                                               | This folder is used to hold the results of web processing services. <br> This folder is viewable by everyone.                                       |
+| writable-workspace                                                               | This is the user's private workspace.                                                                                                               |
 
