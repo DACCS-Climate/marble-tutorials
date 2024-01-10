@@ -3,7 +3,7 @@
 ## Jupyter Images
 An image is a portable configuration of a computing instance; a snapshot of a computing environment at a point in time.
 
-If the server you are connected to has Jupyter installed you will see a dropdown list of Jupyter images after logging 
+If the server you are connected to has Jupyter installed you will be able to choose one of the Jupyter images after logging 
 in to the server.  Each image has a different configuration of software for a specific use case.  For example, the 
 "eo-crim" image has Python packages installed for Earth Observation while other images do not. 
 
