@@ -79,7 +79,7 @@ If you don't see a notification, click the `Pull Request` menu button and then t
 
 You'll be taken to the `Open a pull request` page.
 
-Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
+Here, make sure the `base` is set to **master** and the `compare` is set to the branch you want to compare the **master** branch with.
 
 ![GitHub Base Compare](images/version-control/github-base-compare.png)
 
@@ -208,7 +208,7 @@ Create a new folder or navigate to the folder you want to keep this repository i
 
 Click the `Git Clone` button in the breadcrumb menu
 
-![Git Clone](images/jupyter/git-clone.png)
+![Git Clone](images/version-control/git-clone.png)
 
 ```{note}
 This button is only active when you are in a folder that does not contain a git repository.
@@ -267,7 +267,7 @@ When done click the `Commit` button below the commit description.  If successful
 ### Pushing a Commit
 
 Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
-repository where they can be merged with the main branch.  Up to now no branches have been made.
+repository.
 
 Click the `Git` menu and `Push to Remote`
 
@@ -313,7 +313,7 @@ Then double-click on the file.
 The `diff` screen of the file will open and show the changes made to the file.  On the left is the `HEAD` panel 
 and on the right is the `WORKING` panel. 
 
-`HEAD` is the old version of the file.  Areas where changes were made are 
+`HEAD` is the most current version of the file without the current changes you made.  Areas where changes were made are 
 highlighted in red.  If additions were made there will be green slashes on top of the red highlight.  
 If there were deletions they will be highlighted in darker red on top of the red highlight. 
 
@@ -461,7 +461,7 @@ git push
 
 ### Pushing a Commit to an Existing Remote Repository
 If you want to push to a specific remote repository specify the name of the repository with the `-u` flag.
-`-u` is the same as using the full command `-set-upstream`.
+`-u` is the shorthand version of the flag `--set-upstream`.
 
 ```
 git push -u remote-repository-name
@@ -480,6 +480,11 @@ To see all the commits made in a repository use the `log` command.
 ```
 git log
 ```
+
+This will display a list of commits made.  Each commit is uniquely identified with a long string of letters and numbers called a commit tag.
+An example of a commit tag would be something like `4fe12bbf6227a2...`.  
+
+If you need to refer to a commit using the commit tag the entire tag does not need to be used, only the first 5-7 characters.
 
 ### View the Changes Made Between Versions
 
