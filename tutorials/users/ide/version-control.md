@@ -287,8 +287,14 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 ### View Commit History
 To see all your past commits click the `History` tab in the `Commits` section under `Current Branch`
 
+Each commit is identified with the name of the user who made it and the commit tag.  
+
+In the example below the commit tag of the first commit is `01f1dc4`.  The name of the user has been removed from 
+the image to protect privacy.
 
 ![Commit History](images/version-control/git-log-gui.png)
+
+
 
 
 ### View the Changes Made to a File Between Versions
