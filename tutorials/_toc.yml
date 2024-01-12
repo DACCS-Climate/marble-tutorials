@@ -7,34 +7,62 @@ parts:
   - caption: Marble for Users
     chapters:
     - file: users/users-intro.md
-    - file: users/marble/getting-started.md
+    - file: users/getting-started/getting-started.md
       sections:
-        - file: users/marble/explore-the-network.md
-        - file: users/marble/get-an-account.md
-        - file: users/marble/account-management.md
-    - file: users/ide/jupyter-intro.md
+        - file: users/getting-started/explore-the-network.md
+        - file: users/getting-started/get-an-account.md
+        - file: users/getting-started/account-management.md
+    - file: users/ide/ide.md
       sections:
+        - file: users/ide/jupyterlab.md
+        - file: users/ide/unix.md
         - file: users/ide/version-control.md
-    - file: users/pavics/pavics-intro.md
+        - file: users/ide/kernels-and-dependency-management.md
+        - file: users/ide/persistent-storage.md
+        - file: users/ide/climate-analytics/climate-analytics.md
+          sections:
+            - file: users/ide/climate-analytics/numpy.md
+            - file: users/ide/climate-analytics/matplotlib.md
+            - file: users/ide/climate-analytics/pandas.md
+            - file: users/ide/climate-analytics/xarray.md
+            - file: users/ide/climate-analytics/cartopy.md
+            - file: users/ide/climate-analytics/machine-learning.md
+    - file: users/remote-processing/remote-processing.md
       sections:
-        - file: users/pavics/pavics-sdi/docs/source/notebook-components/weaver_example.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/WCS_example.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/forecasts.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-climate-stations.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/jupyter_extensions.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/subset-user-input.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/pavics_thredds.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/climex.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/subsetting.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/rendering.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/WFS_example.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/eccc-geoapi-xclim.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/opendap.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/regridding.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/WMS_example.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/notebooks/esgf-dap.ipynb
-        - file: users/pavics/pavics-sdi/docs/source/tutorials/bias_correction.ipynb
-
+        - file: users/remote-processing/wps.md
+        - file: users/remote-processing/weaver.md
+    - file: users/catalog/catalog.md
+      sections:
+        - file: users/catalog/gui-search.md
+        - file: users/catalog/pystac-client.md
+    - file: users/python-client/python-client.md
+      sections:
+        - file: users/python-client/network.md
+        - file: users/python-client/services.md
+        - file: users/python-client/magpie-session.md
+    - file: users/other/intro.md
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
+    - file: admin/getting-started/getting-started.md
+      sections:
+        - file: admin/getting-started/installation.md
+        - file: admin/getting-started/join-network.md
+    - file: admin/services/services.md
+    - file: admin/data/data.md
+      sections:
+        - file: admin/data/hosting.md
+        - file: admin/data/catalog.md
+        - file: admin/data/user-data.md
+    - file: admin/users/users.md
+      sections:
+        - file: admin/users/management.md
+        - file: admin/users/permissions.md
+    - file: admin/monitoring/monitoring.md
+    - file: admin/network/network.md
+      sections:
+        - file: admin/network/node-information.md
+        - file: admin/network/architecture.md
+    - file: admin/troubleshooting/troubleshooting.md
+      sections:
+        - file: admin/troubleshooting/support.md

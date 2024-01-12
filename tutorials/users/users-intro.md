@@ -7,25 +7,17 @@ This section covers the user side of things on Marble.
 :gutter: 3
 
 :::{grid-item-card}
-:link: marble/getting-started
+:link: getting-started/getting-started
 :link-type: doc
 
 Getting Started
 :::
 
 :::{grid-item-card}
-:link: ide/jupyter-intro
+:link: other/intro
 :link-type: doc
 
-Interactive Development Environment
-:::
-
-
-:::{grid-item-card}
-:link: pavics/pavics-intro
-:link-type: doc
-
-PAVICS tutorials
+Other Tutorials
 :::
 
 
