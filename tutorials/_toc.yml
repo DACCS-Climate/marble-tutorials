@@ -14,7 +14,6 @@ parts:
         - file: users/getting-started/account-management.md
     - file: users/ide/ide.md
       sections:
-        - file: users/ide/jupyterlab.md
         - file: users/ide/jupyterlab-howto.md
         - file: users/ide/jupyterlab-troubleshooting.md
         - file: users/ide/unix.md
