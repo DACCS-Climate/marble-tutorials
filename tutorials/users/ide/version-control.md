@@ -32,9 +32,9 @@ To begin using Git you need to create a free account on GitHub. Go to the [GitHu
 
 After creating your account click `Repository` at the top menu and then `New`:
 
-![GitHub Top Menu](images/github-top-menu.png)
+![GitHub Top Menu](images/version-control/github-top-menu.png)
 
-![GitHub New Button](images/github-new-button.png)
+![GitHub New Button](images/version-control/github-new-button.png)
 
 Fill the form with details of the repository and then click the `Create Repository` button at the bottom of the page.
 
@@ -69,25 +69,25 @@ A Pull Request is created when you want to merge your changes into the **main** 
 
 A Pull Request is created from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
 
-![GitHub PR Notice](images/github-pr-notice.png)
+![GitHub PR Notice](images/version-control/github-pr-notice.png)
 
 Click the `Compare & pull request` button.  
 
 If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
 
-![GitHub PR Menu](images/github-pr-menu.png)  ![GitHub New PR](images/github-new-pr.png)
+![GitHub PR Menu](images/version-control/github-pr-menu.png)  ![GitHub New PR](images/version-control/github-new-pr.png)
 
 You'll be taken to the `Open a pull request` page.
 
 Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
 
-![GitHub Base Compare](images/github-base-compare.png)
+![GitHub Base Compare](images/version-control/github-base-compare.png)
 
 Fill out the form and provide a title and description of the changes made.  
 
 If you have someone who can review your pull request, on the right side of the screen click the cog icon under the `Reviewers` section, and select their name.
 
-![GitHub Reviewers](images/github-reviewers.png)
+![GitHub Reviewers](images/version-control/github-reviewers.png)
 
 Then click the `Create Pull Request` button.
 
@@ -96,7 +96,7 @@ Merging branches is done on the GitHub site.
 
 After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
 
-![GitHub Merge](images/github-merge-button.png)
+![GitHub Merge](images/version-control/github-merge-button.png)
 
 
 
@@ -131,20 +131,20 @@ that you want, without exposing the work you are doing for any other project.
 
 This section shows how to setup a Git repository using the built-in GUI, to see how to setup using a terminal see [here](terminal_git_setup). On the left sidebar click the Git icon. If there is no Git repository already set up you will see the following:
 
-![No Repository Set Menu](images/git-no-repo-menu.png)
+![No Repository Set Menu](images/version-control/git-no-repo-menu.png)
 
 Click `Initialize a Repository` to create a Git repository in the current folder. Once this is done, the left sidebar will show the Git interface.  This is where you will see changes to files in the Git folder.
 
-![Repository Created UI](images/git-repo-created.png)
+![Repository Created UI](images/version-control/git-repo-created.png)
 
 (terminal_git_setup)=
 ### Setup Git Repository Using the JupyterLab Terminal
 
 This section shows how to setup a Git repository using the built-in terminal. If you prefer to use a graphical interface, see [this section](gui_git_setup) instead. Click the Terminal button from the a new "Launcher" page, as shown below, (or go to **File** &rarr; **New** &rarr; **Terminal**) to start a Terminal session.
 
-![Terminal Icon](images/terminal-icon.png)
+![Terminal Icon](images/version-control/terminal-icon.png)
 
-![Terminal Session Screen](images/terminal-session-screen.png)
+![Terminal Session Screen](images/version-control/terminal-session-screen.png)
 
 Check to see that you are in the default folder (this will be the root folder, which is indicated by `/`) by executing the `ls` command.
 
@@ -154,7 +154,7 @@ ls
 
 If you are in the default folder you will see the following subfolders available to you:
 
-![Terminal Default Subfolders](images/terminal-default-folders.png)
+![Terminal Default Subfolders](images/version-control/terminal-default-folders.png)
 
 Navigate into the `notebook_dir` directory.
 
@@ -163,8 +163,8 @@ cd /notebook_dir
 ```
 You should see the user folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
 
-![Terminal Notebook Dir](images/terminal-notebook-dir.png)
-![File Browser Default Folders](images/file-browser-default-folders.png)
+![Terminal Notebook Dir](images/version-control/terminal-notebook-dir.png)
+![File Browser Default Folders](images/version-control/file-browser-default-folders.png)
 
 Navigate into the `writable-workspace` folder, then navigate to the project folder of choice (in this example `project_A`), or create a new folder
 if your are starting from scratch, then `cd` into it.
@@ -184,7 +184,7 @@ To initialize your Git repository, type the following command:
 git init
 ```
 
-![Terminal Git Init](images/terminal-git-init.png)
+![Terminal Git Init](images/version-control/terminal-git-init.png)
 
 The output shown in the screenshot above confirms that a new empty Git repository was initialized.
 
@@ -229,11 +229,11 @@ Once the changes are complete they can be pushed and merged with the main branch
 
 Start by creating a file.  In this example a Jupyter Notebook file is created by clicking one of the Jupyter Notebook buttons in the launcher.
 
-![Jupyter Notebook Launcher Buttons](images/jupyter-notebook-buttons.png)
+![Jupyter Notebook Launcher Buttons](images/version-control/jupyter-notebook-buttons.png)
 
 When the file is created or altered it will be seen under the `Untracked` section in the Git sidebar.
 
-![Git Untracked](images/git-untracked.png)
+![Git Untracked](images/version-control/git-untracked.png)
 
 ### Staging a File
 Staging a file means getting the file ready to be committed and pushed to the remote repository.  
@@ -241,15 +241,15 @@ There are two ways to do this.
 
 1. Hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
 
-   ![Git Untracked Staged](images/git-untracked-plus.png)
+   ![Git Untracked Staged](images/version-control/git-untracked-plus.png)
 
 2. Right-click the file and select `Stage`.
 
-   ![Stage Right Click](images/right-click-menu.png)
+   ![Stage Right Click](images/version-control/right-click-menu.png)
 
    The file will now appear under the `Staged` section.
 
-   ![Git Staged](images/git-staged.png)
+   ![Git Staged](images/version-control/git-staged.png)
 
 ### Making a Commit
 
@@ -258,11 +258,11 @@ It can be as simple as "Updated Untitled.ipynb" or more specific, such as "Added
 
 A description is recommended but is not required.
 
-![Git Commit Title](images/git-commit-title.png)
+![Git Commit Title](images/version-control/git-commit-title.png)
 
 When done click the `Commit` button below the commit description.  If successful you will see a `Committed changes` status pop up in the lower right corner.
 
-![Git Commit Successful](images/git-commit-successful.png)
+![Git Commit Successful](images/version-control/git-commit-successful.png)
 
 ### Pushing a Commit
 
@@ -271,16 +271,16 @@ repository where they can be merged with the main branch.  Up to now no branches
 
 Click the `Git` menu and `Push to Remote`
 
-![Git Push Menu](images/git-push-menu.png)
+![Git Push Menu](images/version-control/git-push-menu.png)
 
 Enter in your login credentials.  For the password enter your Personal Access Token.  Click `OK`.
 
 
-![Git Push Credentials](images/git-push-credentials.png)
+![Git Push Credentials](images/version-control/git-push-credentials.png)
 
 If successful you will see a `Successfully pushed` status pop up in the lower right corner.
 
-![Push Successful](images/push-successful.png)
+![Push Successful](images/version-control/push-successful.png)
 
 
 
@@ -288,7 +288,7 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 To see all your past commits click the `History` tab in the `Commits` section under `Current Branch`
 
 
-![Commit History](images/git-log-gui.png)
+![Commit History](images/version-control/git-log-gui.png)
 
 
 ### View the Changes Made to a File Between Versions
@@ -297,18 +297,18 @@ There are several ways to view the changes made between versions of a file.
 
 1. Right-click on the file and select `Diff`.  
 
-   ![Diff Right Click](images/right-click-menu.png)
+   ![Diff Right Click](images/version-control/right-click-menu.png)
 
 2. Click the `Diff` button.
 
-   ![Diff Button](images/diff-button.png)
+   ![Diff Button](images/version-control/diff-button.png)
 
 3. Enable the double-click shortcut for viewing a `Diff`.  
 
    From the `Git` menu select **"Double click opens diff"**.  A checkmark will appear to show this option is enabled. 
 Then double-click on the file.
 
-   ![Diff Double Click](images/git-menu-diff.png)
+   ![Diff Double Click](images/version-control/git-menu-diff.png)
 
 The `diff` screen of the file will open and show the changes made to the file.  On the left is the `HEAD` panel 
 and on the right is the `WORKING` panel. 
@@ -320,7 +320,7 @@ If there were deletions they will be highlighted in darker red on top of the red
 `WORKING` is the new version of the file.  Areas where changes were made are 
 highlighted in green.  
 
-![Diff Panel](images/diff-panel.png)
+![Diff Panel](images/version-control/diff-panel.png)
 
 
 ### Undoing Changes
@@ -333,18 +333,18 @@ it will not be seen in the commit history.
 
    To `Discard` the current changes, right-click on the file while it is in the `Changed` section. Then click `Discard`.
 
-   ![Diff Right Click](images/right-click-menu.png)
+   ![Diff Right Click](images/version-control/right-click-menu.png)
 
 2. `Revert` - Undo past changes made to a file in the commit history
 
    To `Revert` past changes click the `History` tab.  Then click the title or the down arrow of the 
 commit you want to revert. This will expand the commit information, and you will see additional buttons.
 
-   ![Revert GUI](images/git-revert-gui.png)
+   ![Revert GUI](images/version-control/git-revert-gui.png)
 
    Then click the curved arrow to revert the changes for that particular commit.
 
-   ![Revert Button](images/git-revert-button.png)
+   ![Revert Button](images/version-control/git-revert-button.png)
 
 3. `Hard Reset` - Undo all changes made after a certain point
 
@@ -352,7 +352,7 @@ commit you want to revert. This will expand the commit information, and you will
 Click the `History` tab.  Then click the title or the down arrow of the 
 commit you want to reset to. This will expand the commit information, and you will see additional buttons.
 
-   ![Hard Reset GUI](images/git-hard-reset-gui.png)
+   ![Hard Reset GUI](images/version-control/git-hard-reset-gui.png)
 
    Click the button that has a clock inside a curved arrow.
 
@@ -376,18 +376,18 @@ Click the down arrow in the `Current Branch` section in the Git sidebar.  It wil
 
 Click the `New Branch` button.
 
-![New Branch Button](images/new-branch-button.png)
+![New Branch Button](images/version-control/new-branch-button.png)
 
 Fill out the form and input a branch name, and click which branch to base the new branch off of.  After that click `Create Branch`.
 
 It is good practice to not use spaces or special characters in the branch name other than dashes.
 
 
-![New Branch Form](images/new-branch-dialog.png)
+![New Branch Form](images/version-control/new-branch-dialog.png)
 
 Git will automatically switch you into the new branch.  Your newly created branch will be shown under `Current Branch` and be in the list of branches.  
 
-![Create Branch Successful](images/create-branch-successful.png)
+![Create Branch Successful](images/version-control/create-branch-successful.png)
 
 
 ### Switching Branches
