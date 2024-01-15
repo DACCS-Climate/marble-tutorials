@@ -79,9 +79,9 @@ If you don't see a notification, click the `Pull Request` menu button and then t
 
 You'll be taken to the `Open a pull request` page.
 
-Here, make sure the `base` is set to **master** and the `compare` is set to the branch you want to compare the **master** branch with.
+Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
 
-![GitHub Base Compare](images/version-control/github-base-compare.png)
+![GitHub Base Compare](images/version-control/git-base-compare-main.png)
 
 Fill out the form and provide a title and description of the changes made.  
 
