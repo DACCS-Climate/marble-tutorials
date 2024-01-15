@@ -127,7 +127,7 @@ Create a new folder or navigate to the folder you want to keep this repository i
 
 Click the `Git Clone` button in the breadcrumb menu
 
-![Git Clone](images/version-control/git-clone.png)
+![Git Clone](images/version-control/git-clone-breadcrumb.png)
 
 ```{note}
 This button is only active when you are in a folder that does not contain a git repository.
