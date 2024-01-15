@@ -18,87 +18,6 @@ or [BitBucket](https://bitbucket.org/) allow you to store your repository online
 anywhere with a free account. In this tutorial, you'll learn how to set up a remote Git repository to backup and share 
 your work using GitHub, and how to configure Git locally, within your Marble Jupyter Lab environment to use that account.
 
-(github)=
-## GitHub
-
-GitHub is one of the many online providers of free remote repository storage.  This section will cover how to work with 
-remote repositories in a Github context.
-
-### Creating a GitHub Account
-To begin using Git you need to create a free account on GitHub. Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
-
-(github_remote_repo)=
-### Creating a Remote Repository
-
-After creating your account click `Repository` at the top menu and then `New`:
-
-![GitHub Top Menu](images/version-control/github-top-menu.png)
-
-![GitHub New Button](images/version-control/github-new-button.png)
-
-Fill the form with details of the repository and then click the `Create Repository` button at the bottom of the page.
-
-### Creating a Personal Access Token
-
-A Personal Access Token is used to authenticate the user when pushing files to the remote repository
-
-Go to [GitHub](https://github.com/) and log into your account.
-
-Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date.The checkboxes on the form outline the scope the token is used to give access to. Check all the boxes you will need.
-
-Most people working alone will need to check everything in the "repo" and "delete_repo" boxes.
-
-Most people working with a team will need to check everything in the "repo", "delete_repo", "notifications", "write:discussion", "read:discussion" boxes.
-
-The full scope of access the personal access token will allow depends on the role a person will take on in the project.  Choose the scopes to allow as necessary.  
-
-Once you're done checking the boxes, click **Generate Token**. Copy the generated token.
-
-```{note}
-The Personal Access Token will be shown *only* when it is created.
-```
-
-Whenever you push a commit, use the personal access token in place of a password when ask for your GitHub credentials.
-
-```{warning}
-Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
-``` 
-
-### Creating a Pull Request
-A Pull Request is created when you want to merge your changes into the **main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
-
-A Pull Request is created from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
-
-![GitHub PR Notice](images/version-control/github-pr-notice.png)
-
-Click the `Compare & pull request` button.  
-
-If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
-
-![GitHub PR Menu](images/version-control/github-pr-menu.png)  ![GitHub New PR](images/version-control/github-new-pr.png)
-
-You'll be taken to the `Open a pull request` page.
-
-Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
-
-![GitHub Base Compare](images/version-control/git-base-compare-main.png)
-
-Fill out the form and provide a title and description of the changes made.  
-
-If you have someone who can review your pull request, on the right side of the screen click the cog icon under the `Reviewers` section, and select their name.
-
-![GitHub Reviewers](images/version-control/github-reviewers.png)
-
-Then click the `Create Pull Request` button.
-
-### Merging Your Branch
-Merging branches is done on the GitHub site.
-
-After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
-
-![GitHub Merge](images/version-control/github-merge-button.png)
-
-
 
 ## Setting up Git on Marble
 
@@ -616,3 +535,83 @@ Each commit should be a completed logical chunk of the overall workflow.  If you
 ### Test code before committing
 
 Related to only committing finished tasks, test your code to ensure it does what it is intended to do before committing.
+
+(github)=
+## GitHub
+
+GitHub is one of the many online providers of free remote repository storage.  This section will cover how to work with 
+remote repositories in a Github context.
+
+### Creating a GitHub Account
+To begin using Git you need to create a free account on GitHub. Go to the [GitHub](https://github.com/) website and follow the instructions to create an account. 
+
+(github_remote_repo)=
+### Creating a Remote Repository
+
+After creating your account click `Repository` at the top menu and then `New`:
+
+![GitHub Top Menu](images/version-control/github-top-menu.png)
+
+![GitHub New Button](images/version-control/github-new-button.png)
+
+Fill the form with details of the repository and then click the `Create Repository` button at the bottom of the page.
+
+### Creating a Personal Access Token
+
+A Personal Access Token is used to authenticate the user when pushing files to the remote repository
+
+Go to [GitHub](https://github.com/) and log into your account.
+
+Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date.The checkboxes on the form outline the scope the token is used to give access to. Check all the boxes you will need.
+
+Most people working alone will need to check everything in the "repo" and "delete_repo" boxes.
+
+Most people working with a team will need to check everything in the "repo", "delete_repo", "notifications", "write:discussion", "read:discussion" boxes.
+
+The full scope of access the personal access token will allow depends on the role a person will take on in the project.  Choose the scopes to allow as necessary.  
+
+Once you're done checking the boxes, click **Generate Token**. Copy the generated token.
+
+```{note}
+The Personal Access Token will be shown *only* when it is created.
+```
+
+Whenever you push a commit, use the personal access token in place of a password when ask for your GitHub credentials.
+
+```{warning}
+Storing personal access tokens or SSH keys in a JupyterLab container poses security risks.  It is recommended to store authentication credentials on your personal computer.
+``` 
+
+### Creating a Pull Request
+A Pull Request is created when you want to merge your changes into the **main** branch.  It also gives you a chance to let others know of the changes you made and ask them to review your changes.
+
+A Pull Request is created from the GitHub site.  After logging into [GitHub](https://www.github.com), you may see a notification about a branch making recent pushes if you pushed recently.
+
+![GitHub PR Notice](images/version-control/github-pr-notice.png)
+
+Click the `Compare & pull request` button.  
+
+If you don't see a notification, click the `Pull Request` menu button and then the `New Pull Request` button on the following page.
+
+![GitHub PR Menu](images/version-control/github-pr-menu.png)  ![GitHub New PR](images/version-control/github-new-pr.png)
+
+You'll be taken to the `Open a pull request` page.
+
+Here, make sure the `base` is set to **main** and the `compare` is set to the branch you want to compare the **main** branch with.
+
+![GitHub Base Compare](images/version-control/git-base-compare-main.png)
+
+Fill out the form and provide a title and description of the changes made.  
+
+If you have someone who can review your pull request, on the right side of the screen click the cog icon under the `Reviewers` section, and select their name.
+
+![GitHub Reviewers](images/version-control/github-reviewers.png)
+
+Then click the `Create Pull Request` button.
+
+### Merging Your Branch
+Merging branches is done on the GitHub site.
+
+After your Pull Request has been approved (and reviewed, if needed), the `Merge` button will turn green
+
+![GitHub Merge](images/version-control/github-merge-button.png)
