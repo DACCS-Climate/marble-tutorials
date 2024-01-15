@@ -83,10 +83,11 @@ cd /notebook_dir
 You should see the user folders available to you.  These are the same folders seen when clicking the `File Browser` icon.
 
 ![Terminal Notebook Dir](images/version-control/terminal-notebook-dir.png)
+<br><br>
 ![File Browser Default Folders](images/version-control/file-browser-default-folders.png)
 
 Navigate into the `writable-workspace` folder, then navigate to the project folder of choice (in this example `project_A`), or create a new folder
-if your are starting from scratch, then `cd` into it.
+if you are starting from scratch, then `cd` into it.
 
 Substitute `your-folder-name` with a new folder name. 
 
