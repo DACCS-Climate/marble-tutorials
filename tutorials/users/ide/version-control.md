@@ -65,16 +65,6 @@ This section shows how to setup a Git repository using the built-in terminal. If
 
 ![Terminal Session Screen](images/version-control/terminal-session-screen.png)
 
-Check to see that you are in the default folder (this will be the root folder, which is indicated by `/`) by executing the `ls` command.
-
-```
-ls
-```
-
-If you are in the default folder you will see the following subfolders available to you:
-
-![Terminal Default Subfolders](images/version-control/terminal-default-folders.png)
-
 Navigate into the `notebook_dir` directory.
 
 ```
