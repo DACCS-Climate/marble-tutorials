@@ -563,11 +563,7 @@ A Personal Access Token is used to authenticate the user when pushing files to t
 
 Go to [GitHub](https://github.com/) and log into your account.
 
-Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date.The checkboxes on the form outline the scope the token is used to give access to. Check all the boxes you will need.
-
-Most people working alone will need to check everything in the "repo" and "delete_repo" boxes.
-
-Most people working with a team will need to check everything in the "repo", "delete_repo", "notifications", "write:discussion", "read:discussion" boxes.
+Click on your account picture/avatar at the top left of the page, then navigate to **Settings** &rarr; **Developer Settings** &rarr; **Personal Access Token** &rarr; **Tokens(classic)**. On this page, select the dropdown box named `Generate new token` and select `Generate new token (classic)`. In the form that you are then presented with, choose an expiration date.The checkboxes on the form outline the scope the token is used to give access to. Check all the boxes you will need. Most people will need to check everything in the "repo" section.
 
 The full scope of access the personal access token will allow depends on the role a person will take on in the project.  Choose the scopes to allow as necessary.  
 
