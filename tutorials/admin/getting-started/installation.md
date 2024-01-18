@@ -79,7 +79,7 @@ If using [certbot](https://certbot.eff.org/), note that the Marble stack uses
 [nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) as a reverse proxy.
 
 Certbot also requires that the website be already running and that ports 80 and 443 are open.
-To deployt the stack and start the website see the instructions [here](deploy-marble).
+To deploy the stack and start the website see the instructions [here](deploy-marble).
 ```
 
 ### Git
@@ -233,5 +233,5 @@ sudo cat /etc/letsencrypt/live/mymarble.com/fullchain.pem /etc/letsencrypt/live/
 echo "export SSL_CERTIFICATE=$(pwd)/cert.pem" >> env.local
 
 # Start the server
-./pavice-compose up -d
+./pavics-compose.sh up -d
 ```

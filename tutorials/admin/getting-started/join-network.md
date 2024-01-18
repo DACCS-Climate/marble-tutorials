@@ -5,7 +5,7 @@ nodes.
 
 This will allow users of your node to discover data and services available on other nodes and will allow other users in
 the Marble community to make use of your node as well. By joining the network, you contribute to the Marble community
-and help make computational climate science a more accessible and collaborative. Welcome!
+and help make computational climate science more accessible and collaborative. Welcome!
 
 ## Add your information to the registry
 
