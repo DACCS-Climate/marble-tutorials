@@ -8,7 +8,7 @@ network so that we can ensure that all nodes in the network are secure and provi
 
 ### Updating to the latest version
 
-Before you start have a look at the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) 
+Before you start, have a look at the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) 
 file in the [Birdhouse repository](https://github.com/bird-house/birdhouse-deploy) to see what changes have been made in
 the most recent versions.
 
