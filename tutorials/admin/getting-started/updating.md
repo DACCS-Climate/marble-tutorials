@@ -8,6 +8,16 @@ network so that we can ensure that all nodes in the network are secure and provi
 
 ### Updating to the latest version
 
+Before you start have a look at the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) 
+file in the [Birdhouse repository](https://github.com/bird-house/birdhouse-deploy) to see what changes have been made in
+the most recent versions.
+
+Most version updates won't require any additional manual actions from you but if there are any, they will be explained
+in this file. Please take note of any manual actions or additional instructions for later.
+
+For example, the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) file might tell you
+that new environment variables need to be added to the `env.local` file, or that certain components are deprecated.
+
 First navigate to the directory that contains the `birdhouse-deploy` source code:
 
 ```shell
@@ -20,15 +30,6 @@ Then use the `pavics-compose.sh` script to stop the stack momentarily while you 
 cd birdhouse
 ./pavics-compose.sh down
 ```
-
-Have a look at the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) file to see what
-changes have been made in the most recent versions.
-
-Most version updates won't require any additional manual actions from you but if there are any, they will be explained
-in this file. Please take note of any manual actions or additional instructions for later.
-
-For example, the [CHANGES.md](https://github.com/bird-house/birdhouse-deploy/blob/master/CHANGES.md) file might tell you
-that new environment variables need to be added to the `env.local` file, or that certain components are deprecated.
 
 Update the source code to the latest version using git:
 
