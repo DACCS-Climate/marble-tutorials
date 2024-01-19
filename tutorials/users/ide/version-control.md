@@ -155,7 +155,8 @@ When the file is first created, it will be seen under the `Untracked` section in
 ![Git Untracked](images/version-control/git-untracked.png)
 
 ### Staging a File
-Staging a file means getting the file ready to be committed.  After a file is committed it can be pushed to the remote repository.  
+Staging a file means adding the file to a list of files that will be included the next time a commit is made.
+
 There are two ways to do this.
 
 1. Hover the mouse over the file and click the plus `+` symbol next to it.  This **Stages** the file.
