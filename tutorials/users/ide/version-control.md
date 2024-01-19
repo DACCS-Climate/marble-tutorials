@@ -101,6 +101,7 @@ git init
 
 The output shown in the screenshot above confirms that a new empty Git repository was initialized.
 
+(adding_remote_repo)=
 ### Adding a Remote Repository
 
 ```{note}
@@ -149,7 +150,7 @@ Start by creating a file.  In this example a Jupyter Notebook file is created by
 
 ![Jupyter Notebook Launcher Buttons](images/version-control/jupyter-notebook-buttons.png)
 
-When the file is created or altered it will be seen under the `Untracked` section in the Git sidebar.
+When the file is first created, it will be seen under the `Untracked` section in the Git sidebar. This means that you have not yet told Git to "track" changes to the file.
 
 ![Git Untracked](images/version-control/git-untracked.png)
 
@@ -171,7 +172,7 @@ There are two ways to do this.
 
 ### Making a Commit
 
-Select the file and fill in the Title/Summary for the commit.  It should be short and descriptive.  
+Select the file (you can also select multiple files; here, we only have this example file) and fill in the Title/Summary for the commit.  It should be short and descriptive.  
 It can be as simple as "Updated Untitled.ipynb" or more specific, such as "Added visualization for rainfall 2022".
 
 A description is recommended but is not required.
@@ -185,7 +186,7 @@ When done click the `Commit` button below the commit description.  If successful
 ### Pushing a Commit
 
 Making a commit sets a "flag" in the progress of your work that shows what has been done at certain points. Pushing a commit moves these changes to the remote 
-repository.
+repository (if you've also [setup a remote repository](adding_remote_repo)).
 
 Click the `Git` menu and `Push to Remote`
 
@@ -205,9 +206,10 @@ If successful you will see a `Successfully pushed` status pop up in the lower ri
 ### View Commit History
 To see all your past commits click the `History` tab in the `Commits` section under `Current Branch`
 
-Each commit is identified with the name of the user who made it and the commit tag.  
+Each commit is identified with the name of the user who made it and the commit tag. A commit tag is the first few characters
+of a unique cryptographic hash of your commit.
 
-In the example below the commit tag of the first commit is `01f1dc4`.  The name of the user has been removed from 
+In the example below, the commit tag of the first commit is `01f1dc4`.  The name of the user has been removed from 
 the image to protect privacy.
 
 ![Commit History](images/version-control/git-log-gui.png)
@@ -287,7 +289,7 @@ and changes to other files will not affect the working file.  Stashing is typica
 the changes from other branches will not overwrite changes in files you are currently working on.
 
 Currently, there is no mechanism in the GUI to stash files.  Files can only be stashed from the Terminal.  
-Similarly, files can only be retrieved from the Terminal.
+Similarly, files can only be unstashed from the Terminal.
 
 [Stash Files From Terminal](content:references:stash-terminal)
 
