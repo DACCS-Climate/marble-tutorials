@@ -10,7 +10,7 @@ the files at any point in time. Using version control allows you to confidently 
 ## Introduction to Git
 
 Git is one of the most popular version control systems in use today. It has a native command line interface but there 
-are also many third party desktop GUI clients that help make it easier to get started with Git.  A comprehensive list of 
+are also many third party desktop GUI (Graphical User Interface) clients that help make it easier to get started with Git.  A comprehensive list of 
 several freely available Git clients is [available here](https://git-scm.com/downloads/guis).
 
 Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), 
@@ -42,8 +42,10 @@ directory, we strongly recommend that you initialize repositories on a per-proje
 to track changes that affect that project only, and it will make sharing easier by allowing you to only share the analysis 
 that you want, without exposing the work you are doing for any other project.
 ```
-[](gui_git_setup)  
-[](terminal_git_setup)
+
+To continue with Git setup, choose one of the options below:
+* [Setup using JupyterLab GUI](gui_git_setup)  
+* [Setup using JupyterLab terminal](terminal_git_setup)
 
 (gui_git_setup)=
 ### Setup Git Repository Using the Graphical User Interface
