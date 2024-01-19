@@ -11,24 +11,22 @@ the files at any point in time. Using version control allows you to confidently 
 
 Git is one of the most popular version control systems in use today. It has a native command line interface but there 
 are also many third party desktop GUI (Graphical User Interface) clients that help make it easier to get started with Git.  A comprehensive list of 
-several freely available Git clients is [available here](https://git-scm.com/downloads/guis).
+several freely available Git clients is [available here](https://git-scm.com/downloads/guis). Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), or [BitBucket](https://bitbucket.org/) allow you to store your repository online and access it 
+anywhere with a free account.
 
-Online Git services like [GitHub](https://github.com/), [GitLab](https://about.gitlab.com/), 
-or [BitBucket](https://bitbucket.org/) allow you to store your repository online and access it 
-anywhere with a free account. In this tutorial, you'll learn how to set up a remote Git repository to backup and share 
-your work using GitHub, and how to configure Git locally, within your Marble Jupyter Lab environment to use that account.
+In this tutorial, you'll learn how to set up a local Git repository, i.e. inside your Marble JupyterLab environment, to version control your work, and how to connect that repository to an online service to backup and share your work (for this tutorial, we will use GitHub as an example).
 
 
 ## Setting up Git on Marble
 
-Now that you have set up a remote repository which you can use to version control your work, backup, and share your
+In this step you will configure the local "git" program that will actually do the version control work for you. You will also configure 
+it to connect to your remote repository (optional, but highly encouraged step).
+
+<!-- Now that you have set up a remote repository which you can use to version control your work, backup, and share your
 work with others, it is time to configure Git in your IDE environment on Marble. You need to complete this step because 
 in this step you will configure the local "git" program that will actually do the version control work for you and you will configure 
-it to access your remote repository.
+it to access your remote repository. -->
 
-```{note}
-If you have not already done so, go to the [](github) section and create a remote repository first.
-```
 (create_local_repo)=
 ### Creating a Local Repository
 
@@ -105,8 +103,13 @@ The output shown in the screenshot above confirms that a new empty Git repositor
 
 ### Adding a Remote Repository
 
+```{note}
+For this step, you will need an online (remote) Git repository. If you don't already have one, and if you unfamiliar with
+creating one, then go to the [](github) section and follow the steps there.
+```
+
 You can optionally add a remote repository. Adding a remote repository allows you to store your work online at GitHub and access it anywhere. You can add a remote
-repository for the local repository you created in the [previous step](create_local_repo) by clicking on `Git` in the menu bar and then selecting `Add Remote Repository`. Enter the URL of the [remote repository you created on GitHub](github_remote_repo) into the `Add Remote Repository` dialog box.  Click `OK`. If you 
+repository for the local repository you created in the [previous step](create_local_repo) by clicking on `Git` in the menu bar and then selecting `Add Remote Repository`. Enter the URL of the [remote repository on GitHub](github_remote_repo) into the `Add Remote Repository` dialog box.  Click `OK`. If you 
 prefer to use the terminal, then navigate to your Git repo folder and issue the following command:
 
 ```
