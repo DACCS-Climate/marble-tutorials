@@ -78,10 +78,12 @@ You should see the user folders available to you.  These are the same folders se
 <br><br>
 ![File Browser Default Folders](images/version-control/file-browser-default-folders.png)
 
-Navigate into the `writable-workspace` folder, then navigate to the project folder of choice (in this example `project_A`), or create a new folder
-if you are starting from scratch, then `cd` into it.
+Navigate into the `writable-workspace` folder, then navigate to the project folder of choice, in this example `project_A`.
 
-Substitute `your-folder-name` with a new folder name. 
+```
+cd writable-workspace/project_A
+```
+Or, if you don't have a project folder, create a new folder, then `cd` into it. Substitute `your-folder-name` in the code snippet below with a name appropriate for your project. 
 
 ```
 cd writable-workspace
@@ -90,6 +92,7 @@ mkdir your-folder-name
 
 cd your-folder-name
 ```
+
 To initialize your Git repository, type the following command:
 
 ```
