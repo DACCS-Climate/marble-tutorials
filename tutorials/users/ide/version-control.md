@@ -255,8 +255,7 @@ Undoing changes can mean several things:
 
 1. `Discard` - Undo changes made to the current unstaged file
 
-   An unstaged file means this file has never been committed.  It has likely never been pushed to the remote repository and 
-it will not be seen in the commit history. 
+   An unstaged file means this file has been changed since the last committed version.  
 
    To `Discard` the current changes, right-click on the file while it is in the `Changed` section. Then click `Discard`.
 
