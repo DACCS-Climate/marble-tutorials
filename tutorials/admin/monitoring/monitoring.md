@@ -1,6 +1,6 @@
 # Monitoring the Marble stack
 
-Marble is deployed using the [Birdhouse]`https://github.com/bird-house/birdhouse-deploy/` software. This software
+Marble is deployed using the [Birdhouse](https://github.com/bird-house/birdhouse-deploy) software. This software
 includes some useful tools to monitor the usage and logs of your Marble node.
 
 These tools help you check inspect how your node is being used and can help you understand how to better allocate 
