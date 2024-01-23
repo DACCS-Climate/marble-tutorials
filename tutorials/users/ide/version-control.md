@@ -250,7 +250,7 @@ Undoing changes can mean several things:
 
 1. `Discard` - Undo changes made to the current unstaged file
 
-   An unstaged file means this file has been changed since the last committed version.  
+   An unstaged file means this file has been changed since the last committed version and has not yet been staged.  
 
    To `Discard` the current changes, right-click on the file while it is in the `Changed` section. Then click `Discard`.
 
@@ -357,7 +357,7 @@ git add /folder/path/to/file/<filename>
 
 ### View Status
 
-If you have multiple files staged and ready to commit you can see the list by using `git status`.
+The `status` command shows you the current status of your git repository. This includes information such as the current branch as well as staged and unstaged changes.
 
 ```
 git status
@@ -380,7 +380,6 @@ After your commit is complete, push it to the remote repository.
 git push
 ```
 
-### Pushing a Commit to an Existing Remote Repository
 If you want to push to a specific remote repository specify the name of the repository with the `-u` flag.
 `-u` is the shorthand version of the flag `--set-upstream`.
 
