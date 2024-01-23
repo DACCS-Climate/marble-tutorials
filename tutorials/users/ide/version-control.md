@@ -22,11 +22,6 @@ In this tutorial, you'll learn how to set up a local Git repository, i.e. inside
 In this step you will configure the local "git" program that will actually do the version control work for you. You will also configure 
 it to connect to your remote repository (optional, but highly encouraged step).
 
-<!-- Now that you have set up a remote repository which you can use to version control your work, backup, and share your
-work with others, it is time to configure Git in your IDE environment on Marble. You need to complete this step because 
-in this step you will configure the local "git" program that will actually do the version control work for you and you will configure 
-it to access your remote repository. -->
-
 (create_local_repo)=
 ### Creating a Local Repository
 
