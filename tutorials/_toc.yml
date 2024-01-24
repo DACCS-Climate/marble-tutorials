@@ -56,9 +56,6 @@ parts:
         - file: admin/data/catalog.md
         - file: admin/data/user-data.md
     - file: admin/users/users.md
-      sections:
-        - file: admin/users/management.md
-        - file: admin/users/permissions.md
     - file: admin/monitoring/monitoring.md
     - file: admin/network/network.md
       sections:

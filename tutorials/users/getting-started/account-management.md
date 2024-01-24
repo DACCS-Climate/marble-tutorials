@@ -20,6 +20,7 @@ Log in with your username and password and then click the "Account" button at th
 
 From this page you will be able to do any of the following:
 
+(users:account-management:change-your-password)=
 ### Change your password
 
 Click the "Edit" button beside the "Password" field and enter a new password into the text box and click "Save".
