@@ -9,8 +9,8 @@ The site also provides information about the main services available on the Marb
 
 <!-- # TODO: update the tutorial links below as needed when they're added later -->
 
-- [Interactive Development Environment](ide.md)
-- [Data Catalog](data_catalog.md)
+- [Interactive Development Environment](../../users/ide/ide.md)
+- [Data Catalog](../../users/catalog/catalog.md)
 - [Remote Processing Services](remote_processing.md)
 
 ## Explore the nodes
