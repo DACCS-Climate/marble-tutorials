@@ -34,7 +34,7 @@ parts:
     - file: users/catalog/catalog.md
       sections:
         - file: users/catalog/gui-search.md
-        - file: users/catalog/pystac-client.md
+        - file: users/catalog/pystac-client.ipynb
     - file: users/python-client/python-client.md
       sections:
         - file: users/python-client/network.md
