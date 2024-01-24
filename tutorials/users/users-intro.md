@@ -14,10 +14,18 @@ Getting Started
 :::
 
 :::{grid-item-card}
-:link: pavics/pavics-intro
+:link: ide/ide
 :link-type: doc
 
-PAVICS tutorials
+Integrated Development Environment (IDE)
+:::
+
+
+:::{grid-item-card}
+:link: other/intro
+:link-type: doc
+
+Other Tutorials
 :::
 
 
