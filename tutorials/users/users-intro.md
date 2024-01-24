@@ -21,4 +21,11 @@ PAVICS tutorials
 :::
 
 
+:::{grid-item-card}
+:link: catalog/catalog
+:link-type: doc
+
+Marble Data Catalog
+:::
+
 ::::
