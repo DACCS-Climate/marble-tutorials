@@ -2,24 +2,24 @@
 
 ## What is a Kernel?
 
-Kernels in Jupyter are self-contained, program language specific processes that run independently.  
-Having kernels configured and packaged for specific purposes gives the Jupyter environment some flexibility.
-A kernel doesn't need to be configured to serve every purpose imaginable. Several kernels can be made, with none
-of the dependencies for one kernel affecting the dependencies for another. If a kernel needs to be updated, changes can 
-be made without affecting other kernels.  If it is no longer needed, it can be deleted without 
-impacting other kernels.
+Kernels in Jupyter are self-contained, program language specific processes that run independently.  This makes them 
+useful for running Jupyter Notebooks and consoles with a specific programming language. 
+A kernel doesn't need to be configured to serve every purpose imaginable. Several kernels can be made, with none of the dependencies for one kernel affecting 
+the dependencies for another.
+
+The flexibility of having kernels configured and packaged for specific purposes is passed on to the user, allowing you a lot of choice in the notebook 
+environments available to you.  
 
 Below are examples of kernels available on Marble.  These will be updated or changed to fit the needs of the users.
 
-![Kernels](images/version-control/jupyter-notebook-buttons.png)
+![Kernels](images/kernels-dependency/kernel-buttons.png)
 
 ## How to install packages
 
-```{warning}
-If the server is reset all additional installed packages will be uninstalled.
-```
+The kernels on Marble are created with a focus on climate science and data analysis.  As such, they are installed with 
+programming and scripting languages commonly used for this purpose, such as Python and R.
 
-The kernels created for Marble use Python as the programming language.  As such, the packages installed are Python packages.
+For the purpose of this tutorial, Python will be used in the examples.
 
 Start off by clicking on the Console button for the kernel you want to install a package for.
 
@@ -50,7 +50,6 @@ configuration file used for bulk package installation.  If you need to create a 
 
 ```
 pip freeze > /path/to/requirements.txt
-
 ```
 
 ![pip freeze](images/kernels-dependency/pip-freeze-list.png)
@@ -75,11 +74,35 @@ You will only be able to use the `conda` command if you have [Anaconda](https://
 ![conda](images/kernels-dependency/conda-list-list.png)
 
 
-### Installing packages with a requirements file
+### Install packages individually
 
-A workaround to losing installed dependencies when the server shuts down is keeping a requirements file in the writable 
-workspace folder.  When you need the dependencies for the project install the requirements listed in the file.
+To install a package you need the package's name.  An excellent resource is the [Python Package Index](https://pypi.org/) (pypi).
+
+The results of the *pypi* search includes the syntax of the install command.
+
+![pypi](images/kernels-dependency/pypi-result.png)
+
+In the console window type in the command and execute it.
+
+If you want to install a specific version of a package, specify the version number you want using `==`.
 
 ```
-pip install -r /path/to/requirements.txt
+pip install <package-name>==<version-number>
+```
+
+
+```{warning}
+If the server is reset all additional installed packages will be uninstalled.
+```
+
+### Installing packages with a requirements file
+
+A requirements file allows you to bulk install packages by running one command, rather than many individual install 
+commands.
+
+A handy workaround to losing installed dependencies when the server shuts down is keeping a requirements file in the writable 
+workspace folder.  When you need the dependencies for the project, install the requirements listed in the file.
+
+```
+pip install -r /notebook_dir/writeable-workspace/requirements.txt
 ```
