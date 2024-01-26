@@ -1,7 +1,7 @@
 # Services
 
-The Marble software can be configured to provide several services to the users of your node. Services are user-facing
-tools that largely fall under the following categories:
+The Marble software can be configured to provide a variety of services to the users of your node. Services are 
+user-facing tools that largely fall under the following categories:
 
 - serving and cataloging data hosted on your server
 - interactive development environment
@@ -10,17 +10,16 @@ tools that largely fall under the following categories:
 (enable)=
 ## Enable an included service
 
-You can pick and choose which services you would like to offer your users by enabling them via the `env.local` file.
-
 The Marble software comes with several services already included. The list of services already included can be found
 in the 
-[Birdhouse documentation](https://birdhouse-deploy.readthedocs.io/en/latest/birdhouse/components/README.html).
+[Birdhouse documentation](https://birdhouse-deploy.readthedocs.io/en/latest/birdhouse/components/README.html). This 
+documentation explains what each service is used for and how to enable and configure it.
 
-This documentation explains what each service is used for and how to enable and configure it.
+You can pick and choose which services you would like to offer your users by enabling them via the `env.local` file.
 
 In general, the process to enable a service is a follows:
 
-1. Take note of the directory that contains the service's code. In general this will be on of the directories in the
+1. Take note of the directory that contains the service's code. In general this will be one of the directories in the
    `birdhouse/components` folder.
 2. Edit the `EXTRA_CONF_DIRS` variable in the `env.local` file to include the service's directory. This is a relative 
    path from the `birdhouse/` directory *or* an absolute path. For example, to enable the Thredds service add the
@@ -36,7 +35,8 @@ In general, the process to enable a service is a follows:
    ```
 
    in order for the changes to take effect.
-5. Log in to Magpie as an admin user to [set the access permissions for the new service](../users/permissions.md)
+5. Log in to [Magpie](https://pavics-magpie.readthedocs.io/) as an admin user to [set the access permissions for the new
+   service](../users/permissions.md)
 
 ```{note}
 Note that the [STAC catalog service](../../users/catalog/catalog.md) is always enabled by default.
