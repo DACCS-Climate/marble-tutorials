@@ -7,15 +7,16 @@ This tutorial describes how to install a Marble node on a server.
 ### Docker
 
 Marble is deployed as a [Docker](https://www.docker.com/) application using the 
-[compose](https://docs.docker.com/compose/) tool to manage and various services that make us the application.
+[compose](https://docs.docker.com/compose/) tool to manage various services that make up the application.
 
 To install Docker on Unix/Linux either install [Docker Engine](https://docs.docker.com/engine/install/) (recommended) or
 [Docker Desktop](https://docs.docker.com/desktop/). If using an operating system other than Unix/Linux, you must use
 Docker Desktop.
 
 ```{warning}
-We highly recommend installing Marble on a Unix/Linux machine. All code is developed and tested on Unix operating
-systems, and we cannot guarantee that the software will behave as expected on other operating systems.
+We highly recommend installing Marble on a Unix/Linux machine, specifically Ubuntu 18.04+ if possible. All code is 
+developed and tested on Ubuntu, and we cannot guarantee that the software will behave as expected on other operating 
+systems.
 ```
 
 ### Secure Access Over the Internet
@@ -100,15 +101,15 @@ for information on how to install `git`.
 
 ## Marble
 
-Marble is deployed using a piece of software named [Birdhouse](https://github.com/bird-house/birdhouse-deploy/).
+Marble is deployed using software named [Birdhouse](https://github.com/bird-house/birdhouse-deploy/).
 
-### Download the birdhouse software
+### Download the Birdhouse software
 
 ```shell
 git clone https://github.com/bird-house/birdhouse-deploy.git
 ```
 
-This will install the [Birdhouse](https://github.com/bird-house/birdhouse-deploy/) source code to the current 
+This will download the [Birdhouse](https://github.com/bird-house/birdhouse-deploy/) source code to the current 
 directory.
 
 The most up-to-date version of the source code is on the `master` branch. We recommend always using this branch.
@@ -143,11 +144,12 @@ file which will instruct you:
 (deploy-marble)=
 ## Deploying Marble
 
-The stack can be started, stopped and inspected using the `pavics-compose.sh` script which takes the same arguments as
-the [`docker compose`](https://docs.docker.com/compose/) commands.
+The Marble stack can be started, stopped and inspected using the `pavics-compose.sh` script which takes the same 
+arguments as the [`docker compose`](https://docs.docker.com/compose/) commands.
 
 The `pavics-compose.sh` script will read the `env.local` configuration file, create a `docker compose` deployment file
-based on this configuration and then execute the subcommand based on that file. 
+based on this configuration and then execute any subcommands provided to the `pavics-compose.sh` file as subcommands to 
+`docker compose` based on that file. 
 
 For example, to start the Marble stack:
 
@@ -165,6 +167,8 @@ Similarly, to stop and bring down the stack use:
 cd birdhouse-deploy/birdhouse
 ./pavics-compose.sh down
 ```
+
+which will call `docker compose down` internally.
 
 ## Check that everything is working
 
@@ -198,11 +202,12 @@ And finally you'll want to start adding users to your node:
 
 - [User management](../users/users.md)
 
+(example-installation-steps)=
 ## Example installation steps
 
-Here is an example of how to install Marble on a server running Ubuntu 20.04, using mymarble.com as a FQDN, and where we
-get a SSL certificate using [certbot](https://certbot.eff.org/). We assume that [`docker`](https://www.docker.com/) and
-[`git`](https://git-scm.com/) are already installed:
+Here is an example of how to install Marble on a server running Ubuntu 20.04, using <span>mymarble</span>.com as a FQDN,
+and where we get an SSL certificate using [certbot](https://certbot.eff.org/). We assume that 
+[docker](https://www.docker.com/) and [git](https://git-scm.com/) are already installed:
 
 ```shell
 # Download source code

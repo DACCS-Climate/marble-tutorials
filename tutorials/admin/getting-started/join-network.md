@@ -13,16 +13,12 @@ To join the network, you need to add your node's information to the
 [Marble Node Registry](https://github.com/DACCS-Climate/Marble-node-registry). This is a registry of all nodes in the
 network and is used by various tools and components of each Marble node to know how to pass information between nodes.
 
-To add your node's information, make a pull request to the 
-[Marble Node Registry](https://github.com/DACCS-Climate/Marble-node-registry) repository that updates the 
-`node_registry.json` file with your node's information.
+To add your node's information, [make a pull request](https://github.com/DACCS-Climate/Marble-node-registry/pulls) to 
+the Marble Node Registry with an updated `node_registry.json` file containing your node's information.
 
 To see which information should be included see the instructions 
 [here](https://github.com/DACCS-Climate/Marble-node-registry/blob/main/README.md#add-or-update-information-about-a-marble-node).
 
 ```{note}
-Updating the `node_registry.json` file requires some knowledge on how to edit [JSON](https://www.json.org) files. 
-
-If you do not have the knowledge to do this, you can also provide the information in another format and one of the
-maintainers of the registry will be glad to help you update it to a JSON format.
+Updating the `node_registry.json` file requires some knowledge on how to edit [JSON](https://www.json.org) files.
 ```
