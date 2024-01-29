@@ -1,8 +1,8 @@
 # Users
 
 Although the Marble network is a distributed system across multiple nodes, users need to register with one node in the
-network as their "home node". A user's home node is responsible for hosting that user's login credentials and is used to
-verify that user's identity when the user wants to access any resources in the network.
+network that then becomes their "home node". A user's home node is responsible for hosting that user's login credentials
+and is used to verify that user's identity across the network.
 
 This means that as a node admin, you will be responsible for accepting users who want to sign up to your node and
 managing their information and credentials.
@@ -19,9 +19,9 @@ enable the Magpie service. The Magpie service is available on your node by navig
 Magpie is an authentication and authorization service that you can use to manage your user data and configure access
 permissions for your node. 
 
-Magpie was specifically designed with climate science applications in mind and so can be used to manage permissions to 
-services that use familiar APIs like [WPS](https://www.ogc.org/standard/wps/) and 
-[OGCAPI features](https://ogcapi.ogc.org/features/).
+Magpie was specifically designed with climate science and earth observation applications in mind and so can be used to 
+manage permissions to services that use familiar APIs like [WPS](https://www.ogc.org/standard/wps/) and 
+[OGC API - Features](https://ogcapi.ogc.org/features/).
 
 (admin-login)=
 All the operations described below require administrator access to complete. To log in to Magpie as an administrator
@@ -87,7 +87,7 @@ resources are not over-taxed if too many users are logged in at once.
 (update-user-data)=
 ### Updating User Data
 
-In general, we don't recommend changing a user's username, password, or email address yourself. Instead, encourage your
+In general, we don't recommend changing a user's password, or email address yourself. Instead, encourage your
 users to [manage this information themselves](../../users/getting-started/account-management.md).
 
 However, you can edit this information by logging in to Magpie and clicking the "Edit Users" button to get to the user's
@@ -312,6 +312,7 @@ For example, the `STAC` service has the following endpoints:
 - stac/
 - stac/collections
 - stac/search
+- etc.
 
 And you can [define an access rule](permissions-child-resource) for each!
 
@@ -322,18 +323,18 @@ Permissions for api services can either be:
 
 #### geoserver
 
-This service type is used to apply permissions for the [Geoserver](https://geoserver.org/) service.
+This service type is used to apply permissions for the [GeoServer](https://geoserver.org/) service.
 
-This service type will only be used if the [included geoserver component is enabled](../services/services.md).
+This service type will only be used if the [included GeoServer component is enabled](../services/services.md).
 
-The geoserver service type is a combination of the api, wps, and wfs service types since the Geoserver service provides
+The GeoServer service type is a combination of the api, wps, and wfs service types since the GeoServer service provides
 a UI interface as well as OGC interfaces such as [WPS](https://www.ogc.org/standard/wps/) and
 [WFS](https://www.ogc.org/standard/wfs/).
 
-Permissions for geoserver services can be `read` and `write` like the [api type](service-permissions-api) but can also
-include permissions for each of the geoserver operations.
+Permissions for GeoServer services can be `read` and `write` like the [api type](service-permissions-api) but can also
+include permissions for each of the GeoServer operations.
 
-For a list of geoserver operations and their description please refer to the geoserver documentation for:
+For a list of GeoServer operations and their description please refer to the GeoServer documentation for:
 
 - [Web Feature Service](https://docs.geoserver.org/latest/en/user/services/wfs/reference.html#operations)
 - [Web Mapping Service](https://docs.geoserver.org/latest/en/user/services/wms/reference.html#operations)
@@ -341,11 +342,11 @@ For a list of geoserver operations and their description please refer to the geo
 
 #### thredds
 
-This service type is used to apply permissions for the [Thredds](https://www.unidata.ucar.edu/software/tds/) service.
+This service type is used to apply permissions for the [THREDDS](https://www.unidata.ucar.edu/software/tds/) service.
 
-This service type will only be used if the [included thredds component is enabled](../services/services.md).
+This service type will only be used if the [included THREDDS component is enabled](../services/services.md).
 
-Permissions for thredds services can either be:
+Permissions for THREDDS services can either be:
 
 - `read`: allow/deny users to download data
 - `write`: only for use by external APIs (see the
