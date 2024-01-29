@@ -101,7 +101,8 @@ for information on how to install `git`.
 
 ## Marble
 
-Marble is deployed using software named [Birdhouse](https://github.com/bird-house/birdhouse-deploy/).
+Marble is built using the [Birdhouse](https://github.com/bird-house/birdhouse-deploy/) software, which is a collection of web based climate science applications.
+Marble can be deployed using the [birdhouse-deploy](https://github.com/bird-house/birdhouse-deploy/) project.
 
 ### Download the Birdhouse software
 
