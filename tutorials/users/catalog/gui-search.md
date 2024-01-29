@@ -13,8 +13,10 @@ and programmatic way to interact with the STAC Catalog which is introduced in th
 ## GUI overview
 
 In this tutorial, we'll use Red Oak node as an example. The concepts introduced here apply to all STAC Browsers. 
-Start by navigating to the [STAC Browser on Red Oak](https://daccs.cs.toronto.edu/stac-browser) in a new tab; 
+Start by navigating to the STAC Browser on Red Oak at <https://daccs.cs.toronto.edu/stac-browser> in a new tab; 
 you should see a screen similar to what is shown below:
+
+![GUI Home Page](images/gui-home-annotated.png)
 
 ```{note}
 It is important to keep in mind that the data catalog on Marble is continuously evolving and so the catalogs and items that you see 
@@ -23,7 +25,6 @@ content that is displayed and not the STAC Browser itself. If any future changes
 aspects of this tutorial outdated, then the tutorial will be updated to reflect those changes.
 ```
 
-![GUI Home Page](images/gui-home-annotated.png)
 
 The discussion points below correspond to the numbers annotated on the above image.
 
@@ -33,7 +34,7 @@ The discussion points below correspond to the numbers annotated on the above ima
 2. Immediately below the title is an area that will contain various navigation options for going back up the catalog hierarchy, as well as the "Browse" and "Search" tabs. Since we are at the
     root of the catalog no navigation options are presented here, and you only see the two tabs.
 3. The "Description" section will display the description for the page you are on. In this case it is displaying the _description_ field
-    of the [root catalog](https://daccs.cs.toronto.edu/stac).
+    of the root catalog (<https://daccs.cs.toronto.edu/stac>).
 4. The "Additional resources" section includes links to the description and documentation of the STAC API underpinning the catalog.
     The STAC API is used by developers to create applications like the STAC browser and is not something that a user would need to 
     concern themselves with. However, if you are interested in learning more, you can consult the 
