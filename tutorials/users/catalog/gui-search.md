@@ -1,11 +1,11 @@
-# Catalog access via STAC Browser
+# STAC Browser
 
-Each node in the Marble network include a GUI application called [STAC Browser](https://github.com/radiantearth/stac-browser) that allows you to 
+Each node in the Marble network include a web interface to the STAC catalog called [STAC Browser](https://github.com/radiantearth/stac-browser) that allows you to 
 explore the STAC catalog of data that is available on that node. This application is available at `https://host-url/stac-browser`, where
 `host-url` is the URL of the Marble node. For example, for the Marble node 'Red Oak' available at 'https://daccs.cs.toronto.edu/',
 the STAC Browser can be accessed at <https://daccs.cs.toronto.edu/stac-browser>.
 
-In this tutorial, you will get an introduction to the STAC Browser, how to navigate within the Browser, how to perform search,
+In this tutorial, you will get an introduction to the STAC Browser (henceforth, just the Browser), how to navigate within the Browser, how to perform search,
 and how to retrieve links that allow you to the data via one or more protocols. At the end of the section, we discuss some limitations with the GUI, 
 and programmatic way to interact with the STAC Catalog which is introduced in the [next section](pystac-client.ipynb).
 
@@ -23,7 +23,9 @@ content that is displayed and not the STAC Browser itself. If any future changes
 aspects of this tutorial outdated, then the tutorial will be updated to reflect those changes.
 ```
 
-![GUI Home Page](images/gui-home.png)
+![GUI Home Page](images/gui-home-annotated.png)
+
+The discussion points below correspond to the numbers annotated on the above image.
 
 1. The first thing you will notice is the bold text at the top left of the page. The STAC Browser uses this part of the page to display
     the "title" of the page that is displayed. In this case, since you are at the root of the STAC Catalog, the appropriate title is the
@@ -33,7 +35,9 @@ aspects of this tutorial outdated, then the tutorial will be updated to reflect 
 3. The "Description" section will display the description for the page you are on. In this case it is displaying the _description_ field
     of the [root catalog](https://daccs.cs.toronto.edu/stac).
 4. The "Additional resources" section includes links to the description and documentation of the STAC API underpinning the catalog.
-    If you are unfamiliar with what this means, then this is not meant for you and you can safely ignore the content.
+    The STAC API is used by developers to create applications like the STAC browser and is not something that a user would need to 
+    concern themselves with. However, if you are interested in learning more, you can consult the 
+    [STAC API Specifications](https://github.com/radiantearth/stac-api-spec).
 5. On the top-right of the screen you always see the "Source" and "Share" tabs. Clicking on the Source tab will show you the version of 
     [stac specification](https://github.com/radiantearth/stac-spec) that is being used and whether or not the STAC data displayed on that
     page is valid according to the STAC standards and the [STAC extensions](https://stac-extensions.github.io) used (see image below). Crucially, it provides a quick access to the STAC endpoint 
@@ -62,11 +66,8 @@ collection. Here, we are using the "CMIP6" collection as an example.
     itself, while on the right hand side you see a list of the items in the collection.
 
     The left side contains various information about the collection in the following order:
-    ```{attention}
-    This section will be updated after changes to STAC.
-    ```    
     - **Description** of the collection. Here it is "Coupled Model Intercomparison Project phase 6".
-    - **Keywords** associated with the collection. Here the keywords are 'CMIP', 'CMIP5', 'WCRP' and 'Climate Change'.
+    - **Keywords** associated with the collection. Here the keywords are "CMIP", "CMIP5", "WCRP" and "Climate Change".
     - **License** under which the data in the collection has been made available. Here the license is 'CC-BY-4.0'.
     - **Temporal Extents** of the data. The information presented here shows that the data starts at year 1850 and goes until present day.
     - **Spatial Extents** of the data are shown on the map. Here, we see two boxes that cover the whole earth, but with different longitude
@@ -88,7 +89,10 @@ that shown in the image below:
 You will immediately recognize several UI elements of the page from discussions in earlier sections. In 
 particular, you will notice that the page is again organized in two columns, but unlike the collection view introduced in the last section, 
 this time the metadata about the item is actually presented on the right side. This metadata is sub-divided into several 
-categories; in the image above the categories seen are "General" and "Cmip6", but there is another category outside the view of the screenshot called "Data Cube". 
+categories; in the image above the categories seen are "General" and "Cmip6", but there is another category outside the view of the screenshot called "Data Cube" shown below.
+
+![Data Cube](images/datacube.png) 
+
 There will always be a "General" section and what other sections you see for an item, will depend on the STAC extensions that have been applied to that item. 
 Here, the CMIP6 data uses the [cmip6](https://github.com/dchandan/stac-extension-cmip6) and the [Data Cube](https://github.com/stac-extensions/datacube) extensions, 
 so metadata described by those extensions are included within 
@@ -103,7 +107,7 @@ data. Selecting any asset type will reveal the access link. Two examples are sho
 
 **Access link for OpenDAP:**
 To remotely open the file and access the data via the OpenDAP protocol, select the OpenDAP option, then right-click the Open button and copy the link. 
-You can then use the link to open the file via `xarray` (refer to [documentation](https://docs.xarray.dev/en/stable/).)
+You can then use the link to open the file via `xarray` (refer to [documentation](https://docs.xarray.dev/en/stable/user-guide/io.html#opendap).)
 ![OpenDAP access](images/asset_opendap.png)
 
 
@@ -112,4 +116,12 @@ If you want to download the file to your local machine, then select the HTTPServ
 ![OpenDAP access](images/asset_httpserver.png)
 
 ## GUI Limitations
-Often you might need several data files from a collection and manually searching for and copying the links to those files from the STAC Browser and then pasting them into your notebooks is not feasible, and a programmatic approach becomes immediately desirable. A more serious limitation of hardcoding access links from the Browser is that if the links for the data change, then your code will not function unless you manually update the code with the new links (which would be obtained from a manual search in the STAC Browser). This can lead to your code becoming less reproducible and can create problems for you down the line and problems for anyone with whom you've shared the code. For these reasons we recommend that you limit the GUI interface to (i) quickly exploring the catalog to see what data is available on the network, and (ii) for examining the properties of various collections. We suggest that you use the approach described in the [next section](pystac-client.ipynb) to retrieve access links to data on the Marble network. The approach described in the next section also allows for more advanced search mechanism that what is available via the Browser.
+Often you might need several data files from a collection and manually searching for and copying the links to those files from the STAC Browser and then pasting them into your notebooks is not feasible, and a programmatic approach becomes immediately desirable.
+
+A more serious limitation of hardcoding access links from the Browser is that if the links for the data change, then your code will not function unless you manually update the code with the new links (which would be obtained from a manual search in the STAC Browser). This can lead to your code becoming less reproducible and can create problems for you down the line and problems for anyone with whom you've shared the code.
+
+For these reasons we recommend that you limit your use of the web interface to: 
+* quickly exploring the catalog to see what data is available on the network, and 
+* for examining the properties of various collections. 
+
+We suggest that you use the approach described in the [next section](pystac-client.ipynb) to retrieve access links to data on the Marble network. The approach described in the next section also allows for more advanced search mechanism that what is available via the Browser.
