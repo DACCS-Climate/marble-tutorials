@@ -1,7 +1,8 @@
 # Services
 
 The Marble software can be configured to provide a variety of services to the users of your node. Services are 
-user-facing tools that largely fall under the following categories:
+user-facing tools and the Birdhouse stack comes with several optional services that largely fall under the following 
+categories:
 
 - serving and cataloging data hosted on your server
 - interactive development environment
