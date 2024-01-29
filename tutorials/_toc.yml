@@ -49,7 +49,10 @@ parts:
       sections:
         - file: admin/getting-started/installation.md
         - file: admin/getting-started/join-network.md
+        - file: admin/getting-started/updating.md
     - file: admin/services/services.md
+      sections:
+        - file: admin/services/custom-overrides.md
     - file: admin/data/data.md
       sections:
         - file: admin/data/hosting.md
@@ -67,3 +70,4 @@ parts:
     - file: admin/troubleshooting/troubleshooting.md
       sections:
         - file: admin/troubleshooting/support.md
+        - file: admin/troubleshooting/faq.md
