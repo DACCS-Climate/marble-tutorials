@@ -7,8 +7,6 @@ management.
 
 The site also provides information about the main services available on the Marble platform:
 
-<!-- # TODO: update the tutorial links below as needed when they're added later -->
-
 - [Interactive Development Environment](../ide/ide.md)
 - [Data Catalog](../catalog/catalog.md)
 - [Remote Processing Services](../remote-processing/remote-processing.md)
