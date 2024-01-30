@@ -4,20 +4,20 @@
 
 Kernels in Jupyter are self-contained, program language specific processes that run independently.  This makes them 
 useful for running Jupyter Notebooks and consoles with a specific programming language. 
-A kernel doesn't need to be configured to serve every purpose imaginable. Several kernels can be made, with none of the dependencies for one kernel affecting 
-the dependencies for another.
+A kernel doesn't need to be configured to serve every purpose imaginable. Several kernels can be made; with none of the 
+dependencies for one kernel affecting the dependencies for another.
 
-The flexibility of having kernels configured and packaged for specific purposes is passed on to the user, allowing you a lot of choice in the notebook 
-environments available to you.  
+The flexibility of having kernels configured and packaged for specific purposes is passed on to the user, allowing you 
+a lot of choice in the working environments available to you.  
 
 Below are examples of kernels available on Marble.  These will be updated or changed to fit the needs of the users.
 
 ![Kernels](images/kernels-dependency/kernel-buttons.png)
 
-## How to install packages
+## Managing packages in a kernel
 
 The kernels on Marble are created with a focus on climate science and data analysis.  As such, they are installed with 
-programming and scripting languages commonly used for this purpose, such as Python and R.
+packages commonly used for this purpose, such as Python packages or R.
 
 For the purpose of this tutorial, Python will be used in the examples.
 
@@ -28,9 +28,9 @@ Start off by clicking on the Console button for the kernel you want to install a
 This will open a Console tab where you will be able to enter commands at the bottom.  Execute the commands by using 
 "Shift+Enter" on your keyboard.
 
-### List the packages already installed
+### List packages already installed
 
-First, find out which packages are already installed. There are several ways to see the packages already installed in a 
+There are several ways to see the packages already installed in a 
 kernel: `pip list`, `pip freeze`, `conda list`
 
 #### `pip list`
@@ -78,7 +78,8 @@ You will only be able to use the `conda` command if you have [Anaconda](https://
 
 To install a package you need the package's name.  An excellent resource is the [Python Package Index](https://pypi.org/) (pypi).
 
-The results of the *pypi* search includes the syntax of the install command.
+For example, if you want to install Alembic, a package used for database migration, search the Python Package Index
+for "Alembic".  The results of the *pypi* search includes the syntax of the install command for the package. 
 
 ![pypi](images/kernels-dependency/pypi-result.png)
 
