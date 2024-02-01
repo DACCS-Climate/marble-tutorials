@@ -21,12 +21,15 @@ parts:
         - file: users/ide/persistent-storage.md
         - file: users/ide/climate-analytics/climate-analytics.md
           sections:
-            - file: users/ide/climate-analytics/numpy.md
-            - file: users/ide/climate-analytics/matplotlib.md
-            - file: users/ide/climate-analytics/pandas.md
-            - file: users/ide/climate-analytics/xarray.md
-            - file: users/ide/climate-analytics/cartopy.md
-            - file: users/ide/climate-analytics/machine-learning.md
+            - file: users/ide/climate-analytics/numpy_and_matplotlib.ipynb
+            - file: users/ide/climate-analytics/matplotlib.ipynb
+            - file: users/ide/climate-analytics/pandas_basics.ipynb
+            - file: users/ide/climate-analytics/pandas_groupby.ipynb
+            - file: users/ide/climate-analytics/xarray_basics.ipynb
+            - file: users/ide/climate-analytics/more_xarray.ipynb
+            - file: users/ide/climate-analytics/xarray_tips_and_tricks.ipynb
+            - file: users/ide/climate-analytics/cartopy.ipynb
+            - file: users/ide/climate-analytics/machine_learning.ipynb
     - file: users/remote-processing/remote-processing.md
       sections:
         - file: users/remote-processing/wps.md
@@ -40,20 +43,6 @@ parts:
         - file: users/python-client/network.md
         - file: users/python-client/services.md
         - file: users/python-client/magpie-session.md
-    - file: eda_contents/intro.md
-      sections:
-        - file: eda_contents/Computing_Environment/Jupyter_Notebook_intro.ipynb
-        - file: eda_contents/Computing_Environment/Unix.md
-        - file: eda_contents/Computing_Environment/Version_Control-and-Git.md
-        - file: eda_contents/numpy/numpy_and_matplotlib.ipynb
-        - file: eda_contents/numpy/matplotlib.ipynb
-        - file: eda_contents/pandas_xarray/pandas_basics.ipynb
-        - file: eda_contents/pandas_xarray/pandas_groupby.ipynb
-        - file: eda_contents/pandas_xarray/xarray_basics.ipynb
-        - file: eda_contents/pandas_xarray/more_xarray.ipynb
-        - file: eda_contents/pandas_xarray/xarray_tips_and_tricks.ipynb
-        - file: eda_contents/cartopy/cartopy.ipynb
-        - file: eda_contents/machine_learning/machine_learning.ipynb
     - file: users/other/intro.md
   - caption: Marble for Admins
     chapters:
