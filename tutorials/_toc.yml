@@ -16,18 +16,8 @@ parts:
       sections:
         - file: users/ide/jupyterlab-howto.md
         - file: users/ide/jupyterlab-troubleshooting.md
-        - file: users/ide/unix.md
         - file: users/ide/version-control.md
         - file: users/ide/kernels-and-dependency-management.md
-        - file: users/ide/persistent-storage.md
-        - file: users/ide/climate-analytics/climate-analytics.md
-          sections:
-            - file: users/ide/climate-analytics/numpy.md
-            - file: users/ide/climate-analytics/matplotlib.md
-            - file: users/ide/climate-analytics/pandas.md
-            - file: users/ide/climate-analytics/xarray.md
-            - file: users/ide/climate-analytics/cartopy.md
-            - file: users/ide/climate-analytics/machine-learning.md
     - file: users/remote-processing/remote-processing.md
       sections:
         - file: users/remote-processing/wps.md
