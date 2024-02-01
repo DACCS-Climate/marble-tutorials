@@ -18,6 +18,17 @@ parts:
         - file: users/ide/jupyterlab-troubleshooting.md
         - file: users/ide/version-control.md
         - file: users/ide/kernels-and-dependency-management.md
+        - file: users/ide/climate-analytics/climate-analytics.md
+          sections:
+            - file: users/ide/climate-analytics/numpy_and_matplotlib.ipynb
+            - file: users/ide/climate-analytics/matplotlib.ipynb
+            - file: users/ide/climate-analytics/pandas_basics.ipynb
+            - file: users/ide/climate-analytics/pandas_groupby.ipynb
+            - file: users/ide/climate-analytics/xarray_basics.ipynb
+            - file: users/ide/climate-analytics/more_xarray.ipynb
+            - file: users/ide/climate-analytics/xarray_tips_and_tricks.ipynb
+            - file: users/ide/climate-analytics/cartopy.ipynb
+            - file: users/ide/climate-analytics/machine_learning.ipynb
     - file: users/remote-processing/remote-processing.md
       sections:
         - file: users/remote-processing/wps.md
