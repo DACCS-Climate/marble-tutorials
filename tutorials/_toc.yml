@@ -25,7 +25,7 @@ parts:
     - file: users/catalog/catalog.md
       sections:
         - file: users/catalog/gui-search.md
-        - file: users/catalog/pystac-client.md
+        - file: users/catalog/pystac-client.ipynb
     - file: users/python-client/python-client.md
       sections:
         - file: users/python-client/network.md
@@ -39,16 +39,16 @@ parts:
       sections:
         - file: admin/getting-started/installation.md
         - file: admin/getting-started/join-network.md
+        - file: admin/getting-started/updating.md
     - file: admin/services/services.md
+      sections:
+        - file: admin/services/custom-overrides.md
     - file: admin/data/data.md
       sections:
         - file: admin/data/hosting.md
         - file: admin/data/catalog.md
         - file: admin/data/user-data.md
     - file: admin/users/users.md
-      sections:
-        - file: admin/users/management.md
-        - file: admin/users/permissions.md
     - file: admin/monitoring/monitoring.md
     - file: admin/network/network.md
       sections:
@@ -57,3 +57,4 @@ parts:
     - file: admin/troubleshooting/troubleshooting.md
       sections:
         - file: admin/troubleshooting/support.md
+        - file: admin/troubleshooting/faq.md
