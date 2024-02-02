@@ -42,7 +42,7 @@ parts:
         - file: users/python-client/network.md
         - file: users/python-client/services.md
         - file: users/python-client/magpie-session.md
-    - file: users/other/intro.md
+    - file: users/other/other.md
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
