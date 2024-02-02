@@ -62,9 +62,6 @@ parts:
     - file: admin/users/users.md
     - file: admin/monitoring/monitoring.md
     - file: admin/network/network.md
-      sections:
-        - file: admin/network/node-information.md
-        - file: admin/network/architecture.md
     - file: admin/troubleshooting/troubleshooting.md
       sections:
         - file: admin/troubleshooting/support.md
