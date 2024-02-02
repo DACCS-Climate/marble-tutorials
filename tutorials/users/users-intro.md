@@ -14,11 +14,26 @@ Getting Started
 :::
 
 :::{grid-item-card}
+:link: ide/ide
+:link-type: doc
+
+Integrated Development Environment (IDE)
+:::
+
+
+:::{grid-item-card}
 :link: other/intro
 :link-type: doc
 
 Other Tutorials
 :::
 
+
+:::{grid-item-card}
+:link: catalog/catalog
+:link-type: doc
+
+Marble Data Catalog
+:::
 
 ::::
