@@ -1,4 +1,4 @@
-# Data Calalog
+# Data Catalog
 
 One of the goals of the Marble network is to provide a robust collection of data on the network and make it discoverable and accessible 
 via a convenient catalog. To implement such a catalog, we have chosen to 
