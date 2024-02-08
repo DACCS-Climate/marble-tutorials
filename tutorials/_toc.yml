@@ -19,9 +19,6 @@ parts:
         - file: users/ide/version-control.md
         - file: users/ide/kernels-and-dependency-management.md
     - file: users/remote-processing/remote-processing.md
-      sections:
-        - file: users/remote-processing/wps.md
-        - file: users/remote-processing/weaver.md
     - file: users/catalog/catalog.md
       sections:
         - file: users/catalog/gui-search.md
