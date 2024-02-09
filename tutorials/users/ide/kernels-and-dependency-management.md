@@ -23,6 +23,7 @@ For the purpose of this tutorial, Python will be used in the examples.
 
 Start off by clicking on the Console button for the kernel you want to install a package for.
 
+(console-buttons)=
 ![Console Buttons](images/kernels-dependency/console-buttons.png)
 
 This will open a Console tab where you will be able to enter commands at the bottom.  Execute the commands by using 
@@ -83,14 +84,24 @@ for "Alembic".  The results of the *pypi* search includes the syntax of the inst
 
 ![pypi](images/kernels-dependency/pypi-result.png)
 
-In the console window type in the command and execute it.
+You want to make sure that you're installing the package in the correct kernel. Select which kernel you want to install
+the new package in and open its [console](console-buttons) from the launch screen.
+
+You can then execute the following code in the console to install the correct package:
+
+```
+import sys
+import subprocess
+subprocess.run([sys.executable, "-m", "pip", "install", "<package-name>"])
+```
+
+By using the `sys.executable` string, this ensures that the package is installed for the kernel you are currently using.
 
 If you want to install a specific version of a package, specify the version number you want using `==`.
 
 ```
-pip install <package-name>==<version-number>
+subprocess.run([sys.executable, "-m", "pip", "install", "<package-name>==<version-number>"])
 ```
-
 
 ```{warning}
 If the server is reset all additional installed packages will be uninstalled.
@@ -105,5 +116,5 @@ A handy workaround to losing installed dependencies when the server shuts down i
 workspace folder.  When you need the dependencies for the project, install the requirements listed in the file.
 
 ```
-pip install -r /notebook_dir/writeable-workspace/requirements.txt
+subprocess.run([sys.executable, "-m", "pip", "install", "-r", "/notebook_dir/writeable-workspace/requirements.txt"])
 ```
