@@ -18,6 +18,17 @@ parts:
         - file: users/ide/jupyterlab-troubleshooting.md
         - file: users/ide/version-control.md
         - file: users/ide/kernels-and-dependency-management.md
+        - file: users/ide/climate-analytics/climate-analytics.md
+          sections:
+            - file: users/ide/climate-analytics/numpy_and_matplotlib.ipynb
+            - file: users/ide/climate-analytics/matplotlib.ipynb
+            - file: users/ide/climate-analytics/pandas_basics.ipynb
+            - file: users/ide/climate-analytics/pandas_groupby.ipynb
+            - file: users/ide/climate-analytics/xarray_basics.ipynb
+            - file: users/ide/climate-analytics/more_xarray.ipynb
+            - file: users/ide/climate-analytics/xarray_tips_and_tricks.ipynb
+            - file: users/ide/climate-analytics/cartopy.ipynb
+            - file: users/ide/climate-analytics/machine_learning.ipynb
     - file: users/remote-processing/remote-processing.md
     - file: users/catalog/catalog.md
       sections:
@@ -28,7 +39,7 @@ parts:
         - file: users/python-client/network.md
         - file: users/python-client/services.md
         - file: users/python-client/magpie-session.md
-    - file: users/other/intro.md
+    - file: users/other/other.md
   - caption: Marble for Admins
     chapters:
     - file: admin/admin-intro.md
@@ -48,9 +59,6 @@ parts:
     - file: admin/users/users.md
     - file: admin/monitoring/monitoring.md
     - file: admin/network/network.md
-      sections:
-        - file: admin/network/node-information.md
-        - file: admin/network/architecture.md
     - file: admin/troubleshooting/troubleshooting.md
       sections:
         - file: admin/troubleshooting/support.md

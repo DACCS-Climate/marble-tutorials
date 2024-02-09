@@ -22,6 +22,17 @@ In this tutorial, you'll learn how to set up a local Git repository, i.e. inside
 In this step you will configure the local "git" program that will actually do the version control work for you. You will also configure 
 it to connect to your remote repository (optional, but highly encouraged step).
 
+```{caution}
+Depending on the JupyterLab image that you have selected, the `git` command line client or the GUI may or may not be
+installed.
+
+To check if the git client is installed, open a terminal and type the `git --version` command.
+
+To check if the GUI is installed, look for the git icon on the left-side menu.
+
+If either are not installed, you will have to choose a different JupyterLab image to use `git`.
+```
+
 (create_local_repo)=
 ### Creating a Local Repository
 
