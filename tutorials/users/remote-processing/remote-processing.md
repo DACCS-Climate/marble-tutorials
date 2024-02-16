@@ -2,10 +2,12 @@
 
 Remote processing services allow users to run workflows on different nodes across the Marble network.
 
-By distributing climate data across the nodes in the Marble network, users can choose to run their workflows on the same
-servers as the data. In other words, instead of downloading large amounts of data in order to run workflows on their own
+Climate data is distributed across the Marble network to reduce the burden on any single node. The remote processing 
+capability allows users to run their workflows on the same server where the data is located.
+
+In other words, instead of downloading large amounts of data in order to run workflows on their own
 computers, users can send their workflows to the computer that hosts the data to run there. This reduces lengthy
-download times and eliminates the need to duplicate data unnecessarily.
+download/transfer times and eliminates the need to duplicate data unnecessarily.
 
 The [Weaver](https://pavics-weaver.readthedocs.io) service provides remote processing capabilities across the Marble 
 Network. Any node that enables the Weaver service will allow users to run workflows on that node from anywhere else in 
@@ -13,10 +15,14 @@ the network.
 
 ## How Weaver works
 
-Weaver is an execution management service (EMS) where users can send instructions in the form of workflows which are 
-then executed by different processes across the network. A workflow can contain a single process step or multiple.
+Weaver is an Execution Management Service (EMS) where users can send instructions in the form of workflows which are 
+then sent to different Application Deployment and Execution Services (ADES) for execution. These ADES can either be
+Weaver services running on different nodes on the Marble Network, or external servers outside the Marble Network that
+provide an interface for one of the [atomic processes](atomic-processes) that Weaver supports.
 
-Processes can either be run in synchronous or asynchronous mode. 
+A workflow can contain a single process step or multiple.
+
+Processes can be run in either synchronous or asynchronous mode. 
 
 - A synchronous process will block until it has finished and then return the result of the process. 
 
@@ -26,13 +32,15 @@ Processes can either be run in synchronous or asynchronous mode.
 
 ```{note}
 If a synchronous process takes too long (reaches a timeout threshold), the process will be converted to asynchronous
-mode. 
+mode. This threshold is 20 seconds by default but may be different depending on the specific configuration of the Weaver
+service running on your Marble node.
 ```
 
+(atomic-processes)=
 ### Atomic Processes
 
 Weaver supports several types of atomic processes. These processes receive inputs in the form of data and customization
-arguments and returns the result of that process to the user.
+arguments and return their results to the user.
 
 Atomic processes include:
 
@@ -51,7 +59,7 @@ Atomic processes include:
 
 ```{note}
 Weaver converts all process types to OGC API - Processes internally. This allows users to interact with all processes
-using the same REST interface that Weaver provides. 
+using the same [REST](https://en.wikipedia.org/wiki/REST) interface that Weaver provides. 
 
 This makes dealing with multiple different process types easier since the user can interact with all process types 
 through the same interface.
