@@ -30,9 +30,6 @@ parts:
             - file: users/ide/climate-analytics/cartopy.ipynb
             - file: users/ide/climate-analytics/machine_learning.ipynb
     - file: users/remote-processing/remote-processing.md
-      sections:
-        - file: users/remote-processing/wps.md
-        - file: users/remote-processing/weaver.md
     - file: users/catalog/catalog.md
       sections:
         - file: users/catalog/gui-search.md
