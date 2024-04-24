@@ -4,7 +4,7 @@
 title: Marble Tutorials
 author: Marble Community
 copyright: "2024"
-logo: "marble.png"
+logo: "marble-logo-text.svg"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
