@@ -128,7 +128,57 @@ weaver_client = WeaverClient(marble_client.this_node.weaver.url)
 :::
 ```
 
-<!-- TODO: add in authentication info once https://github.com/crim-ca/weaver/pull/599 has been merged -->
+#### Authentication
+
+If you are trying to access a Weaver service that requires you to log in to access certain endpoints you will need to
+provide your login credentials to the weaver client in order to proceed.
+
+If you are in a [Marble JupyterLab IDE](../ide/ide.html) and you have the 
+[Marble python client](../python-client/python-client.html) installed you can get the 
+[Marble python client](../python-client/python-client.html) package to automatically discover your login credentials 
+and send then to weaver:
+
+```
+from weaver.cli import WeaverClient, CookieAuthHandler
+from marble_client import MarbleClient
+
+marble_client = MarbleClient()
+my_login_cookies = marble_client.this_session().cookies.get_dict()
+authentication_handler = CookieAuthHandler(token=my_login_cookies)
+
+weaver_client = WeaverClient(marble_client.this_node.weaver.url, auth=authentication_handler)
+```
+
+This code uses the [Marble python client](../python-client/python-client.html) package to extract your login session 
+cookie from the Jupyterlab API and pass that cookie to an authentication handler that the `WeaverClient` can use.
+
+If you are working outside a [Marble JupyterLab IDE](../ide/ide.html) environment, the 
+[Marble python client](../python-client/python-client.html) will not be able to access the Jupyterlab API in order to 
+access your login session cookie. In that case you will need to authenticate yourself using another method:
+
+```
+import requests_magpie
+from weaver.cli import WeaverClient
+
+weaver_url = "https://<your-node-url>/weaver"
+magpie_url = "https://<your-node-url>/magpie"
+
+authentication_handler = requests_magpie.MagpieAuth(magpie_url, "<my-username>", "<my-password>") 
+
+weaver_client = WeaverClient(weaver_url, auth=authentication_handler)
+```
+
+Where `<your-node-url>` is the hostname of the Marble node you are accessing, `<my-username>` and `<my-pasword>` is the 
+username and password you use to log in to that node.
+
+```{warning}
+We highly recommend not storing your credentials like usernames and passwords in scripts and jupyter notebook files. If
+anyone else gains access to these scripts they will be able to read your credentials and log in as you!
+
+For this reason, we recommend working in a [Marble JupyterLab IDE](../ide/ide.html) when interacting with Marble
+services like Weaver.
+```
+
 <!-- TODO: add in information about discovering and executing providers as well as processes -->
 
 (weaver-client-discover)=
