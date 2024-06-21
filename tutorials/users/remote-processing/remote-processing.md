@@ -163,7 +163,7 @@ from weaver.cli import WeaverClient
 weaver_url = "https://<your-node-url>/weaver"
 magpie_url = "https://<your-node-url>/magpie"
 
-authentication_handler = request_magpie.MagpieAuth(magpie_url, "<my-username>", "<my-password>") 
+authentication_handler = requests_magpie.MagpieAuth(magpie_url, "<my-username>", "<my-password>") 
 
 weaver_client = WeaverClient(weaver_url, auth=authentication_handler)
 ```
