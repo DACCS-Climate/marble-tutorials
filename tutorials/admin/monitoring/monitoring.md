@@ -3,7 +3,7 @@
 Marble is deployed using the [Birdhouse](https://github.com/bird-house/birdhouse-deploy) software. This software
 includes some useful tools to monitor the usage and logs of your Marble node.
 
-These tools help you check inspect how your node is being used and can help you understand how to better allocate 
+These tools help you check inspect how your node is being used and can help you understand how to better allocate
 resources to ensure that your users get the best experience possible from your node.
 
 (grafana)=
@@ -15,7 +15,7 @@ the docker containers running on it to provide you an overview of how each is be
 [Grafana](https://grafana.com/grafana/dashboards/) is a visualization dashboard that takes the information collected by
 [Prometheus](https://prometheus.io/) and presents it to you in a visually useful manner.
 
-These monitoring tools can also send you email alerts when certain thresholds are reached. The threshold checks are 
+These monitoring tools can also send you email alerts when certain thresholds are reached. The threshold checks are
 pre-defined and include, for example:
 
 - the server is running low on memory, inodes, disk space, etc.
@@ -29,7 +29,7 @@ this [monitoring component](https://birdhouse-deploy.readthedocs.io/en/latest/bi
 
 ### Inspecting the Dashboard
 
-To inspect the Grafana dashboard, first log in as an administrator user and then navigate to 
+To inspect the Grafana dashboard, first log in as an administrator user and then navigate to
 `https://yournodeshostname.com/grafana` (replace `yournodehostname.com` with the actual hostname of your node).
 
 You will be asked to log in to the Grafana service itself. Use the password that you set when you set up the monitoring
@@ -49,7 +49,7 @@ component is behaving as expected. Also, if you ever need to submit a bug report
 the log output to help determine the cause of the bug.
 
 Marble uses [docker](https://www.docker.com/) underlyingly to deploy the various components in the stack. Docker keeps
-a log for each of the containers deployed in the stack. 
+a log for each of the containers deployed in the stack.
 
 To inspect the logs, we first need to figure out which container's logs we want to inspect.
 
@@ -60,11 +60,11 @@ your server and go to the `birdhouse/` subdirectory:
 cd birdhouse-deploy/birdhouse
 ```
 
-Then run the `pavics-compose.sh` script with the `ps` subcommand. This will show all running containers in the stack in
+Then run `birdhouse compose` with the `ps` subcommand. This will show all running containers in the stack in
 a table format.
 
 ```shell
-./pavics-compose.sh ps
+birdhouse compose ps
 ```
 
 Select which container you want to inspect and take note of the value in the "Name" column in the table.
@@ -77,7 +77,7 @@ docker logs proxy
 ```
 
 If you're not sure which container to inspect, the container names should be the same as the component names as
-described in the 
+described in the
 [Birdhouse documentation](https://birdhouse-deploy.readthedocs.io/en/latest/birdhouse/components/README.html#).
 
 ## Provide a public status page with Canarie-API
@@ -86,7 +86,7 @@ Canarie-API provides a simple view of the status of various components of your M
 to allow users to easily check whether services are working as intended without making sensitive information about your
 node public.
 
-See the [documentation](https://birdhouse-deploy.readthedocs.io/en/latest/birdhouse/components/README.html#canarie-api) 
+See the [documentation](https://birdhouse-deploy.readthedocs.io/en/latest/birdhouse/components/README.html#canarie-api)
 on how to enable the Canarie-API component for details.
 
 ```{warning}

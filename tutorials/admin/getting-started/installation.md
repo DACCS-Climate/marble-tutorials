@@ -1,12 +1,12 @@
 # Installation
 
-This tutorial describes how to install a Marble node on a server. 
+This tutorial describes how to install a Marble node on a server.
 
 ## Prerequisites
 
 ### Docker
 
-Marble is deployed as a [Docker](https://www.docker.com/) application using the 
+Marble is deployed as a [Docker](https://www.docker.com/) application using the
 [compose](https://docs.docker.com/compose/) tool to manage various services that make up the application.
 
 To install Docker on Unix/Linux either install [Docker Engine](https://docs.docker.com/engine/install/) (recommended) or
@@ -14,8 +14,8 @@ To install Docker on Unix/Linux either install [Docker Engine](https://docs.dock
 Docker Desktop.
 
 ```{warning}
-We highly recommend installing Marble on a Unix/Linux machine, specifically Ubuntu 18.04+ if possible. All code is 
-developed and tested on Ubuntu, and we cannot guarantee that the software will behave as expected on other operating 
+We highly recommend installing Marble on a Unix/Linux machine, specifically Ubuntu 18.04+ if possible. All code is
+developed and tested on Ubuntu, and we cannot guarantee that the software will behave as expected on other operating
 systems.
 ```
 
@@ -51,7 +51,7 @@ discounted domain name with your purchase of a cloud based virtual machine.
 
 A static public IP address is required so that the domain name server will know where to forward internet traffic to.
 
-If you are hosting your Marble node in a cloud based environment, follow the instructions from your cloud service 
+If you are hosting your Marble node in a cloud based environment, follow the instructions from your cloud service
 provider on how to forward internet traffic to your virtual machine.
 
 If you are installing Marble on premises at an institution, contact the institution's IT department to ask how to
@@ -59,7 +59,7 @@ acquire your public static IP for the purposes of setting up a web application.
 
 ```{note}
 Most residential internet service plans only provide *dynamic* public IP addresses, which are not suitable for hosting
-a web application. You may be able to request a static IP address from your internet service provider (ISP) for a small 
+a web application. You may be able to request a static IP address from your internet service provider (ISP) for a small
 fee depending on your ISP and/or geographical region.
 ```
 
@@ -76,7 +76,7 @@ We recommend using a tool like [certbot](https://certbot.eff.org/) to get and ma
 managing them yourself.
 
 ```{note}
-If using [certbot](https://certbot.eff.org/), note that the Marble stack uses 
+If using [certbot](https://certbot.eff.org/), note that the Marble stack uses
 [nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) as a reverse proxy.
 
 Certbot also requires that the website be already running and that ports 80 and 443 are open.
@@ -85,7 +85,7 @@ To deploy the stack and start the website see the instructions [here](deploy-mar
 
 ### Git
 
-The Marble source code is hosted on [GitHub](https://github.com) and a `git` client is highly recommended to download 
+The Marble source code is hosted on [GitHub](https://github.com) and a `git` client is highly recommended to download
 and update the source code.
 
 Your server may already have `git` installed. To check run the following command from the command line:
@@ -110,24 +110,81 @@ Marble can be deployed using the [birdhouse-deploy](https://github.com/bird-hous
 git clone https://github.com/bird-house/birdhouse-deploy.git
 ```
 
-This will download the [Birdhouse](https://github.com/bird-house/birdhouse-deploy/) source code to the current 
+This will download the [Birdhouse](https://github.com/bird-house/birdhouse-deploy/) source code to the current
 directory.
 
 The most up-to-date version of the source code is on the `master` branch. We recommend always using this branch.
 
+(birdhouse-cli)=
+### Command Line Interface (CLI)
+
+The command line interface (CLI) for interacting with the Birdhouse software can be found at `bin/birdhouse`.
+
+This CLI provides utilities to manage the Birdhouse software like a docker compose project, display build information,
+and manage configuration settings.
+
+For a full description of the CLI usage run it with the `--help` flag:
+
+```shell
+cd birdhouse-deploy
+./bin/birdhouse --help
+```
+
+For convenience we recommend adding the ``birdhouse-deploy/bin/`` directory to your ``PATH``:
+
+```shell
+export PATH="$(readlink -f ./bin):$PATH"
+
+# Now instead of running (from the root directory of this project):
+
+./bin/birdhouse --help
+
+# you can run (from anywhere):
+
+birdhouse --help
+```
+
+```{note}
+All tutorials in this section will assume that you have added the `birdhouse` executable to your `PATH`.
+This means that all examples will be written as:
+
+:::shell
+birdhouse ...
+:::
+
+instead of
+:::shell
+cd birdhouse-deploy
+./bin/birdhouse ...
+:::
+```
+
+To ensure that your PATH variable always includes this directory in login shells:
+
+```shell
+echo "export PATH=$(readlink -f ./bin)"':$PATH' >> ~/.profile
+```
+
+```{warning}
+It is no longer recommended to call scripts other than `bin/birdhouse` directly. In previous versions, we recommended
+interacting with the platform by calling scripts (like `birdhouse-compose.sh` or `read-configs.include.sh`)
+directly. These scripts have been left in place for backwards compatibility **for now** but may be moved or modified
+in some future version. We recommend updating any external scripts to use the CLI as soon as possible.
+```
+
 ### Create the local environment file
 
-Your Marble deployment can be configured and customized by editing a local environment file. To create this file:
+Your Marble deployment can be configured and customized by editing a local environment file. By default this file is located at `birdhouse/env.local`. To create this file:
 
 ```shell
 cd birdhouse-deploy/birdhouse
 touch env.local
 ```
 
-An (incomplete) example of this file named `env.local.example` can be used as a starting point. 
+An (incomplete) example of this file named `env.local.example` can be used as a starting point.
 
 ```{warning}
-`env.local.example` contains a lot of default examples that *must* be updated. For this reason, we do not recommend 
+`env.local.example` contains a lot of default examples that *must* be updated. For this reason, we do not recommend
 just copying `env.local.example` to `env.local`
 ```
 
@@ -145,42 +202,39 @@ file which will instruct you:
 (deploy-marble)=
 ## Deploying Marble
 
-The Marble stack can be started, stopped and inspected using the `pavics-compose.sh` script which takes the same 
-arguments as the [`docker compose`](https://docs.docker.com/compose/) commands.
+The Marble stack can be started, stopped and inspected using the `compose` command to the [birdhouse CLI](birdhouse-cli) which takes the same arguments as the [`docker compose`](https://docs.docker.com/compose/) commands.
 
-The `pavics-compose.sh` script will read the `env.local` configuration file, create a `docker compose` deployment file
-based on this configuration and then execute any subcommands provided to the `pavics-compose.sh` file as subcommands to 
-`docker compose` based on that file. 
+This command will read the `env.local` configuration file, create a `docker compose` deployment file
+based on this configuration and then execute any subcommands provided as if they were subcommands
+to `docker compose` based on that file.
 
 For example, to start the Marble stack:
 
 ```shell
-cd birdhouse-deploy/birdhouse
-./pavics-compose.sh up --detach
+birdhouse compose up --detach
 ```
 
 This will call the [`docker compose up --detach`](https://docs.docker.com/engine/reference/commandline/compose_up/)
-which will start up all the docker containers required to run the Marble stack.
+command which will start up all the docker containers required to run the Marble stack.
 
 Similarly, to stop and bring down the stack use:
 
 ```shell
-cd birdhouse-deploy/birdhouse
-./pavics-compose.sh down
+birdhouse compose down
 ```
 
 which will call `docker compose down` internally.
 
 ## Check that everything is working
 
-Once you have started the Marble stack with the `./pavics-compose.sh up --detach` command, check that everything is
+Once you have started the Marble stack with the `birdhouse compose up --detach` command, check that everything is
 working properly by opening your webpage in a browser:
 
 - Navigate to the domain name [that you set up](fqdn)
 - Ensure that the page loads as expected
   - Note that the page that loads should be the one set by the `PROXY_ROOT_LOCATION` variable in `env.local`
 - Ensure that the connection is secure (uses the https protocol with a valid certificate)
-  - If not: ensure that your SSL certificate is up-to-date and that `SSL_CERTIFICATE` variable in `env.local` is
+  - If not: ensure that your SSL certificate is up-to-date and that `BIRDHOUSE_SSL_CERTIFICATE` variable in `env.local` is
     pointing to the correct file (see the birdhouse documentation for details)
 
 ## Next Steps
@@ -207,7 +261,7 @@ And finally you'll want to start adding users to your node:
 ## Example installation steps
 
 Here is an example of how to install Marble on a server running Ubuntu 20.04, using <span>mymarble</span>.com as a FQDN,
-and where we get an SSL certificate using [certbot](https://certbot.eff.org/). We assume that 
+and where we get an SSL certificate using [certbot](https://certbot.eff.org/). We assume that
 [docker](https://www.docker.com/) and [git](https://git-scm.com/) are already installed:
 
 ```shell
@@ -216,18 +270,18 @@ git clone https://github.com/bird-house/birdhouse-deploy.git
 cd birdhouse-deploy/birdhouse
 
 # Configure env.local
-echo "export PAVICS_FQDN=mymarble.com" > env.local
-echo "export DOC_URL='https://marbleclimate.com'" >> env.local
+echo "export BIRDHOUSE_FQDN=mymarble.com" > env.local
+echo "export BIRDHOUSE_DOC_URL='https://marbleclimate.com'" >> env.local
 echo "export MAGPIE_SECRET=$(openssl rand -hex 32)" >> env.local
 echo "export MAGPIE_ADMIN_USERNAME=admin" >> env.local
 echo "export MAGPIE_ADMIN_PASSWORD=$(openssl rand -base64 12)" >> env.local
-echo "export SUPPORT_EMAIL=info@mymarble.com" >> env.local
-echo "export POSTGRES_PAVICS_USERNAME=postgres-pavics" >> env.local
-echo "export POSTGRES_PAVICS_PASSWORD=$(openssl rand -base64 12)" >> env.local
+echo "export BIRDHOUSE_SUPPORT_EMAIL=info@mymarble.com" >> env.local
+echo "export BIRDHOUSE_POSTGRES_USERNAME=postgres-birdhouse" >> env.local
+echo "export BIRDHOUSE_POSTGRES_PASSWORD=$(openssl rand -base64 12)" >> env.local
 echo "export POSTGRES_MAGPIE_USERNAME=postgres-magpie" >> env.local
 echo "export POSTGRES_MAGPIE_PASSWORD=$(openssl rand -base64 12)" >> env.local
 
-echo "export EXTRA_CONF_DIRS='...'" >> env.local # fill in the ... with the additional components you want to add
+echo "export BIRDHOUSE_EXTRA_CONF_DIRS='...'" >> env.local # fill in the ... with the additional components you want to add
 
 # Get an SSL certificate with certbot
 sudo snap install --classic certbot
@@ -236,8 +290,8 @@ sudo certbot certonly --apache --domain mymarble.com # and follow any additional
 
 # Create a file that contains a combination of the fullchain.pem and the privkey.pem files
 sudo cat /etc/letsencrypt/live/mymarble.com/fullchain.pem /etc/letsencrypt/live/mymarble.com/privkey.pem > cert.pem
-echo "export SSL_CERTIFICATE=$(pwd)/cert.pem" >> env.local
+echo "export BIRDHOUSE_SSL_CERTIFICATE=$(pwd)/cert.pem" >> env.local
 
 # Start the server
-./pavics-compose.sh up -d
+birdhouse compose up -d
 ```
